@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-bg-surface: theme("colors.brand.cream");
+  --color-bg-inverse: theme("colors.brand.forest.800");
+  --color-text-heading: theme("colors.brand.forest.900");
+  --color-text-body: theme("colors.brand.forest.700");
+  --color-text-inverse: theme("colors.brand.cream");
+  --color-border-subtle: theme("colors.brand.forest.200");
+  --color-accent: theme("colors.brand.gold");
+}
+
+body {
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-body);
+}
