@@ -14,8 +14,11 @@ describe("Input", () => {
     render(
       <Input label="Email" id="email" name="email" value="" onChange={() => {}} error="Email is required" />
     );
-    expect(screen.getByText("Email is required")).toBeInTheDocument();
-    expect(screen.getByLabelText("Email")).toHaveClass("border-red-500");
+    const errorEl = screen.getByText("Email is required");
+    expect(errorEl).toBeInTheDocument();
+    const field = screen.getByLabelText("Email");
+    expect(field).toHaveClass("border-red-500");
+    expect(field).toHaveAttribute("aria-describedby", errorEl.id);
   });
 });
 
@@ -23,6 +26,24 @@ describe("Textarea", () => {
   it("renders a labeled textarea", () => {
     render(<Textarea label="Message" id="message" name="message" value="" onChange={() => {}} />);
     expect(screen.getByLabelText("Message").tagName).toBe("TEXTAREA");
+  });
+
+  it("shows an error message and error styling when error is provided", () => {
+    render(
+      <Textarea
+        label="Message"
+        id="message"
+        name="message"
+        value=""
+        onChange={() => {}}
+        error="Message is required"
+      />
+    );
+    const errorEl = screen.getByText("Message is required");
+    expect(errorEl).toBeInTheDocument();
+    const field = screen.getByLabelText("Message");
+    expect(field).toHaveClass("border-red-500");
+    expect(field).toHaveAttribute("aria-describedby", errorEl.id);
   });
 });
 
@@ -43,5 +64,28 @@ describe("Select", () => {
       />
     );
     expect(screen.getByLabelText("Interested In")).toHaveValue("garden-condos");
+  });
+
+  it("shows an error message and error styling when error is provided", () => {
+    const onChange = vi.fn();
+    render(
+      <Select
+        label="Interested In"
+        id="interest"
+        name="interest"
+        value="garden-condos"
+        onChange={onChange}
+        options={[
+          { value: "garden-condos", label: "Garden Condo" },
+          { value: "elevated-condos", label: "Elevated Condo" },
+        ]}
+        error="Please select an option"
+      />
+    );
+    const errorEl = screen.getByText("Please select an option");
+    expect(errorEl).toBeInTheDocument();
+    const field = screen.getByLabelText("Interested In");
+    expect(field).toHaveClass("border-red-500");
+    expect(field).toHaveAttribute("aria-describedby", errorEl.id);
   });
 });

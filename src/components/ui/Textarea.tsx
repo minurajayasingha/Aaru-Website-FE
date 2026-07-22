@@ -23,13 +23,14 @@ export function Textarea({ label, id, name, value, onChange, rows = 5, error }: 
         onChange={onChange}
         rows={rows}
         aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
         className={cn(
           "rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
           error ? "border-red-500" : "border-brand-forest-200"
         )}
       />
       {error && (
-        <span className="text-sm text-red-600" role="alert">
+        <span id={`${id}-error`} className="text-sm text-red-600" role="alert">
           {error}
         </span>
       )}
