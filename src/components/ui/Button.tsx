@@ -51,7 +51,9 @@ export function Button({
         onClick={(event) => {
           if (disabled) {
             event.preventDefault();
+            return;
           }
+          onClick?.();
         }}
       >
         {children}

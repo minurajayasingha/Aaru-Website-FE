@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { Button } from "./Button";
 
 describe("Button", () => {
@@ -39,5 +39,31 @@ describe("Button", () => {
     const clickEvent = new MouseEvent("click", { bubbles: true, cancelable: true });
     fireEvent(link, clickEvent);
     expect(clickEvent.defaultPrevented).toBe(true);
+  });
+
+  it("forwards the onClick prop when rendered as a Link", () => {
+    const onClick = vi.fn();
+    render(
+      <Button href="/somewhere" onClick={onClick}>
+        Go
+      </Button>
+    );
+    const link = screen.getByRole("link", { name: "Go" });
+
+    fireEvent.click(link);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not call onClick when the Link-rendered button is disabled", () => {
+    const onClick = vi.fn();
+    render(
+      <Button href="/somewhere" disabled onClick={onClick}>
+        Go
+      </Button>
+    );
+    const link = screen.getByRole("link", { name: "Go" });
+
+    fireEvent.click(link);
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
