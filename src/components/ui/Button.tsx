@@ -44,7 +44,16 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes} aria-disabled={disabled}>
+      <Link
+        href={href}
+        className={cn(classes, disabled && "opacity-50 pointer-events-none")}
+        aria-disabled={disabled}
+        onClick={(event) => {
+          if (disabled) {
+            event.preventDefault();
+          }
+        }}
+      >
         {children}
       </Link>
     );

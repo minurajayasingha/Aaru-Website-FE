@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { Button } from "./Button";
 
@@ -22,5 +22,22 @@ describe("Button", () => {
   it("applies secondary variant classes", () => {
     render(<Button variant="secondary">Explore</Button>);
     expect(screen.getByRole("button")).toHaveClass("bg-brand-cream");
+  });
+
+  it("visually and functionally disables a Link-rendered button when href + disabled are both set", () => {
+    render(
+      <Button href="/somewhere" disabled>
+        Go
+      </Button>
+    );
+    const link = screen.getByRole("link", { name: "Go" });
+
+    expect(link).toHaveClass("opacity-50");
+    expect(link).toHaveClass("pointer-events-none");
+    expect(link).toHaveAttribute("aria-disabled", "true");
+
+    const clickEvent = new MouseEvent("click", { bubbles: true, cancelable: true });
+    fireEvent(link, clickEvent);
+    expect(clickEvent.defaultPrevented).toBe(true);
   });
 });
