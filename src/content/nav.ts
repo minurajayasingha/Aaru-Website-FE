@@ -10,7 +10,7 @@ export const navLinks: NavLink[] = [
 
 export const footerLinkGroups: { title: string; links: NavLink[] }[] = [
   {
-    title: "Condors",
+    title: "Condos",
     links: [
       { label: "Garden Condos", href: "/residences/garden-condos" },
       { label: "Elevated Condos", href: "/residences/elevated-condos" },
@@ -18,7 +18,7 @@ export const footerLinkGroups: { title: string; links: NavLink[] }[] = [
     ],
   },
   {
-    title: "Use Full Links",
+    title: "Useful Links",
     links: [
       { label: "Home", href: "/" },
       { label: "Gallery", href: "/gallery" },

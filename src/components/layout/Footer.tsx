@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <span className="font-display text-3xl">aaru</span>
           <p className="font-body text-sm text-brand-cream/80">{siteConfig.name}</p>
-          <p className="font-body text-xs text-brand-cream/60">Develop By {siteConfig.legalDeveloper}</p>
+          <p className="font-body text-xs text-brand-cream/60">Developed By {siteConfig.legalDeveloper}</p>
         </div>
 
         {footerLinkGroups.map((group) => (

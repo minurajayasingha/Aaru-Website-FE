@@ -14,7 +14,7 @@ export const siteConfig = {
     totalSiteAcres: "2.09 Acres",
     totalPerches: "334 Perches",
     condoUnits: "19 Condo Units",
-    privateVillas: "3 Privet Villas",
+    privateVillas: "3 Private Villas",
     distanceToBeach: "250m To The Beach",
   },
 };
