@@ -31,4 +31,32 @@ describe("PageHero", () => {
     render(<PageHero title="Gallery" imageSrc="/images/hero/gallery.jpg" imageAlt="Alt text" />);
     expect(screen.getByAltText("Alt text")).toBeInTheDocument();
   });
+
+  it("applies the h-[50vh] class when height is sm", () => {
+    const { container } = render(
+      <PageHero title="Gallery" imageSrc="/images/hero/gallery.jpg" imageAlt="Alt text" height="sm" />,
+    );
+    expect(container.querySelector("section")).toHaveClass("h-[50vh]");
+  });
+
+  it("applies the h-[60vh] class when height is md", () => {
+    const { container } = render(
+      <PageHero title="Gallery" imageSrc="/images/hero/gallery.jpg" imageAlt="Alt text" height="md" />,
+    );
+    expect(container.querySelector("section")).toHaveClass("h-[60vh]");
+  });
+
+  it("applies the h-[75vh] class when height is lg", () => {
+    const { container } = render(
+      <PageHero title="Gallery" imageSrc="/images/hero/gallery.jpg" imageAlt="Alt text" height="lg" />,
+    );
+    expect(container.querySelector("section")).toHaveClass("h-[75vh]");
+  });
+
+  it("defaults to the h-[60vh] class when height is omitted", () => {
+    const { container } = render(
+      <PageHero title="Gallery" imageSrc="/images/hero/gallery.jpg" imageAlt="Alt text" />,
+    );
+    expect(container.querySelector("section")).toHaveClass("h-[60vh]");
+  });
 });
