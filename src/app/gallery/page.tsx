@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { buildMetadata } from "@/lib/metadata";
 import { getGalleryImages, galleryCategories } from "@/content/gallery";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = buildMetadata({
   title: "Gallery",
@@ -13,16 +13,13 @@ export const metadata: Metadata = buildMetadata({
 export default function GalleryPage() {
   return (
     <>
-      <section className="relative flex h-[50vh] items-center justify-center text-center text-brand-cream">
-        <Image
-          src="/images/hero/gallery.jpg"
-          alt="Aerial view of Aaru's residences beside the beach at sunset"
-          fill
-          priority
-          className="object-cover"
-        />
-        <h1 className="relative z-10 font-display text-4xl md:text-6xl">Gallery</h1>
-      </section>
+      <PageHero
+        title="Gallery"
+        subtitle="Discover Aaru through stunning visual stories"
+        imageSrc="/images/hero/gallery.jpg"
+        imageAlt="Aerial view of Aaru's residences beside the beach at sunset"
+        height="lg"
+      />
       <GalleryGrid images={getGalleryImages()} categories={galleryCategories} />
     </>
   );

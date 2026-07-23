@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { PageHero } from "@/components/ui/PageHero";
 import { ResidenceJsonLd } from "@/components/seo/ResidenceJsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 
@@ -46,10 +47,12 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
         ]}
       />
 
-      <section className="relative flex h-[60vh] items-center justify-center text-center text-brand-cream">
-        <Image src={residence.heroImage.src} alt={residence.heroImage.alt} fill priority className="object-cover" />
-        <h1 className="relative z-10 font-display text-4xl md:text-6xl">{residence.name}</h1>
-      </section>
+      <PageHero
+        title={residence.name}
+        imageSrc={residence.heroImage.src}
+        imageAlt={residence.heroImage.alt}
+        height="md"
+      />
 
       <Reveal as="section" className="mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2">
         <div className="flex flex-col gap-4">

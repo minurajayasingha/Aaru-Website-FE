@@ -5,6 +5,7 @@ import { commercialAmenities } from "@/content/amenities";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { PageHero } from "@/components/ui/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 
 export const metadata: Metadata = buildMetadata({
@@ -19,16 +20,13 @@ export default function CommercialSpacePage() {
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Commercial Space", path: "/commercial-space" }]} />
 
-      <section className="relative flex h-[50vh] items-center justify-center text-center text-brand-cream">
-        <Image
-          src="/images/hero/commercial-space.jpg"
-          alt="Aaru's clubhouse and lagoon at dusk"
-          fill
-          priority
-          className="object-cover"
-        />
-        <h1 className="relative z-10 font-display text-4xl md:text-6xl">Commercial Spaces</h1>
-      </section>
+      <PageHero
+        title="Commercial Spaces"
+        subtitle="Curated venues, wellness, and lifestyle experiences at Aaru"
+        imageSrc="/images/hero/commercial-space.jpg"
+        imageAlt="Aaru's clubhouse and lagoon at dusk"
+        height="sm"
+      />
 
       <Reveal as="section" className="mx-auto max-w-7xl px-6 py-24">
         <SectionHeader
