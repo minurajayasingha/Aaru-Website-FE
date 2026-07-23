@@ -45,6 +45,14 @@ const radiusScale: Array<{ token: string; className: string; rem: string }> = [
   { token: "card", className: "rounded-card", rem: "0.75rem" },
 ];
 
+const shadowScale: Array<{ token: string; className: string; value: string }> = [
+  {
+    token: "shadow-card",
+    className: "shadow-card",
+    value: "0 4px 24px 0 rgba(11, 32, 22, 0.08)",
+  },
+];
+
 const sampleResidence = residences[0];
 
 function Swatch({ token, className, hex }: { token: string; className: string; hex: string }) {
@@ -159,6 +167,16 @@ export function StyleGuideContent() {
               <p className="font-body text-xs text-brand-forest-700">
                 {r.token} ({r.rem})
               </p>
+            </div>
+          ))}
+        </div>
+        <p className="mb-4 mt-10 font-body text-sm text-brand-forest-700">Shadows</p>
+        <div className="flex flex-wrap items-end gap-6">
+          {shadowScale.map((s) => (
+            <div key={s.token} className="flex flex-col items-center gap-2">
+              <div className={`h-24 w-24 rounded-card bg-white ${s.className}`} />
+              <p className="font-body text-xs text-brand-forest-700">{s.token}</p>
+              <p className="font-body text-xs text-brand-forest-700">{s.value}</p>
             </div>
           ))}
         </div>

@@ -8,6 +8,8 @@ describe("StyleGuidePage", () => {
     expect(screen.getByRole("heading", { name: "Colors" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Buttons" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Form Fields" })).toBeInTheDocument();
+    expect(screen.getByText("Shadows")).toBeInTheDocument();
+    expect(screen.getByText("shadow-card")).toBeInTheDocument();
   });
 
   it("sets metadata to noindex, nofollow so the page is excluded from search engines", () => {
