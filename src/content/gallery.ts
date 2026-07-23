@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+
 export type GalleryImage = { src: string; alt: string; category: GalleryCategory };
 export type GalleryCategory = "residential" | "interior" | "lifestyle" | "maps";
 
@@ -8,12 +11,50 @@ export const galleryCategories: { id: GalleryCategory; label: string }[] = [
   { id: "maps", label: "Maps & Plans" },
 ];
 
-export const galleryImages: GalleryImage[] = [
-  { src: "/images/gallery/residential-1.jpg", alt: "Aaru residences at sunset by the lagoon", category: "residential" },
-  { src: "/images/gallery/residential-2.jpg", alt: "Lagoon reflecting palm trees at Aaru", category: "residential" },
-  { src: "/images/gallery/interior-1.jpg", alt: "Outdoor shower with tropical planting", category: "interior" },
-  { src: "/images/gallery/interior-2.jpg", alt: "Suite bedroom with lagoon view", category: "interior" },
-  { src: "/images/gallery/lifestyle-1.jpg", alt: "Poolside daybed at sunset", category: "lifestyle" },
-  { src: "/images/gallery/lifestyle-2.jpg", alt: "Signature restaurant terrace at dusk", category: "lifestyle" },
-  { src: "/images/gallery/maps-1.jpg", alt: "Aaru ground floor site map", category: "maps" },
-];
+const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
+
+function toTitleCase(input: string): string {
+  return input
+    .replace(/[-_]+/g, " ")
+    .trim()
+    .split(" ")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function buildAltText(fileName: string, categoryLabel: string): string {
+  const baseName = fileName.slice(0, fileName.length - path.extname(fileName).length);
+  const titleCased = toTitleCase(baseName);
+  const description = `Aaru ${categoryLabel} Gallery`;
+  return titleCased ? `${titleCased} — ${description}` : description;
+}
+
+export function getGalleryImages(baseDir: string = path.join(process.cwd(), "public", "images", "gallery")): GalleryImage[] {
+  const images: GalleryImage[] = [];
+
+  for (const category of galleryCategories) {
+    const categoryDir = path.join(baseDir, category.id);
+
+    let fileNames: string[];
+    try {
+      fileNames = fs.readdirSync(categoryDir);
+    } catch {
+      continue;
+    }
+
+    const imageFileNames = fileNames
+      .filter((fileName) => IMAGE_EXTENSIONS.has(path.extname(fileName).toLowerCase()))
+      .sort((a, b) => a.localeCompare(b));
+
+    for (const fileName of imageFileNames) {
+      images.push({
+        src: `/images/gallery/${category.id}/${fileName}`,
+        alt: buildAltText(fileName, category.label),
+        category: category.id,
+      });
+    }
+  }
+
+  return images;
+}

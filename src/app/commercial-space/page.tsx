@@ -21,7 +21,7 @@ export default function CommercialSpacePage() {
 
       <section className="relative flex h-[50vh] items-center justify-center text-center text-brand-cream">
         <Image
-          src="/images/commercial/hero.jpg"
+          src="/images/hero/commercial-space.jpg"
           alt="Aaru's clubhouse and lagoon at dusk"
           fill
           priority

@@ -21,7 +21,7 @@ export default function HomePage() {
     <>
       <section className="relative flex h-screen items-center justify-center text-center text-brand-cream">
         <Image
-          src="/images/home/hero.jpg"
+          src="/images/hero/home.jpg"
           alt="Aaru's residences beside a lagoon in Arugam Bay"
           fill
           priority

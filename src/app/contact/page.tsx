@@ -16,7 +16,7 @@ export default function ContactPage() {
     <>
       <section className="relative flex h-[50vh] items-center justify-center text-center text-brand-cream">
         <Image
-          src="/images/contact/hero.jpg"
+          src="/images/hero/contact.jpg"
           alt="Aaru's residences along the coastline at sunset"
           fill
           priority
