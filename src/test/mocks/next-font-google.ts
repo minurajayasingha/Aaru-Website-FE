@@ -14,5 +14,6 @@ function createFontLoader() {
   });
 }
 
-export const Playfair_Display = createFontLoader();
+export const Marcellus_SC = createFontLoader();
+export const Fraunces = createFontLoader();
 export const Inter = createFontLoader();

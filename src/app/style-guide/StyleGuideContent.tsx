@@ -76,7 +76,7 @@ function Section({
 }) {
   return (
     <section id={id} className="mx-auto max-w-7xl border-t border-brand-forest-100 px-6 py-16">
-      <h2 className="mb-8 font-display text-3xl text-brand-forest-900">{title}</h2>
+      <h2 className="mb-8 font-subheading text-3xl text-brand-forest-900">{title}</h2>
       {children}
     </section>
   );
@@ -91,7 +91,7 @@ export function StyleGuideContent() {
   return (
     <>
       <section className="bg-brand-forest-900 px-6 py-16 text-center text-brand-cream">
-        <h1 className="font-display text-4xl md:text-5xl">Style Guide</h1>
+        <h1 className="font-heading text-4xl md:text-5xl">Style Guide</h1>
         <p className="mx-auto mt-4 max-w-2xl font-body text-brand-cream/80">
           Internal design-system reference for the Aaru Living site. Not linked from navigation and
           excluded from search indexing.
@@ -116,20 +116,20 @@ export function StyleGuideContent() {
       <Section id="typography" title="Typography">
         <div className="flex flex-col gap-6">
           <div>
-            <h1 className="font-display text-4xl md:text-5xl text-brand-forest-900">
-              Heading H1 — font-display
+            <h1 className="font-heading text-4xl md:text-5xl text-brand-forest-900">
+              Heading H1 — font-heading
             </h1>
             <p className="font-body text-xs text-brand-forest-700">
-              font-display text-4xl md:text-5xl
+              font-heading text-4xl md:text-5xl
             </p>
           </div>
           <div>
-            <h2 className="font-display text-3xl text-brand-forest-900">Heading H2 — font-display</h2>
-            <p className="font-body text-xs text-brand-forest-700">font-display text-3xl</p>
+            <h2 className="font-subheading text-3xl text-brand-forest-900">Heading H2 — font-subheading</h2>
+            <p className="font-body text-xs text-brand-forest-700">font-subheading text-3xl</p>
           </div>
           <div>
-            <h3 className="font-display text-2xl text-brand-forest-900">Heading H3 — font-display</h3>
-            <p className="font-body text-xs text-brand-forest-700">font-display text-2xl</p>
+            <h3 className="font-subheading text-2xl text-brand-forest-900">Heading H3 — font-subheading</h3>
+            <p className="font-body text-xs text-brand-forest-700">font-subheading text-2xl</p>
           </div>
           <div>
             <p className="font-body text-base text-brand-forest-900">

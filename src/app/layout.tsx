@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Marcellus_SC, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { siteConfig } from "@/content/site";
 
-const display = Playfair_Display({
+const heading = Marcellus_SC({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: "400",
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const subheading = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-subheading",
   display: "swap",
 });
 
@@ -29,7 +36,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html lang="en" className={`${heading.variable} ${subheading.variable} ${body.variable}`}>
       <body className="font-body">
         <OrganizationJsonLd />
         <Navbar />

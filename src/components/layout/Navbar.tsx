@@ -60,7 +60,7 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-2xl text-brand-forest-900">
+        <Link href="/" className="font-subheading text-2xl text-brand-forest-900">
           aaru
         </Link>
 
@@ -103,7 +103,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   ref={index === 0 ? firstDrawerLinkRef : undefined}
-                  className="font-display text-2xl text-brand-forest-900"
+                  className="font-subheading text-2xl text-brand-forest-900"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}

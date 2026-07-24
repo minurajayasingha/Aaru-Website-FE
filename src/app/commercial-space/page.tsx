@@ -39,7 +39,7 @@ export default function CommercialSpacePage() {
         <div className="grid gap-6 md:grid-cols-5">
           {commercialAmenities.map((amenity) => (
             <div key={amenity.id} className="flex flex-col items-center gap-2 text-center">
-              <p className="font-display text-sm text-brand-forest-900">{amenity.name}</p>
+              <p className="font-subheading text-sm text-brand-forest-900">{amenity.name}</p>
               <p className="font-body text-xs text-brand-forest-700">{amenity.description}</p>
             </div>
           ))}
@@ -48,7 +48,7 @@ export default function CommercialSpacePage() {
 
       <Reveal as="section" className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center">
         <div className="flex flex-col gap-4">
-          <h2 className="font-display text-3xl text-brand-forest-900">A World of Leisure</h2>
+          <h2 className="font-subheading text-3xl text-brand-forest-900">A World of Leisure</h2>
           <p className="font-body text-brand-forest-700">
             From sunrise swims to sunset gatherings, Aaru is curated for moments that matter.
           </p>

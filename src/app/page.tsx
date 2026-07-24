@@ -28,7 +28,7 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="relative z-10 flex flex-col items-center gap-6 px-6">
-          <h1 className="font-display text-2xl md:text-4xl max-w-2xl">{siteConfig.tagline}</h1>
+          <h1 className="font-heading text-2xl md:text-4xl max-w-2xl">{siteConfig.tagline}</h1>
           <div className="flex gap-4">
             <Button href="/residences" variant="primary">
               Explore Residences
@@ -55,19 +55,19 @@ export default function HomePage() {
       <Reveal as="section" className="bg-brand-forest-800 py-16 text-brand-cream">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-5">
           <div>
-            <p className="font-display text-3xl">{siteConfig.stats.totalSiteAcres}</p>
+            <p className="font-subheading text-3xl">{siteConfig.stats.totalSiteAcres}</p>
           </div>
           <div>
-            <p className="font-display text-3xl">{siteConfig.stats.totalPerches}</p>
+            <p className="font-subheading text-3xl">{siteConfig.stats.totalPerches}</p>
           </div>
           <div>
-            <p className="font-display text-3xl">{siteConfig.stats.condoUnits}</p>
+            <p className="font-subheading text-3xl">{siteConfig.stats.condoUnits}</p>
           </div>
           <div>
-            <p className="font-display text-3xl">{siteConfig.stats.privateVillas}</p>
+            <p className="font-subheading text-3xl">{siteConfig.stats.privateVillas}</p>
           </div>
           <div>
-            <p className="font-display text-3xl">{siteConfig.stats.distanceToBeach}</p>
+            <p className="font-subheading text-3xl">{siteConfig.stats.distanceToBeach}</p>
           </div>
         </div>
       </Reveal>
@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="grid gap-6 md:grid-cols-5">
           {commercialAmenities.map((amenity) => (
             <div key={amenity.id} className="flex flex-col items-center gap-2 text-center">
-              <p className="font-display text-sm text-brand-forest-900">{amenity.name}</p>
+              <p className="font-subheading text-sm text-brand-forest-900">{amenity.name}</p>
               <p className="font-body text-xs text-brand-forest-700">{amenity.description}</p>
             </div>
           ))}

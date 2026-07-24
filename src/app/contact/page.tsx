@@ -24,11 +24,11 @@ export default function ContactPage() {
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2">
         <div>
-          <h2 className="mb-6 font-display text-3xl text-brand-forest-900">Register Your Interest</h2>
+          <h2 className="mb-6 font-subheading text-3xl text-brand-forest-900">Register Your Interest</h2>
           <ContactForm />
         </div>
         <div className="flex flex-col gap-6">
-          <h2 className="font-display text-2xl text-brand-forest-900">Contact Information</h2>
+          <h2 className="font-subheading text-2xl text-brand-forest-900">Contact Information</h2>
           <p className="font-body text-brand-forest-700">Sales Enquiries</p>
           <p className="font-body text-brand-forest-900">{siteConfig.contactEmail}</p>
           <p className="font-body text-brand-forest-900">{siteConfig.contactPhone}</p>

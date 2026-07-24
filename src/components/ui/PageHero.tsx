@@ -25,7 +25,7 @@ export function PageHero({ title, subtitle, imageSrc, imageAlt, height = "md" }:
     >
       <Image src={imageSrc} alt={imageAlt} fill priority className="object-cover" />
       <div className="relative z-10 flex flex-col items-center gap-3">
-        <h1 className="font-display text-4xl md:text-6xl">{title}</h1>
+        <h1 className="font-heading text-4xl md:text-6xl">{title}</h1>
         {subtitle && (
           <p className="font-body text-xs uppercase tracking-widest">{subtitle}</p>
         )}
