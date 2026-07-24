@@ -14,7 +14,7 @@ type InputProps = {
 export function Input({ label, id, name, value, onChange, type = "text", error, required }: InputProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="font-body text-sm text-brand-forest-900">
+      <label htmlFor={id} className="font-subheading text-subheading-sm text-brand-forest-900">
         {label}
       </label>
       <input

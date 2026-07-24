@@ -6,15 +6,15 @@ import { Footer } from "@/components/layout/Footer";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { siteConfig } from "@/content/site";
 
-const heading = Marcellus_SC({
+const heading = Fraunces({
   subsets: ["latin"],
-  weight: "400",
   variable: "--font-heading",
   display: "swap",
 });
 
-const subheading = Fraunces({
+const subheading = Marcellus_SC({
   subsets: ["latin"],
+  weight: "400",
   variable: "--font-subheading",
   display: "swap",
 });

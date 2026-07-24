@@ -76,7 +76,7 @@ function Section({
 }) {
   return (
     <section id={id} className="mx-auto max-w-7xl border-t border-brand-forest-100 px-6 py-16">
-      <h2 className="mb-8 font-subheading text-3xl text-brand-forest-900">{title}</h2>
+      <h2 className="mb-8 font-heading font-bold text-heading-sm text-black">{title}</h2>
       {children}
     </section>
   );
@@ -91,7 +91,7 @@ export function StyleGuideContent() {
   return (
     <>
       <section className="bg-brand-forest-900 px-6 py-16 text-center text-brand-cream">
-        <h1 className="font-heading text-4xl md:text-5xl">Style Guide</h1>
+        <h1 className="font-heading text-heading-md md:text-heading-lg">Style Guide</h1>
         <p className="mx-auto mt-4 max-w-2xl font-body text-brand-cream/80">
           Internal design-system reference for the Aaru Living site. Not linked from navigation and
           excluded from search indexing.
@@ -114,35 +114,107 @@ export function StyleGuideContent() {
       </Section>
 
       <Section id="typography" title="Typography">
-        <div className="flex flex-col gap-6">
+        <p className="mb-6 font-body text-sm text-brand-forest-700">
+          Three font roles. Change the actual typeface for any role in one place —
+          <code className="mx-1 rounded bg-brand-forest-50 px-1.5 py-0.5 text-xs">src/app/layout.tsx</code>
+          (which Google Font loads into each CSS variable) — and every element using that role's class updates
+          automatically. Sizes work the same way: change a
+          <code className="mx-1 rounded bg-brand-forest-50 px-1.5 py-0.5 text-xs">tailwind.config.ts</code>
+          fontSize value once and every <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">sm</code>/
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">md</code>/
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">lg</code> usage of that size updates too.
+        </p>
+        <div className="flex flex-col gap-8">
           <div>
-            <h1 className="font-heading text-4xl md:text-5xl text-brand-forest-900">
-              Heading H1 — font-heading
-            </h1>
-            <p className="font-body text-xs text-brand-forest-700">
-              font-heading text-4xl md:text-5xl
+            <span className="font-subheading text-subheading-lg uppercase text-brand-gold">
+              A New Standard For
+            </span>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">
+              font-subheading — Marcellus SC — eyebrow / label text above a heading
             </p>
           </div>
-          <div>
-            <h2 className="font-subheading text-3xl text-brand-forest-900">Heading H2 — font-subheading</h2>
-            <p className="font-body text-xs text-brand-forest-700">font-subheading text-3xl</p>
-          </div>
-          <div>
-            <h3 className="font-subheading text-2xl text-brand-forest-900">Heading H3 — font-subheading</h3>
-            <p className="font-body text-xs text-brand-forest-700">font-subheading text-2xl</p>
+          <p className="font-body text-xs text-brand-forest-700">
+            Headings are always font-bold and text-black (never the brand green) on light backgrounds — use a light
+            color (e.g. text-brand-cream) only when a heading sits on a dark/photo background.
+          </p>
+          <div className="flex flex-col gap-3">
+            <div>
+              <p className="font-heading font-bold text-heading-sm text-black">Arugam Bay</p>
+              <p className="mt-1 font-body text-xs text-brand-forest-700">
+                font-heading font-bold text-black — Fraunces — text-heading-sm
+              </p>
+            </div>
+            <div>
+              <p className="font-heading font-bold text-heading-md text-black">Arugam Bay</p>
+              <p className="mt-1 font-body text-xs text-brand-forest-700">
+                font-heading font-bold text-black — Fraunces — text-heading-md
+              </p>
+            </div>
+            <div>
+              <p className="font-heading font-bold text-heading-lg text-black">Arugam Bay</p>
+              <p className="mt-1 font-body text-xs text-brand-forest-700">
+                font-heading font-bold text-black — Fraunces — text-heading-lg
+              </p>
+            </div>
           </div>
           <div>
             <p className="font-body text-base text-brand-forest-900">
-              Body text — font-body text-base. Aaru Living residences are set among lagoon gardens in
+              Body text — Inter — class: font-body. Aaru Living residences are set among lagoon gardens in
               Arugam Bay.
             </p>
-            <p className="font-body text-xs text-brand-forest-700">font-body text-base</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">Paragraph — Inter — class: font-body text-base</p>
           </div>
           <div>
             <p className="font-body text-sm text-brand-forest-700">
-              Small / caption text — font-body text-sm.
+              Small / caption text — Inter — class: font-body text-sm.
             </p>
-            <p className="font-body text-xs text-brand-forest-700">font-body text-sm</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">Caption — Inter — class: font-body text-sm</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="font-weight" title="Font Weight">
+        <p className="mb-6 font-body text-sm text-brand-forest-700">
+          Three weights, usable on any font role: <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-thin</code> (100),{" "}
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-normal</code> (400),{" "}
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-bold</code> (700) — mix and match with any{" "}
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-heading</code> /{" "}
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-subheading</code> /{" "}
+          <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-body</code> class, e.g. a bold heading
+          above a thin paragraph, or the reverse. Note: Marcellus SC (font-subheading) only ships one weight from
+          Google — font-thin / font-bold have no visible effect on it, only on font-heading (Fraunces) and font-body
+          (Inter).
+        </p>
+        <div className="flex flex-col gap-6">
+          <div>
+            <p className="font-heading font-thin text-heading-sm text-brand-forest-900">Arugam Bay</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-heading font-thin (100)</p>
+          </div>
+          <div>
+            <p className="font-heading font-normal text-heading-sm text-brand-forest-900">Arugam Bay</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-heading font-normal (400)</p>
+          </div>
+          <div>
+            <p className="font-heading font-bold text-heading-sm text-brand-forest-900">Arugam Bay</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-heading font-bold (700)</p>
+          </div>
+          <div>
+            <p className="font-body font-thin text-brand-forest-900">
+              Body text at font-thin (100) — Aaru Living residences are set among lagoon gardens in Arugam Bay.
+            </p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-body font-thin (100)</p>
+          </div>
+          <div>
+            <p className="font-body font-normal text-brand-forest-900">
+              Body text at font-normal (400) — Aaru Living residences are set among lagoon gardens in Arugam Bay.
+            </p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-body font-normal (400)</p>
+          </div>
+          <div>
+            <p className="font-body font-bold text-brand-forest-900">
+              Body text at font-bold (700) — Aaru Living residences are set among lagoon gardens in Arugam Bay.
+            </p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-body font-bold (700)</p>
           </div>
         </div>
       </Section>

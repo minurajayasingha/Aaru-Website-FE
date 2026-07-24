@@ -29,6 +29,28 @@ const config: Config = {
         subheading: ["var(--font-subheading)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
       },
+      fontSize: {
+        // Heading (Fraunces) — 37px / 60px / 96px
+        "heading-sm": ["2.3125rem", { lineHeight: "1.2" }],
+        "heading-md": ["3.75rem", { lineHeight: "1.1" }],
+        "heading-lg": ["6rem", { lineHeight: "1.05" }],
+        // Subheading (Marcellus SC) — 12px / 20px / 28px
+        "subheading-sm": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.1em" }],
+        "subheading-md": ["1.25rem", { lineHeight: "1.3", letterSpacing: "0.02em" }],
+        "subheading-lg": ["1.75rem", { lineHeight: "1.3", letterSpacing: "0.08em" }],
+        // Paragraph (Inter) — 18px / 24px / 28px
+        "body-sm": ["1.125rem", { lineHeight: "1.5" }],
+        "body-md": ["1.5rem", { lineHeight: "1.5" }],
+        "body-lg": ["1.75rem", { lineHeight: "1.5" }],
+      },
+      fontWeight: {
+        // Use anywhere: font-thin / font-normal / font-bold.
+        // Fraunces (heading) and Inter (body) support all three.
+        // Marcellus SC (subheading) is a single-weight font from Google — only 400 renders.
+        thin: "200",
+        normal: "400",
+        bold: "700",
+      },
       spacing: {
         18: "4.5rem",
         22: "5.5rem",

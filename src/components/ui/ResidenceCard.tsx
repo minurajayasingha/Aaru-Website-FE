@@ -32,7 +32,7 @@ export function ResidenceCard({
       </div>
       <div className="flex flex-col gap-3 p-6">
         <div>
-          <h3 className="font-subheading text-2xl text-brand-forest-900">{name}</h3>
+          <h3 className="font-heading font-bold text-2xl text-black">{name}</h3>
           <p className="font-body text-sm text-brand-forest-700">{floorLabel}</p>
         </div>
         <p className="font-body text-sm text-brand-forest-700">

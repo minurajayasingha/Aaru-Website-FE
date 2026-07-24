@@ -56,7 +56,13 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
 
       <Reveal as="section" className="mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2">
         <div className="flex flex-col gap-4">
-          <SectionHeader eyebrow={residence.floorLabel} title={residence.name} level="h2" description={residence.description} />
+          <SectionHeader
+            eyebrow={residence.floorLabel}
+            title={residence.name}
+            level="h2"
+            size="md"
+            description={residence.description}
+          />
           <div className="flex gap-4">
             <Button href="/contact" variant="primary">
               Contact Us
@@ -69,7 +75,9 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       </Reveal>
 
       <Reveal as="section" className="bg-brand-forest-800 py-16 text-brand-cream">
-        <h2 className="mb-10 text-center font-subheading text-3xl">Unit Amenities</h2>
+        <h2 className="mb-10 text-center font-heading font-bold text-heading-sm md:text-heading-md text-brand-cream">
+          Unit Amenities
+        </h2>
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 md:grid-cols-5">
           {residence.amenities.map((item) => (
             <p key={item} className="text-center font-body text-sm">
@@ -80,7 +88,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       </Reveal>
 
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <h2 className="mb-10 font-subheading text-3xl">Suite View</h2>
+        <h2 className="mb-10 font-heading font-bold text-heading-sm md:text-heading-md text-black">Suite View</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {residence.gallery.map((image) => (
             <div key={image.src} className="relative aspect-[4/3] overflow-hidden rounded-card">
@@ -92,7 +100,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
 
       {otherResidences.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 py-24">
-          <h2 className="mb-10 font-subheading text-3xl">Other Condos</h2>
+          <h2 className="mb-10 font-heading font-bold text-heading-sm md:text-heading-md text-black">Other Condos</h2>
           <div className="grid gap-8 md:grid-cols-2">
             {otherResidences.map((other) => (
               <Button key={other.slug} href={`/residences/${other.slug}`} variant="secondary">

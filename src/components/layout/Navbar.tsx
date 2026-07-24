@@ -60,14 +60,17 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-subheading text-2xl text-brand-forest-900">
+        <Link href="/" className="font-heading text-2xl text-brand-forest-900">
           aaru
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="font-body text-sm text-brand-forest-900 hover:text-brand-gold">
+              <Link
+                href={link.href}
+                className="font-subheading text-subheading-md text-brand-forest-900 hover:text-brand-gold"
+              >
                 {link.label}
               </Link>
             </li>
@@ -103,7 +106,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   ref={index === 0 ? firstDrawerLinkRef : undefined}
-                  className="font-subheading text-2xl text-brand-forest-900"
+                  className="font-subheading text-subheading-md text-brand-forest-900"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}

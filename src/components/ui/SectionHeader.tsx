@@ -6,24 +6,24 @@ type SectionHeaderProps = {
   eyebrow?: string;
   description?: string;
   className?: string;
+  /** Title size: "lg" (96px) for a standalone section header, "md" (60px) when paired beside an image/card. Defaults to "lg". */
+  size?: "md" | "lg";
 };
 
-export function SectionHeader({ title, level, eyebrow, description, className }: SectionHeaderProps) {
+const titleSizeClasses: Record<NonNullable<SectionHeaderProps["size"]>, string> = {
+  md: "text-heading-md",
+  lg: "text-heading-lg",
+};
+
+export function SectionHeader({ title, level, eyebrow, description, className, size = "lg" }: SectionHeaderProps) {
   const HeadingTag = level;
   return (
     <div className={cn("flex flex-col gap-3", className)}>
       {eyebrow && (
-        <span className="font-body text-xs uppercase tracking-widest text-brand-gold">{eyebrow}</span>
+        <span className="font-subheading text-subheading-md uppercase text-brand-gold">{eyebrow}</span>
       )}
-      <HeadingTag
-        className={cn(
-          "text-4xl md:text-5xl text-brand-forest-900",
-          level === "h1" ? "font-heading" : "font-subheading",
-        )}
-      >
-        {title}
-      </HeadingTag>
-      {description && <p className="font-body text-base text-brand-forest-700 max-w-2xl">{description}</p>}
+      <HeadingTag className={cn("font-heading font-bold text-black", titleSizeClasses[size])}>{title}</HeadingTag>
+      {description && <p className="font-body text-body-lg text-brand-forest-700 max-w-2xl">{description}</p>}
     </div>
   );
 }
