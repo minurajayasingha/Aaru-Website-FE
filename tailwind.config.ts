@@ -16,7 +16,7 @@ const config: Config = {
             600: "#2b4834",
             700: "#1c3524",
             800: "#122a1c",
-            900: "#0b2016",
+            900: "#173329",
           },
           cream: "#f4f1ea",
           "cream-dark": "#e9e4d8",
@@ -55,6 +55,10 @@ const config: Config = {
         18: "4.5rem",
         22: "5.5rem",
         30: "7.5rem",
+        // 140px side margin at the 1920px reference design — expressed as a
+        // percentage so it scales proportionally with viewport width instead
+        // of staying a fixed pixel value. 140 / 1920 = 7.2917%.
+        "section-x": "7.2917%",
       },
       borderRadius: {
         button: "0.375rem",
