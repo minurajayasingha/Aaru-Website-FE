@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ResidenceCard } from "@/components/ui/ResidenceCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = buildMetadata({
   title: "Residences",
@@ -17,11 +18,20 @@ export default function ResidencesPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Residences", path: "/residences" }]} />
+
+      <PageHero
+        title="Residences"
+        subtitle="Explore Aaru's three residence types in Arugam Bay"
+        imageSrc="/images/hero/residences.png"
+        imageAlt="Aaru's residences along the coastline at sunset"
+        height="lg"
+      />
+      
       <section className="mx-auto max-w-7xl px-6 py-24">
         <SectionHeader
           eyebrow="Residences For Sale"
           title="Three Ways to Call Aaru Home"
-          level="h1"
+          level="h2"
           description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
           className="mb-12 text-center items-center"
         />

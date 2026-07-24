@@ -17,9 +17,9 @@ export default function ContactPage() {
       <PageHero
         title="Contact Us"
         subtitle="Connect with Aaru Living for residences, commercial spaces and investment enquiries."
-        imageSrc="/images/hero/contact.jpg"
+        imageSrc="/images/hero/contact.png" 
         imageAlt="Aaru's residences along the coastline at sunset"
-        height="sm"
+        height="lg"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2">

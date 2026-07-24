@@ -16,7 +16,7 @@ export default function GalleryPage() {
       <PageHero
         title="Gallery"
         subtitle="Discover Aaru through stunning visual stories"
-        imageSrc="/images/hero/gallery.jpg"
+        imageSrc="/images/hero/gallery.png"
         imageAlt="Aerial view of Aaru's residences beside the beach at sunset"
         height="lg"
       />

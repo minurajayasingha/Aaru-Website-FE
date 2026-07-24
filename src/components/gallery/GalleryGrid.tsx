@@ -23,7 +23,7 @@ export function GalleryGrid({ images, categories }: GalleryGridProps) {
           onChange={(id) => setActiveCategory(id as GalleryCategory)}
         />
       </div>
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 pb-24 md:grid-cols-3">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 px-6 pb-24 md:grid-cols-3">
         {visibleImages.map((image) => (
           <div key={image.src} className="relative aspect-[4/3] overflow-hidden rounded-card">
             <Image src={image.src} alt={image.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />

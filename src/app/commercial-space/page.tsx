@@ -23,9 +23,9 @@ export default function CommercialSpacePage() {
       <PageHero
         title="Commercial Spaces"
         subtitle="Curated venues, wellness, and lifestyle experiences at Aaru"
-        imageSrc="/images/hero/commercial-space.jpg"
+        imageSrc="/images/hero/commercial-space.png"
         imageAlt="Aaru's clubhouse and lagoon at dusk"
-        height="sm"
+        height="lg"
       />
 
       <Reveal as="section" className="mx-auto max-w-7xl px-6 py-24">
