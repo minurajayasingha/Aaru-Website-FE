@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Marcellus_SC, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
+import { CtaBannerGate } from "@/components/layout/CtaBannerGate";
 import { Footer } from "@/components/layout/Footer";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { siteConfig } from "@/content/site";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <OrganizationJsonLd />
         <Navbar />
         <main>{children}</main>
+        <CtaBannerGate />
         <Footer />
       </body>
     </html>
