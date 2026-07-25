@@ -23,13 +23,13 @@ const forestShades: Array<{ token: string; className: string; hex: string }> = [
   { token: "forest.600", className: "bg-brand-forest-600", hex: "#2b4834" },
   { token: "forest.700", className: "bg-brand-forest-700", hex: "#1c3524" },
   { token: "forest.800", className: "bg-brand-forest-800", hex: "#122a1c" },
-  { token: "forest.900", className: "bg-brand-forest-900", hex: "#0b2016" },
+  { token: "forest.900", className: "bg-brand-forest-900", hex: "#173329" },
 ];
 
 const otherSwatches: Array<{ token: string; className: string; hex: string }> = [
-  { token: "cream", className: "bg-brand-cream", hex: "#f4f1ea" },
+  { token: "cream", className: "bg-brand-cream", hex: "#f4f2ee" },
   { token: "cream-dark", className: "bg-brand-cream-dark", hex: "#e9e4d8" },
-  { token: "gold", className: "bg-brand-gold", hex: "#b9925a" },
+  { token: "gold", className: "bg-brand-gold", hex: "#b5915d" },
   { token: "gold-light", className: "bg-brand-gold-light", hex: "#d4b483" },
 ];
 
@@ -175,7 +175,7 @@ export function StyleGuideContent() {
 
       <Section id="font-weight" title="Font Weight">
         <p className="mb-6 font-body text-sm text-brand-forest-700">
-          Three weights, usable on any font role: <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-thin</code> (100),{" "}
+          Three weights, usable on any font role: <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-thin</code> (200),{" "}
           <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-normal</code> (400),{" "}
           <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-bold</code> (700) — mix and match with any{" "}
           <code className="rounded bg-brand-forest-50 px-1 py-0.5 text-xs">font-heading</code> /{" "}
@@ -188,7 +188,7 @@ export function StyleGuideContent() {
         <div className="flex flex-col gap-6">
           <div>
             <p className="font-heading font-thin text-heading-sm text-brand-forest-900">Arugam Bay</p>
-            <p className="mt-1 font-body text-xs text-brand-forest-700">font-heading font-thin (100)</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-heading font-thin (200)</p>
           </div>
           <div>
             <p className="font-heading font-normal text-heading-sm text-brand-forest-900">Arugam Bay</p>
@@ -200,9 +200,9 @@ export function StyleGuideContent() {
           </div>
           <div>
             <p className="font-body font-thin text-brand-forest-900">
-              Body text at font-thin (100) — Aaru Living residences are set among lagoon gardens in Arugam Bay.
+              Body text at font-thin (200) — Aaru Living residences are set among lagoon gardens in Arugam Bay.
             </p>
-            <p className="mt-1 font-body text-xs text-brand-forest-700">font-body font-thin (100)</p>
+            <p className="mt-1 font-body text-xs text-brand-forest-700">font-body font-thin (200)</p>
           </div>
           <div>
             <p className="font-body font-normal text-brand-forest-900">

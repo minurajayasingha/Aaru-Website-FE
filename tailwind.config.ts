@@ -18,9 +18,9 @@ const config: Config = {
             800: "#122a1c",
             900: "#173329",
           },
-          cream: "#f4f1ea",
+          cream: "#f4f2ee",
           "cream-dark": "#e9e4d8",
-          gold: "#b9925a",
+          gold: "#b5915d",
           "gold-light": "#d4b483",
         },
       },
@@ -31,7 +31,7 @@ const config: Config = {
       },
       fontSize: {
         // Heading (Fraunces) — 37px / 60px / 96px
-        "heading-sm": ["2.3125rem", { lineHeight: "1.2" }],
+        "heading-sm": ["1.5rem", { lineHeight: "1.2" }],
         "heading-md": ["3.75rem", { lineHeight: "1.1" }],
         "heading-lg": ["6rem", { lineHeight: "1.05" }],
         // Subheading (Marcellus SC) — 12px / 20px / 28px
@@ -39,6 +39,7 @@ const config: Config = {
         "subheading-md": ["1.25rem", { lineHeight: "1.3", letterSpacing: "0.02em" }],
         "subheading-lg": ["1.75rem", { lineHeight: "1.3", letterSpacing: "0.08em" }],
         // Paragraph (Inter) — 18px / 24px / 28px
+        "body-xs": ["0.8rem", { lineHeight: "1" }],
         "body-sm": ["1.125rem", { lineHeight: "1.5" }],
         "body-md": ["1.5rem", { lineHeight: "1.5" }],
         "body-lg": ["1.75rem", { lineHeight: "1.5" }],
@@ -59,6 +60,7 @@ const config: Config = {
         // percentage so it scales proportionally with viewport width instead
         // of staying a fixed pixel value. 140 / 1920 = 7.2917%.
         "section-x": "7.2917%",
+        "section-s": "10%",
       },
       borderRadius: {
         button: "0.375rem",
