@@ -116,6 +116,7 @@ export function ContactForm() {
             name="dialCode"
             value={form.dialCode}
             onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
+            aria-label="Country dial code"
             className="rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
           >
             {dialCodes.map(({ code, country }) => (
