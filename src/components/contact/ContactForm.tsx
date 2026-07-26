@@ -5,21 +5,31 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
+import { dialCodes } from "@/content/dialCodes";
+import { cn } from "@/lib/cn";
 
 type FormState = {
-  fullName: string;
-  email: string;
+  firstName: string;
+  lastName: string;
+  dialCode: string;
   phone: string;
+  email: string;
+  countryOfResidence: string;
   interestedIn: string;
   message: string;
+  hearAboutUs: string;
 };
 
 const initialState: FormState = {
-  fullName: "",
-  email: "",
+  firstName: "",
+  lastName: "",
+  dialCode: "+94",
   phone: "",
+  email: "",
+  countryOfResidence: "",
   interestedIn: "garden-condos",
   message: "",
+  hearAboutUs: "social-media",
 };
 
 const interestOptions = [
@@ -29,6 +39,15 @@ const interestOptions = [
   { value: "commercial-space", label: "Commercial Space" },
 ];
 
+const hearAboutUsOptions = [
+  { value: "social-media", label: "Social Media" },
+  { value: "google-search", label: "Google Search" },
+  { value: "referral", label: "Referral / Word of Mouth" },
+  { value: "property-portal", label: "Property Portal" },
+  { value: "advertisement", label: "Advertisement" },
+  { value: "other", label: "Other" },
+];
+
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
@@ -36,8 +55,12 @@ export function ContactForm() {
 
   function validate(values: FormState) {
     const nextErrors: Partial<Record<keyof FormState, string>> = {};
-    if (!values.fullName.trim()) nextErrors.fullName = "Full name is required";
+    if (!values.firstName.trim()) nextErrors.firstName = "First name is required";
+    if (!values.lastName.trim()) nextErrors.lastName = "Second name is required";
+    if (!values.phone.trim()) nextErrors.phone = "Phone number is required";
     if (!values.email.trim()) nextErrors.email = "Email is required";
+    if (!values.countryOfResidence.trim()) nextErrors.countryOfResidence = "Country of residence is required";
+    if (!values.hearAboutUs.trim()) nextErrors.hearAboutUs = "Please tell us how you heard about us";
     return nextErrors;
   }
 
@@ -64,16 +87,66 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <div className="grid grid-cols-2 gap-4">
+        <Input
+          label="First Name*"
+          id="firstName"
+          name="firstName"
+          value={form.firstName}
+          onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+          error={errors.firstName}
+        />
+        <Input
+          label="Second Name*"
+          id="lastName"
+          name="lastName"
+          value={form.lastName}
+          onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+          error={errors.lastName}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="phone" className="font-subheading text-subheading-sm text-brand-forest-900">
+          Phone*
+        </label>
+        <div className="flex gap-2">
+          <select
+            id="dialCode"
+            name="dialCode"
+            value={form.dialCode}
+            onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
+            className="rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+          >
+            {dialCodes.map(({ code, country }) => (
+              <option key={country} value={code}>
+                {code} {country}
+              </option>
+            ))}
+          </select>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
+            className={cn(
+              "flex-1 rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
+              errors.phone ? "border-red-500" : "border-brand-forest-200"
+            )}
+          />
+        </div>
+        {errors.phone && (
+          <span id="phone-error" className="text-sm text-red-600" role="alert">
+            {errors.phone}
+          </span>
+        )}
+      </div>
+
       <Input
-        label="Full Name"
-        id="fullName"
-        name="fullName"
-        value={form.fullName}
-        onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-        error={errors.fullName}
-      />
-      <Input
-        label="Email"
+        label="Email*"
         id="email"
         name="email"
         type="email"
@@ -81,13 +154,16 @@ export function ContactForm() {
         onChange={(e) => setForm({ ...form, email: e.target.value })}
         error={errors.email}
       />
+
       <Input
-        label="Phone / WhatsApp"
-        id="phone"
-        name="phone"
-        value={form.phone}
-        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+        label="Country Of Residents*"
+        id="countryOfResidence"
+        name="countryOfResidence"
+        value={form.countryOfResidence}
+        onChange={(e) => setForm({ ...form, countryOfResidence: e.target.value })}
+        error={errors.countryOfResidence}
       />
+
       <Select
         label="Interested In"
         id="interestedIn"
@@ -96,14 +172,27 @@ export function ContactForm() {
         onChange={(e) => setForm({ ...form, interestedIn: e.target.value })}
         options={interestOptions}
       />
+
       <Textarea
         label="Message"
         id="message"
         name="message"
         value={form.message}
         onChange={(e) => setForm({ ...form, message: e.target.value })}
+        maxLength={150}
       />
-      <Button type="submit" variant="primary" disabled={status === "submitting"}>
+
+      <Select
+        label="Where did you hear Us*"
+        id="hearAboutUs"
+        name="hearAboutUs"
+        value={form.hearAboutUs}
+        onChange={(e) => setForm({ ...form, hearAboutUs: e.target.value })}
+        options={hearAboutUsOptions}
+        error={errors.hearAboutUs}
+      />
+
+      <Button type="submit" variant="primary" className="w-full" disabled={status === "submitting"}>
         Submit
       </Button>
       {status === "success" && (
