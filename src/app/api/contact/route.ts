@@ -7,8 +7,18 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Partial<ContactSubmission>;
 
-    if (!body.fullName?.trim() || !body.email?.trim()) {
-      return NextResponse.json({ error: "Full name and email are required" }, { status: 400 });
+    if (
+      !body.firstName?.trim() ||
+      !body.lastName?.trim() ||
+      !body.phone?.trim() ||
+      !body.email?.trim() ||
+      !body.countryOfResidence?.trim() ||
+      !body.hearAboutUs?.trim()
+    ) {
+      return NextResponse.json(
+        { error: "First name, second name, phone, email, country of residence and how you heard about us are required" },
+        { status: 400 }
+      );
     }
 
     if (!EMAIL_REGEX.test(body.email.trim())) {
@@ -16,11 +26,15 @@ export async function POST(request: Request) {
     }
 
     await sendContactEmail({
-      fullName: body.fullName,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      dialCode: body.dialCode ?? "+94",
+      phone: body.phone,
       email: body.email,
-      phone: body.phone ?? "",
+      countryOfResidence: body.countryOfResidence,
       interestedIn: body.interestedIn ?? "",
       message: body.message ?? "",
+      hearAboutUs: body.hearAboutUs,
     });
 
     return NextResponse.json({ ok: true }, { status: 200 });

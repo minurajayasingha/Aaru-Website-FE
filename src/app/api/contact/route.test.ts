@@ -2,15 +2,27 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { POST } from "./route";
 import * as mailer from "@/lib/mailer";
 
+const validBody = {
+  firstName: "Jane",
+  lastName: "Doe",
+  dialCode: "+94",
+  phone: "771234567",
+  email: "jane@example.com",
+  countryOfResidence: "Sri Lanka",
+  interestedIn: "garden-condos",
+  message: "Interested",
+  hearAboutUs: "social-media",
+};
+
 describe("POST /api/contact", () => {
   beforeEach(() => {
     vi.spyOn(mailer, "sendContactEmail").mockResolvedValue();
   });
 
-  it("returns 400 when fullName or email is missing", async () => {
+  it("returns 400 when a required field is missing", async () => {
     const request = new Request("http://localhost/api/contact", {
       method: "POST",
-      body: JSON.stringify({ fullName: "", email: "", phone: "", interestedIn: "", message: "" }),
+      body: JSON.stringify({ ...validBody, firstName: "" }),
     });
     const response = await POST(request);
     expect(response.status).toBe(400);
@@ -19,31 +31,19 @@ describe("POST /api/contact", () => {
   it("sends the email and returns 200 for a valid submission", async () => {
     const request = new Request("http://localhost/api/contact", {
       method: "POST",
-      body: JSON.stringify({
-        fullName: "Jane Doe",
-        email: "jane@example.com",
-        phone: "+94771234567",
-        interestedIn: "garden-condos",
-        message: "Interested",
-      }),
+      body: JSON.stringify(validBody),
     });
     const response = await POST(request);
     expect(response.status).toBe(200);
     expect(mailer.sendContactEmail).toHaveBeenCalledWith(
-      expect.objectContaining({ fullName: "Jane Doe", email: "jane@example.com" })
+      expect.objectContaining({ firstName: "Jane", lastName: "Doe", email: "jane@example.com" })
     );
   });
 
   it("returns 400 when email is non-empty but invalid format", async () => {
     const request = new Request("http://localhost/api/contact", {
       method: "POST",
-      body: JSON.stringify({
-        fullName: "Jane Doe",
-        email: "not-an-email",
-        phone: "",
-        interestedIn: "",
-        message: "",
-      }),
+      body: JSON.stringify({ ...validBody, email: "not-an-email" }),
     });
     const response = await POST(request);
     expect(response.status).toBe(400);
@@ -55,13 +55,7 @@ describe("POST /api/contact", () => {
     vi.spyOn(mailer, "sendContactEmail").mockRejectedValue(new Error("SMTP failure"));
     const request = new Request("http://localhost/api/contact", {
       method: "POST",
-      body: JSON.stringify({
-        fullName: "Jane Doe",
-        email: "jane@example.com",
-        phone: "",
-        interestedIn: "",
-        message: "Interested",
-      }),
+      body: JSON.stringify(validBody),
     });
     const response = await POST(request);
     expect(response.status).toBe(500);
