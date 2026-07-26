@@ -22,7 +22,7 @@ export default function ContactPage() {
         height="lg"
       />
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2">
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-24 grid-cols-1 md:grid-cols-2">
         <div>
           <h2 className="mb-6 font-heading font-bold text-heading-sm md:text-heading-md text-black">Register Your Interest</h2>
           <ContactForm />
