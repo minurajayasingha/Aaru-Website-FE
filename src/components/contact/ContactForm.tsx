@@ -117,7 +117,7 @@ export function ContactForm() {
             value={form.dialCode}
             onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
             aria-label="Country dial code"
-            className="rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+            className="w-28 shrink-0 truncate rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
           >
             {dialCodes.map(({ code, country }) => (
               <option key={country} value={code}>
@@ -134,7 +134,7 @@ export function ContactForm() {
             aria-invalid={Boolean(errors.phone)}
             aria-describedby={errors.phone ? "phone-error" : undefined}
             className={cn(
-              "flex-1 rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
+              "flex-1 min-w-0 rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
               errors.phone ? "border-red-500" : "border-brand-forest-200"
             )}
           />
