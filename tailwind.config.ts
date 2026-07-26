@@ -40,6 +40,7 @@ const config: Config = {
         "subheading-lg": ["1.75rem", { lineHeight: "1.3", letterSpacing: "0.08em" }],
         // Paragraph (Inter) — 18px / 24px / 28px
         "body-xs": ["0.8rem", { lineHeight: "1" }],
+        "body-nav": ["0.9rem", { lineHeight: "1" }],
         "body-sm": ["1rem", { lineHeight: "1.2" }],
         "body-md": ["1.5rem", { lineHeight: "1.5" }],
         "body-lg": ["1.75rem", { lineHeight: "1.5" }],
@@ -70,6 +71,7 @@ const config: Config = {
       },
       boxShadow: {
         card: "0 4px 24px 0 rgba(11, 32, 22, 0.08)",
+        card2: "0 4px 24px 0 rgba(11, 32, 22, 1)",
       },
     },
   },

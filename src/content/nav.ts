@@ -1,11 +1,20 @@
-export type NavLink = { label: string; href: string };
+export type NavLink = { label: string; href: string; children?: NavLink[] };
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "Residences", href: "/residences" },
+  {
+    label: "Residences",
+    href: "/residences",
+    children: [
+      { label: "Garden Condos", href: "/residences/garden-condos" },
+      { label: "Elevated Condos", href: "/residences/elevated-condos" },
+      { label: "Private Villas", href: "/residences/private-villas" },
+    ],
+  },
   { label: "Gallery", href: "/gallery" },
   { label: "Commercial Space", href: "/commercial-space" },
   { label: "Contact Us", href: "/contact" },
+  { label: "About Us", href: "/about" },
 ];
 
 export const footerLinkGroups: { title: string; links: NavLink[] }[] = [

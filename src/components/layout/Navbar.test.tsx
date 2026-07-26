@@ -6,7 +6,7 @@ describe("Navbar", () => {
   it("renders all nav links", () => {
     render(<Navbar />);
     expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Residences" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Residences" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Gallery" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Commercial Space" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Contact Us" })).toBeInTheDocument();
