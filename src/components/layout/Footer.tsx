@@ -16,14 +16,14 @@ export function Footer({ progress }: FooterProps) {
     <footer className="bg-brand-forest-900 text-white">
       <ScrollReveal
         progress={progress}
-        range={[0.2, 0.6]}
+        range={[0.05, 0.25]}
         y={56}
         scale
         className="flex flex-col gap-10 px-section-s md:px-section-x pb-4 pt-8 md:flex-row md:items-center md:justify-between lg:items-start"
       >
         <ScrollReveal
           progress={progress}
-          range={[0.25, 0.6]}
+          range={[0.15, 0.33]}
           className="flex flex-col items-start gap-4 lg:flex-col xl:flex-row sm:items-center xl:gap-12 h-full lg:items-start lg:justify-start lg:w-auto w-full"
         >
           <div className="flex flex-col items-center justify-center md:items-start w-full ">
@@ -44,7 +44,7 @@ export function Footer({ progress }: FooterProps) {
             <ScrollReveal
               key={group.title}
               progress={progress}
-              range={[0.35 + index * 0.1, 0.65 + index * 0.1]}
+              range={[0.3 + index * 0.15, 0.48 + index * 0.15]}
               className="flex flex-col"
             >
               <h4 className="font-heading text-heading-sm text-white font-extralight pb-3">{group.title}</h4>
@@ -62,7 +62,7 @@ export function Footer({ progress }: FooterProps) {
 
           <ScrollReveal
             progress={progress}
-            range={[0.55, 0.85]}
+            range={[0.6, 0.8]}
             className="flex flex-col gap-2.5 pb-8 sm:pb-0"
           >
             <h4 className="font-heading text-heading-sm text-white font-extralight pb-3">Contact</h4>
@@ -84,7 +84,7 @@ export function Footer({ progress }: FooterProps) {
 
       <ScrollReveal
         progress={progress}
-        range={[0.75, 1]}
+        range={[0.8, 1]}
         className="pt-4 pb-4 md:pt-8  text-center font-body text-body-xs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0"
       >
         © {new Date().getFullYear()} Aaru Living. All Rights Reserved.
