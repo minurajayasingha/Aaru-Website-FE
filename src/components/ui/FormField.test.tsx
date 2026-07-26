@@ -45,6 +45,25 @@ describe("Textarea", () => {
     expect(field).toHaveClass("border-red-500");
     expect(field).toHaveAttribute("aria-describedby", errorEl.id);
   });
+
+  it("shows a live character counter when maxLength is provided", () => {
+    render(
+      <Textarea
+        label="Message"
+        id="message"
+        name="message"
+        value="Hello"
+        onChange={() => {}}
+        maxLength={150}
+      />
+    );
+    expect(screen.getByText("5/150 characters")).toBeInTheDocument();
+  });
+
+  it("does not render a counter when maxLength is not provided", () => {
+    render(<Textarea label="Message" id="message" name="message" value="Hello" onChange={() => {}} />);
+    expect(screen.queryByText(/characters$/)).not.toBeInTheDocument();
+  });
 });
 
 describe("Select", () => {

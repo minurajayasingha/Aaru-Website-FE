@@ -8,20 +8,29 @@ type TextareaProps = {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   rows?: number;
   error?: string;
+  maxLength?: number;
 };
 
-export function Textarea({ label, id, name, value, onChange, rows = 5, error }: TextareaProps) {
+export function Textarea({ label, id, name, value, onChange, rows = 5, error, maxLength }: TextareaProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="font-subheading text-subheading-sm text-brand-forest-900">
-        {label}
-      </label>
+      <div className="flex items-baseline justify-between">
+        <label htmlFor={id} className="font-subheading text-subheading-sm text-brand-forest-900">
+          {label}
+        </label>
+        {maxLength !== undefined && (
+          <span className="font-body text-body-xs text-brand-forest-700">
+            {value.length}/{maxLength} characters
+          </span>
+        )}
+      </div>
       <textarea
         id={id}
         name={name}
         value={value}
         onChange={onChange}
         rows={rows}
+        maxLength={maxLength}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
         className={cn(
