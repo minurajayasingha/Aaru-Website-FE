@@ -20,24 +20,19 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex h-screen items-center justify-center text-center text-brand-cream">
+      <section className="relative flex h-screen items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
         <Image
-          src="/images/hero/home.jpg"
-          alt="Aaru's residences beside a lagoon in Arugam Bay"
+          src="/images/hero/home.png"
+          alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
           className="object-cover"
         />
-        <div className="relative z-10 flex flex-col items-center gap-6 px-6">
-          <h1 className="font-heading text-heading-sm md:text-heading-md max-w-2xl">{siteConfig.tagline}</h1>
-          <div className="flex gap-4">
-            <Button href="/residences" variant="primary">
-              Explore Residences
-            </Button>
-            <Button href="/contact" variant="secondary">
-              Contact Us
-            </Button>
-          </div>
+        <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-8 px-6 pb-[7vh]">
+          <h1 className="font-heading text-2xl md:text-4xl max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
+          <Button href="/residences" variant="primary" size="md">
+            Explore Residences
+          </Button>
         </div>
       </section>
 
