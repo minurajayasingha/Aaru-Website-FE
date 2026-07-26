@@ -1,32 +1,29 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useScroll } from "framer-motion";
+import type { MotionValue } from "framer-motion";
 import { siteConfig } from "@/content/site";
 import { footerLinkGroups } from "@/content/nav";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
-export function Footer() {
-  const footerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: footerRef,
-    offset: ["start end", "end end"],
-  });
+type FooterProps = {
+  progress: MotionValue<number>;
+};
 
+export function Footer({ progress }: FooterProps) {
   return (
-    <footer ref={footerRef} className="bg-brand-forest-900 text-white">
+    <footer className="bg-brand-forest-900 text-white">
       <ScrollReveal
-        progress={scrollYProgress}
-        range={[0, 0.3]}
+        progress={progress}
+        range={[0.2, 0.6]}
         y={56}
         scale
         className="flex flex-col gap-10 px-section-s md:px-section-x pb-4 pt-8 md:flex-row md:items-center md:justify-between lg:items-start"
       >
         <ScrollReveal
-          progress={scrollYProgress}
-          range={[0.05, 0.3]}
+          progress={progress}
+          range={[0.25, 0.6]}
           className="flex flex-col items-start gap-4 lg:flex-col xl:flex-row sm:items-center xl:gap-12 h-full lg:items-start lg:justify-start lg:w-auto w-full"
         >
           <div className="flex flex-col items-center justify-center md:items-start w-full ">
@@ -46,8 +43,8 @@ export function Footer() {
           {footerLinkGroups.map((group, index) => (
             <ScrollReveal
               key={group.title}
-              progress={scrollYProgress}
-              range={[0.2 + index * 0.08, 0.5 + index * 0.08]}
+              progress={progress}
+              range={[0.35 + index * 0.1, 0.65 + index * 0.1]}
               className="flex flex-col"
             >
               <h4 className="font-heading text-heading-sm text-white font-extralight pb-3">{group.title}</h4>
@@ -64,8 +61,8 @@ export function Footer() {
           ))}
 
           <ScrollReveal
-            progress={scrollYProgress}
-            range={[0.45, 0.7]}
+            progress={progress}
+            range={[0.55, 0.85]}
             className="flex flex-col gap-2.5 pb-8 sm:pb-0"
           >
             <h4 className="font-heading text-heading-sm text-white font-extralight pb-3">Contact</h4>
@@ -86,8 +83,8 @@ export function Footer() {
       </ScrollReveal>
 
       <ScrollReveal
-        progress={scrollYProgress}
-        range={[0.65, 0.95]}
+        progress={progress}
+        range={[0.75, 1]}
         className="pt-4 pb-4 md:pt-8  text-center font-body text-body-xs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0"
       >
         © {new Date().getFullYear()} Aaru Living. All Rights Reserved.
