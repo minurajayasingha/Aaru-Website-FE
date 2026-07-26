@@ -23,13 +23,13 @@ type FormState = {
 const initialState: FormState = {
   firstName: "",
   lastName: "",
-  dialCode: "+94",
+  dialCode: "+94|Sri Lanka",
   phone: "",
   email: "",
   countryOfResidence: "",
   interestedIn: "garden-condos",
   message: "",
-  hearAboutUs: "social-media",
+  hearAboutUs: "",
 };
 
 const interestOptions = [
@@ -40,6 +40,7 @@ const interestOptions = [
 ];
 
 const hearAboutUsOptions = [
+  { value: "", label: "Please select" },
   { value: "social-media", label: "Social Media" },
   { value: "google-search", label: "Google Search" },
   { value: "referral", label: "Referral / Word of Mouth" },
@@ -75,7 +76,7 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, dialCode: form.dialCode.split("|")[0] }),
       });
       if (!response.ok) throw new Error("Request failed");
       setStatus("success");
@@ -117,10 +118,10 @@ export function ContactForm() {
             value={form.dialCode}
             onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
             aria-label="Country dial code"
-            className="w-28 shrink-0 truncate rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+            className="w-36 shrink-0 truncate rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
           >
             {dialCodes.map(({ code, country }) => (
-              <option key={country} value={code}>
+              <option key={country} value={`${code}|${country}`}>
                 {code} {country}
               </option>
             ))}

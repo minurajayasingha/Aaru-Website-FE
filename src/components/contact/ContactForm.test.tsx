@@ -30,6 +30,18 @@ describe("ContactForm", () => {
       "/api/contact",
       expect.objectContaining({ method: "POST" })
     ));
+
+    const [, requestInit] = fetchMock.mock.calls[0];
+    const body = JSON.parse(requestInit.body as string);
+    expect(body).toMatchObject({
+      firstName: "Jane",
+      lastName: "Doe",
+      email: "jane@example.com",
+      countryOfResidence: "Sri Lanka",
+      hearAboutUs: "social-media",
+    });
+    expect(body.dialCode).toMatch(/^\+94/);
+
     expect(await screen.findByText(/Thank you/i)).toBeInTheDocument();
   });
 });
