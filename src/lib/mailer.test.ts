@@ -18,11 +18,15 @@ describe("sendContactEmail", () => {
     vi.mocked(nodemailer.createTransport).mockReturnValue({ sendMail } as never);
 
     await sendContactEmail({
-      fullName: "Jane Doe",
+      firstName: "Jane",
+      lastName: "Doe",
+      dialCode: "+94",
+      phone: "771234567",
       email: "jane@example.com",
-      phone: "+94771234567",
+      countryOfResidence: "Sri Lanka",
       interestedIn: "garden-condos",
       message: "I'm interested in Garden Condos.",
+      hearAboutUs: "social-media",
     });
 
     expect(nodemailer.createTransport).toHaveBeenCalledWith({

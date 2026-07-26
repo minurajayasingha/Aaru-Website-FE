@@ -1,11 +1,15 @@
 import nodemailer from "nodemailer";
 
 export type ContactSubmission = {
-  fullName: string;
-  email: string;
+  firstName: string;
+  lastName: string;
+  dialCode: string;
   phone: string;
+  email: string;
+  countryOfResidence: string;
   interestedIn: string;
   message: string;
+  hearAboutUs: string;
 };
 
 export async function sendContactEmail(submission: ContactSubmission): Promise<void> {
@@ -22,12 +26,14 @@ export async function sendContactEmail(submission: ContactSubmission): Promise<v
     to: process.env.CONTACT_TO_EMAIL,
     from: process.env.SMTP_USER,
     replyTo: submission.email,
-    subject: `New enquiry from ${submission.fullName} — ${submission.interestedIn}`,
+    subject: `New enquiry from ${submission.firstName} ${submission.lastName} — ${submission.interestedIn}`,
     text: [
-      `Name: ${submission.fullName}`,
+      `Name: ${submission.firstName} ${submission.lastName}`,
+      `Phone: ${submission.dialCode} ${submission.phone}`,
       `Email: ${submission.email}`,
-      `Phone: ${submission.phone}`,
+      `Country of Residence: ${submission.countryOfResidence}`,
       `Interested In: ${submission.interestedIn}`,
+      `Heard About Us Via: ${submission.hearAboutUs}`,
       "",
       submission.message,
     ].join("\n"),
