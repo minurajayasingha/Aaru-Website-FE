@@ -12,13 +12,14 @@ type ButtonProps = {
   size?: ButtonSize;
   className?: string;
   href?: string;
+  target?: "_blank";
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-button font-body font-thin tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center text-body-sm rounded-button font-body font-thin tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "bg-brand-forest-900 text-white/90 hover:bg-brand-gold active:bg-brand-gold-light",
@@ -27,9 +28,10 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "text-sm px-8 py-2",
-  md: "text-base px-12 py-3",
-  lg: "text-lg px-16 py-4",
+  // text-* removed — text-body-sm in baseClasses now governs size on all variants
+  sm: "px-8 py-2",
+  md: "px-12 py-3",
+  lg: "px-16 py-4",
 };
 
 export function Button({
@@ -38,6 +40,7 @@ export function Button({
   size = "md",
   className,
   href,
+  target,
   disabled,
   type = "button",
   onClick,
@@ -48,6 +51,8 @@ export function Button({
     return (
       <Link
         href={href}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
         className={cn(classes, disabled && "opacity-50 pointer-events-none")}
         aria-disabled={disabled}
         onClick={(event) => {

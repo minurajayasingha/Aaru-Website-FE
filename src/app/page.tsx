@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { ResidenceCard } from "@/components/ui/ResidenceCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { SplitSection } from "@/components/ui/SplitSection";
 
 export const metadata: Metadata = buildMetadata({
   title: "Aaru Living | Luxury Residences in Arugam Bay",
@@ -40,18 +41,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Reveal as="section" className="mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2 md:items-center">
-        <SectionHeader
-          eyebrow="A New Standard For"
-          title="Arugam Bay"
-          level="h2"
-          size="md"
-          description="Aaru is a landmark residential estate where refined architecture meets the raw natural beauty of Sri Lanka's East Coast."
-        />
-        <div className="relative aspect-video overflow-hidden rounded-card">
-          <Image src="/images/home/beach.jpg" alt="Aerial view of Arugam Bay's coastline" fill className="object-cover" />
-        </div>
-      </Reveal>
+      <SplitSection
+        eyebrow="A New Standard For"
+        title="Arugam Bay"
+        paragraphs={[
+          "Aaru is a landmark residential estate where refined architecture meets the raw natural beauty of Sri Lanka's East Coast.",
+          "Designed around lagoon views, wellness, privacy and coastal living — this is your definitive claim on the East.",
+        ]}
+        ctaLabel="Contact Us"
+        ctaHref="/contact"
+        imageSrc="/images/home/beach.png"
+        imageAlt="Aerial view of Arugam Bay's coastline"
+        imagePosition="right"
+      />
+
 
       <Reveal as="section" className="bg-brand-forest-800 py-16 text-brand-cream">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-5">
@@ -109,6 +112,21 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      
+      <SplitSection
+        eyebrow="Map"
+        title="Prime Location"
+        paragraphs={[
+          "Set on Sri Lanka's eastern frontier, Aaru places you between the raw energy of Arugam Bay's world-class surf coast and the calm beauty of the lagoon. With the beach only 250m away, the estate connects ocean, wetlands, wildlife, wellness, and refined residential living in one rare coastal address.",
+        ]}
+        ctaLabel="See Location"
+        ctaHref={`https://www.google.com/maps?q=${siteConfig.location.latitude},${siteConfig.location.longitude}`}
+        ctaTarget="_blank"
+        imageSrc="/images/home/map.png"
+        imageAlt="Map showing Aaru's location in Arugam Bay relative to the lagoon and nearby cities"
+        imagePosition="left"
+        imageFit="contain"
+      />
     </>
   );
 }

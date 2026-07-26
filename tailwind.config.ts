@@ -33,14 +33,14 @@ const config: Config = {
         // Heading (Fraunces) — 37px / 60px / 96px
         "heading-sm": ["1.5rem", { lineHeight: "1.2" }],
         "heading-md": ["2.75rem", { lineHeight: "1.2" }],
-        "heading-lg": ["6rem", { lineHeight: "1.05" }],
+        "heading-lg": ["3.5rem", { lineHeight: "1.05" , letterSpacing: "0em" }],
         // Subheading (Marcellus SC) — 12px / 20px / 28px
-        "subheading-sm": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.1em" }],
+        "subheading-sm": ["0.8rem", { lineHeight: "1.4", letterSpacing: "0em" }],
         "subheading-md": ["1.25rem", { lineHeight: "1.3", letterSpacing: "0.02em" }],
         "subheading-lg": ["1.75rem", { lineHeight: "1.3", letterSpacing: "0.08em" }],
         // Paragraph (Inter) — 18px / 24px / 28px
         "body-xs": ["0.8rem", { lineHeight: "1" }],
-        "body-sm": ["1.225rem", { lineHeight: "1.5" }],
+        "body-sm": ["1rem", { lineHeight: "1.2" }],
         "body-md": ["1.5rem", { lineHeight: "1.5" }],
         "body-lg": ["1.75rem", { lineHeight: "1.5" }],
       },
