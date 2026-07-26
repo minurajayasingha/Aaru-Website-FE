@@ -8,23 +8,43 @@ const { rmSync } = require("fs");
 
 const root = path.resolve(__dirname, "..");
 const configPath = path.join(root, "tailwind.config.ts");
+const PORT = 3000;
 
 let child = null;
 
-function killTree(pid) {
+// Killing the tracked child PID isn't reliable on Windows: `npx next dev`
+// spawns through a shell + npx wrapper, so child.pid often doesn't point at
+// the actual process holding the port, and previous restarts silently left
+// zombie servers behind (bumping later runs to 3001, 3002, ...). Killing by
+// the port itself is the only thing that's actually reliable.
+function killPort(port) {
   try {
     if (process.platform === "win32") {
-      execSync(`taskkill /PID ${pid} /T /F`, { stdio: "ignore" });
+      const output = execSync(`netstat -ano`, { encoding: "utf8" });
+      const pids = new Set();
+      const listening = new RegExp(`:${port}\\s+\\S+\\s+LISTENING\\s+(\\d+)`);
+      for (const line of output.split("\n")) {
+        const match = line.match(listening);
+        if (match) pids.add(match[1]);
+      }
+      for (const pid of pids) {
+        try {
+          execSync(`taskkill /PID ${pid} /F`, { stdio: "ignore" });
+        } catch {}
+      }
     } else {
-      process.kill(-pid, "SIGKILL");
+      execSync(`lsof -ti tcp:${port} | xargs -r kill -9`, { stdio: "ignore", shell: "/bin/sh" });
     }
   } catch {}
 }
 
 function startServer() {
   if (child && child.pid) {
-    killTree(child.pid);
+    try {
+      process.platform === "win32" ? execSync(`taskkill /PID ${child.pid} /T /F`, { stdio: "ignore" }) : process.kill(-child.pid, "SIGKILL");
+    } catch {}
   }
+  killPort(PORT);
   try {
     rmSync(path.join(root, ".next"), { recursive: true, force: true });
   } catch {}
