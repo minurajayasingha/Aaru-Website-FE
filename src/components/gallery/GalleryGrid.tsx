@@ -25,12 +25,12 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-section-s py-12 md:px-section-x lg:gap-12 lg:py-16">
         {active.sections.length === 0 && (
-          <p className="font-body text-body-sm text-brand-forest-700">More photos coming soon.</p>
+          <p className="font-body text-para-sm text-brand-forest-700">More photos coming soon.</p>
         )}
         {active.sections.map((section) => (
           <div key={section.slug} className="flex flex-col gap-4">
             {section.heading && (
-              <h3 className="font-subheading uppercase text-subheading-sm text-brand-forest-700">
+              <h3 className="font-subheading uppercase text-para-xxs text-brand-forest-700">
                 {section.heading}
               </h3>
             )}

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { ResidenceCard } from "@/components/ui/ResidenceCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitSection } from "@/components/ui/SplitSection";
+import { StatsSection } from "@/components/ui/StatsSection";
 
 export const metadata: Metadata = buildMetadata({
   title: "Aaru Living | Luxury Residences in Arugam Bay",
@@ -51,25 +52,7 @@ export default function HomePage() {
       />
 
 
-      <Reveal as="section" className="bg-brand-forest-800 py-16 text-brand-cream">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-5">
-          <div>
-            <p className="font-heading text-heading-sm">{siteConfig.stats.totalSiteAcres}</p>
-          </div>
-          <div>
-            <p className="font-heading text-heading-sm">{siteConfig.stats.totalPerches}</p>
-          </div>
-          <div>
-            <p className="font-heading text-heading-sm">{siteConfig.stats.condoUnits}</p>
-          </div>
-          <div>
-            <p className="font-heading text-heading-sm">{siteConfig.stats.privateVillas}</p>
-          </div>
-          <div>
-            <p className="font-heading text-heading-sm">{siteConfig.stats.distanceToBeach}</p>
-          </div>
-        </div>
-      </Reveal>
+      <StatsSection stats={siteConfig.stats} />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <SectionHeader
@@ -101,7 +84,7 @@ export default function HomePage() {
         <div className="grid gap-6 md:grid-cols-5">
           {commercialAmenities.map((amenity) => (
             <div key={amenity.id} className="flex flex-col items-center gap-2 text-center">
-              <p className="font-subheading uppercase text-subheading-sm text-brand-forest-900">{amenity.name}</p>
+              <p className="font-subheading uppercase text-para-xxs text-brand-forest-900">{amenity.name}</p>
               <p className="font-body text-xs text-brand-forest-700">{amenity.description}</p>
             </div>
           ))}

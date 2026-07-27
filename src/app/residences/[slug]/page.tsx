@@ -74,29 +74,29 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
           <UnitLayoutGallery images={residence.layoutGallery} />
           <div className="flex flex-col gap-8">
-            <h2 className="font-heading font-bold text-heading-md text-black">Unit Layout</h2>
+            <h2 className="font-heading font-bold text-h-02 text-black">Unit Layout</h2>
             <div className="flex divide-x divide-brand-forest-300">
               <div className="flex-1 pr-6">
                 <p className="font-heading text-heading-sm text-black">{residence.unitsAvailableLabel}</p>
-                <p className="font-body text-body-xs uppercase tracking-wide text-brand-forest-700">
+                <p className="font-body text-para-xxs uppercase tracking-wide text-brand-forest-700">
                   Available Units
                 </p>
               </div>
               <div className="flex-1 pl-6">
                 <p className="font-heading text-heading-sm text-black">{residence.sizeLabel}</p>
-                <p className="font-body text-body-xs uppercase tracking-wide text-brand-forest-700">Size</p>
+                <p className="font-body text-para-xxs uppercase tracking-wide text-brand-forest-700">Size</p>
               </div>
             </div>
             <div>
               <p className="font-heading text-heading-sm text-black">{residence.priceLabel}</p>
-              <p className="font-body text-body-xs uppercase tracking-wide text-brand-forest-700">Upward</p>
+              <p className="font-body text-para-xxs uppercase tracking-wide text-brand-forest-700">Upward</p>
             </div>
           </div>
         </div>
       </Reveal>
 
       <Reveal as="section" className="bg-brand-forest-800 px-section-s py-16 text-brand-cream md:px-section-x lg:py-20">
-        <h2 className="mb-10 text-center font-heading font-bold text-heading-sm text-brand-cream md:text-heading-md">
+        <h2 className="mb-10 text-center font-heading font-bold text-heading-sm text-brand-cream md:text-h-02">
           Unit Amenities
         </h2>
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 md:grid-cols-5">
@@ -134,7 +134,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
 
       {otherResidences.length > 0 && (
         <section className="mx-auto max-w-7xl px-section-s py-16 md:px-section-x lg:py-20">
-          <h2 className="mb-10 text-center font-heading font-bold text-heading-md text-black">Other Residences</h2>
+          <h2 className="mb-10 text-center font-heading font-bold text-h-02 text-black">Other Residences</h2>
           <div className="grid gap-8 sm:grid-cols-2">
             {otherResidences.map((other) => (
               <ResidenceCard

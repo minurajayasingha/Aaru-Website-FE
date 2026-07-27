@@ -10,11 +10,11 @@ export const siteConfig = {
     latitude: 6.8404,
     longitude: 81.836,
   },
-  stats: {
-    totalSiteAcres: "2.09 Acres",
-    totalPerches: "334 Perches",
-    condoUnits: "19 Condo Units",
-    privateVillas: "3 Private Villas",
-    distanceToBeach: "250m To The Beach",
-  },
+  stats: [
+    { value: "2.09", label: "Acres", caption: "Total Site Area" },
+    { value: "334", label: "Perches", caption: "= 91,000 SQFT" },
+    { value: "19", label: "Condo Units", caption: "Three Floors" },
+    { value: "3", label: "Private Villas", caption: "Ultra Luxury" },
+    { value: "250m", label: "To The Beach", caption: "Walking Distance" },
+  ],
 };

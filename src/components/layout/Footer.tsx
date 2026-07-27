@@ -34,7 +34,7 @@ export function Footer({ progress }: FooterProps) {
           <div className="flex flex-col md:flex-col gap-3.5 items-center w-full lg:w-auto lg:items-start lg:pt-3">
             <span className="font-heading text-heading-sm text-white font-extralight w-full text-center md:text-left ">Aaru Living</span>
             <p className="font-body text-xs w-full text-center md:text-left xl:whitespace-nowrap text-white/70">
-              Developed By <span className="text-white text-body-xs">{siteConfig.legalDeveloper}</span>
+              Developed By <span className="text-white text-para-xxs">{siteConfig.legalDeveloper}</span>
             </p>
           </div>
         </ScrollReveal>
@@ -51,7 +51,7 @@ export function Footer({ progress }: FooterProps) {
               <ul className="flex flex-col gap-0.2">
                 {group.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="font-body text-body-xs font-thin text-white/90 tracking-wide hover:text-brand-gold">
+                    <Link href={link.href} className="font-body text-para-xxs font-thin text-white/90 tracking-wide hover:text-brand-gold">
                       {link.label}
                     </Link>
                   </li>
@@ -70,13 +70,13 @@ export function Footer({ progress }: FooterProps) {
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/email.svg" alt="" fill className="object-contain" />
               </div>
-              <span className="font-body text-body-xs font-thin  text-white/80 tracking-wide">{siteConfig.contactEmail}</span>
+              <span className="font-body text-para-xxs font-thin  text-white/80 tracking-wide">{siteConfig.contactEmail}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/whatsapp.svg" alt="" fill className="object-contain" />
               </div>
-              <span className="font-body text-body-xs font-thin text-white/80 tracking-wide">{siteConfig.contactPhone}</span>
+              <span className="font-body text-para-xxs font-thin text-white/80 tracking-wide">{siteConfig.contactPhone}</span>
             </div>
           </ScrollReveal>
         </div>
@@ -85,7 +85,7 @@ export function Footer({ progress }: FooterProps) {
       <ScrollReveal
         progress={progress}
         range={[0.8, 1]}
-        className="pt-4 pb-4 md:pt-8  text-center font-body text-body-xs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0"
+        className="pt-4 pb-4 md:pt-8  text-center font-body text-para-xxs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0"
       >
         © {new Date().getFullYear()} Aaru Living. All Rights Reserved.
       </ScrollReveal>

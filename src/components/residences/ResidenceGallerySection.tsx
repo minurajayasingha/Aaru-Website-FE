@@ -4,7 +4,7 @@ import type { GallerySection } from "@/content/residences";
 export function ResidenceGallerySection({ section }: { section: GallerySection }) {
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="font-subheading uppercase text-subheading-sm text-brand-forest-700">{section.heading}</h3>
+      <h3 className="font-subheading uppercase text-para-xxs text-brand-forest-700">{section.heading}</h3>
       {section.layout === "row" ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {section.images.map((image) => (

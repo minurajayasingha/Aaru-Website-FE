@@ -108,7 +108,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="phone" className="font-body text-body-xs pl-4 font-light text-black">
+        <label htmlFor="phone" className="font-body text-para-xxs pl-4 font-light text-black">
           Phone*
         </label>
         <div className="flex gap-2">

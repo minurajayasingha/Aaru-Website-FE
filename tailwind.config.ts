@@ -30,21 +30,15 @@ const config: Config = {
         body: ["var(--font-body)", "sans-serif"],
       },
       fontSize: {
-        // Heading (Fraunces) — 37px / 60px / 96px
-        "heading-sm": ["1.5rem", { lineHeight: "1.2" }],
-        "heading-md": ["2.75rem", { lineHeight: "1.2" }],
-        "heading-lg": ["3.5rem", { lineHeight: "1.05" , letterSpacing: "0em" }],
-        "heading-xl": ["4rem", { lineHeight: "1.05" , letterSpacing: "0em" }],
-        // Subheading (Marcellus SC) — 12px / 20px / 28px
-        "subheading-sm": ["0.8rem", { lineHeight: "1.4", letterSpacing: "0em" }],
-        "subheading-md": ["1.25rem", { lineHeight: "1.3", letterSpacing: "0.02em" }],
-        "subheading-lg": ["1.75rem", { lineHeight: "1.3", letterSpacing: "0.08em" }],
-        // Paragraph (Inter) — 18px / 24px / 28px
-        "body-xs": ["0.8rem", { lineHeight: "1" }],
-        "body-nav": ["0.9rem", { lineHeight: "1" }],
-        "body-sm": ["1rem", { lineHeight: "1.2" }],
-        "body-md": ["1.5rem", { lineHeight: "1.5" }],
-        "body-lg": ["1.75rem", { lineHeight: "1.5" }],
+        /// headings
+        "h-01": ["3.5rem", { lineHeight: "1.05" , letterSpacing: "0em" }],//main headings big heros sections headings 
+        "h-02": ["2.75rem", { lineHeight: "1.5" , letterSpacing: "0em" }],//main headings big heros sections headings 
+        //Paragraphs
+        "para-lg": ["1.5rem", { lineHeight: "1.2", letterSpacing: "0.2em"  }],//footer link headings
+        "para-md": ["1.25rem", { lineHeight: "1", letterSpacing: "0.2em" }],//eye brows
+        "para-sm": ["1rem", { lineHeight: "1", letterSpacing: "0em" }],//paragarphs/buttons
+        "para-xs": ["0.9rem", { lineHeight: "1", letterSpacing: "0em" }],// navbar links
+        "para-xxs": ["0.8rem", { lineHeight: "1", letterSpacing: "0em" }],//footer links/form fileds naming
       },
       fontWeight: {
         // Use anywhere: font-thin / font-normal / font-bold.

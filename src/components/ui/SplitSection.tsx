@@ -29,13 +29,13 @@ export function SplitSection({
   imageFit = "cover",
 }: SplitSectionProps) {
   const eyebrowEl = (
-    <span className="font-subheading uppercase text-subheading-md text-brand-gold">{eyebrow}</span>
+    <span className="font-subheading uppercase text-para-md text-brand-gold">{eyebrow}</span>
   );
-  const headingEl = <h2 className="font-heading font-normal text-heading-lg text-black">{title}</h2>;
+  const headingEl = <h2 className="font-heading font-normal text-h-02 text-black">{title}</h2>;
   const paragraphsEl = (
     <div className="flex flex-col gap-4">
       {paragraphs.map((paragraph) => (
-        <p key={paragraph} className="font-body text-body-sm font-light text-brand-forest-700 md:w-10/12">
+        <p key={paragraph} className="font-body text-para-sm font-light text-brand-forest-700 md:w-10/12">
           {paragraph}
         </p>
       ))}

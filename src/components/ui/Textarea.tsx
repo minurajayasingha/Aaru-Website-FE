@@ -15,11 +15,11 @@ export function Textarea({ label, id, name, value, onChange, rows = 5, error, ma
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-baseline justify-between">
-        <label htmlFor={id} className="font-body text-body-xs text-black pl-4 font-light">
+        <label htmlFor={id} className="font-body text-para-xxs text-black pl-4 font-light">
           {label}
         </label>
         {maxLength !== undefined && (
-          <span className="font-body text-body-xs font-light text-gray-400">
+          <span className="font-body text-para-xxs font-light text-gray-400">
             {value.length}/{maxLength} characters
           </span>
         )}

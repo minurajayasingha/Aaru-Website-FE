@@ -12,8 +12,8 @@ export function CtaBanner() {
       />
       <div className="absolute inset-0 bg-brand-forest-900/5" />
       <div className="relative z-10 flex flex-col items-center gap-4 md:gap-2 px-6">
-        <h2 className="font-heading font-light text-heading-md text-white">Your East Coast Legacy Awaits</h2>
-        <p className="font-body text-body-sm font-thin tracking-wide text-white/90 pb-4">
+        <h2 className="font-heading font-light text-h-02 text-white">Your East Coast Legacy Awaits</h2>
+        <p className="font-body text-para-sm font-thin tracking-wide text-white/90 pb-4">
           Enquire now for availability, prices and investment details.
         </p>
         <Button href="/contact" variant="primary" size="md">

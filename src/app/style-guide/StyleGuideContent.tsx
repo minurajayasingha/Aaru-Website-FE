@@ -91,7 +91,7 @@ export function StyleGuideContent() {
   return (
     <>
       <section className="bg-brand-forest-900 px-6 py-16 text-center text-brand-cream">
-        <h1 className="font-heading text-heading-md md:text-heading-lg">Style Guide</h1>
+        <h1 className="font-heading text-h-02 md:text-h-02">Style Guide</h1>
         <p className="mx-auto mt-4 max-w-2xl font-body text-brand-cream/80">
           Internal design-system reference for the Aaru Living site. Not linked from navigation and
           excluded from search indexing.
@@ -126,7 +126,7 @@ export function StyleGuideContent() {
         </p>
         <div className="flex flex-col gap-8">
           <div>
-            <span className="font-subheading text-subheading-lg uppercase text-brand-gold">
+            <span className="font-subheading text-subh-02 uppercase text-brand-gold">
               A New Standard For
             </span>
             <p className="mt-1 font-body text-xs text-brand-forest-700">
@@ -145,15 +145,15 @@ export function StyleGuideContent() {
               </p>
             </div>
             <div>
-              <p className="font-heading font-bold text-heading-md text-black">Arugam Bay</p>
+              <p className="font-heading font-bold text-h-02 text-black">Arugam Bay</p>
               <p className="mt-1 font-body text-xs text-brand-forest-700">
-                font-heading font-bold text-black — Fraunces — text-heading-md
+                font-heading font-bold text-black — Fraunces — text-h-02
               </p>
             </div>
             <div>
-              <p className="font-heading font-bold text-heading-lg text-black">Arugam Bay</p>
+              <p className="font-heading font-bold text-h-02 text-black">Arugam Bay</p>
               <p className="mt-1 font-body text-xs text-brand-forest-700">
-                font-heading font-bold text-black — Fraunces — text-heading-lg
+                font-heading font-bold text-black — Fraunces — text-h-02
               </p>
             </div>
           </div>
