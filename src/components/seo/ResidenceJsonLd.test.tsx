@@ -14,10 +14,10 @@ const baseResidence: Residence = {
   rateLabel: "350 USD / sqft",
   unitsAvailableLabel: "3 Units",
   description: "Three exclusive ground-floor lagoon residences.",
-  heroImage: { src: "/images/residences/garden-condos-hero.jpg", alt: "Garden Condos hero" },
-  layoutImage: { src: "/images/residences/garden-condos-layout.jpg", alt: "Garden Condos layout" },
+  heroImage: { src: "/images/residences/garden-condos/hero.jpg", alt: "Garden Condos hero" },
+  layoutGallery: [{ src: "/images/residences/garden-condos/layout-1.jpg", alt: "Garden Condos layout" }],
   amenities: ["2 Bedrooms"],
-  gallery: [],
+  gallerySections: [],
 };
 
 function renderJsonLd(residence: Residence) {

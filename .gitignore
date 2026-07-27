@@ -1,6 +1,8 @@
 # Internal/AI working docs — never push to GitHub
 /docs
 .superpowers/
+.claude/
+skills-lock.json
 
 # Dependencies
 /node_modules
