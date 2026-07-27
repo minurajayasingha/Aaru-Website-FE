@@ -14,7 +14,7 @@ type InputProps = {
 export function Input({ label, id, name, value, onChange, type = "text", error, required }: InputProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="font-subheading text-subheading-sm text-brand-forest-900">
+      <label htmlFor={id} className="font-body text-body-xs text-black pl-4 font-light">
         {label}
       </label>
       <input
@@ -27,8 +27,8 @@ export function Input({ label, id, name, value, onChange, type = "text", error, 
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
         className={cn(
-          "rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
-          error ? "border-red-500" : "border-brand-forest-200"
+          "rounded-input border bg-brand-cream-dark/40 px-4 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
+          error ? "border-red-500" : "border-brand-forest-500"
         )}
       />
       {error && (

@@ -15,11 +15,11 @@ export function Textarea({ label, id, name, value, onChange, rows = 5, error, ma
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-baseline justify-between">
-        <label htmlFor={id} className="font-subheading text-subheading-sm text-brand-forest-900">
+        <label htmlFor={id} className="font-body text-body-xs text-black pl-4 font-light">
           {label}
         </label>
         {maxLength !== undefined && (
-          <span className="font-body text-body-xs text-brand-forest-700">
+          <span className="font-body text-body-xs font-light text-gray-400">
             {value.length}/{maxLength} characters
           </span>
         )}
@@ -34,8 +34,8 @@ export function Textarea({ label, id, name, value, onChange, rows = 5, error, ma
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
         className={cn(
-          "rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
-          error ? "border-red-500" : "border-brand-forest-200"
+          "rounded-input border bg-brand-cream-dark/40 px-4 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
+          error ? "border-red-500" : "border-brand-forest-500"
         )}
       />
       {error && (

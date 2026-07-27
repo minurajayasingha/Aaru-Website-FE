@@ -87,7 +87,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-xl">
       <div className="grid grid-cols-2 gap-4">
         <Input
           label="First Name*"
@@ -108,7 +108,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="phone" className="font-subheading text-subheading-sm text-brand-forest-900">
+        <label htmlFor="phone" className="font-body text-body-xs pl-4 font-light text-black">
           Phone*
         </label>
         <div className="flex gap-2">
@@ -118,7 +118,7 @@ export function ContactForm() {
             value={form.dialCode}
             onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
             aria-label="Country dial code"
-            className="w-36 shrink-0 truncate rounded-input border border-brand-forest-200 bg-brand-cream-dark/40 px-2 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+            className="w-36 shrink-0 truncate rounded-input border border-brand-forest-500 bg-brand-cream-dark/40 px-2 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70"
           >
             {dialCodes.map(({ code, country }) => (
               <option key={country} value={`${code}|${country}`}>
@@ -135,8 +135,8 @@ export function ContactForm() {
             aria-invalid={Boolean(errors.phone)}
             aria-describedby={errors.phone ? "phone-error" : undefined}
             className={cn(
-              "flex-1 min-w-0 rounded-input border bg-brand-cream-dark/40 px-4 py-3 font-body text-brand-forest-900 focus:outline-none focus:ring-2 focus:ring-brand-gold",
-              errors.phone ? "border-red-500" : "border-brand-forest-200"
+              "flex-1 min-w-0 rounded-input border bg-brand-cream-dark/40 px-4 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
+              errors.phone ? "border-red-500" : "border-brand-forest-500"
             )}
           />
         </div>

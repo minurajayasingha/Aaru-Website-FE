@@ -34,6 +34,7 @@ const config: Config = {
         "heading-sm": ["1.5rem", { lineHeight: "1.2" }],
         "heading-md": ["2.75rem", { lineHeight: "1.2" }],
         "heading-lg": ["3.5rem", { lineHeight: "1.05" , letterSpacing: "0em" }],
+        "heading-xl": ["4rem", { lineHeight: "1.05" , letterSpacing: "0em" }],
         // Subheading (Marcellus SC) — 12px / 20px / 28px
         "subheading-sm": ["0.8rem", { lineHeight: "1.4", letterSpacing: "0em" }],
         "subheading-md": ["1.25rem", { lineHeight: "1.3", letterSpacing: "0.02em" }],

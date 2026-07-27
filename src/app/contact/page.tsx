@@ -22,12 +22,15 @@ export default function ContactPage() {
         height="lg"
       />
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-24 grid-cols-1 md:grid-cols-2">
-        <div>
-          <h2 className="mb-6 font-heading font-bold text-heading-sm md:text-heading-md text-black">Register Your Interest</h2>
+      <section className="mx-auto grid gap-10 px-6 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center">
+        <div className="flex flex-col gap-6 justify-center items-center">
+          <h2 className="font-heading font-normal text-heading-md md:text-heading-lg text-black text-center">Register Your Interest</h2>
+          <p className="font-body text-body-sm font-light text-brand-forest-700 md:w-7/12 text-center pb-8">
+We’re here to help you find the perfect property or space. Share your details and our team  will get in touch to assist you with your enquiry.
+        </p>
           <ContactForm />
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 ">
           <h2 className="font-heading font-bold text-heading-sm text-black">Contact Information</h2>
           <p className="font-body text-body-md text-brand-forest-700">Sales Enquiries</p>
           <p className="font-body text-brand-forest-900">{siteConfig.contactEmail}</p>
