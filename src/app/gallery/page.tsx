@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
-import { getGalleryImages, galleryCategories } from "@/content/gallery";
+import { getGalleryCategories } from "@/content/gallery";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { PageHero } from "@/components/ui/PageHero";
 
@@ -20,7 +20,7 @@ export default function GalleryPage() {
         imageAlt="Aerial view of Aaru's residences beside the beach at sunset"
         height="lg"
       />
-      <GalleryGrid images={getGalleryImages()} categories={galleryCategories} />
+      <GalleryGrid categories={getGalleryCategories()} />
     </>
   );
 }
