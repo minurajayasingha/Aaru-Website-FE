@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 type UnitLayoutGalleryProps = {
@@ -13,7 +14,7 @@ export function UnitLayoutGallery({ images }: UnitLayoutGalleryProps) {
   const active = images[activeIndex] ?? images[0];
 
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 w-full lg:w-3/5">
       <div className="flex flex-col gap-2">
         {images.map((image, index) => (
           <button
@@ -31,8 +32,21 @@ export function UnitLayoutGallery({ images }: UnitLayoutGalleryProps) {
           </button>
         ))}
       </div>
-      <div className="relative aspect-square flex-1 overflow-hidden rounded-card border border-brand-forest-100 bg-white">
-        {active && <Image src={active.src} alt={active.alt} fill className="object-contain" />}
+      <div className="relative aspect-[5/4] flex-1 overflow-hidden rounded-card border border-brand-forest-100 bg-white">
+        <AnimatePresence initial={false}>
+          {active && (
+            <motion.div
+              key={active.src}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <Image src={active.src} alt={active.alt} fill className="object-contain" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

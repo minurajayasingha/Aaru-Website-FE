@@ -11,19 +11,19 @@ type SectionHeaderProps = {
 };
 
 const titleSizeClasses: Record<NonNullable<SectionHeaderProps["size"]>, string> = {
-  md: "text-h-02",
-  lg: "text-h-02",
+  md: "text-h-01",
+  lg: "text-h-01",
 };
 
 export function SectionHeader({ title, level, eyebrow, description, className, size = "lg" }: SectionHeaderProps) {
   const HeadingTag = level;
   return (
-    <div className={cn("flex flex-col gap-3", className)}>
+    <div className={cn("flex flex-col gap-2 ", className)}>
       {eyebrow && (
         <span className="font-subheading text-para-md uppercase text-brand-gold">{eyebrow}</span>
       )}
-      <HeadingTag className={cn("font-heading font-bold text-black", titleSizeClasses[size])}>{title}</HeadingTag>
-      {description && <p className="font-body text-body-lg text-brand-forest-700 max-w-2xl">{description}</p>}
+      <HeadingTag className={cn("font-heading font-light text-h-01 text-black", titleSizeClasses[size])}>{title}</HeadingTag>
+      {description && <p className="font-body text-para-sm font-thin text-black ">{description}</p>}
     </div>
   );
 }

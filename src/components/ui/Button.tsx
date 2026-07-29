@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "cream";
 type ButtonSize = "sm" | "md" | "lg";
 
 type ButtonProps = {
@@ -19,19 +19,19 @@ type ButtonProps = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center text-para-sm rounded-button font-body font-thin tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center rounded-button font-body font-thin tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "bg-brand-forest-900 text-white/90 hover:bg-brand-gold active:bg-brand-gold-light",
-  secondary: "bg-brand-cream text-brand-forest-900 border border-brand-forest-700 hover:bg-brand-cream-dark",
+  secondary: "bg-white text-brand-forest-900 border border-brand-forest-700 hover:bg-brand-cream-dark",
   ghost: "bg-transparent text-brand-forest-900 hover:bg-brand-forest-50",
+  cream: "bg-brand-gold text-white hover:bg-brand-cream-dark",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  // text-* removed — text-para-sm in baseClasses now governs size on all variants
-  sm: "px-8 py-2",
-  md: "px-12 py-3",
-  lg: "px-16 py-4",
+  sm: "text-para-xs px-6 py-3",
+  md: "text-para-sm px-12 py-3",
+  lg: "text-para-md px-16 py-4",
 };
 
 export function Button({

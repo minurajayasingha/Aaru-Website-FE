@@ -1,71 +1,47 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import type { MotionValue } from "framer-motion";
 import { siteConfig } from "@/content/site";
 import { footerLinkGroups } from "@/content/nav";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
-type FooterProps = {
-  progress: MotionValue<number>;
-};
-
-export function Footer({ progress }: FooterProps) {
+export function Footer() {
   return (
     <footer className="bg-brand-forest-900 text-white">
-      <ScrollReveal
-        progress={progress}
-        range={[0.05, 0.25]}
-        y={56}
-        scale
-        className="flex flex-col gap-10 px-section-s md:px-section-x pb-4 pt-8 md:flex-row md:items-center md:justify-between lg:items-start"
-      >
-        <ScrollReveal
-          progress={progress}
-          range={[0.15, 0.33]}
-          className="flex flex-col items-start gap-4 lg:flex-col xl:flex-row sm:items-center xl:gap-12 h-full lg:items-start lg:justify-start lg:w-auto w-full"
-        >
+      <div className="flex flex-col gap-10 px-section-s md:px-section-x pb-4 pt-8 md:flex-row md:items-center md:justify-between lg:items-start">
+        <div className="flex flex-col items-start gap-4 lg:flex-col xl:flex-row sm:items-center xl:gap-12 h-full lg:items-start lg:justify-start lg:w-auto w-full">
           <div className="flex flex-col items-center justify-center md:items-start w-full ">
             <div className="relative h-40 w-40 sm:h-32 sm:w-32 md:h-36 md:w-36 lg:h-40 lg:w-40 justify-center items-center">
               <Image src="/images/logo/aaru-mark-white.svg" alt="Aaru Living" fill className="object-contain " />
             </div>
           </div>
           <div className="flex flex-col md:flex-col gap-3.5 items-center w-full lg:w-auto lg:items-start lg:pt-3">
-            <span className="font-heading text-heading-sm text-white font-extralight w-full text-center md:text-left ">Aaru Living</span>
+            <span className="font-heading text-para-lg text-white font-extralight w-full text-center md:text-left ">Aaru Living</span>
             <p className="font-body text-xs w-full text-center md:text-left xl:whitespace-nowrap text-white/70">
               Developed By <span className="text-white text-para-xxs">{siteConfig.legalDeveloper}</span>
             </p>
           </div>
-        </ScrollReveal>
+        </div>
 
         <div className="flex flex-col gap-10 sm:flex-row sm:gap-10 lg:gap-16 xl:gap-18 lg:pt-4 xl:pt-0">
-          {footerLinkGroups.map((group, index) => (
-            <ScrollReveal
-              key={group.title}
-              progress={progress}
-              range={[0.3 + index * 0.15, 0.48 + index * 0.15]}
-              className="flex flex-col"
-            >
-              <h4 className="font-heading text-heading-sm text-white font-extralight pb-3">{group.title}</h4>
+          {footerLinkGroups.map((group) => (
+            <div key={group.title} className="flex flex-col">
+              <h4 className="font-heading text-para-lg text-white font-extralight pb-3">{group.title}</h4>
               <ul className="flex flex-col gap-0.2">
                 {group.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="font-body text-para-xxs font-thin text-white/90 tracking-wide hover:text-brand-gold">
+                    <Link
+                      href={link.href}
+                      className="inline-block font-body text-para-xxs font-thin text-white/90 tracking-wide transition-transform duration-500 ease-out hover:translate-x-1 hover:text-brand-forest-300"
+                    >
                       {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </ScrollReveal>
+            </div>
           ))}
 
-          <ScrollReveal
-            progress={progress}
-            range={[0.6, 0.8]}
-            className="flex flex-col gap-2.5 pb-8 sm:pb-0"
-          >
-            <h4 className="font-heading text-heading-sm text-white font-extralight pb-3">Contact</h4>
+          <div className="flex flex-col gap-2.5 pb-8 sm:pb-0">
+            <h4 className="font-heading text-para-lg text-white font-extralight pb-3">Contact</h4>
             <div className="flex items-center gap-2">
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/email.svg" alt="" fill className="object-contain" />
@@ -78,17 +54,13 @@ export function Footer({ progress }: FooterProps) {
               </div>
               <span className="font-body text-para-xxs font-thin text-white/80 tracking-wide">{siteConfig.contactPhone}</span>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
-      </ScrollReveal>
+      </div>
 
-      <ScrollReveal
-        progress={progress}
-        range={[0.8, 1]}
-        className="pt-4 pb-4 md:pt-8  text-center font-body text-para-xxs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0"
-      >
+      <div className="pt-4 pb-4 md:pt-8  text-center font-body text-para-xxs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0">
         © {new Date().getFullYear()} Aaru Living. All Rights Reserved.
-      </ScrollReveal>
+      </div>
     </footer>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 import { residences } from "@/content/residences";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ResidenceCard } from "@/components/ui/ResidenceCard";
+import { ResidenceListingCard } from "@/components/residences/ResidenceListingCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { PageHero } from "@/components/ui/PageHero";
@@ -27,7 +27,7 @@ export default function ResidencesPage() {
         height="lg"
       />
       
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeader
           eyebrow="Residences For Sale"
           title="Three Ways to Call Aaru Home"
@@ -38,15 +38,16 @@ export default function ResidencesPage() {
         <div className="grid gap-8 md:grid-cols-3">
           {residences.map((residence, index) => (
             <Reveal key={residence.slug} delay={index * 0.1}>
-              <ResidenceCard
+              <ResidenceListingCard
                 slug={residence.slug}
                 name={residence.name}
                 floorLabel={residence.floorLabel}
                 unitBadge={residence.unitBadge}
                 bedroomLabel={residence.bedroomLabel}
                 sizeLabel={residence.sizeLabel}
-                imageSrc={residence.heroImage.src}
-                imageAlt={residence.heroImage.alt}
+                cardAmenities={residence.cardAmenities}
+                imageSrc={residence.cardImage.src}
+                imageAlt={residence.cardImage.alt}
               />
             </Reveal>
           ))}

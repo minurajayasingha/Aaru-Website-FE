@@ -17,9 +17,9 @@ type StatsSectionProps = {
 function StatText({ stat }: { stat: Stat }) {
   return (
     <>
-      <p className="font-heading text-heading-sm">{stat.value}</p>
-      <p className="font-subheading text-para-xxs uppercase tracking-wide">{stat.label}</p>
-      <p className="font-body text-para-xxs text-brand-cream/60">{stat.caption}</p>
+      <p className="font-subheading text-h-03 font-thin">{stat.value}</p>
+      <p className="font-heading text-para-lg tracking-wide font-thin">{stat.label}</p>
+      <p className="font-heading text-para-xs font-thin text-white/60">{stat.caption}</p>
     </>
   );
 }
@@ -58,8 +58,8 @@ function DesktopBar({ stats }: { stats: Stat[] }) {
   });
 
   return (
-    <div ref={barRef} className="hidden h-[300px] items-center bg-brand-forest-800 px-6 text-brand-cream md:flex">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-5 divide-x divide-brand-cream/15 text-center">
+    <div ref={barRef} className="hidden h-[240px] items-center bg-brand-forest-900 px-20 text-brand-cream md:flex  ">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-5 divide-x divide-brand-cream/20 text-center">
         {stats.map((stat, index) => (
           <DesktopColumn key={stat.label} stat={stat} index={index} total={stats.length} progress={scrollYProgress} />
         ))}
@@ -84,7 +84,7 @@ function DesktopColumn({
   const y = useTransform(progress, range, [32, 0]);
 
   return (
-    <motion.div className="flex flex-col items-center gap-1.5 px-4" style={{ opacity, y }}>
+    <motion.div className="flex flex-col items-center gap-0.5 px-4" style={{ opacity, y }}>
       <StatText stat={stat} />
     </motion.div>
   );

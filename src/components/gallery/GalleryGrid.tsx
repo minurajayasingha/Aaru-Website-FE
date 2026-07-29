@@ -15,7 +15,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-brand-forest-800 py-8">
+      <div className="bg-brand-forest-900 py-6">
         <Tabs
           tabs={categories.map((category) => ({ id: category.id, label: category.label, icon: category.icon }))}
           activeId={activeCategory}
@@ -30,11 +30,11 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
         {active.sections.map((section) => (
           <div key={section.slug} className="flex flex-col gap-4">
             {section.heading && (
-              <h3 className="font-subheading uppercase text-para-xxs text-brand-forest-700">
+              <h3 className="font-subheading uppercase text-para-xs text-black md:pl-6">
                 {section.heading}
               </h3>
             )}
-            <div className="flex flex-wrap gap-3 sm:gap-4">
+            <div className="flex flex-wrap gap-4 sm:gap-4">
               {section.images.map((image) => (
                 <div
                   key={image.src}

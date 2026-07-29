@@ -2,11 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import { CtaBanner } from "./CtaBanner";
+import { getCtaBannerContent } from "@/content/ctaBanner";
 
 export function CtaBannerGate() {
   const pathname = usePathname();
   if (pathname === "/contact") {
     return null;
   }
-  return <CtaBanner />;
+  return <CtaBanner {...getCtaBannerContent(pathname ?? "/")} />;
 }

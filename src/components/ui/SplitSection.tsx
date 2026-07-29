@@ -14,6 +14,8 @@ type SplitSectionProps = {
   imageAlt: string;
   imagePosition?: "left" | "right";
   imageFit?: "cover" | "contain";
+  /** When false, the section's reveal replays every time it enters/leaves the viewport instead of only once. */
+  revealOnce?: boolean;
 };
 
 export function SplitSection({
@@ -27,15 +29,16 @@ export function SplitSection({
   imageAlt,
   imagePosition = "right",
   imageFit = "cover",
+  revealOnce = true,
 }: SplitSectionProps) {
   const eyebrowEl = (
     <span className="font-subheading uppercase text-para-md text-brand-gold">{eyebrow}</span>
   );
-  const headingEl = <h2 className="font-heading font-normal text-h-02 text-black">{title}</h2>;
+  const headingEl = <h2 className="font-heading font-light text-h-01 text-black">{title}</h2>;
   const paragraphsEl = (
     <div className="flex flex-col gap-4">
       {paragraphs.map((paragraph) => (
-        <p key={paragraph} className="font-body text-para-sm font-light text-brand-forest-700 md:w-10/12">
+        <p key={paragraph} className="font-body text-para-sm font-thin text-black md:w-10/12">
           {paragraph}
         </p>
       ))}
@@ -48,7 +51,7 @@ export function SplitSection({
   );
 
   return (
-    <Reveal as="section" className="bg-white">
+    <Reveal as="section" className="bg-white" once={revealOnce}>
       {/* Mobile: stacked, image between heading and paragraph */}
       <div className="flex flex-col gap-4 px-section-s py-16 md:hidden">
         {eyebrowEl}

@@ -7,7 +7,7 @@ describe("ResidenceDetailPage", () => {
     const Page = await ResidenceDetailPage({ params: Promise.resolve({ slug: "garden-condos" }) });
     render(Page);
     expect(screen.getByRole("heading", { level: 1, name: "Garden Condos" })).toBeInTheDocument();
-    expect(screen.getByText("Private Pool")).toBeInTheDocument();
+    expect(screen.getAllByText("Private Pool").length).toBeGreaterThan(0);
   });
 
   it("generates static params for all three residence slugs", async () => {

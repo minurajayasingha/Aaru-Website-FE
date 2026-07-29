@@ -31,14 +31,17 @@ const config: Config = {
       },
       fontSize: {
         /// headings
-        "h-01": ["3.5rem", { lineHeight: "1.05" , letterSpacing: "0em" }],//main headings big heros sections headings 
-        "h-02": ["2.75rem", { lineHeight: "1.5" , letterSpacing: "0em" }],//main headings big heros sections headings 
+        "h-01": ["3.65rem", { lineHeight: "1" , letterSpacing: "-0.02em" }],//main headings big heros sections headings 
+        "h-02": ["2.75rem", { lineHeight: "1.1" , letterSpacing: "0em" }],//CTA banner and card headings 
+        "h-03": ["2rem", { lineHeight: "1" , letterSpacing: "0em" }],//numbering
+        "h-04": ["1.65rem", { lineHeight: "1.1" , letterSpacing: "-0.002em" }],//numbering residence units available/size/price labels
         //Paragraphs
-        "para-lg": ["1.5rem", { lineHeight: "1.2", letterSpacing: "0.2em"  }],//footer link headings
-        "para-md": ["1.25rem", { lineHeight: "1", letterSpacing: "0.2em" }],//eye brows
-        "para-sm": ["1rem", { lineHeight: "1", letterSpacing: "0em" }],//paragarphs/buttons
+        "para-lg": ["1.5rem", { lineHeight: "1.2", letterSpacing: "0em"  }],//footer link headings
+        "para-md": ["1.25rem", { lineHeight: "1", letterSpacing: "0em" }],//eye brows
+        "para-sm": ["1rem", { lineHeight: "1.2", letterSpacing: "0em" }],//paragarphs/buttons/gallery nav
         "para-xs": ["0.9rem", { lineHeight: "1", letterSpacing: "0em" }],// navbar links
         "para-xxs": ["0.8rem", { lineHeight: "1", letterSpacing: "0em" }],//footer links/form fileds naming
+        "para-xxxs": ["0.65rem", { lineHeight: "1", letterSpacing: "0em" }],//footer links/form fileds naming
       },
       fontWeight: {
         // Use anywhere: font-thin / font-normal / font-bold.

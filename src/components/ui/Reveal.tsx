@@ -9,6 +9,8 @@ type RevealProps = {
   as?: "div" | "section" | "li";
   delay?: number;
   className?: string;
+  /** When false, the reveal replays every time it enters/leaves the viewport (in either scroll direction) instead of only once. */
+  once?: boolean;
 };
 
 const MotionTag = {
@@ -17,14 +19,14 @@ const MotionTag = {
   li: motion.li,
 };
 
-export function Reveal({ children, as = "div", delay = 0, className }: RevealProps) {
+export function Reveal({ children, as = "div", delay = 0, className, once = true }: RevealProps) {
   const MotionComponent = MotionTag[as];
   return (
     <MotionComponent
       className={cn(className)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once, margin: "-80px" }}
       variants={fadeUpVariants}
       transition={{ delay }}
     >

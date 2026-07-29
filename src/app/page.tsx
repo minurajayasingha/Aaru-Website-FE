@@ -6,10 +6,13 @@ import { residences } from "@/content/residences";
 import { commercialAmenities } from "@/content/amenities";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
-import { ResidenceCard } from "@/components/ui/ResidenceCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitSection } from "@/components/ui/SplitSection";
 import { StatsSection } from "@/components/ui/StatsSection";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { CommercialAmenitiesRow } from "@/components/home/CommercialAmenitiesRow";
+import { HomeFeatureSection } from "@/components/home/HomeFeatureSection";
+import { ResidenceCardsRow } from "@/components/home/ResidenceCardsRow";
 
 export const metadata: Metadata = buildMetadata({
   title: "Aaru Living | Luxury Residences in Arugam Bay",
@@ -21,6 +24,7 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
+      <SmoothScroll />
       <section className="relative flex h-screen items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
         <Image
           src="/images/hero/home.png"
@@ -30,7 +34,7 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-8 px-6 pb-[7vh]">
-          <h1 className="font-heading text-2xl md:text-4xl max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
+          <h1 className="font-heading text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
           <Button href="/residences" variant="primary" size="md">
             Explore Residences
           </Button>
@@ -49,12 +53,13 @@ export default function HomePage() {
         imageSrc="/images/home/beach.png"
         imageAlt="Aerial view of Arugam Bay's coastline"
         imagePosition="right"
+        revealOnce={false}
       />
 
 
       <StatsSection stats={siteConfig.stats} />
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <Reveal as="section" className="mx-auto max-w-7xl px-6 py-12  " once={false}>
         <SectionHeader
           eyebrow="Residences For Sale"
           title="Three Ways to Call Aaru Home"
@@ -62,34 +67,22 @@ export default function HomePage() {
           description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
           className="mb-12 text-center items-center"
         />
-        <div className="grid gap-8 md:grid-cols-3">
-          {residences.map((residence, index) => (
-            <Reveal key={residence.slug} delay={index * 0.1}>
-              <ResidenceCard
-                slug={residence.slug}
-                name={residence.name}
-                floorLabel={residence.floorLabel}
-                unitBadge={residence.unitBadge}
-                bedroomLabel={residence.bedroomLabel}
-                sizeLabel={residence.sizeLabel}
-                imageSrc={residence.heroImage.src}
-                imageAlt={residence.heroImage.alt}
-              />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+        <ResidenceCardsRow residences={residences} />
+      </Reveal>
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-6 md:grid-cols-5">
-          {commercialAmenities.map((amenity) => (
-            <div key={amenity.id} className="flex flex-col items-center gap-2 text-center">
-              <p className="font-subheading uppercase text-para-xxs text-brand-forest-900">{amenity.name}</p>
-              <p className="font-body text-xs text-brand-forest-700">{amenity.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <HomeFeatureSection
+        title="More Than a Home, It's a Way of Life"
+        paragraph="Clubhouse, wellness, dining, co-working and connectivity — all in one curated destination."
+        ctaLabel="Commercial Space"
+        ctaHref="/commercial-space"
+        secondaryCtaLabel="Contact Us"
+        secondaryCtaHref="/contact"
+        imageSrc="/images/home/lifestyle.png"
+        imageAlt="Aaru's clubhouse and pool deck at sunset"
+        imagePosition="right"
+      />
+
+      <CommercialAmenitiesRow amenities={commercialAmenities} />
       
       <SplitSection
         eyebrow="Map"
@@ -104,6 +97,7 @@ export default function HomePage() {
         imageAlt="Map showing Aaru's location in Arugam Bay relative to the lagoon and nearby cities"
         imagePosition="left"
         imageFit="contain"
+        revealOnce={false}
       />
     </>
   );

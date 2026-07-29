@@ -402,8 +402,9 @@ export function StyleGuideContent() {
               unitBadge={sampleResidence.unitBadge}
               bedroomLabel={sampleResidence.bedroomLabel}
               sizeLabel={sampleResidence.sizeLabel}
-              imageSrc={sampleResidence.heroImage.src}
-              imageAlt={sampleResidence.heroImage.alt}
+              cardAmenities={sampleResidence.cardAmenities}
+              imageSrc={sampleResidence.cardImage.src}
+              imageAlt={sampleResidence.cardImage.alt}
             />
           </div>
         </div>
