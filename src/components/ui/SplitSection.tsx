@@ -51,7 +51,7 @@ export function SplitSection({
   );
 
   return (
-    <Reveal as="section" className="bg-white" once={revealOnce}>
+    <Reveal as="section" className="bg-white">
       {/* Mobile: stacked, image between heading and paragraph */}
       <div className="flex flex-col gap-4 px-section-s py-16 md:hidden">
         {eyebrowEl}
@@ -83,7 +83,7 @@ export function SplitSection({
         </div>
         <div
           className={cn(
-            "relative aspect-[6/5] w-full overflow-hidden rounded-card xl:aspect-[15/10]",
+            "relative aspect-[6/5] w-full overflow-hidden rounded-card xl:aspect-[8/5]",
             imagePosition === "left" ? "md:order-1" : "md:order-2",
           )}
         >

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { FooterSection } from "@/components/layout/FooterSection";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { siteConfig } from "@/content/site";
 
 const heading = Fraunces({
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${heading.variable} ${subheading.variable} ${body.variable}`}>
       <body className="font-body">
+        <SmoothScroll />
         <OrganizationJsonLd />
         <Navbar />
         <main>{children}</main>

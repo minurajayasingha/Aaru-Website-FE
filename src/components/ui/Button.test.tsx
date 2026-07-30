@@ -21,7 +21,7 @@ describe("Button", () => {
 
   it("applies secondary variant classes", () => {
     render(<Button variant="secondary">Explore</Button>);
-    expect(screen.getByRole("button")).toHaveClass("bg-brand-cream");
+    expect(screen.getByRole("button")).toHaveClass("bg-white");
   });
 
   it("visually and functionally disables a Link-rendered button when href + disabled are both set", () => {

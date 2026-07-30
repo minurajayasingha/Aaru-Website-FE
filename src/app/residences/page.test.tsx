@@ -8,7 +8,7 @@ describe("ResidencesPage", () => {
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /View More/i })).toHaveLength(3);
     expect(screen.getByText("Garden Condos")).toBeInTheDocument();
-    expect(screen.getByText("Elevated Condos")).toBeInTheDocument();
+    expect(screen.getByText("Condos")).toBeInTheDocument();
     expect(screen.getByText("Private Villas")).toBeInTheDocument();
   });
 });

@@ -45,8 +45,8 @@ describe("ResidenceJsonLd", () => {
   it("omits floorSize (without throwing) when the size label is a range", () => {
     const rangeResidence: Residence = {
       ...baseResidence,
-      slug: "elevated-condos",
-      name: "Elevated Condos",
+      slug: "condos",
+      name: "Condos",
       bedroomLabel: "2 BD",
       sizeLabel: "1,600-1,800 sqft",
     };

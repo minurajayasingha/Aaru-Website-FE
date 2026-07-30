@@ -71,10 +71,10 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       </Reveal>
 
       <Reveal as="section" className="bg-brand-cream-dark/30 px-section-s py-12 md:px-section-x">
-        <div className="mx-auto flex flex-col lg:flex-row max-w-6xl gap-10  lg:items-center">
+        <div className="mx-auto flex flex-col lg:flex-row  gap-10  lg:items-center">
           <UnitLayoutGallery images={residence.layoutGallery}  />
           <div className="flex flex-col w-full lg:w-2/5 ">
-            <h2 className="font-heading font-normal lg:font-normal text-h-02 text-black pb-4 lg:pl-4 text-center lg:text-left">Unit Layout</h2>
+            <h2 className="font-heading font-normal lg:font-normal text-h-02 text-black pb-6 lg:pl-4 text-center lg:text-center">Unit Layout</h2>
             <div className="flex flex-row lg:flex-row divide-x divide-brand-forest-300">
               <div className="flex-1 px- py-6 lg:py-6 flex flex-col items-center gap-2">
                 <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">{residence.unitsAvailableLabel}</p>
@@ -99,7 +99,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
         <h2 className="mb-10 text-center font-heading font-normal lg:font-normal text-h-03 text-white md:text-h-02">
           Unit Amenities
         </h2>
-        <div className="mx-auto grid max-w-6xl grid-cols-2  gap-y-12 sm:grid-cols-3 md:grid-cols-5 md:divide-x divide-brand-cream/20 md:[&>*:nth-child(5n+1)]:border-l-0">
+        <div className="mx-auto grid max-w-6xl grid-cols-2  gap-y-12 sm:grid-cols-3 md:grid-cols-5 md:divide-x divide-brand-cream/20 md:[&>*:nth-child(5n+1)]:!border-l-0">
           {residence.amenities.map((item) => {
             const icon = getAmenityIcon(item);
             return (
@@ -117,7 +117,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       </Reveal>
 
       {residence.gallerySections.length > 0 && (
-        <section className="mx-auto flex  flex-col gap-12 px-section-s py-16 md:px-section-x lg:py-16">
+        <Reveal as="section" once={false} className="mx-auto flex  flex-col gap-12 px-section-s py-16 md:px-section-x lg:py-16">
           {residence.gallerySections.map((section) => (
             <ResidenceGallerySection key={section.heading} section={section} />
           ))}
@@ -129,11 +129,11 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
               Contact Us
             </Button>
           </div>
-        </section>
+        </Reveal>
       )}
 
       {otherResidences.length > 0 && (
-        <section className="mx-auto  px-section-s py-12 md:px-section-x lg:pb-16">
+        <Reveal as="section" once={false} className="mx-auto  px-section-s py-12 md:px-section-x lg:pb-16">
           <h2 className="mb-12 text-center font-heading font-light text-h-01 text-black">Other Residences</h2>
           <div className="grid gap-8 sm:grid-cols-2">
             {otherResidences.map((other) => (
@@ -151,7 +151,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
               />
             ))}
           </div>
-        </section>
+        </Reveal>
       )}
     </>
   );

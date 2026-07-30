@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitSection } from "@/components/ui/SplitSection";
 import { StatsSection } from "@/components/ui/StatsSection";
-import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { CommercialAmenitiesRow } from "@/components/home/CommercialAmenitiesRow";
 import { HomeFeatureSection } from "@/components/home/HomeFeatureSection";
 import { ResidenceCardsRow } from "@/components/home/ResidenceCardsRow";
@@ -24,7 +23,6 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <SmoothScroll />
       <section className="relative flex h-screen items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
         <Image
           src="/images/hero/home.png"

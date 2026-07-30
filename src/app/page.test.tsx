@@ -15,7 +15,7 @@ describe("HomePage", () => {
   it("renders a ResidenceCard for each residence type", () => {
     render(<HomePage />);
     expect(screen.getAllByRole("heading", { level: 3, name: "Garden Condos" })[0]).toBeInTheDocument();
-    expect(screen.getAllByRole("heading", { level: 3, name: "Elevated Condos" })[0]).toBeInTheDocument();
+    expect(screen.getAllByRole("heading", { level: 3, name: "Condos" })[0]).toBeInTheDocument();
     expect(screen.getAllByRole("heading", { level: 3, name: "Private Villas" })[0]).toBeInTheDocument();
   });
 });

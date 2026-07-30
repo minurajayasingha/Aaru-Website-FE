@@ -10,7 +10,7 @@ import { PageHero } from "@/components/ui/PageHero";
 export const metadata: Metadata = buildMetadata({
   title: "Residences",
   description:
-    "Explore Aaru's three residence types in Arugam Bay: Garden Condos, Elevated Condos, and Private Villas.",
+    "Explore Aaru's three residence types in Arugam Bay: Garden Condos, Condos, and Private Villas.",
   path: "/residences",
 });
 
@@ -27,7 +27,7 @@ export default function ResidencesPage() {
         height="lg"
       />
       
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <Reveal as="section" once={false} className="mx-auto max-w-7xl px-section-s py-20 md:px-section-x">
         <SectionHeader
           eyebrow="Residences For Sale"
           title="Three Ways to Call Aaru Home"
@@ -37,7 +37,7 @@ export default function ResidencesPage() {
         />
         <div className="grid gap-8 md:grid-cols-3">
           {residences.map((residence, index) => (
-            <Reveal key={residence.slug} delay={index * 0.1}>
+            <Reveal key={residence.slug} delay={index * 0.1} once={false}>
               <ResidenceListingCard
                 slug={residence.slug}
                 name={residence.name}
@@ -52,7 +52,7 @@ export default function ResidencesPage() {
             </Reveal>
           ))}
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

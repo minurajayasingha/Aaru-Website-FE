@@ -319,7 +319,7 @@ export function StyleGuideContent() {
             onChange={(e) => setSelectValue(e.target.value)}
             options={[
               { value: "garden-condos", label: "Garden Condos" },
-              { value: "elevated-condos", label: "Elevated Condos" },
+              { value: "condos", label: "Condos" },
               { value: "private-villas", label: "Private Villas" },
             ]}
           />

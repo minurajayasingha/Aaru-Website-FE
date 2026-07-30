@@ -5,13 +5,13 @@ describe("buildMetadata", () => {
   it("builds title, description, canonical, and OG fields", () => {
     const metadata = buildMetadata({
       title: "Residences",
-      description: "Explore Aaru's residences: Garden Condos, Elevated Condos, and Private Villas.",
+      description: "Explore Aaru's residences: Garden Condos, Condos, and Private Villas.",
       path: "/residences",
     });
 
     expect(metadata.title).toBe("Residences");
     expect(metadata.description).toBe(
-      "Explore Aaru's residences: Garden Condos, Elevated Condos, and Private Villas."
+      "Explore Aaru's residences: Garden Condos, Condos, and Private Villas."
     );
     expect(metadata.alternates?.canonical).toBe("/residences");
     expect(metadata.openGraph?.url).toBe("/residences");

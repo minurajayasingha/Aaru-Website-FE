@@ -19,10 +19,10 @@ type CommercialFeatureGridProps = {
 export function CommercialFeatureGrid({ items, ctaLabel, ctaHref }: CommercialFeatureGridProps) {
   return (
     <Reveal as="section" className="bg-white px-section-s py-16 md:px-section-x">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto grid  grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
         {items.map((item) => (
-          <div key={item.id} className="flex flex-col gap-4">
-            <div className="relative aspect-[4/6] w-full overflow-hidden rounded-lg">
+          <div key={item.id} className="flex flex-col gap-4 ">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg">
               <Image
                 src={item.imageSrc}
                 alt={item.imageAlt}

@@ -47,7 +47,7 @@ export function ResidenceCard({
 }: ResidenceCardProps) {
   return (
     <Card className="group transition-colors duration-700 ease-out hover:bg-white">
-      <div className="relative aspect-[5/4]">
+      <div className="relative aspect-square">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -67,7 +67,7 @@ export function ResidenceCard({
             const resolved = resolveCardAmenity(item, bedroomLabel, sizeLabel);
             if (!resolved) return null;
             return (
-              <span key={item} className="flex items-center ">
+              <span key={item} className="flex items-center gap-1">
                 <Image  src={resolved.icon} alt="" width={16} height={16} />
                 <span className="font-body text-para-xxxs font-thin text-black pt-1 ">{resolved.label}</span>
               </span>

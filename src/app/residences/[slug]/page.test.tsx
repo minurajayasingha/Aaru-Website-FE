@@ -15,7 +15,7 @@ describe("ResidenceDetailPage", () => {
     expect(params).toEqual(
       expect.arrayContaining([
         { slug: "garden-condos" },
-        { slug: "elevated-condos" },
+        { slug: "condos" },
         { slug: "private-villas" },
       ])
     );

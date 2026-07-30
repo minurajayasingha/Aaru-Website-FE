@@ -78,7 +78,7 @@ describe("Select", () => {
         onChange={onChange}
         options={[
           { value: "garden-condos", label: "Garden Condo" },
-          { value: "elevated-condos", label: "Elevated Condo" },
+          { value: "condos", label: "Condo" },
         ]}
       />
     );
@@ -96,7 +96,7 @@ describe("Select", () => {
         onChange={onChange}
         options={[
           { value: "garden-condos", label: "Garden Condo" },
-          { value: "elevated-condos", label: "Elevated Condo" },
+          { value: "condos", label: "Condo" },
         ]}
         error="Please select an option"
       />

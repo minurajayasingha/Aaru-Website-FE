@@ -1,8 +1,6 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/cn";
 
@@ -24,39 +22,6 @@ function AmenityText({ item, isDark }: { item: IconAmenityItem; isDark: boolean 
   );
 }
 
-// No pinning, just a plain row whose columns are scrubbed directly by how
-// far it has scrolled through the viewport — scroll down and each column
-// reveals left to right, scroll back up and they retreat in step.
-function getRevealRange(total: number, index: number): [number, number] {
-  if (index === 0) return [-1, 0];
-  const segment = 1 / (total - 1);
-  return [(index - 1) * segment, index * segment];
-}
-
-function AmenityColumn({
-  item,
-  index,
-  total,
-  progress,
-  isDark,
-}: {
-  item: IconAmenityItem;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-  isDark: boolean;
-}) {
-  const range = getRevealRange(total, index);
-  const opacity = useTransform(progress, range, [0, 1]);
-  const y = useTransform(progress, range, [32, 0]);
-
-  return (
-    <motion.div className="flex flex-col items-center gap-1.5 text-center" style={{ opacity, y }}>
-      <AmenityText item={item} isDark={isDark} />
-    </motion.div>
-  );
-}
-
 type IconAmenityRowProps = {
   heading?: string;
   paragraph?: string;
@@ -68,11 +33,6 @@ type IconAmenityRowProps = {
 
 export function IconAmenityRow({ heading, paragraph, items, theme = "light", columnsClassName }: IconAmenityRowProps) {
   const isDark = theme === "dark";
-  const barRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: barRef,
-    offset: ["start 0.85", "start 0.55"],
-  });
 
   return (
     <section className={cn("px-6 py-16", isDark ? "bg-brand-forest-900" : undefined)}>
@@ -98,22 +58,16 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light", col
         )}
 
         <div
-          ref={barRef}
           className={cn(
             "hidden md:grid",
             columnsClassName,
             isDark ? "divide-x divide-white/10" : "divide-x divide-brand-forest-100",
           )}
         >
-          {items.map((item, index) => (
-            <AmenityColumn
-              key={item.id}
-              item={item}
-              index={index}
-              total={items.length}
-              progress={scrollYProgress}
-              isDark={isDark}
-            />
+          {items.map((item) => (
+            <div key={item.id} className="flex flex-col items-center gap-1.5 text-center">
+              <AmenityText item={item} isDark={isDark} />
+            </div>
           ))}
         </div>
 

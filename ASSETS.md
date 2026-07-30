@@ -42,7 +42,7 @@ Content lives in `src/content/ctaBanner.ts` — this is the ONE file to edit if 
 | `public/images/cta/home.png` | ✅ | `/` |
 | `public/images/cta/residences.png` | ⏳ missing | `/residences` |
 | `public/images/cta/residences-garden-condos.png` | ✅ | `/residences/garden-condos` |
-| `public/images/cta/residences-elevated-condos.png` | ✅ | `/residences/elevated-condos` |
+| `public/images/cta/residences-condos.png` | ✅ | `/residences/condos` |
 | `public/images/cta/residences-private-villas.png` | ✅ | `/residences/private-villas` |
 | `public/images/cta/gallery.png` | ✅ | `/gallery` |
 | `public/images/cta/commercial-space.png` | ✅ | `/commercial-space` |
@@ -79,27 +79,27 @@ Content lives in `src/content/ctaBanner.ts` — this is the ONE file to edit if 
 
 Each residence has its own **`cardImage`** — used on the home page cards row, the `/residences` listing page, the "Other Residences" section on each detail page, and the style guide sample. This is separate from the detail-page hero banner (below), so you can use a different photo for the card vs the big top banner:
 - `residences/garden-condos/card.jpg` ⏳ not uploaded yet
-- `residences/elevated-condos/card.jpg` ⏳ not uploaded yet
+- `residences/condos/card.jpg` ⏳ not uploaded yet
 - `residences/private-villas/card.jpg` ⏳ not uploaded yet
 
 ## Residences — Detail Pages (`src/app/residences/[slug]/page.tsx`)
 
-All content/paths for these are defined in **`src/content/residences.ts`** — one object per residence (`garden-condos`, `elevated-condos`, `private-villas`). Each has:
+All content/paths for these are defined in **`src/content/residences.ts`** — one object per residence (`garden-condos`, `condos`, `private-villas`). Each has:
 
 **1. Hero image (`heroImage`)** — the big banner image at the top of the residence detail page (and the SEO/JSON-LD `image` field). Separate from `cardImage` above:
 - `residences/garden-condos/hero.jpg` ✅
-- `residences/elevated-condos/hero.jpg` ✅
+- `residences/condos/hero.jpg` ✅
 - `residences/private-villas/hero.jpg` ✅
 
 **2. Unit Layout Gallery** (small side gallery, `layoutGallery` array) — all ✅ uploaded:
 - `residences/garden-condos/layout-1.jpg` … `layout-4.jpg`
-- `residences/elevated-condos/layout-1.jpg` … `layout-4.jpg`
+- `residences/condos/layout-1.jpg` … `layout-4.jpg`
 - `residences/private-villas/layout-1.jpg` … `layout-4.jpg`
 
-**3. Residence Gallery** (bottom gallery per residence, `gallerySections` — split into "suit-view" / "suit-room" style groups) — **none of these are uploaded yet**, only placeholder paths exist in the content file:
-- `residences/garden-condos/gallery-suit-view-1.jpg`, `-2.jpg`, `-3.jpg`, `gallery-suit-room-1.jpg` ⏳
-- `residences/elevated-condos/gallery-suit-view-1.jpg`, `-2.jpg` ⏳
-- `residences/private-villas/gallery-suit-view-1.jpg`, `-2.jpg`, `-3.jpg`, `gallery-suit-room-1.jpg`, `-2.jpg`, `-3.jpg` ⏳
+**3. Residence Gallery** (bottom gallery per residence, `gallerySections` — split into "suit-view" / "suit-room" style groups) — all ✅ uploaded:
+- `residences/garden-condos/gallery-suit-view-1.jpg`, `-2.jpg`, `-3.jpg`, `gallery-suit-room-1.jpg`
+- `residences/condos/gallery-suit-view-1.jpg`, `-2.jpg`, `-3.jpg`
+- `residences/private-villas/gallery-suit-view-1.jpg`, `-2.jpg`, `-3.jpg`, `gallery-suit-room-1.jpg`, `-2.jpg`, `-3.jpg`
 
 **4. Unit Amenities icons** — resolved by matching amenity label text via regex in `src/content/amenityIcons.ts` → `public/images/icons/amenities/*.svg`:
 | Icon | Status | Matches label containing |
@@ -128,7 +128,7 @@ Each residence has a **`cardAmenities: string[]`** field in `residences.ts` that
 
 Currently:
 - Garden Condos: `["bed", "size", "Private Pool"]` → bed, size, pool (3 icons)
-- Elevated Condos: `["bed", "size", "Elevated Lagoon Views"]` → bed, size, sunset (3 icons)
+- Condos: `["bed", "size", "Lagoon Views"]` → bed, size, sunset (3 icons)
 - Private Villas: `["bed", "size", "Private Pool", "Garden Deck"]` → bed, size, pool, garden-deck (4 icons)
 
 To change what shows on a card — including dropping bed/size entirely, or reordering them — just edit that one array.
@@ -169,7 +169,6 @@ Category tab icons (fixed, not folder-driven): `public/images/icons/gallery/resi
 - [ ] `icons/wellness/` — all 7 icons (clubhouse-pool, dining, yoga, wellness-spa, gym, coworking, connectivity)
 - [ ] `icons/amenities/` — 7 icons (garden-deck, balcony, sunset, bathroom, sofa, indoor-outdoor, premium)
 - [ ] Residence card images — all 3 residences (`card.jpg`)
-- [ ] Residence bottom galleries — all 3 residences (garden-condos, elevated-condos, private-villas)
 - [ ] `og/default.jpg`
 - [ ] `contact/map.png` — location map on the Contact page
 - [ ] Gallery folders: `interior`, `lifestyle`, `maps` categories are empty

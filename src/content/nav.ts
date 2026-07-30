@@ -7,7 +7,7 @@ export const navLinks: NavLink[] = [
     href: "/residences",
     children: [
       { label: "Garden Condos", href: "/residences/garden-condos" },
-      { label: "Elevated Condos", href: "/residences/elevated-condos" },
+      { label: "Condos", href: "/residences/condos" },
       { label: "Private Villas", href: "/residences/private-villas" },
     ],
   },
@@ -22,7 +22,7 @@ export const footerLinkGroups: { title: string; links: NavLink[] }[] = [
     title: "Condos",
     links: [
       { label: "Garden Condos", href: "/residences/garden-condos" },
-      { label: "Elevated Condos", href: "/residences/elevated-condos" },
+      { label: "Condos", href: "/residences/condos" },
       { label: "Private Villas", href: "/residences/private-villas" },
     ],
   },

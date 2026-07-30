@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { getGalleryCategories } from "@/content/gallery";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { PageHero } from "@/components/ui/PageHero";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = buildMetadata({
   title: "Gallery",
@@ -20,7 +21,9 @@ export default function GalleryPage() {
         imageAlt="Aerial view of Aaru's residences beside the beach at sunset"
         height="lg"
       />
-      <GalleryGrid categories={getGalleryCategories()} />
+      <Reveal once={false}>
+        <GalleryGrid categories={getGalleryCategories()} />
+      </Reveal>
     </>
   );
 }

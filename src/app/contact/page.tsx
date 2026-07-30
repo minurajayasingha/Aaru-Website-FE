@@ -5,6 +5,7 @@ import { siteConfig } from "@/content/site";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us",
@@ -23,7 +24,11 @@ export default function ContactPage() {
         height="lg"
       />
 
-      <section className="mx-auto grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center px-section-x">
+      <Reveal
+        as="section"
+        once={false}
+        className="mx-auto grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center px-section-x"
+      >
         <div className="flex flex-col gap-6 justify-center items-center">
           <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-center">Register Your Interest</h2>
           <p className="font-body text-para-sm font-light text-brand-forest-700 md:w-7/12 text-center pb-8">
@@ -31,8 +36,12 @@ export default function ContactPage() {
           </p>
           <ContactForm />
         </div>
-      </section>
-      <section className="mx-auto grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center px-section-x bg-white">
+      </Reveal>
+      <Reveal
+        as="section"
+        once={false}
+        className="mx-auto grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center px-section-x bg-white"
+      >
         <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-center">Contact Information</h2>
         <div className="flex flex-col md:flex-row gap-10 pt-1 md:items-center md:gap-1">
           <div className="flex flex-col items-start gap-6 text-center md:items-start md:text-left w-full md:w-3/6 md:pl-16">
@@ -61,7 +70,7 @@ export default function ContactPage() {
             />
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

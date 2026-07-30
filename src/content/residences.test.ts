@@ -8,10 +8,10 @@ describe("residences content", () => {
     expect(new Set(slugs).size).toBe(3);
   });
 
-  it("includes Garden Condos, Elevated Condos, and Private Villas", () => {
+  it("includes Garden Condos, Condos, and Private Villas", () => {
     const names = residences.map((r) => r.name);
     expect(names).toEqual(
-      expect.arrayContaining(["Garden Condos", "Elevated Condos", "Private Villas"])
+      expect.arrayContaining(["Garden Condos", "Condos", "Private Villas"])
     );
   });
 });

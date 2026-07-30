@@ -34,8 +34,8 @@ describe("getCtaBannerContent", () => {
     expect(getCtaBannerContent("/residences/garden-condos").imageSrc).toBe(
       "/images/cta/residences-garden-condos.png",
     );
-    expect(getCtaBannerContent("/residences/elevated-condos").imageSrc).toBe(
-      "/images/cta/residences-elevated-condos.png",
+    expect(getCtaBannerContent("/residences/condos").imageSrc).toBe(
+      "/images/cta/residences-condos.png",
     );
     expect(getCtaBannerContent("/residences/private-villas").imageSrc).toBe(
       "/images/cta/residences-private-villas.png",
