@@ -18,8 +18,10 @@ const baseResidence: Residence = {
   cardImage: { src: "/images/residences/garden-condos/card.jpg", alt: "Garden Condos hero" },
   layoutGallery: [{ src: "/images/residences/garden-condos/layout-1.jpg", alt: "Garden Condos layout" }],
   amenities: ["2 Bedrooms"],
+  amenitiesSectionTitle: "Unit Amenities",
   cardAmenities: [],
   gallerySections: [],
+  otherResidencesOrder: [],
 };
 
 function renderJsonLd(residence: Residence) {

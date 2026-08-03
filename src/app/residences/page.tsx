@@ -30,7 +30,7 @@ export default function ResidencesPage() {
       <Reveal as="section" once={false} className="mx-auto max-w-7xl px-section-s py-20 md:px-section-x">
         <SectionHeader
           eyebrow="Residences For Sale"
-          title="Three Ways to Call Aaru Home"
+          title="The Residences"
           level="h2"
           description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
           className="mb-12 text-center items-center"

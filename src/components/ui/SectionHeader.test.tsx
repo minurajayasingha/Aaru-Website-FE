@@ -9,7 +9,7 @@ describe("SectionHeader", () => {
   });
 
   it("renders the title as an h2 when level is h2", () => {
-    render(<SectionHeader title="Three Ways to Call Aaru Home" level="h2" />);
+    render(<SectionHeader title="The Residences" level="h2" />);
     expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
   });
 
@@ -17,7 +17,7 @@ describe("SectionHeader", () => {
     render(
       <SectionHeader
         eyebrow="Residences For Sale"
-        title="Three Ways to Call Aaru Home"
+        title="The Residences"
         level="h2"
         description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
       />

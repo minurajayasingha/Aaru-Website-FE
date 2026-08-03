@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Aaru Living",
   legalDeveloper: "Aaru Living (PVT) Ltd",
+  Developer: "Bayside Ventures",
   tagline: "Arugam Bay's first luxury residential real estate experience.",
   url: "https://www.aaruliving.com",
   contactEmail: "sales@aaruliving.com",

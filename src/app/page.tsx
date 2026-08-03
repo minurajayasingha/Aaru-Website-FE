@@ -60,7 +60,7 @@ export default function HomePage() {
       <Reveal as="section" className="mx-auto max-w-7xl px-6 py-12  " once={false}>
         <SectionHeader
           eyebrow="Residences For Sale"
-          title="Three Ways to Call Aaru Home"
+          title="The Residences"
           level="h2"
           description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
           className="mb-12 text-center items-center"

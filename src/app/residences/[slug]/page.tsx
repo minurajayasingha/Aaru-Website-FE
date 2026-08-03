@@ -37,7 +37,9 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
   const residence = getResidenceBySlug(slug);
   if (!residence) notFound();
 
-  const otherResidences = residences.filter((r) => r.slug !== residence.slug);
+  const otherResidences = residence.otherResidencesOrder
+    .map((slug) => getResidenceBySlug(slug))
+    .filter((r): r is NonNullable<typeof r> => r !== undefined && r.slug !== residence.slug);
 
   return (
     <>
@@ -63,11 +65,6 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
           description={residence.description}
           className="mx-auto max-w-5xl items-center text-center"
         />
-        <div className="mt-6 flex justify-center">
-          <Button href="/contact" variant="primary">
-            Contact Us
-          </Button>
-        </div>
       </Reveal>
 
       <Reveal as="section" className="bg-brand-cream-dark/30 px-section-s py-12 md:px-section-x">
@@ -97,7 +94,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
 
       <Reveal as="section" className="bg-brand-forest-800 px-section-s py-16 text-brand-cream px-section-x ">
         <h2 className="mb-10 text-center font-heading font-normal lg:font-normal text-h-03 text-white md:text-h-02">
-          Unit Amenities
+          {residence.amenitiesSectionTitle}
         </h2>
         <div className="mx-auto grid max-w-6xl grid-cols-2  gap-y-12 sm:grid-cols-3 md:grid-cols-5 md:divide-x divide-brand-cream/20 md:[&>*:nth-child(5n+1)]:!border-l-0">
           {residence.amenities.map((item) => {
@@ -115,6 +112,12 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
           })}
         </div>
       </Reveal>
+      
+        <div className="mt-6 flex justify-center">
+          <Button href="/contact" variant="primary">
+            Contact Us
+          </Button>
+        </div>
 
       {residence.gallerySections.length > 0 && (
         <Reveal as="section" once={false} className="mx-auto flex  flex-col gap-12 px-section-s py-16 md:px-section-x lg:py-16">

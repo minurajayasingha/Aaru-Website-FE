@@ -7,7 +7,7 @@ describe("Footer", () => {
     render(<Footer />);
     expect(screen.getByText("sales@aaruliving.com")).toBeInTheDocument();
     expect(screen.getByText("+94 77 018 3334")).toBeInTheDocument();
-    expect(screen.getByText(/Aaru Living\. All Rights Reserved\./)).toBeInTheDocument();
+    expect(screen.getByText(/© \d{4} Aaru/)).toBeInTheDocument();
   });
 
   it("renders the footer link groups", () => {

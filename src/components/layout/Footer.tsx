@@ -14,9 +14,9 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-col md:flex-col gap-3.5 items-center w-full lg:w-auto lg:items-start lg:pt-3">
-            <span className="font-heading text-para-lg text-white font-extralight w-full text-center md:text-left ">Aaru Living</span>
+            <span className="font-heading text-para-lg text-white font-extralight w-full text-center md:text-left ">Aaru</span>
             <p className="font-body text-xs w-full text-center md:text-left xl:whitespace-nowrap text-white/70">
-              Developed By <span className="text-white text-para-xxs">{siteConfig.legalDeveloper}</span>
+              Developed By <span className="text-white text-para-xxs">{siteConfig.Developer}</span>
             </p>
           </div>
         </div>
@@ -59,7 +59,7 @@ export function Footer() {
       </div>
 
       <div className="pt-4 pb-4 md:pt-8  text-center font-body text-para-xxs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0">
-        © {new Date().getFullYear()} Aaru Living. All Rights Reserved.
+        © {new Date().getFullYear()} Aaru
       </div>
     </footer>
   );

@@ -14,6 +14,6 @@ describe("RootLayout", () => {
     // than a single unique match.
     expect(screen.getAllByRole("link", { name: "Home" }).length).toBeGreaterThan(0);
     expect(screen.getByText("Page content")).toBeInTheDocument();
-    expect(screen.getByText(/All Rights Reserved/)).toBeInTheDocument();
+    expect(screen.getByText(/© \d{4} Aaru/)).toBeInTheDocument();
   });
 });

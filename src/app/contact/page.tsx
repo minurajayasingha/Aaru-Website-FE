@@ -42,7 +42,7 @@ export default function ContactPage() {
         once={false}
         className="mx-auto grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center px-section-x bg-white"
       >
-        <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-center">Contact Information</h2>
+        <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-left md:pl-16">Contact Information</h2>
         <div className="flex flex-col md:flex-row gap-10 pt-1 md:items-center md:gap-1">
           <div className="flex flex-col items-start gap-6 text-center md:items-start md:text-left w-full md:w-3/6 md:pl-16">
             <div className="flex flex-col gap-4">

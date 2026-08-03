@@ -25,9 +25,13 @@ export type Residence = {
   /** Thumbnail-switchable floor plan images shown in the Unit Layout section. */
   layoutGallery: GalleryImage[];
   amenities: string[];
+  /** Heading text for the "Unit Amenities" section on this residence's detail page. Customizable per residence. */
+  amenitiesSectionTitle: string;
   /** Extra amenities (beyond bed/size) shown as icon+label on the residence card. Pick any count from `amenities`. */
   cardAmenities: string[];
   gallerySections: GallerySection[];
+  /** Slugs, in display order, for the "Other Residences" cards shown at the bottom of this residence's detail page. */
+  otherResidencesOrder: string[];
 };
 
 export const residences: Residence[] = [
@@ -63,6 +67,7 @@ export const residences: Residence[] = [
       "Premium Finishes",
       "Access to Clubhouse",
     ],
+    amenitiesSectionTitle: "Unit Amenities",
     cardAmenities: ["bed", "size", "Access to Clubhouse"],
     gallerySections: [
       {
@@ -82,6 +87,7 @@ export const residences: Residence[] = [
         ],
       },
     ],
+    otherResidencesOrder: ["condos", "private-villas"],
   },
   {
     slug: "condos",
@@ -115,6 +121,7 @@ export const residences: Residence[] = [
       "Indoor / Outdoor Living",
       "Premium Finishes",
     ],
+    amenitiesSectionTitle: "Unit Amenities",
     cardAmenities: ["bed", "size", "Lagoon Views"],
     gallerySections: [
       {
@@ -127,6 +134,7 @@ export const residences: Residence[] = [
         ],
       },
     ],
+    otherResidencesOrder: ["garden-condos", "private-villas"],
   },
   {
     slug: "private-villas",
@@ -161,6 +169,7 @@ export const residences: Residence[] = [
       "Indoor / Outdoor Living",
       "Premium Finishes",
     ],
+    amenitiesSectionTitle: "Rooftop Deck",
     cardAmenities: ["bed", "size", "Private Pool", "Garden Deck"],
     gallerySections: [
       {
@@ -182,6 +191,7 @@ export const residences: Residence[] = [
         ],
       },
     ],
+    otherResidencesOrder: ["garden-condos", "condos"],
   },
 ];
 
