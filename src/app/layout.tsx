@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Marcellus_SC, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { FooterSection } from "@/components/layout/FooterSection";
-import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
-import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { AppChrome } from "@/components/layout/AppChrome";
 import { siteConfig } from "@/content/site";
 
 const heading = Fraunces({
@@ -39,11 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${heading.variable} ${subheading.variable} ${body.variable}`}>
       <body className="font-body">
-        <SmoothScroll />
-        <OrganizationJsonLd />
-        <Navbar />
-        <main>{children}</main>
-        <FooterSection />
+        <AppChrome>{children}</AppChrome>
       </body>
     </html>
   );
