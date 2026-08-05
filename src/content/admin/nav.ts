@@ -25,14 +25,17 @@ export const adminNavGroups: AdminNavGroup[] = [
       { label: "Gallery", href: "/admin/gallery", icon: "gallery", disabled: true },
     ],
   },
-  {
-    section: "System",
-    items: [{ label: "Settings", href: "/admin/settings", icon: "settings", disabled: true }],
-  },
 ];
 
+export const adminSettingsNavItem: AdminNavItem = {
+  label: "Settings",
+  href: "/admin/settings",
+  icon: "settings",
+  disabled: true,
+};
+
 function flattenAdminNavItems(): AdminNavItem[] {
-  return adminNavGroups.flatMap((group) => group.items);
+  return [...adminNavGroups.flatMap((group) => group.items), adminSettingsNavItem];
 }
 
 export function isAdminNavItemActive(pathname: string | null, href: string): boolean {
