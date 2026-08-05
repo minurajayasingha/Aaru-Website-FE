@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
-import { adminNavGroups, isAdminNavItemActive, type AdminNavIconKey } from "@/content/admin/nav";
+import {
+  adminNavGroups,
+  adminSettingsNavItem,
+  isAdminNavItemActive,
+  type AdminNavIconKey,
+} from "@/content/admin/nav";
 import {
   DashboardIcon,
   InquiriesIcon,
@@ -27,11 +32,15 @@ const iconMap: Record<AdminNavIconKey, (props: AdminIconProps) => React.ReactEle
 
 export function AdminSidebar({ onNavigate }: AdminSidebarProps) {
   const pathname = usePathname();
+  const SettingsNavIcon = iconMap[adminSettingsNavItem.icon];
 
   return (
     <nav className="flex h-full flex-col bg-brand-forest-900 px-4 py-6">
-      <div className="mb-6 px-2 text-lg font-semibold tracking-wide text-white">
-        AARU <span className="text-brand-gold">Admin</span>
+      <div className="mb-6 flex items-center gap-2.5 px-2">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-dashed border-white/30 bg-white/5">
+          <GalleryIcon className="h-4 w-4 text-white/30" />
+        </div>
+        <span className="text-lg font-semibold tracking-wide text-white">AARU</span>
       </div>
 
       <div className="flex flex-1 flex-col gap-6 overflow-y-auto">
@@ -82,14 +91,14 @@ export function AdminSidebar({ onNavigate }: AdminSidebarProps) {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center gap-3 border-t border-white/10 px-2 pt-4">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-gold text-sm font-semibold text-white">
-          A
-        </div>
-        <div className="min-w-0">
-          <p className="truncate text-sm font-medium text-white">Admin</p>
-          <p className="truncate text-xs text-white/40">AARU Team</p>
-        </div>
+      <div className="mt-6 border-t border-white/10 pt-4">
+        <span className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-white/30">
+          <span className="flex items-center gap-2.5">
+            <SettingsNavIcon className="h-[18px] w-[18px]" />
+            {adminSettingsNavItem.label}
+          </span>
+          <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] uppercase tracking-wide">Soon</span>
+        </span>
       </div>
     </nav>
   );
