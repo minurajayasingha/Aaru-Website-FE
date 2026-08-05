@@ -72,34 +72,6 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
     <Card className="flex flex-col gap-4">
       <h3 className="text-base font-semibold text-brand-forest-900">{residence.name}</h3>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="group relative aspect-square overflow-hidden rounded-lg border border-brand-forest-100 bg-brand-forest-50"
-          >
-            {/* Blob URLs from URL.createObjectURL can't go through next/image's optimizer, so this stays a plain img. */}
-            <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
-            <button
-              type="button"
-              onClick={() => fileInputRefs.current[index]?.click()}
-              className="absolute inset-0 flex items-center justify-center bg-black/0 text-sm font-medium text-white opacity-0 transition-opacity group-hover:bg-black/40 group-hover:opacity-100"
-            >
-              Replace
-            </button>
-            <input
-              ref={(el) => {
-                fileInputRefs.current[index] = el;
-              }}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(event) => handleImageReplace(index, event.target.files?.[0])}
-            />
-          </div>
-        ))}
-      </div>
-
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {statFields.map((field) => (
           <div key={field.key} className="rounded-lg border border-brand-forest-100 bg-brand-forest-50 px-4 py-3">
@@ -127,6 +99,34 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
                 <PencilIcon className="h-3.5 w-3.5 shrink-0 text-brand-forest-400" />
               </button>
             )}
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="group relative aspect-square overflow-hidden rounded-lg border border-brand-forest-100 bg-brand-forest-50"
+          >
+            {/* Blob URLs from URL.createObjectURL can't go through next/image's optimizer, so this stays a plain img. */}
+            <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+            <button
+              type="button"
+              onClick={() => fileInputRefs.current[index]?.click()}
+              className="absolute inset-0 flex items-center justify-center bg-black/0 text-sm font-medium text-white opacity-0 transition-opacity group-hover:bg-black/40 group-hover:opacity-100"
+            >
+              Replace
+            </button>
+            <input
+              ref={(el) => {
+                fileInputRefs.current[index] = el;
+              }}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(event) => handleImageReplace(index, event.target.files?.[0])}
+            />
           </div>
         ))}
       </div>
