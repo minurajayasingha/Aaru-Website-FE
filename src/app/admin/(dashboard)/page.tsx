@@ -4,16 +4,37 @@ import { StatCard } from "@/components/admin/ui/StatCard";
 import { Card } from "@/components/admin/ui/Card";
 import { Badge } from "@/components/admin/ui/Badge";
 import { sampleInquiries } from "@/content/admin/inquiries";
+import { InquiriesIcon, ResidencesIcon, GalleryIcon, EyeIcon } from "@/components/admin/icons";
 
 export const metadata: Metadata = {
   title: "Dashboard",
 };
 
 const stats = [
-  { label: "Total Inquiries", value: "128", hint: "+12 this week" },
-  { label: "Listed Residences", value: "22" },
-  { label: "Gallery Images", value: "64" },
-  { label: "Page Views (30d)", value: "9.4K", hint: "+8% vs. last month" },
+  {
+    label: "Total Inquiries",
+    value: "128",
+    icon: InquiriesIcon,
+    trend: { direction: "up" as const, value: "12% this week" },
+  },
+  {
+    label: "Listed Residences",
+    value: "22",
+    icon: ResidencesIcon,
+    trend: { direction: "up" as const, value: "4% this month" },
+  },
+  {
+    label: "Gallery Images",
+    value: "64",
+    icon: GalleryIcon,
+    trend: { direction: "up" as const, value: "6% this month" },
+  },
+  {
+    label: "Page Views (30d)",
+    value: "9.4K",
+    icon: EyeIcon,
+    trend: { direction: "up" as const, value: "8% vs. last month" },
+  },
 ];
 
 export default function AdminDashboardPage() {
@@ -41,7 +62,10 @@ export default function AdminDashboardPage() {
         </div>
         <ul className="flex flex-col divide-y divide-brand-forest-100">
           {recentInquiries.map((inquiry) => (
-            <li key={inquiry.id} className="flex items-center justify-between gap-4 py-3">
+            <li
+              key={inquiry.id}
+              className="flex items-center justify-between gap-4 rounded-lg px-2 py-3 transition-colors hover:bg-brand-forest-50"
+            >
               <div className="min-w-0">
                 <p className="truncate text-sm font-medium text-brand-forest-900">{inquiry.name}</p>
                 <p className="truncate text-sm text-brand-forest-400">{inquiry.message}</p>
