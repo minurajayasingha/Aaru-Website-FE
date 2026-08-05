@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/about/page": "app/about/page.js",
+  "/commercial-space/page": "app/commercial-space/page.js",
+  "/gallery/page": "app/gallery/page.js",
+  "/page": "app/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/residences/[slug]/page": "app/residences/[slug]/page.js",
+  "/residences/page": "app/residences/page.js",
+  "/style-guide/page": "app/style-guide/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/(dashboard)/inquiries/page": "app/admin/(dashboard)/inquiries/page.js",
+  "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js"
+}
