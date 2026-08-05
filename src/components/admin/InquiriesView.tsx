@@ -106,6 +106,7 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
             <table className="w-full text-left text-sm">
               <thead className="bg-brand-forest-50 text-xs uppercase tracking-wide text-brand-forest-400">
                 <tr>
+                  <th className="px-6 py-3 font-medium">#</th>
                   <th className="px-6 py-3 font-medium">Name</th>
                   <th className="px-6 py-3 font-medium">Email</th>
                   <th className="px-6 py-3 font-medium">Message</th>
@@ -114,12 +115,13 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-brand-forest-100">
-                {filteredInquiries.map((inquiry) => (
+                {filteredInquiries.map((inquiry, index) => (
                   <tr
                     key={inquiry.id}
                     onClick={() => setSelectedId(inquiry.id)}
                     className="cursor-pointer transition-colors hover:bg-brand-forest-50"
                   >
+                    <td className="px-6 py-3 text-brand-forest-400">{index + 1}</td>
                     <td className="px-6 py-3 font-medium text-brand-forest-900">{inquiry.name}</td>
                     <td className="px-6 py-3 text-brand-forest-700">{inquiry.email}</td>
                     <td className="max-w-xs truncate px-6 py-3 text-brand-forest-700">{inquiry.message}</td>
