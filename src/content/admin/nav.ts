@@ -21,7 +21,7 @@ export const adminNavGroups: AdminNavGroup[] = [
     section: "Content",
     items: [
       { label: "Inquiries", href: "/admin/inquiries", icon: "inquiries" },
-      { label: "Residences", href: "/admin/residences", icon: "residences", disabled: true },
+      { label: "Residences", href: "/admin/residences", icon: "residences" },
       { label: "Gallery", href: "/admin/gallery", icon: "gallery", disabled: true },
     ],
   },
