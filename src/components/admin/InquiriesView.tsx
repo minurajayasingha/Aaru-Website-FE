@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { cn } from "@/lib/cn";
 import { Badge } from "./ui/Badge";
 import { Card } from "./ui/Card";
+import { TabBar } from "./ui/TabBar";
 import { SearchIcon } from "./icons";
 import { InquiryDetailModal } from "./InquiryDetailModal";
 import type { AdminInquiry, AdminInquiryStatus } from "@/content/admin/inquiries";
@@ -65,23 +65,11 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
-          {filterOptions.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => setStatusFilter(option.value)}
-              className={cn(
-                "rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
-                statusFilter === option.value
-                  ? "bg-brand-forest-900 text-white"
-                  : "bg-brand-forest-50 text-brand-forest-700 hover:bg-brand-forest-100"
-              )}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
+        <TabBar
+          options={filterOptions}
+          value={statusFilter}
+          onChange={(value) => setStatusFilter(value as StatusFilter)}
+        />
 
         <div className="relative w-full sm:w-64">
           <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-forest-400" />
