@@ -28,7 +28,7 @@ Legend: ✅ uploaded · ⏳ placeholder path referenced in code but no file yet
 | `public/images/hero/residences.png` | ✅ | Residences listing (`src/app/residences/page.tsx`) |
 | `public/images/hero/commercial-space.png` | ✅ | Commercial Space (`src/app/commercial-space/page.tsx`) |
 | `public/images/hero/gallery.png` | ✅ | Gallery (`src/app/gallery/page.tsx`) |
-| `public/images/hero/contact.png` | ✅ | Contact (`src/app/contact/page.tsx`) |
+| `public/images/hero/contact.jpg` | ✅ | Contact (`src/app/contact/page.tsx`) |
 
 **Note:** `hero/garden-condos.png`, `hero/condos.png`, `hero/private-villas.png` exist in the folder but aren't wired to anything — the residence detail pages use `residences/<slug>/hero.jpg` instead (see below). These three look like leftovers; safe to ignore or delete.
 
@@ -51,9 +51,9 @@ Content lives in `src/content/ctaBanner.ts` — this is the ONE file to edit if 
 
 | Path | Status | Section |
 |---|---|---|
-| `public/images/home/beach.png` | ✅ | "Arugam Bay" split section |
-| `public/images/home/map.png` | ✅ | "Prime Location" split section |
-| `public/images/home/lifestyle.png` | ✅ | "More Than a Home, It's a Way of Life" (full-bleed image, `HomeFeatureSection`) |
+| `public/images/home/beach.jpg` | ✅ | "Arugam Bay" split section |
+| `public/images/home/map.jpg` | ✅ | "Prime Location" split section |
+| `public/images/home/lifestyle.jpg` | ✅ | "More Than a Home, It's a Way of Life" (full-bleed image, `HomeFeatureSection`) |
 
 ### Icon rows on this page
 - Commercial amenity icons (used elsewhere/home) live in `src/content/commercialAmenityIcons.ts` → `public/images/icons/commercial/*.svg` — all ✅ uploaded: `clubhouse`, `dining`, `yoga`, `wellness`, `gym`, `coworking`, `connectivity`.
@@ -150,7 +150,7 @@ Category tab icons (fixed, not folder-driven): `public/images/icons/gallery/resi
 
 | Path | Status | Used for |
 |---|---|---|
-| `public/images/contact/map.png` | ⏳ missing | Location map image in the "Contact Information" section |
+| `public/images/contact/map.jpg` | ⏳ missing | Location map image in the "Contact Information" section |
 | `public/images/icons/email.svg` | ✅ | Email row icon (reused from Footer) |
 | `public/images/icons/whatsapp.svg` | ✅ | Phone/WhatsApp row icon (reused from Footer) |
 
@@ -170,5 +170,5 @@ Category tab icons (fixed, not folder-driven): `public/images/icons/gallery/resi
 - [ ] `icons/amenities/` — 7 icons (garden-deck, balcony, sunset, bathroom, sofa, indoor-outdoor, premium)
 - [ ] Residence card images — all 3 residences (`card.jpg`)
 - [ ] `og/default.jpg`
-- [ ] `contact/map.png` — location map on the Contact page
+- [ ] `contact/map.jpg` — location map on the Contact page
 - [ ] Gallery folders: `interior`, `lifestyle`, `maps` categories are empty

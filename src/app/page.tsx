@@ -48,7 +48,7 @@ export default function HomePage() {
         ]}
         ctaLabel="Contact Us"
         ctaHref="/contact"
-        imageSrc="/images/home/beach.png"
+        imageSrc="/images/home/beach.jpg"
         imageAlt="Aerial view of Arugam Bay's coastline"
         imagePosition="right"
         revealOnce={false}
@@ -75,7 +75,7 @@ export default function HomePage() {
         ctaHref="/commercial-space"
         secondaryCtaLabel="Contact Us"
         secondaryCtaHref="/contact"
-        imageSrc="/images/home/lifestyle.png"
+        imageSrc="/images/home/lifestyle.jpg"
         imageAlt="Aaru's clubhouse and pool deck at sunset"
         imagePosition="right"
       />
@@ -91,7 +91,7 @@ export default function HomePage() {
         ctaLabel="See Location"
         ctaHref={`https://www.google.com/maps?q=${siteConfig.location.latitude},${siteConfig.location.longitude}`}
         ctaTarget="_blank"
-        imageSrc="/images/home/map.png"
+        imageSrc="/images/home/map.jpg"
         imageAlt="Map showing Aaru's location in Arugam Bay relative to the lagoon and nearby cities"
         imagePosition="left"
         imageFit="contain"

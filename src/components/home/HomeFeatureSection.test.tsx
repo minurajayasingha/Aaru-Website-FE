@@ -12,7 +12,7 @@ describe("HomeFeatureSection", () => {
         ctaHref="/commercial-space"
         secondaryCtaLabel="Contact Us"
         secondaryCtaHref="/contact"
-        imageSrc="/images/home/lifestyle.png"
+        imageSrc="/images/home/lifestyle.jpg"
         imageAlt="Aaru's clubhouse and pool deck at sunset"
       />,
     );
@@ -30,7 +30,7 @@ describe("HomeFeatureSection", () => {
         paragraph="Clubhouse, wellness, dining, co-working and connectivity."
         ctaLabel="Commercial Space"
         ctaHref="/commercial-space"
-        imageSrc="/images/home/lifestyle.png"
+        imageSrc="/images/home/lifestyle.jpg"
         imageAlt="Aaru's clubhouse and pool deck at sunset"
       />,
     );

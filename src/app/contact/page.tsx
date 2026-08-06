@@ -19,7 +19,7 @@ export default function ContactPage() {
       <PageHero
         title="Contact Us"
         subtitle="Connect with Aaru Living for residences, commercial spaces and investment enquiries."
-        imageSrc="/images/hero/contact.png"
+        imageSrc="/images/hero/contact.jpg"
         imageAlt="Aaru's residences along the coastline at sunset"
         height="lg"
       />
@@ -62,7 +62,7 @@ export default function ContactPage() {
           </div>
           <div className="relative aspect-[4/3]  overflow-hidden rounded-card w-full md:w-3/6">
             <Image
-              src="/images/contact/map.png"
+              src="/images/contact/map.jpg"
               alt="Map showing Aaru Living's location in Arugam Bay, Sri Lanka"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
