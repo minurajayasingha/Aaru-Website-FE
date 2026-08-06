@@ -68,9 +68,9 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       </Reveal>
 
       <Reveal as="section" className="bg-brand-cream-dark/30 px-section-s py-12 md:px-section-x">
-        <div className="mx-auto flex flex-col lg:flex-row  gap-10  lg:items-center">
+        <div className="mx-auto flex flex-col lg:flex-row gap-12 lg:items-center">
           <UnitLayoutGallery images={residence.layoutGallery}  />
-          <div className="flex flex-col w-full lg:w-2/5 ">
+          <div className="flex flex-col w-full lg:w-5/12 h-full gap-6">
             <h2 className="font-heading font-normal lg:font-normal text-h-02 text-black pb-6 lg:pl-4 text-center lg:text-center">Unit Layout</h2>
             <div className="flex flex-row lg:flex-row divide-x divide-brand-forest-300">
               <div className="flex-1 px- py-6 lg:py-6 flex flex-col items-center gap-2">
@@ -88,7 +88,13 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
               <p className="font-subheading text-h-04 font-thin text-black">{residence.priceLabel}</p>
               <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Upward</p>
             </div>
+                    <div className="mt-6 flex justify-center">
+          <Button href="/contact" variant="primary">
+            Contact Us
+          </Button>
+        </div>
           </div>
+          
         </div>
       </Reveal>
 
@@ -113,11 +119,6 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
         </div>
       </Reveal>
       
-        <div className="mt-6 flex justify-center">
-          <Button href="/contact" variant="primary">
-            Contact Us
-          </Button>
-        </div>
 
       {residence.gallerySections.length > 0 && (
         <Reveal as="section" once={false} className="mx-auto flex  flex-col gap-12 px-section-s py-16 md:px-section-x lg:py-16">

@@ -167,7 +167,6 @@ export const residences: Residence[] = [
       "Access to Clubhouse",
       "Spacious Living Area",
       "Indoor / Outdoor Living",
-      "Premium Finishes",
     ],
     amenitiesSectionTitle: "Rooftop Deck",
     cardAmenities: ["bed", "size", "Private Pool", "Garden Deck"],

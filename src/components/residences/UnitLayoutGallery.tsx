@@ -14,7 +14,7 @@ export function UnitLayoutGallery({ images }: UnitLayoutGalleryProps) {
   const active = images[activeIndex] ?? images[0];
 
   return (
-    <div className="flex gap-3 w-full lg:w-3/5">
+    <div className="flex gap-3 w-full lg:w-6/12 ">
       <div className="flex flex-col gap-2">
         {images.map((image, index) => (
           <button
