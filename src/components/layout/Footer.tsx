@@ -30,7 +30,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-block font-body text-para-xxs font-thin text-white/90 tracking-wide transition-transform duration-500 ease-out hover:translate-x-1 hover:text-brand-forest-300"
+                      className="inline-block font-body text-para-xxs font-thin tracking-wide bg-gradient-to-r from-brand-gold from-50% to-white/90 to-50% bg-[length:200%_100%] bg-right bg-clip-text text-transparent transition-[background-position] duration-500 ease-out hover:bg-left"
                     >
                       {link.label}
                     </Link>
