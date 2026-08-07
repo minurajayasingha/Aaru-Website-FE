@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { Container } from "@/components/ui/Container";
 
 type Tab = { id: string; label: string; icon?: string };
 
@@ -13,7 +14,7 @@ type TabsProps = {
 
 export function Tabs({ tabs, activeId, onChange }: TabsProps) {
   return (
-    <div role="tablist" className="flex md:flex-wrap justify-evenly gap-12 sm:gap-12 lg:gap-1 px-section-x overflow-x-auto ">
+    <Container role="tablist" className="flex md:flex-wrap justify-evenly gap-12 sm:gap-12 lg:gap-1 overflow-x-auto">
       {tabs.map((tab) => {
         const isActive = tab.id === activeId;
         return (
@@ -38,6 +39,6 @@ export function Tabs({ tabs, activeId, onChange }: TabsProps) {
           </button>
         );
       })}
-    </div>
+    </Container>
   );
 }
