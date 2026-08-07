@@ -12,6 +12,7 @@ import { UnitLayoutGallery } from "@/components/residences/UnitLayoutGallery";
 import { ResidenceGallerySection } from "@/components/residences/ResidenceGallerySection";
 import { ResidenceJsonLd } from "@/components/seo/ResidenceJsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { Container } from "@/components/ui/Container";
 
 type PageParams = { params: Promise<{ slug: string }> };
 
@@ -67,8 +68,8 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
         />
       </Reveal>
 
-      <Reveal as="section" className="bg-brand-cream-dark/30 px-section-s py-12 md:px-section-x">
-        <div className="mx-auto flex flex-col lg:flex-row gap-12 lg:items-center">
+      <Reveal as="section" className="bg-brand-cream-dark/30">
+        <Container className="flex flex-col lg:flex-row gap-12 py-12 lg:items-center">
           <UnitLayoutGallery images={residence.layoutGallery}  />
           <div className="flex flex-col w-full lg:w-5/12 h-full gap-6">
             <h2 className="font-heading font-normal lg:font-normal text-h-02 text-black pb-6 lg:pl-4 text-center lg:text-center">Unit Layout</h2>
@@ -94,8 +95,8 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
           </Button>
         </div>
           </div>
-          
-        </div>
+
+        </Container>
       </Reveal>
 
       <Reveal as="section" className="bg-brand-forest-800 px-section-s py-16 text-brand-cream px-section-x ">
@@ -121,40 +122,44 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       
 
       {residence.gallerySections.length > 0 && (
-        <Reveal as="section" once={false} className="mx-auto flex  flex-col gap-12 px-section-s py-16 md:px-section-x lg:py-16">
-          {residence.gallerySections.map((section) => (
-            <ResidenceGallerySection key={section.heading} section={section} />
-          ))}
-          <div className="flex justify-center gap-4">
-            <Button href="/gallery" variant="secondary">
-              View More
-            </Button>
-            <Button href="/contact" variant="primary">
-              Contact Us
-            </Button>
-          </div>
+        <Reveal as="section" once={false}>
+          <Container className="flex flex-col gap-12 py-16 lg:py-16">
+            {residence.gallerySections.map((section) => (
+              <ResidenceGallerySection key={section.heading} section={section} />
+            ))}
+            <div className="flex justify-center gap-4">
+              <Button href="/gallery" variant="secondary">
+                View More
+              </Button>
+              <Button href="/contact" variant="primary">
+                Contact Us
+              </Button>
+            </div>
+          </Container>
         </Reveal>
       )}
 
       {otherResidences.length > 0 && (
-        <Reveal as="section" once={false} className="mx-auto  px-section-s py-12 md:px-section-x lg:pb-16">
-          <h2 className="mb-12 text-center font-heading font-light text-h-01 text-black">Other Residences</h2>
-          <div className="grid gap-8 sm:grid-cols-2">
-            {otherResidences.map((other) => (
-              <ResidenceListingCard
-                key={other.slug}
-                slug={other.slug}
-                name={other.name}
-                floorLabel={other.floorLabel}
-                unitBadge={other.unitBadge}
-                bedroomLabel={other.bedroomLabel}
-                sizeLabel={other.sizeLabel}
-                cardAmenities={other.cardAmenities}
-                imageSrc={other.cardImage.src}
-                imageAlt={other.cardImage.alt}
-              />
-            ))}
-          </div>
+        <Reveal as="section" once={false}>
+          <Container className="py-12 lg:pb-16">
+            <h2 className="mb-12 text-center font-heading font-light text-h-01 text-black">Other Residences</h2>
+            <div className="grid gap-8 sm:grid-cols-2">
+              {otherResidences.map((other) => (
+                <ResidenceListingCard
+                  key={other.slug}
+                  slug={other.slug}
+                  name={other.name}
+                  floorLabel={other.floorLabel}
+                  unitBadge={other.unitBadge}
+                  bedroomLabel={other.bedroomLabel}
+                  sizeLabel={other.sizeLabel}
+                  cardAmenities={other.cardAmenities}
+                  imageSrc={other.cardImage.src}
+                  imageAlt={other.cardImage.alt}
+                />
+              ))}
+            </div>
+          </Container>
         </Reveal>
       )}
     </>
