@@ -11,7 +11,6 @@ export function CommercialAmenitiesRow({ amenities }: { amenities: Amenity[] }) 
         description: amenity.description,
         icon: commercialAmenityIcons[amenity.icon],
       }))}
-      columnsClassName="md:grid-cols-7"
     />
   );
 }

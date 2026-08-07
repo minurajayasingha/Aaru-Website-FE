@@ -9,14 +9,14 @@ const items: IconAmenityItem[] = [
 
 describe("IconAmenityRow", () => {
   it("renders every item's name and description", () => {
-    render(<IconAmenityRow items={items} columnsClassName="md:grid-cols-2" />);
+    render(<IconAmenityRow items={items} />);
     // Rendered twice (desktop scroll-reveal row + mobile row), so use getAllBy*.
     expect(screen.getAllByText("Spa & Treatments").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Sauna & Steam").length).toBeGreaterThan(0);
   });
 
   it("omits the heading/paragraph block when neither is given", () => {
-    render(<IconAmenityRow items={items} columnsClassName="md:grid-cols-2" />);
+    render(<IconAmenityRow items={items} />);
     expect(screen.queryByRole("heading")).not.toBeInTheDocument();
   });
 
@@ -27,7 +27,6 @@ describe("IconAmenityRow", () => {
         paragraph="Wellness at Aaru is a daily ritual."
         items={items}
         theme="dark"
-        columnsClassName="md:grid-cols-2"
       />,
     );
     expect(screen.getByRole("heading", { name: "Sanctuary Of Wellness" })).toBeInTheDocument();

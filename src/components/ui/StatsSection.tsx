@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
+import { edgeAlignClass, RowDivider } from "@/components/ui/EdgeAlignedRow";
 import { cn } from "@/lib/cn";
 
 export type Stat = {
@@ -15,23 +16,6 @@ export type Stat = {
 type StatsSectionProps = {
   stats: Stat[];
 };
-
-// The first/last stat's text flushes to the section's outer edge (matching
-// the content edges above), instead of centering within its own grid
-// column like the middle stats do.
-function edgeAlignClass(index: number, length: number) {
-  if (index === 0) return "items-start text-left";
-  if (index === length - 1) return "items-end text-right";
-  return "items-center text-center";
-}
-
-// A divider rendered as its own flex child (rather than a border on the
-// stat itself) lands exactly halfway between the two stats it separates:
-// `justify-between` gives every gap between flex children equal width, so
-// the gap on either side of the divider is forced equal too.
-function Divider({ className }: { className?: string }) {
-  return <span aria-hidden="true" className={cn("w-px shrink-0 self-stretch mx-4", className)} />;
-}
 
 function StatText({ stat }: { stat: Stat }) {
   return (
@@ -66,7 +50,7 @@ function DesktopBar({ stats }: { stats: Stat[] }) {
       <Container className="flex justify-between text-center">
         {stats.map((stat, index) => (
           <Fragment key={stat.label}>
-            {index > 0 && <Divider className="bg-brand-cream/20" />}
+            {index > 0 && <RowDivider className="bg-brand-cream/20" />}
             <div className={cn("flex flex-col gap-0.5", edgeAlignClass(index, stats.length))}>
               <StatText stat={stat} />
             </div>
@@ -99,7 +83,7 @@ function StaticStats({ stats }: { stats: Stat[] }) {
         <Container className="flex justify-between text-center">
           {stats.map((stat, index) => (
             <Fragment key={stat.label}>
-              {index > 0 && <Divider className="bg-brand-cream/15" />}
+              {index > 0 && <RowDivider className="bg-brand-cream/15" />}
               <div className={cn("flex flex-col gap-1.5", edgeAlignClass(index, stats.length))}>
                 <StatText stat={stat} />
               </div>

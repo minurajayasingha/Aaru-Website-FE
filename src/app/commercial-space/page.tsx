@@ -44,7 +44,6 @@ export default function CommercialSpacePage() {
         paragraph="Wellness at Aaru is a daily ritual — curated spaces for stillness, recovery and care, all just steps from home."
         items={wellnessAmenities}
         theme="dark"
-        columnsClassName="md:grid-cols-7"
       />
 
       <FeatureSection

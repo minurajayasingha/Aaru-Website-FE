@@ -1,7 +1,10 @@
 "use client";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
+import { Container } from "./Container";
+import { edgeAlignClass, RowDivider } from "./EdgeAlignedRow";
 import { cn } from "@/lib/cn";
 
 export type IconAmenityItem = { id: string; name: string; description: string; icon: string };
@@ -27,16 +30,15 @@ type IconAmenityRowProps = {
   paragraph?: string;
   items: IconAmenityItem[];
   theme?: "light" | "dark";
-  /** Literal Tailwind grid-cols class for the row at the md breakpoint, e.g. "md:grid-cols-7". */
-  columnsClassName: string;
 };
 
-export function IconAmenityRow({ heading, paragraph, items, theme = "light", columnsClassName }: IconAmenityRowProps) {
+export function IconAmenityRow({ heading, paragraph, items, theme = "light" }: IconAmenityRowProps) {
   const isDark = theme === "dark";
+  const dividerColor = isDark ? "bg-white/10" : "bg-brand-forest-100";
 
   return (
-    <section className={cn("px-6 py-16", isDark ? "bg-brand-forest-900" : undefined)}>
-      <div className="mx-auto max-w-7xl">
+    <section className={cn("py-16", isDark ? "bg-brand-forest-900" : undefined)}>
+      <Container>
         {(heading || paragraph) && (
           <div className="mx-auto mb-10 flex max-w-7xl flex-col items-center gap-3 text-center">
             {heading && (
@@ -57,17 +59,14 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light", col
           </div>
         )}
 
-        <div
-          className={cn(
-            "hidden md:grid",
-            columnsClassName,
-            isDark ? "divide-x divide-white/10" : "divide-x divide-brand-forest-100",
-          )}
-        >
-          {items.map((item) => (
-            <div key={item.id} className="flex flex-col items-center gap-1.5 text-center">
-              <AmenityText item={item} isDark={isDark} />
-            </div>
+        <div className="hidden md:flex md:justify-between">
+          {items.map((item, index) => (
+            <Fragment key={item.id}>
+              {index > 0 && <RowDivider className={dividerColor} />}
+              <div className={cn("flex flex-col gap-1.5", edgeAlignClass(index, items.length))}>
+                <AmenityText item={item} isDark={isDark} />
+              </div>
+            </Fragment>
           ))}
         </div>
 
@@ -86,7 +85,7 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light", col
             );
           })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
