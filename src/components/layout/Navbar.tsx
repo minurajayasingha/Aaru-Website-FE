@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/content/nav";
 import { siteConfig } from "@/content/site";
 import { cn } from "@/lib/cn";
+import { Container } from "@/components/ui/Container";
 
 function isLinkActive(pathname: string | null, href: string) {
   if (!pathname) return false;
@@ -71,7 +72,7 @@ export function Navbar() {
   return (
     <>
       <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 bg-gray-50/20 backdrop-blur-lg shadow-card2">
-      <nav className="flex items-center justify-between gap-6 px-section-s py-3 lg:py-1 md:px-section-x">
+      <Container as="nav" className="flex items-center justify-between gap-6 py-3 lg:py-1">
         <Link href="/" className="relative h-10 w-10 shrink-0">
           <Image src="/images/logo/aaru-mark-color.svg" alt="Aaru Living" fill className="object-contain" />
         </Link>
@@ -179,7 +180,7 @@ export function Navbar() {
             )}
           />
         </button>
-      </nav>
+      </Container>
       </header>
 
       {isMenuOpen && (
