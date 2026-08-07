@@ -54,7 +54,7 @@ export function StatsSection({ stats }: StatsSectionProps) {
 function DesktopBar({ stats }: { stats: Stat[] }) {
   return (
     <Reveal once={false} className="hidden h-[240px] items-center bg-brand-forest-900 text-brand-cream md:flex">
-      <Container className="grid grid-cols-5 divide-x divide-brand-cream/20 text-center">
+      <Container className="flex justify-between divide-x divide-brand-cream/20 text-center">
         {stats.map((stat, index) => (
           <div key={stat.label} className={cn("flex flex-col gap-0.5 px-4", edgeAlignClass(index, stats.length))}>
             <StatText stat={stat} />
@@ -84,7 +84,7 @@ function StaticStats({ stats }: { stats: Stat[] }) {
   return (
     <section className="text-brand-cream">
       <div className="hidden bg-brand-forest-800 py-16 md:block">
-        <Container className="grid grid-cols-5 divide-x divide-brand-cream/15 text-center">
+        <Container className="flex justify-between divide-x divide-brand-cream/15 text-center">
           {stats.map((stat, index) => (
             <div key={stat.label} className={cn("flex flex-col gap-1.5 px-4", edgeAlignClass(index, stats.length))}>
               <StatText stat={stat} />
