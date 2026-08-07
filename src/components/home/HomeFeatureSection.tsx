@@ -31,7 +31,13 @@ export function HomeFeatureSection({
   imagePosition = "right",
 }: HomeFeatureSectionProps) {
   return (
-    <Reveal as="section" className="flex flex-col overflow-hidden bg-brand-forest-900 md:flex-row" once={false}>
+    <Reveal
+      as="section"
+      // Grown taller by roughly the height of the icon row section that
+      // follows it, per request — that section itself is untouched.
+      className="flex flex-col overflow-hidden bg-brand-forest-900 md:min-h-[570px] md:flex-row"
+      once={false}
+    >
       {/* This section's background bleeds full width, but the text needs to
           land on the same edge as the site's 1600px Container above/below
           it. Percentage padding can't do that here — it's relative to this
