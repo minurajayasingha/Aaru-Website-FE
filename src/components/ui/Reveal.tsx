@@ -24,6 +24,7 @@ export function Reveal({ children, as = "div", delay = 0, className, once = true
   return (
     <MotionComponent
       className={cn(className)}
+      style={{ willChange: "transform, opacity" }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once, margin: "-80px" }}
