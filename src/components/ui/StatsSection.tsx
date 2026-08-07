@@ -2,6 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
 
 export type Stat = {
   value: string;
@@ -42,14 +43,14 @@ export function StatsSection({ stats }: StatsSectionProps) {
 // per-item stagger.
 function DesktopBar({ stats }: { stats: Stat[] }) {
   return (
-    <Reveal once={false} className="hidden h-[240px] items-center bg-brand-forest-900 px-20 text-brand-cream md:flex">
-      <div className="mx-auto grid w-full grid-cols-5 divide-x divide-brand-cream/20 text-center">
+    <Reveal once={false} className="hidden h-[240px] items-center bg-brand-forest-900 text-brand-cream md:flex">
+      <Container className="grid grid-cols-5 divide-x divide-brand-cream/20 text-center">
         {stats.map((stat) => (
           <div key={stat.label} className="flex flex-col items-center gap-0.5 px-4">
             <StatText stat={stat} />
           </div>
         ))}
-      </div>
+      </Container>
     </Reveal>
   );
 }
@@ -72,14 +73,14 @@ function MobileStats({ stats }: { stats: Stat[] }) {
 function StaticStats({ stats }: { stats: Stat[] }) {
   return (
     <section className="text-brand-cream">
-      <div className="hidden bg-brand-forest-800 px-6 py-16 md:block">
-        <div className="mx-auto max-w-7xl divide-x divide-brand-cream/15 text-center md:grid md:grid-cols-5">
+      <div className="hidden bg-brand-forest-800 py-16 md:block">
+        <Container className="grid grid-cols-5 divide-x divide-brand-cream/15 text-center">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1.5 px-4">
               <StatText stat={stat} />
             </div>
           ))}
-        </div>
+        </Container>
       </div>
       <div className="flex flex-col divide-y divide-brand-cream/15 bg-brand-forest-800 px-6 md:hidden">
         {stats.map((stat) => (
