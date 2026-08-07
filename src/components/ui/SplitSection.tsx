@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "./Button";
 import { Reveal } from "./Reveal";
+import { Container } from "./Container";
 import { cn } from "@/lib/cn";
 
 type SplitSectionProps = {
@@ -69,9 +70,9 @@ export function SplitSection({
       </div>
 
       {/* Tablet/desktop: side-by-side, each side sized only by its own content */}
-      <div
+      <Container
         className={cn(
-          "mx-auto hidden gap-12 px-section-x py-16 md:grid md:items-center",
+          "hidden gap-12 py-16 md:grid md:items-center",
           imagePosition === "left" ? "md:grid-cols-[6fr_4fr]" : "md:grid-cols-[4fr_6fr]",
         )}
       >
@@ -94,7 +95,7 @@ export function SplitSection({
             className={imageFit === "cover" ? "object-cover" : "object-contain"}
           />
         </div>
-      </div>
+      </Container>
     </Reveal>
   );
 }
