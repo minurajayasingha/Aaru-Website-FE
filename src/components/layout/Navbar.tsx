@@ -81,7 +81,9 @@ export function Navbar() {
           {navLinks.map((link) => {
             const active = isLinkActive(pathname, link.href);
             const linkClasses = cn(
-              "relative inline-block pb-[0.2rem] font-body text-para-xs font-light text-brand-forest-900 transition-transform duration-500 ease-out hover:-translate-y-0.5 hover:text-brand-gold",
+              "relative inline-block pb-[0.2rem] font-body text-para-xs font-light",
+              "bg-gradient-to-r from-brand-gold from-50% to-brand-forest-900 to-50% bg-[length:200%_100%] bg-right bg-clip-text text-transparent",
+              "transition-[background-position] duration-500 ease-out hover:bg-left",
               active &&
                 "after:absolute after:left-1/2 after:top-full after:w-4/5 after:-translate-x-1/2 after:border-b-2 after:border-brand-forest-900",
             );
