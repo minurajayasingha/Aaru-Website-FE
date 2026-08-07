@@ -39,8 +39,13 @@ function handleFillOrigin(event: React.MouseEvent<HTMLElement>) {
   const rect = event.currentTarget.getBoundingClientRect();
   const x = ((event.clientX - rect.left) / rect.width) * 100;
   const y = ((event.clientY - rect.top) / rect.height) * 100;
+  // Diameter large enough that the circle still fully covers the button
+  // even when it grows from a corner - the worst case is reaching the
+  // opposite corner, i.e. the rectangle's diagonal.
+  const diameter = Math.hypot(rect.width, rect.height) * 2;
   event.currentTarget.style.setProperty("--fill-x", `${x}%`);
   event.currentTarget.style.setProperty("--fill-y", `${y}%`);
+  event.currentTarget.style.setProperty("--fill-size", `${diameter}px`);
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -66,10 +71,14 @@ export function Button({
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 z-0 scale-0 rounded-button transition-transform duration-500 ease-out group-hover:scale-100",
+        "pointer-events-none absolute z-0 aspect-square -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full transition-transform duration-500 ease-out group-hover:scale-100",
         fillClasses[variant],
       )}
-      style={{ transformOrigin: "var(--fill-x, 50%) var(--fill-y, 50%)" }}
+      style={{
+        left: "var(--fill-x, 50%)",
+        top: "var(--fill-y, 50%)",
+        width: "var(--fill-size, 200%)",
+      }}
     />
   );
   const label = <span className="relative z-10 inline-flex items-center justify-center gap-2">{children}</span>;
