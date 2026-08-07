@@ -52,7 +52,7 @@ export function SplitSection({
   );
 
   return (
-    <Reveal as="section" className="bg-white">
+    <Reveal as="section" className="bg-white" once={revealOnce}>
       {/* Mobile: stacked, image between heading and paragraph */}
       <div className="flex flex-col gap-4 px-section-s py-16 md:hidden">
         {eyebrowEl}
