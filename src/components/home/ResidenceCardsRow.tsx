@@ -5,7 +5,7 @@ import type { Residence } from "@/content/residences";
 export function ResidenceCardsRow({ residences }: { residences: Residence[] }) {
   return (
     <>
-      <Reveal once={false} className="hidden justify-between gap-4 mx-section-x md:flex">
+      <Reveal once={false} className="hidden justify-between gap-4 md:flex">
         {residences.map((residence) => (
           <div key={residence.slug} className="min-w-0 flex-1">
             <ResidenceCard
@@ -23,7 +23,7 @@ export function ResidenceCardsRow({ residences }: { residences: Residence[] }) {
         ))}
       </Reveal>
 
-      <Reveal once={false} className="grid gap-6 px-section-x md:hidden">
+      <Reveal once={false} className="grid gap-6 md:hidden">
         {residences.map((residence) => (
           <ResidenceCard
             key={residence.slug}

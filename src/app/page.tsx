@@ -7,6 +7,7 @@ import { commercialAmenities } from "@/content/amenities";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
 import { SplitSection } from "@/components/ui/SplitSection";
 import { StatsSection } from "@/components/ui/StatsSection";
 import { CommercialAmenitiesRow } from "@/components/home/CommercialAmenitiesRow";
@@ -57,15 +58,17 @@ export default function HomePage() {
 
       <StatsSection stats={siteConfig.stats} />
 
-      <Reveal as="section" className="mx-auto max-w-7xl px-6 py-12  " once={false}>
-        <SectionHeader
-          eyebrow="Residences For Sale"
-          title="The Residences"
-          level="h2"
-          description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
-          className="mb-12 text-center items-center"
-        />
-        <ResidenceCardsRow residences={residences} />
+      <Reveal as="section" once={false}>
+        <Container className="py-12">
+          <SectionHeader
+            eyebrow="Residences For Sale"
+            title="The Residences"
+            level="h2"
+            description="Low-density living designed for privacy, comfort and elevated coastal lifestyle."
+            className="mb-12 text-center items-center"
+          />
+          <ResidenceCardsRow residences={residences} />
+        </Container>
       </Reveal>
 
       <HomeFeatureSection
