@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Tabs } from "@/components/ui/Tabs";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { Container } from "@/components/ui/Container";
+import { cn } from "@/lib/cn";
 import type { GalleryCategoryContent, GalleryCategory, GalleryImage } from "@/content/gallery";
 
 type GalleryGridProps = {
@@ -20,6 +21,14 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
   function closeLightbox() {
     setSelectedImage(null);
     lastTriggerRef.current?.focus();
+  }
+
+  // A very wide/panoramic photo (e.g. a 3.6:1 banner shot) would get
+  // squeezed to a sliver if it had to fit a single masonry column, so it
+  // breaks out of the column flow and spans the full row width instead —
+  // shown at a size that actually does it justice.
+  function isWide(image: GalleryImage) {
+    return image.width / image.height >= 1.8;
   }
 
   return (
@@ -43,27 +52,33 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
           // (width/height read off the file on disk) since it's sized
           // intrinsically (w-full, h-auto) rather than cropped into a fill box.
           <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
-            {active.images.map((image) => (
-              <button
-                key={image.src}
-                type="button"
-                onClick={(event) => {
-                  lastTriggerRef.current = event.currentTarget;
-                  setSelectedImage(image);
-                }}
-                className="mb-4 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-card"
-                aria-label={`View larger image: ${image.alt}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="h-auto w-full object-cover"
-                />
-              </button>
-            ))}
+            {active.images.map((image) => {
+              const wide = isWide(image);
+              return (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={(event) => {
+                    lastTriggerRef.current = event.currentTarget;
+                    setSelectedImage(image);
+                  }}
+                  className={cn(
+                    "mb-4 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-card",
+                    wide && "[column-span:all]",
+                  )}
+                  aria-label={`View larger image: ${image.alt}`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    sizes={wide ? "100vw" : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"}
+                    className="h-auto w-full object-cover"
+                  />
+                </button>
+              );
+            })}
           </div>
         )}
       </Container>
