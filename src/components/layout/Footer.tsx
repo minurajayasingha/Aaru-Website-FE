@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 export function Footer() {
   return (
     <footer className="bg-brand-forest-900 text-white">
-      <Container className="flex flex-col gap-10 pb-4 pt-8 md:flex-row md:items-center md:justify-between lg:items-start">
+      <Container className="flex flex-col gap-10 pb-4 pt-8 md:flex-row md:items-center md:justify-start md:gap-16 lg:items-start lg:gap-24 xl:gap-32">
         <div className="flex flex-col items-start gap-4 lg:flex-col xl:flex-col sm:items-center xl:gap-4 h-full lg:items-center lg:justify-center lg:w-auto w-full">
           <div className="flex flex-col items-center justify-center md:items-center w-full ">
             <div className="relative h-40 w-40 sm:h-32 sm:w-32 md:h-36 md:w-36 lg:h-40 lg:w-40 justify-center items-center">
@@ -21,7 +21,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-10 sm:flex-row sm:gap-10 lg:gap-20 xl:gap-24 lg:pt-4 xl:pt-0">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-10 lg:gap-16 xl:gap-20 lg:pt-4 xl:pt-0">
           {footerLinkGroups.map((group) => (
             <div key={group.title} className="flex flex-col">
               <h4 className="font-heading text-para-lg text-white font-extralight pb-3">{group.title}</h4>
