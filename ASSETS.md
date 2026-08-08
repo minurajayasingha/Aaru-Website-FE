@@ -135,14 +135,14 @@ To change what shows on a card — including dropping bed/size entirely, or reor
 
 ## Gallery Page (`/gallery`) — different system, folder-driven
 
-This page does **not** use a content file with fixed filenames — `src/content/gallery.ts` reads whatever files are physically inside each folder under `public/images/gallery/<category>/` at build time and displays them automatically. **This means you can just drop new photos into these folders and they'll show up — no code changes ever needed here.**
+This page does **not** use a content file with fixed filenames — `src/content/gallery.ts` reads whatever files are physically inside each folder under `public/images/gallery/<category>/` at build time and displays them automatically. **This means you can just drop new photos straight into a category folder and they'll show up — no subfolders, no code changes ever needed here.**
 
-- 4 categories: `residential`, `interior`, `lifestyle`, `maps` → folders `public/images/gallery/residential/`, `.../interior/`, `.../lifestyle/`, `.../maps/`
-- Optional subfolders inside a category become their own labeled sections (e.g. `residential/suit-view/`, `residential/suit-room/`). The folder name becomes the section heading (dashes/underscores → spaces, title-cased).
-- Prefix a folder or filename with a number (`1-suit-view`, `2-suit-room`) to control display order — the number is stripped from the displayed heading automatically.
-- Loose images directly inside a category folder (no subfolder) still show, grouped with no heading.
+- 4 categories, each a single flat gallery (no sub-topics/sections): `residential`, `interior`, `lifestyle`, `maps` → folders `public/images/gallery/residential/`, `.../interior/`, `.../lifestyle/`, `.../maps/`
+- Just drop images directly into the category folder. Each photo is measured on disk and laid out at its own real aspect ratio (landscape stays wide, portrait/square stays narrow) — nothing gets stretched or cropped into the wrong shape.
+- Prefix a filename with a number (`1-hero.jpg`, `2-poolside.jpg`) to control display order — otherwise files sort alphabetically. The number is stripped from the displayed alt text automatically.
+- Old subfolders (`suit-view/`, `suit-room/`, etc.) still get picked up if left in place — they're just flattened into the same list with everything else — but new photos don't need one.
 
-Currently populated: `residential/suit-view/` (3 images), `residential/interior/` (2 images + 1 stray `suit-room-1.png`), `residential/suit-room/` (2 images). `interior`, `lifestyle`, and `maps` categories are still empty.
+Currently populated: `residential/` (8 images, still split across leftover `suit-view/`, `interior/`, `suit-room/` subfolders — fine as-is, or flatten them by moving the files up a level). `interior`, `lifestyle`, and `maps` categories are still empty.
 
 Category tab icons (fixed, not folder-driven): `public/images/icons/gallery/residential.svg`, `interior.svg`, `lifestyle.svg`, `maps.svg` — all ✅.
 

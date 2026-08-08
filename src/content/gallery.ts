@@ -6,17 +6,11 @@ export type GalleryCategory = "residential" | "interior" | "lifestyle" | "maps";
 
 export type GalleryImage = { src: string; alt: string; width: number; height: number };
 
-export type GallerySection = {
-  slug: string;
-  heading: string | null;
-  images: GalleryImage[];
-};
-
 export type GalleryCategoryContent = {
   id: GalleryCategory;
   label: string;
   icon: string;
-  sections: GallerySection[];
+  images: GalleryImage[];
 };
 
 export const galleryCategories: { id: GalleryCategory; label: string; icon: string }[] = [
@@ -34,9 +28,9 @@ function isImageFile(fileName: string): boolean {
 }
 
 /**
- * Folders/files can be prefixed with a number to control display order
- * independently of alphabetical sort, e.g. "1-suit-view", "2-suit-room".
- * The prefix is stripped before it's turned into a heading or alt text.
+ * Files can be prefixed with a number to control display order independently
+ * of alphabetical sort, e.g. "1-poolside.jpg", "2-aerial.jpg". The prefix is
+ * stripped before it's turned into alt text.
  */
 function stripOrderPrefix(input: string): string {
   return input.replace(/^\d+[-_.\s]+/, "");
@@ -62,10 +56,10 @@ function toTitleCase(input: string): string {
     .join(" ");
 }
 
-function buildAltText(fileName: string, contextLabel: string): string {
+function buildAltText(fileName: string, categoryLabel: string): string {
   const baseName = stripOrderPrefix(fileName.slice(0, fileName.length - path.extname(fileName).length));
   const titleCased = toTitleCase(baseName);
-  return titleCased ? `${titleCased} — ${contextLabel}` : contextLabel;
+  return titleCased ? `${titleCased} — Aaru ${categoryLabel} Gallery` : `Aaru ${categoryLabel} Gallery`;
 }
 
 function readImageDimensions(filePath: string): { width: number; height: number } {
@@ -78,74 +72,55 @@ function readImageDimensions(filePath: string): { width: number; height: number 
   }
 }
 
-function readImagesInFolder(folderPath: string, urlPrefix: string, altContext: string): GalleryImage[] {
-  let fileNames: string[];
+type FoundImage = { relativePath: string; absolutePath: string };
+
+/**
+ * Walks a category folder recursively and collects every image file inside
+ * it, however deep. Dropping photos straight into the category folder is
+ * all that's needed; any leftover subfolders from before still get picked
+ * up too, just flattened into the same list.
+ */
+function findImagesRecursively(dir: string, relativeDir = ""): FoundImage[] {
+  let entries: fs.Dirent[];
   try {
-    fileNames = fs.readdirSync(folderPath);
+    entries = fs.readdirSync(dir, { withFileTypes: true });
   } catch {
     return [];
   }
 
-  return fileNames
-    .filter(isImageFile)
-    .sort(compareBySortPrefix)
-    .map((fileName) => ({
-      src: `${urlPrefix}/${fileName}`,
-      alt: buildAltText(fileName, altContext),
-      ...readImageDimensions(path.join(folderPath, fileName)),
-    }));
+  const found: FoundImage[] = [];
+  for (const entry of entries) {
+    const relativePath = relativeDir ? `${relativeDir}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) {
+      found.push(...findImagesRecursively(path.join(dir, entry.name), relativePath));
+    } else if (isImageFile(entry.name)) {
+      found.push({ relativePath, absolutePath: path.join(dir, entry.name) });
+    }
+  }
+  return found;
 }
 
 /**
- * Each category folder can contain subfolders (e.g. "suit-view", "suit-room"),
- * each rendered as its own labeled section. Loose image files directly in the
- * category folder (no subfolder) still render, grouped as a single unheaded
- * section, for backward compatibility with categories not yet reorganized.
- *
- * Subfolders (and loose files) sort alphabetically by default. Prefix a name
- * with a number — "1-suit-view", "2-suit-room" — to control the order
- * manually; the number is stripped from the displayed heading/alt text.
+ * Each of the 4 fixed categories is a single flat gallery — drop photos
+ * straight into `public/images/gallery/<category>/` and they show up
+ * automatically, each sized to its own real aspect ratio (via `image-size`)
+ * so landscape and portrait/square photos lay out correctly instead of
+ * being forced into a mismatched crop. Sorts by file name; prefix a
+ * filename with a number ("1-hero.jpg") to control the order manually.
  */
 export function getGalleryCategories(
   baseDir: string = path.join(process.cwd(), "public", "images", "gallery"),
 ): GalleryCategoryContent[] {
   return galleryCategories.map((category) => {
     const categoryDir = path.join(baseDir, category.id);
-    const sections: GallerySection[] = [];
+    const images = findImagesRecursively(categoryDir)
+      .sort((a, b) => compareBySortPrefix(a.relativePath, b.relativePath))
+      .map(({ relativePath, absolutePath }) => ({
+        src: `/images/gallery/${category.id}/${relativePath}`,
+        alt: buildAltText(path.basename(relativePath), category.label),
+        ...readImageDimensions(absolutePath),
+      }));
 
-    let entries: fs.Dirent[];
-    try {
-      entries = fs.readdirSync(categoryDir, { withFileTypes: true });
-    } catch {
-      return { ...category, sections };
-    }
-
-    const looseImages = readImagesInFolder(
-      categoryDir,
-      `/images/gallery/${category.id}`,
-      `Aaru ${category.label} Gallery`,
-    );
-    if (looseImages.length > 0) {
-      sections.push({ slug: "_root", heading: null, images: looseImages });
-    }
-
-    const subfolderSlugs = entries
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => entry.name)
-      .sort(compareBySortPrefix);
-
-    for (const slug of subfolderSlugs) {
-      const heading = toTitleCase(stripOrderPrefix(slug));
-      const images = readImagesInFolder(
-        path.join(categoryDir, slug),
-        `/images/gallery/${category.id}/${slug}`,
-        `${heading} — Aaru ${category.label} Gallery`,
-      );
-      if (images.length > 0) {
-        sections.push({ slug, heading, images });
-      }
-    }
-
-    return { ...category, sections };
+    return { ...category, images };
   });
 }

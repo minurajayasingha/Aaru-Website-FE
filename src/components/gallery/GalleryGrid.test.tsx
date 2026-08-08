@@ -8,18 +8,12 @@ const testCategories: GalleryCategoryContent[] = [
     id: "residential",
     label: "Residential",
     icon: "/images/icons/gallery/residential.svg",
-    sections: [
+    images: [
       {
-        slug: "suit-view",
-        heading: "Suit View",
-        images: [
-          {
-            src: "/images/gallery/residential/suit-view/sunset.jpg",
-            alt: "Aaru residences at sunset by the lagoon",
-            width: 4,
-            height: 3,
-          },
-        ],
+        src: "/images/gallery/residential/sunset.jpg",
+        alt: "Aaru residences at sunset by the lagoon",
+        width: 4,
+        height: 3,
       },
     ],
   },
@@ -27,18 +21,12 @@ const testCategories: GalleryCategoryContent[] = [
     id: "interior",
     label: "Interior",
     icon: "/images/icons/gallery/interior.svg",
-    sections: [
+    images: [
       {
-        slug: "_root",
-        heading: null,
-        images: [
-          {
-            src: "/images/gallery/interior/bedroom.jpg",
-            alt: "Suite bedroom with lagoon view",
-            width: 4,
-            height: 3,
-          },
-        ],
+        src: "/images/gallery/interior/bedroom.jpg",
+        alt: "Suite bedroom with lagoon view",
+        width: 4,
+        height: 3,
       },
     ],
   },
@@ -46,20 +34,19 @@ const testCategories: GalleryCategoryContent[] = [
     id: "lifestyle",
     label: "Lifestyle",
     icon: "/images/icons/gallery/lifestyle.svg",
-    sections: [],
+    images: [],
   },
   {
     id: "maps",
     label: "Maps & Plans",
     icon: "/images/icons/gallery/maps.svg",
-    sections: [],
+    images: [],
   },
 ];
 
 describe("GalleryGrid", () => {
-  it("shows only the first category's images by default, grouped under their section heading", () => {
+  it("shows only the first category's images by default", () => {
     render(<GalleryGrid categories={testCategories} />);
-    expect(screen.getByText("Suit View")).toBeInTheDocument();
     expect(screen.getByAltText("Aaru residences at sunset by the lagoon")).toBeInTheDocument();
     expect(screen.queryByAltText("Suite bedroom with lagoon view")).not.toBeInTheDocument();
   });
@@ -71,7 +58,7 @@ describe("GalleryGrid", () => {
     expect(screen.queryByAltText("Aaru residences at sunset by the lagoon")).not.toBeInTheDocument();
   });
 
-  it("shows a fallback message for a category with no sections yet", () => {
+  it("shows a fallback message for a category with no images yet", () => {
     render(<GalleryGrid categories={testCategories} />);
     fireEvent.click(screen.getByText("Lifestyle"));
     expect(screen.getByText("More photos coming soon.")).toBeInTheDocument();

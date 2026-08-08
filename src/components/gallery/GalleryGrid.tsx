@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { Tabs } from "@/components/ui/Tabs";
 import { Lightbox } from "@/components/ui/Lightbox";
+import { Container } from "@/components/ui/Container";
 import type { GalleryCategoryContent, GalleryCategory, GalleryImage } from "@/content/gallery";
 
 type GalleryGridProps = {
@@ -31,43 +32,40 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-section-s py-12 md:px-section-x lg:gap-12 lg:py-16">
-        {active.sections.length === 0 && (
+      <Container className="py-12 lg:py-16">
+        {active.images.length === 0 ? (
           <p className="font-body text-para-sm text-brand-forest-700">More photos coming soon.</p>
-        )}
-        {active.sections.map((section) => (
-          <div key={section.slug} className="flex flex-col gap-4">
-            {section.heading && (
-              <h3 className="font-subheading uppercase text-para-xs text-black md:pl-6">
-                {section.heading}
-              </h3>
-            )}
-            <div className="flex flex-wrap gap-4 sm:gap-4">
-              {section.images.map((image) => (
-                <button
-                  key={image.src}
-                  type="button"
-                  onClick={(event) => {
-                    lastTriggerRef.current = event.currentTarget;
-                    setSelectedImage(image);
-                  }}
-                  style={{ aspectRatio: `${image.width} / ${image.height}` }}
-                  className="relative h-[160px] grow cursor-zoom-in overflow-hidden rounded-card sm:h-[180px] lg:h-[200px]"
-                  aria-label={`View larger image: ${image.alt}`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                </button>
-              ))}
-            </div>
+        ) : (
+          // Each image keeps its own real aspect ratio (via inline
+          // aspectRatio, from the width/height read off the file on disk) at
+          // a fixed row height, and flex-wrap lets it grow to fill the row —
+          // landscape photos end up wide, portrait/square ones stay narrow,
+          // instead of every photo being forced into the same box shape.
+          <div className="flex flex-wrap gap-4">
+            {active.images.map((image) => (
+              <button
+                key={image.src}
+                type="button"
+                onClick={(event) => {
+                  lastTriggerRef.current = event.currentTarget;
+                  setSelectedImage(image);
+                }}
+                style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                className="relative h-[160px] grow cursor-zoom-in overflow-hidden rounded-card sm:h-[180px] lg:h-[200px]"
+                aria-label={`View larger image: ${image.alt}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
+        )}
+      </Container>
 
       <Lightbox image={selectedImage} onClose={closeLightbox} />
     </div>
