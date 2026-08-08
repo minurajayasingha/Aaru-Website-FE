@@ -49,13 +49,13 @@ export function HomeFeatureSection({
         className={cn(
           "flex w-full flex-col justify-center gap-6 px-section-s py-16 md:w-1/2",
           imagePosition === "left"
-            ? "md:order-2 md:pl-12 md:pr-[max(7.2917vw,calc((100vw_-_1600px)/2_+_116.667px))]"
+            ? "md:order-2 md:pl-6 md:pr-[max(7.2917vw,calc((100vw_-_1600px)/2_+_116.667px))]"
             : // The -ml-1 counters the heading font's own left-side bearing —
               // the "M" glyph has built-in whitespace before its ink starts,
               // so without this the text reads as slightly indented next to
               // hard-edged elements (like the cards above) even though the
               // box edge itself is pixel-aligned.
-              "md:order-1 md:-ml-1 md:pl-[max(7.2917vw,calc((100vw_-_1600px)/2_+_116.667px))] md:pr-12",
+              "md:order-1 md:-ml-1 md:pl-[max(7.2917vw,calc((100vw_-_1600px)/2_+_116.667px))] md:pr-6",
         )}
       >
         <h2 className="font-heading font-light text-h-02 text-white">{title}</h2>
