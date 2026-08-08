@@ -4,14 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import type { GalleryImage } from "@/content/gallery";
 
-type GalleryLightboxProps = {
-  image: GalleryImage | null;
+export type LightboxImage = { src: string; alt: string; width: number; height: number };
+
+type LightboxProps = {
+  image: LightboxImage | null;
   onClose: () => void;
 };
 
-export function GalleryLightbox({ image, onClose }: GalleryLightboxProps) {
+export function Lightbox({ image, onClose }: LightboxProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [mounted, setMounted] = useState(false);
 

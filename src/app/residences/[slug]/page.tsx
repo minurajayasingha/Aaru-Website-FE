@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { residences, getResidenceBySlug } from "@/content/residences";
 import { getAmenityIcon } from "@/content/amenityIcons";
+import { enrichGallerySections } from "@/lib/residenceGalleryImages";
 import { buildMetadata } from "@/lib/metadata";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -41,6 +42,8 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
   const otherResidences = residence.otherResidencesOrder
     .map((slug) => getResidenceBySlug(slug))
     .filter((r): r is NonNullable<typeof r> => r !== undefined && r.slug !== residence.slug);
+
+  const gallerySections = enrichGallerySections(residence.gallerySections);
 
   return (
     <>
@@ -121,10 +124,10 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       </Reveal>
       
 
-      {residence.gallerySections.length > 0 && (
+      {gallerySections.length > 0 && (
         <Reveal as="section" once={false}>
           <Container className="flex flex-col gap-12 py-16 lg:py-16">
-            {residence.gallerySections.map((section) => (
+            {gallerySections.map((section) => (
               <ResidenceGallerySection key={section.heading} section={section} />
             ))}
             <div className="flex justify-center gap-4">

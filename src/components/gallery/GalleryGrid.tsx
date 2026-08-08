@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Tabs } from "@/components/ui/Tabs";
-import { GalleryLightbox } from "./GalleryLightbox";
+import { Lightbox } from "@/components/ui/Lightbox";
 import type { GalleryCategoryContent, GalleryCategory, GalleryImage } from "@/content/gallery";
 
 type GalleryGridProps = {
@@ -69,7 +69,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
         ))}
       </div>
 
-      <GalleryLightbox image={selectedImage} onClose={closeLightbox} />
+      <Lightbox image={selectedImage} onClose={closeLightbox} />
     </div>
   );
 }

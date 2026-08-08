@@ -27,7 +27,13 @@ export function Reveal({ children, as = "div", delay = 0, className, once = true
 
   return (
     <MotionComponent
-      ref={ref}
+      // MotionComponent is one of three different motion components chosen
+      // at runtime by `as`, so its prop types union together into a ref
+      // signature TypeScript can't cleanly satisfy with one ref object -
+      // every underlying element is a real HTMLElement, which is all
+      // ref.current's only use (getBoundingClientRect) needs.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       className={cn(className)}
       style={{ willChange: "transform, opacity" }}
       initial="hidden"
