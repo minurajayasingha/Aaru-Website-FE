@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { Tabs } from "@/components/ui/Tabs";
-import type { GalleryCategoryContent, GalleryCategory } from "@/content/gallery";
+import { GalleryLightbox } from "./GalleryLightbox";
+import type { GalleryCategoryContent, GalleryCategory, GalleryImage } from "@/content/gallery";
 
 type GalleryGridProps = {
   categories: GalleryCategoryContent[];
@@ -11,7 +12,14 @@ type GalleryGridProps = {
 
 export function GalleryGrid({ categories }: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>(categories[0].id);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
   const active = categories.find((category) => category.id === activeCategory) ?? categories[0];
+
+  function closeLightbox() {
+    setSelectedImage(null);
+    lastTriggerRef.current?.focus();
+  }
 
   return (
     <div className="flex flex-col">
@@ -36,10 +44,16 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
             )}
             <div className="flex flex-wrap gap-4 sm:gap-4">
               {section.images.map((image) => (
-                <div
+                <button
                   key={image.src}
+                  type="button"
+                  onClick={(event) => {
+                    lastTriggerRef.current = event.currentTarget;
+                    setSelectedImage(image);
+                  }}
                   style={{ aspectRatio: `${image.width} / ${image.height}` }}
-                  className="relative h-[160px] grow overflow-hidden rounded-card sm:h-[180px] lg:h-[200px]"
+                  className="relative h-[160px] grow cursor-zoom-in overflow-hidden rounded-card sm:h-[180px] lg:h-[200px]"
+                  aria-label={`View larger image: ${image.alt}`}
                 >
                   <Image
                     src={image.src}
@@ -48,12 +62,14 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
-                </div>
+                </button>
               ))}
             </div>
           </div>
         ))}
       </div>
+
+      <GalleryLightbox image={selectedImage} onClose={closeLightbox} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { GalleryGrid } from "./GalleryGrid";
 import type { GalleryCategoryContent } from "@/content/gallery";
@@ -75,5 +75,33 @@ describe("GalleryGrid", () => {
     render(<GalleryGrid categories={testCategories} />);
     fireEvent.click(screen.getByText("Lifestyle"));
     expect(screen.getByText("More photos coming soon.")).toBeInTheDocument();
+  });
+
+  it("opens a lightbox with the full image when a thumbnail is clicked", () => {
+    render(<GalleryGrid categories={testCategories} />);
+    fireEvent.click(screen.getByRole("button", { name: /View larger image: Aaru residences at sunset/ }));
+
+    const dialog = screen.getByRole("dialog");
+    expect(within(dialog).getByAltText("Aaru residences at sunset by the lagoon")).toBeInTheDocument();
+  });
+
+  it("closes the lightbox when the close button is clicked", async () => {
+    render(<GalleryGrid categories={testCategories} />);
+    fireEvent.click(screen.getByRole("button", { name: /View larger image: Aaru residences at sunset/ }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Close image" }));
+
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+  });
+
+  it("closes the lightbox when the Escape key is pressed", async () => {
+    render(<GalleryGrid categories={testCategories} />);
+    fireEvent.click(screen.getByRole("button", { name: /View larger image: Aaru residences at sunset/ }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    fireEvent.keyDown(document, { key: "Escape" });
+
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
   });
 });
