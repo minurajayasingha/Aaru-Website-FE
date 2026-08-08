@@ -27,27 +27,37 @@ function AmenityText({ item, isDark }: { item: IconAmenityItem; isDark: boolean 
   );
 }
 
-// One "flush edges + equal gaps + centered dividers" row. Equal-width
-// cells (flex-1) keep the gap between every pair of dividers the same
-// size, regardless of how long each item's text is. The inner wrapper
-// stays centered so the icon lines up with its own text; the outer cell's
-// justify-* then pins that whole block flush to the row's edge for the
-// first/last item only.
+// One row of equal-width cells (flex-1), which keeps the gap between
+// every pair of dividers the same size regardless of how long each item's
+// text is. In single-row mode the outer cell's justify-* pins the first/
+// last item flush to the row's edge, matching the site's other edge-flush
+// rows (StatsSection, etc). In multi-row mode every cell is centered
+// instead — with several stacked rows sharing the same column widths, a
+// centered box keeps each column's icon aligned across rows regardless of
+// that row's text length, instead of drifting per row like the flush
+// edges would.
 function AmenityRow({
   items,
   isDark,
   dividerColor,
+  centerAll,
 }: {
   items: IconAmenityItem[];
   isDark: boolean;
   dividerColor: string;
+  centerAll: boolean;
 }) {
   return (
     <div className="flex">
       {items.map((item, index) => (
         <Fragment key={item.id}>
           {index > 0 && <RowDivider className={dividerColor} />}
-          <div className={cn("flex min-w-0 flex-1", cellJustifyClass(index, items.length))}>
+          <div
+            className={cn(
+              "flex min-w-0 flex-1",
+              centerAll ? "justify-center" : cellJustifyClass(index, items.length),
+            )}
+          >
             <div className="flex flex-col items-center gap-1.5 text-center">
               <AmenityText item={item} isDark={isDark} />
             </div>
@@ -79,6 +89,7 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light", ite
   const isDark = theme === "dark";
   const dividerColor = isDark ? "bg-white/10" : "bg-brand-forest-100";
   const rows = chunk(items, itemsPerRow ?? items.length);
+  const isMultiRow = rows.length > 1;
 
   return (
     <section className={cn("py-16", isDark ? "bg-brand-forest-900" : undefined)}>
@@ -103,9 +114,9 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light", ite
           </div>
         )}
 
-        <div className="hidden flex-col gap-y-12 md:flex">
+        <div className={cn("hidden flex-col gap-y-12 md:flex", isMultiRow && "mx-auto w-full max-w-6xl")}>
           {rows.map((row, index) => (
-            <AmenityRow key={index} items={row} isDark={isDark} dividerColor={dividerColor} />
+            <AmenityRow key={index} items={row} isDark={isDark} dividerColor={dividerColor} centerAll={isMultiRow} />
           ))}
         </div>
 
