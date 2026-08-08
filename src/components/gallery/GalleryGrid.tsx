@@ -36,12 +36,13 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
         {active.images.length === 0 ? (
           <p className="font-body text-para-sm text-brand-forest-700">More photos coming soon.</p>
         ) : (
-          // Each image keeps its own real aspect ratio (via inline
-          // aspectRatio, from the width/height read off the file on disk) at
-          // a fixed row height, and flex-wrap lets it grow to fill the row —
-          // landscape photos end up wide, portrait/square ones stay narrow,
-          // instead of every photo being forced into the same box shape.
-          <div className="flex flex-wrap gap-4">
+          // A Pinterest-style masonry via CSS columns, rather than a
+          // justified grid — every column fills top-down independently, so
+          // photo heights stagger naturally instead of lining up into neat
+          // shared-height rows. Each image keeps its own real aspect ratio
+          // (width/height read off the file on disk) since it's sized
+          // intrinsically (w-full, h-auto) rather than cropped into a fill box.
+          <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
             {active.images.map((image) => (
               <button
                 key={image.src}
@@ -50,16 +51,16 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
                   lastTriggerRef.current = event.currentTarget;
                   setSelectedImage(image);
                 }}
-                style={{ aspectRatio: `${image.width} / ${image.height}` }}
-                className="relative h-[160px] grow cursor-zoom-in overflow-hidden rounded-card sm:h-[180px] lg:h-[200px]"
+                className="mb-4 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-card"
                 aria-label={`View larger image: ${image.alt}`}
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover"
+                  width={image.width}
+                  height={image.height}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="h-auto w-full object-cover"
                 />
               </button>
             ))}
