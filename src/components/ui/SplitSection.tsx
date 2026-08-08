@@ -39,7 +39,7 @@ export function SplitSection({
   const paragraphsEl = (
     <div className="flex flex-col gap-4">
       {paragraphs.map((paragraph) => (
-        <p key={paragraph} className="font-body text-para-sm font-thin text-black md:w-10/12">
+        <p key={paragraph} className="font-body text-para-sm font-thin text-black">
           {paragraph}
         </p>
       ))}
