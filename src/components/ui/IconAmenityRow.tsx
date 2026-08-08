@@ -4,17 +4,19 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
-import { RowDivider } from "./EdgeAlignedRow";
+import { RowDivider, cellJustifyClass } from "./EdgeAlignedRow";
 import { cn } from "@/lib/cn";
 
-export type IconAmenityItem = { id: string; name: string; description: string; icon: string };
+export type IconAmenityItem = { id: string; name: string; description: string; icon?: string };
 
 function AmenityText({ item, isDark }: { item: IconAmenityItem; isDark: boolean }) {
   return (
     <>
-      <span className="relative h-16 w-16">
-        <Image src={item.icon} alt="" fill className="object-contain" />
-      </span>
+      {item.icon && (
+        <span className="relative h-16 w-16">
+          <Image src={item.icon} alt="" fill className="object-contain" />
+        </span>
+      )}
       <p className={cn("font-subheading uppercase text-para-xs", isDark ? "text-white" : "text-black")}>
         {item.name}
       </p>
@@ -25,27 +27,58 @@ function AmenityText({ item, isDark }: { item: IconAmenityItem; isDark: boolean 
   );
 }
 
+// One "flush edges + equal gaps + centered dividers" row. Equal-width
+// cells (flex-1) keep the gap between every pair of dividers the same
+// size, regardless of how long each item's text is. The inner wrapper
+// stays centered so the icon lines up with its own text; the outer cell's
+// justify-* then pins that whole block flush to the row's edge for the
+// first/last item only.
+function AmenityRow({
+  items,
+  isDark,
+  dividerColor,
+}: {
+  items: IconAmenityItem[];
+  isDark: boolean;
+  dividerColor: string;
+}) {
+  return (
+    <div className="flex">
+      {items.map((item, index) => (
+        <Fragment key={item.id}>
+          {index > 0 && <RowDivider className={dividerColor} />}
+          <div className={cn("flex min-w-0 flex-1", cellJustifyClass(index, items.length))}>
+            <div className="flex flex-col items-center gap-1.5 text-center">
+              <AmenityText item={item} isDark={isDark} />
+            </div>
+          </div>
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+
+function chunk<T>(items: T[], size: number): T[][] {
+  const rows: T[][] = [];
+  for (let index = 0; index < items.length; index += size) {
+    rows.push(items.slice(index, index + size));
+  }
+  return rows;
+}
+
 type IconAmenityRowProps = {
   heading?: string;
   paragraph?: string;
   items: IconAmenityItem[];
   theme?: "light" | "dark";
+  /** Wraps into multiple stacked rows of this many items instead of one long row. */
+  itemsPerRow?: number;
 };
 
-// Positions the icon+text block within its (equal-width) cell: flush to
-// the outer edge for the first/last cell, centered for every cell in
-// between — same idea as StatsSection's edge-flush, but applied to the
-// cell as a whole rather than to items-align, so the icon stays centered
-// over its own text regardless of position.
-function cellJustifyClass(index: number, length: number) {
-  if (index === 0) return "justify-start";
-  if (index === length - 1) return "justify-end";
-  return "justify-center";
-}
-
-export function IconAmenityRow({ heading, paragraph, items, theme = "light" }: IconAmenityRowProps) {
+export function IconAmenityRow({ heading, paragraph, items, theme = "light", itemsPerRow }: IconAmenityRowProps) {
   const isDark = theme === "dark";
   const dividerColor = isDark ? "bg-white/10" : "bg-brand-forest-100";
+  const rows = chunk(items, itemsPerRow ?? items.length);
 
   return (
     <section className={cn("py-16", isDark ? "bg-brand-forest-900" : undefined)}>
@@ -70,21 +103,9 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light" }: I
           </div>
         )}
 
-        {/* Equal-width cells (flex-1) keep the gap between every pair of
-            dividers the same size, regardless of how long each item's text
-            is. The inner wrapper stays centered so the icon lines up with
-            its own text; the outer cell's justify-* then pins that whole
-            block flush to the row's edge for the first/last item only. */}
-        <div className="hidden md:flex">
-          {items.map((item, index) => (
-            <Fragment key={item.id}>
-              {index > 0 && <RowDivider className={dividerColor} />}
-              <div className={cn("flex min-w-0 flex-1", cellJustifyClass(index, items.length))}>
-                <div className="flex flex-col items-center gap-1.5 text-center">
-                  <AmenityText item={item} isDark={isDark} />
-                </div>
-              </div>
-            </Fragment>
+        <div className="hidden flex-col gap-y-12 md:flex">
+          {rows.map((row, index) => (
+            <AmenityRow key={index} items={row} isDark={isDark} dividerColor={dividerColor} />
           ))}
         </div>
 

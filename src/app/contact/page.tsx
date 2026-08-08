@@ -38,11 +38,11 @@ export default function ContactPage() {
       </Reveal>
       <Reveal as="section" once={false} className="bg-white">
         <Container className="grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center">
-          <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-left md:pl-16">Contact Information</h2>
+          <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-left">Contact Information</h2>
           <div className="flex flex-col md:flex-row gap-10 pt-1 md:items-center md:gap-1">
-            <div className="flex flex-col items-start gap-6 text-center md:items-start md:text-left w-full md:w-3/6 md:pl-16">
+            <div className="flex flex-col items-start gap-6 text-center md:items-start md:text-left w-full md:w-3/6">
               <div className="flex flex-col gap-4">
-                <p className="font-heading font-light text-h-03 text-brand-forest-700">Sales Enquiries</p>
+                <p className="font-heading font-light text-h-02 text-brand-forest-700">Sales Enquiries</p>
                 <div className="flex items-center gap-3">
                   <Image src="/images/icons/black-email.svg" alt="" width={18} height={18} />
                   <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactEmail}</p>

@@ -16,3 +16,13 @@ export function edgeAlignClass(index: number, length: number) {
 export function RowDivider({ className }: { className?: string }) {
   return <span aria-hidden="true" className={cn("w-px shrink-0 self-stretch mx-4", className)} />;
 }
+
+// Positions a block within its own (equal-width) cell: flush to the outer
+// edge for the first/last cell, centered for every cell in between. Used
+// where the inner content itself must stay centered on its own axis (e.g.
+// an icon over its caption) regardless of the cell's edge/center position.
+export function cellJustifyClass(index: number, length: number) {
+  if (index === 0) return "justify-start";
+  if (index === length - 1) return "justify-end";
+  return "justify-center";
+}

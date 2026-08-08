@@ -14,6 +14,7 @@ import { ResidenceGallerySection } from "@/components/residences/ResidenceGaller
 import { ResidenceJsonLd } from "@/components/seo/ResidenceJsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { Container } from "@/components/ui/Container";
+import { IconAmenityRow } from "@/components/ui/IconAmenityRow";
 
 type PageParams = { params: Promise<{ slug: string }> };
 
@@ -102,27 +103,19 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
         </Container>
       </Reveal>
 
-      <Reveal as="section" className="bg-brand-forest-800 px-section-s py-16 text-brand-cream px-section-x ">
-        <h2 className="mb-10 text-center font-heading font-normal lg:font-normal text-h-03 text-white md:text-h-02">
-          {residence.amenitiesSectionTitle}
-        </h2>
-        <div className="mx-auto grid max-w-6xl grid-cols-2  gap-y-12 sm:grid-cols-3 md:grid-cols-5 md:divide-x divide-brand-cream/20 md:[&>*:nth-child(5n+1)]:!border-l-0">
-          {residence.amenities.map((item) => {
-            const icon = getAmenityIcon(item);
-            return (
-              <div key={item} className="flex flex-col items-center gap-3 text-center">
-                {icon && (
-                  <span className="relative h-18 w-18">
-                    <Image src={icon} alt="" fill className="object-contain" />
-                  </span>
-                )}
-                <p className="font-heading text-para-sm w-4/5 lgtext-para-md text-brand-cream/80 font-thin  ">{item}</p>
-              </div>
-            );
-          })}
-        </div>
-      </Reveal>
-      
+      <IconAmenityRow
+        heading={residence.amenitiesSectionTitle}
+        items={residence.amenities.map((item, index) => ({
+          id: `${item}-${index}`,
+          name: item,
+          description: "",
+          icon: getAmenityIcon(item),
+        }))}
+        theme="dark"
+        itemsPerRow={5}
+      />
+
+
 
       {gallerySections.length > 0 && (
         <Reveal as="section" once={false}>
