@@ -17,14 +17,21 @@ export function WhoLeadsSection({ title, paragraph, imageSrc, imageAlt, members 
   return (
     <Reveal
       as="section"
-      className="relative  bg-black/80 px-section-s h-screen md:h-full md:px-section-x lg:pt-24 items-center"
+      className="relative  bg-black/80 px-section-s h-screen md:h-full md:px-section-x pt-24 pb-10 md:pb-0 items-center"
     >
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center lg:gap-16 ">
-        <div className="flex w-full flex-col gap-6 lg:w-5/12">
-          <h1 className="font-heading font-light text-h-01 text-brand-forest-200">{title}</h1>
-          <p className="font-body text-para-sm font-light text-white/80 lg:w-10/12">{paragraph}</p>
+      {/* h-full + justify-center (mobile only) groups title/image/names/para
+          together in the middle of this h-screen section instead of
+          stretching them apart with a big empty gap; lg:h-auto and
+          lg:justify-start reset that once the layout goes side-by-side. */}
+      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center gap-10 lg:h-auto lg:flex-row lg:items-center lg:justify-start lg:gap-16 ">
+        {/* `contents` splits the title/paragraph apart on mobile so the
+            image (ordered between them) can sit above the paragraph;
+            at lg+ this becomes a real flex column again, same as before. */}
+        <div className="contents lg:flex lg:w-5/12 lg:flex-col lg:gap-6">
+          <h1 className="order-1 text-center font-heading font-light text-h-01 text-brand-forest-200 lg:text-left">{title}</h1>
+          <p className="order-3 font-body text-para-sm font-light text-white/80 lg:w-10/12">{paragraph}</p>
         </div>
-        <div className="relative w-full lg:w-7/12">
+        <div className="relative order-2 w-full lg:w-7/12">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
             <Image src={imageSrc} alt={imageAlt} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
           </div>

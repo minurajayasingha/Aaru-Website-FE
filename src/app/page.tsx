@@ -33,7 +33,7 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-8 px-6 pb-[7vh]">
-          <h1 className="font-heading text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
+          <h1 className="font-heading text-h-04 sm:text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
           <Button href="/residences" variant="primary" size="md">
             Explore Residences
           </Button>

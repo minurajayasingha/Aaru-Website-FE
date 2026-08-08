@@ -43,7 +43,7 @@ export function StoryProfileSection({
         >
           <span className="font-subheading text-para-md uppercase text-brand-gold">{eyebrow}</span>
           <h2 className="font-heading font-light text-h-01 text-black">{title}</h2>
-          <p className="font-body text-para-sm font-thin text-black lg:w-10/12">{paragraph}</p>
+          <p className="text-justify font-body text-para-sm font-thin text-black lg:w-10/12 lg:text-left">{paragraph}</p>
           {ctaLabel && ctaHref && (
             <Button href={ctaHref} variant="primary" className="mt-2 w-fit">
               {ctaLabel}

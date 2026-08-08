@@ -85,8 +85,10 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
                 </p>
               </div>
               <div className="flex-1 px-1 py-6 lg:py-6 flex flex-col items-center gap-2">
-                <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">{residence.sizeLabel}</p>
-                <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Size</p>
+                <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">
+                  {residence.sizeLabel.replace(/\s*sqft$/i, "")}
+                </p>
+                <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Size (Sqft)</p>
               </div>
             </div>
             <div className="border-t border-brand-forest-300 px-2 py-6 flex flex-col items-center gap-2">
@@ -123,7 +125,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
             {gallerySections.map((section) => (
               <ResidenceGallerySection key={section.heading} section={section} />
             ))}
-            <div className="flex justify-center gap-4">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button href="/gallery" variant="secondary">
                 View More
               </Button>
