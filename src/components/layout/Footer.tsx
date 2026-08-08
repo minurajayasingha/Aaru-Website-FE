@@ -21,7 +21,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-10 lg:gap-16 xl:gap-20 lg:pt-4 xl:pt-0">
+        <div className="flex flex-col gap-10 sm:flex-row sm:justify-between md:flex-1 lg:pt-4 xl:pt-0">
           {footerLinkGroups.map((group) => (
             <div key={group.title} className="flex flex-col">
               <h4 className="font-heading text-para-lg text-white font-extralight pb-3">{group.title}</h4>
