@@ -31,6 +31,11 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
     return image.width / image.height >= 1.8;
   }
 
+  // Regular images go first so every column fills up before any wide photo
+  // forces a full-width break — a wide image early in the list would force
+  // that break while later columns are still empty, leaving a gap above it.
+  const orderedImages = [...active.images.filter((image) => !isWide(image)), ...active.images.filter(isWide)];
+
   return (
     <div className="flex flex-col">
       <div className="bg-brand-forest-900 py-6">
@@ -52,7 +57,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
           // (width/height read off the file on disk) since it's sized
           // intrinsically (w-full, h-auto) rather than cropped into a fill box.
           <div className="columns-2 gap-2 sm:columns-3 lg:columns-4">
-            {active.images.map((image) => {
+            {orderedImages.map((image) => {
               const wide = isWide(image);
               return (
                 <button
