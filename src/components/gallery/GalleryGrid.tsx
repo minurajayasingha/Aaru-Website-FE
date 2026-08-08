@@ -51,7 +51,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
           // shared-height rows. Each image keeps its own real aspect ratio
           // (width/height read off the file on disk) since it's sized
           // intrinsically (w-full, h-auto) rather than cropped into a fill box.
-          <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
+          <div className="columns-2 gap-2 sm:columns-3 lg:columns-4">
             {active.images.map((image) => {
               const wide = isWide(image);
               return (
@@ -63,7 +63,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
                     setSelectedImage(image);
                   }}
                   className={cn(
-                    "mb-4 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-card",
+                    "mb-2 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-button",
                     wide && "[column-span:all]",
                   )}
                   aria-label={`View larger image: ${image.alt}`}
