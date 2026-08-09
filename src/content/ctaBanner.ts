@@ -1,5 +1,8 @@
 export type CtaBannerContent = {
   imageSrc: string;
+  /** Separate, art-directed image shown below the `md` breakpoint instead of
+   * cropping `imageSrc` down, mirroring PageHero's mobileImageSrc. */
+  mobileImageSrc?: string;
   imageAlt: string;
   heading: string;
   paragraph: string;
@@ -21,6 +24,7 @@ export const defaultCtaBanner: CtaBannerContent = {
 export const ctaBannerByRoute: Record<string, CtaBannerContent> = {
   "/": {
     imageSrc: "/images/cta/home.jpg",
+    mobileImageSrc: "/images/cta/mobile/home.jpg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",
     paragraph: "Enquire now for availability, prices and investment details.",
@@ -33,12 +37,14 @@ export const ctaBannerByRoute: Record<string, CtaBannerContent> = {
   },
   "/residences/garden-condos": {
     imageSrc: "/images/cta/residences-garden-condos.png",
+    mobileImageSrc: "/images/cta/mobile/residences-garden-condos.jpeg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",
     paragraph: "Enquire now for availability, prices and investment details.",
   },
   "/residences/condos": {
     imageSrc: "/images/cta/residences-condos.png",
+    mobileImageSrc: "/images/cta/mobile/residences-condos.jpeg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",
     paragraph: "Enquire now for availability, prices and investment details.",
@@ -51,12 +57,14 @@ export const ctaBannerByRoute: Record<string, CtaBannerContent> = {
   },
   "/gallery": {
     imageSrc: "/images/cta/gallery.png",
+    mobileImageSrc: "/images/cta/mobile/gallery.jpeg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",
     paragraph: "Enquire now for availability, prices and investment details.",
   },
   "/commercial-space": {
     imageSrc: "/images/cta/commercial-space.png",
+    mobileImageSrc: "/images/cta/mobile/commercial-space.jpeg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",
     paragraph: "Enquire now for availability, prices and investment details.",

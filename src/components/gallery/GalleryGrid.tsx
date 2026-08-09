@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { Tabs } from "@/components/ui/Tabs";
 import { Lightbox } from "@/components/ui/Lightbox";
-import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
 import type { GalleryCategoryContent, GalleryCategory, GalleryImage } from "@/content/gallery";
 
@@ -55,7 +54,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
         />
       </div>
 
-      <Container className="py-12 lg:py-16">
+      <div className="w-full px-section-s py-12 md:px-section-x lg:py-16">
         {active.images.length === 0 ? (
           <p className="font-body text-para-sm text-brand-forest-700">More photos coming soon.</p>
         ) : (
@@ -95,7 +94,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
             })}
           </div>
         )}
-      </Container>
+      </div>
 
       <Lightbox
         image={selectedImage}

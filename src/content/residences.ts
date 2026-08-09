@@ -51,7 +51,7 @@ export const residences: Residence[] = [
     description:
       "Three exclusive ground-floor lagoon residences designed for effortless living by the lagoon, with only 3 units available. Each home features private garden decks, private pools, and breathtaking sunset views over the water. Refined architecture blends seamlessly with lush surroundings, offering privacy, comfort, and a deep connection to the natural beauty of Arugam Bay.",
     heroImage: { src: "/images/residences/garden-condos/hero.jpg", alt: "Garden Condos at sunset with private pools" },
-    heroImageMobile: { src: "/images/residences/garden-condos/hero-mobile.jpg", alt: "Garden Condos at sunset with private pools" },
+    heroImageMobile: { src: "/images/residences/garden-condos/hero-mobile.jpeg", alt: "Garden Condos at sunset with private pools" },
     cardImage: { src: "/images/residences/garden-condos/card.jpg", alt: "Garden Condos at sunset with private pools" },
     layoutGallery: [
       { src: "/images/residences/garden-condos/layout-1.jpg", alt: "Garden Condos ground floor unit layout plan" },
@@ -105,7 +105,7 @@ export const residences: Residence[] = [
     unitsAvailableLabel: "16 Units",
     description:
       "Sixteen residences across the first and second floors, framing panoramic lagoon views from private balconies. Designed for privacy and comfort with refined interiors and direct access to Aaru's shared clubhouse and amenities.",
-    heroImage: { src: "/images/residences/condos/hero.jpg", alt: "Condos building exterior with pool" },
+    heroImage: { src: "/images/residences/condos/hero.jpeg", alt: "Condos building exterior with pool" },
     heroImageMobile: { src: "/images/residences/condos/hero-mobile.jpg", alt: "Condos building exterior with pool" },
     cardImage: { src: "/images/residences/condos/card.jpg", alt: "Condos building exterior with pool" },
     layoutGallery: [
@@ -153,13 +153,13 @@ export const residences: Residence[] = [
     unitsAvailableLabel: "3 Units",
     description:
       "Three fully private villas set among palm gardens, each with its own pool, garden deck, and four bedrooms of refined coastal living — the most exclusive way to call Aaru home.",
-    heroImage: { src: "/images/residences/private-villas/hero.jpg", alt: "Private Villas with palm trees and pool" },
+    heroImage: { src: "/images/residences/private-villas/hero.jpeg", alt: "Private Villas with palm trees and pool" },
     heroImageMobile: { src: "/images/residences/private-villas/hero-mobile.jpg", alt: "Private Villas with palm trees and pool" },
     cardImage: { src: "/images/residences/private-villas/card.jpg", alt: "Private Villas with palm trees and pool" },
     layoutGallery: [
-      { src: "/images/residences/private-villas/layout-1.jpg", alt: "Private Villas unit layout plan" },
-      { src: "/images/residences/private-villas/layout-2.jpg", alt: "Private Villas unit layout, alternate view" },
-      { src: "/images/residences/private-villas/layout-3.jpg", alt: "Private Villas unit layout, alternate view" },
+      { src: "/images/residences/private-villas/layout-1.png", alt: "Private Villas unit layout plan" },
+      { src: "/images/residences/private-villas/layout-2.png", alt: "Private Villas unit layout, alternate view" },
+      { src: "/images/residences/private-villas/layout-3.png", alt: "Private Villas unit layout, alternate view" },
       { src: "/images/residences/private-villas/layout-4.jpg", alt: "Private Villas unit layout, alternate view" },
     ],
     amenities: [

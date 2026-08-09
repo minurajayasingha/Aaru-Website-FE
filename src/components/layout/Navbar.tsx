@@ -72,7 +72,7 @@ export function Navbar() {
   return (
     <>
       <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 bg-white shadow-card2">
-      <Container as="nav" className="flex items-center justify-between gap-6 py-3 lg:py-1">
+      <Container as="nav" className="flex items-center justify-between gap-6 py-3 lg:py-2">
         <Link href="/" className="relative h-10 w-10 shrink-0">
           <Image src="/images/logo/aaru-mark-color.svg" alt="Aaru Living" fill className="object-contain" />
         </Link>
@@ -81,7 +81,7 @@ export function Navbar() {
           {navLinks.map((link) => {
             const active = isLinkActive(pathname, link.href);
             const linkClasses = cn(
-              "relative inline-block pb-[0.2rem] font-body text-para-xs font-light",
+              "relative inline-block pb-[0.2rem] font-body text-para-xs font-normal",
               "bg-gradient-to-r from-brand-gold from-50% to-brand-forest-900 to-50% bg-[length:200%_100%] bg-right bg-clip-text text-transparent",
               "transition-[background-position] duration-500 ease-out hover:bg-left",
               active &&
@@ -129,7 +129,7 @@ export function Navbar() {
                       <li key={child.href}>
                         <Link
                           href={child.href}
-                          className="block px-4 py-2 font-body text-para-xs font-light text-brand-forest-900 hover:bg-brand-forest-50 hover:text-brand-gold"
+                          className="block px-4 py-2 font-body text-para-xs font-normal text-brand-forest-900 hover:bg-brand-forest-50 hover:text-brand-gold"
                         >
                           {child.label}
                         </Link>
@@ -154,34 +154,52 @@ export function Navbar() {
           <span className="font-body text-sm font-thin">WhatsApp</span>
         </Link>
 
-        <button
-          ref={toggleButtonRef}
-          type="button"
-          className="relative flex h-6 w-6 shrink-0 items-center justify-center lg:hidden"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-nav-drawer"
-          onClick={() => setIsMenuOpen((open) => !open)}
-        >
-          <span
-            className={cn(
-              "absolute h-0.5 w-6 rounded-full bg-brand-forest-900 transition-transform duration-300",
-              isMenuOpen ? "rotate-45" : "-translate-y-2",
-            )}
-          />
-          <span
-            className={cn(
-              "absolute h-0.5 w-6 rounded-full bg-brand-forest-900 transition-opacity duration-300",
-              isMenuOpen && "opacity-0",
-            )}
-          />
-          <span
-            className={cn(
-              "absolute h-0.5 w-6 rounded-full bg-brand-forest-900 transition-transform duration-300",
-              isMenuOpen ? "-rotate-45" : "translate-y-2",
-            )}
-          />
-        </button>
+        {/* Grouped together (instead of two separate flex items) so
+            justify-between on the nav row doesn't push the WhatsApp button
+            toward the middle — it should sit flush next to the hamburger,
+            not centered in the leftover space. */}
+        <div className="flex shrink-0 items-center gap-3 lg:hidden">
+          <Link
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#25D366] px-3 py-1.5 text-black hover:bg-[#1EBE5A]"
+          >
+            <span className="relative h-3 w-3">
+              <Image src="/images/icons/whatsapp-nav.svg" alt="" fill className="object-contain" />
+            </span>
+            <span className="font-body text-xs font-thin">WhatsApp</span>
+          </Link>
+
+          <button
+            ref={toggleButtonRef}
+            type="button"
+            className="relative flex h-6 w-6 shrink-0 items-center justify-center"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav-drawer"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span
+              className={cn(
+                "absolute h-0.5 w-6 rounded-full bg-brand-forest-900 transition-transform duration-300",
+                isMenuOpen ? "rotate-45" : "-translate-y-2",
+              )}
+            />
+            <span
+              className={cn(
+                "absolute h-0.5 w-6 rounded-full bg-brand-forest-900 transition-opacity duration-300",
+                isMenuOpen && "opacity-0",
+              )}
+            />
+            <span
+              className={cn(
+                "absolute h-0.5 w-6 rounded-full bg-brand-forest-900 transition-transform duration-300",
+                isMenuOpen ? "-rotate-45" : "translate-y-2",
+              )}
+            />
+          </button>
+        </div>
       </Container>
       </header>
 
@@ -245,20 +263,6 @@ export function Navbar() {
                 </li>
               ),
             )}
-            <li>
-              <Link
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-5 py-2 text-black"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className="relative h-4 w-4">
-                  <Image src="/images/icons/whatsapp-nav.svg" alt="" fill className="object-contain" />
-                </span>
-                <span className="font-body text-sm">WhatsApp</span>
-              </Link>
-            </li>
           </ul>
         </div>
       )}

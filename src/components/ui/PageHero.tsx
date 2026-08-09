@@ -23,7 +23,7 @@ export function PageHero({ title, subtitle, imageSrc, imageAlt, mobileImageSrc, 
   return (
     <section
       className={cn(
-        "relative flex items-center justify-center text-center text-brand-cream",
+        "relative flex items-end justify-center pb-24 text-center text-brand-cream sm:pb-16 md:items-center md:pb-0",
         heightClasses[height],
       )}
     >
@@ -37,7 +37,7 @@ export function PageHero({ title, subtitle, imageSrc, imageAlt, mobileImageSrc, 
       )}
       <div className="relative z-10 flex flex-col items-center gap-3">
         <h1 className="font-heading text-h-02 md:text-h-02">{title}</h1>
-        {subtitle && <p className="font-subheading text-subh-02 uppercase">{subtitle}</p>}
+        {subtitle && <p className="font-subheading text-subh-02 uppercase px-4 md:px-0">{subtitle}</p>}
       </div>
     </section>
   );

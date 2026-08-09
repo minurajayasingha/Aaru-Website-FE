@@ -34,16 +34,16 @@ export default function HomePage() {
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
-          className="object-cover md:hidden"
+          className="object-cover md:hidden justify-center"
         />
         <Image
-          src="/images/hero/home.png"
+          src="/images/hero/home.jpeg"
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
-          className="hidden object-cover md:block"
+          className="hidden object-cover md:block justify-center items-center"
         />
-        <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-8 px-6 pb-[7vh]">
+        <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-6 px-6 pb-[6vh] xl:pb-[7vh]">
           <h1 className="font-heading text-h-04 sm:text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
           <Button href="/residences" variant="primary" size="md">
             Explore Residences

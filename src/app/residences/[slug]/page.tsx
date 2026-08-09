@@ -138,11 +138,11 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
             {gallerySections.map((section) => (
               <ResidenceGallerySection key={section.heading} section={section} />
             ))}
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button href="/gallery" variant="secondary">
+            <div className="flex items-center gap-4 align-center justify-center flex-wrap lg:flex-nowrap">
+              <Button href="/gallery" variant="secondary" size="sm"  >
                 View More
               </Button>
-              <Button href="/contact" variant="primary">
+              <Button href="/contact" variant="primary" size="sm" >
                 Contact Us
               </Button>
             </div>

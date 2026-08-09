@@ -15,8 +15,8 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-col md:flex-col gap-3.5 items-center w-full lg:w-auto lg:items-start lg:pt-3">
-            <p className="font-body text-xs w-full text-center md:text-left xl:whitespace-nowrap text-white/70">
-              Developed By <span className="text-white text-para-xxs">{siteConfig.Developer}</span>
+            <p className="font-body text-para-xs w-full text-center md:text-left xl:whitespace-nowrap text-white/40">
+              Developed By <span className="text-white text-para-xs">{siteConfig.Developer}</span>
             </p>
           </div>
         </div>
@@ -30,7 +30,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-block font-body text-para-xxs font-thin tracking-wide bg-gradient-to-r from-brand-gold from-50% to-white/90 to-50% bg-[length:200%_100%] bg-right bg-clip-text text-transparent transition-[background-position] duration-500 ease-out hover:bg-left"
+                      className="inline-block font-body text-para-xs font-thin tracking-wide bg-gradient-to-r from-brand-gold from-50% to-white/90 to-50% bg-[length:200%_100%] bg-right bg-clip-text text-transparent transition-[background-position] duration-500 ease-out hover:bg-left"
                     >
                       {link.label}
                     </Link>
@@ -46,13 +46,13 @@ export function Footer() {
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/email.svg" alt="" fill className="object-contain" />
               </div>
-              <span className="font-body text-para-xxs font-thin  text-white/80 tracking-wide">{siteConfig.contactEmail}</span>
+              <span className="font-body text-para-xs font-thin  text-white/80 tracking-wide">{siteConfig.contactEmail}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/whatsapp.svg" alt="" fill className="object-contain" />
               </div>
-              <span className="font-body text-para-xxs font-thin text-white/80 tracking-wide">{siteConfig.contactPhone}</span>
+              <span className="font-body text-para-xs font-thin text-white/80 tracking-wide">{siteConfig.contactPhone}</span>
             </div>
           </div>
         </div>
