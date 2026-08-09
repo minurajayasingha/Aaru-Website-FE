@@ -3,12 +3,21 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Lightbox } from "@/components/ui/Lightbox";
+import { cn } from "@/lib/cn";
 import type { EnrichedGallerySection } from "@/lib/residenceGalleryImages";
 
 export function ResidenceGallerySection({ section }: { section: EnrichedGallerySection }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
   const selectedImage = selectedIndex !== null ? section.images[selectedIndex] : null;
+
+  // Which section is "Suit View" vs "Suit Room" isn't tied to `layout`
+  // consistently across residences (e.g. Private Villas' Suit View is
+  // "banner" while its Suit Room is "row"), so the bigger mobile crop is
+  // keyed on the section name itself, not the layout type - otherwise this
+  // enlarges whichever section happens to share a layout with the one
+  // that's meant to change.
+  const isSuitView = section.heading === "Suit View";
 
   function closeLightbox() {
     setSelectedIndex(null);
@@ -36,7 +45,10 @@ export function ResidenceGallerySection({ section }: { section: EnrichedGalleryS
                 lastTriggerRef.current = event.currentTarget;
                 setSelectedIndex(index);
               }}
-              className="relative aspect-[16/9] cursor-zoom-in overflow-hidden rounded-card sm:aspect-[4/5]"
+              className={cn(
+                "relative cursor-zoom-in overflow-hidden rounded-card",
+                isSuitView ? "aspect-[16/9] sm:aspect-[4/5]" : "aspect-[4/5]",
+              )}
               aria-label={`View larger image: ${image.alt}`}
             >
               <Image
@@ -59,7 +71,10 @@ export function ResidenceGallerySection({ section }: { section: EnrichedGalleryS
                 lastTriggerRef.current = event.currentTarget;
                 setSelectedIndex(index);
               }}
-              className="relative aspect-[21/7] cursor-zoom-in overflow-hidden rounded-card"
+              className={cn(
+                "relative cursor-zoom-in overflow-hidden rounded-card",
+                isSuitView ? "aspect-[16/9] sm:aspect-[21/7]" : "aspect-[21/7]",
+              )}
               aria-label={`View larger image: ${image.alt}`}
             >
               <Image src={image.src} alt={image.alt} fill sizes="100vw" className="object-cover" />
