@@ -17,10 +17,11 @@ body {
   color: var(--color-text-body);
 }
 
-/* Unlayered on purpose: Tailwind's utility layer (text-para-* etc.) always
-   wins over anything in @layer base, no matter the selector specificity.
-   Living outside any layer is the only way this beats those font-size
-   utilities' own line-height, without touching headings. */
+/* !important is required here: this build doesn't compile Tailwind's
+   @tailwind directives into native CSS @layer blocks, so it's plain
+   cascade rules — a class selector like .text-para-sm (which sets its own
+   line-height) always beats a bare `p` element selector on specificity
+   alone, regardless of source order. */
 p {
-  line-height: 1.5;
+  line-height: 1.5 !important;
 }
