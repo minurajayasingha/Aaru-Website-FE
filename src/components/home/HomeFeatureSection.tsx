@@ -47,7 +47,7 @@ export function HomeFeatureSection({
           1600px). */}
       <div
         className={cn(
-          "flex w-full flex-col justify-center gap-6 px-section-s py-16 md:w-1/2",
+          "order-2 flex w-full flex-col justify-center gap-6 px-section-s py-16 md:w-1/2",
           imagePosition === "left"
             ? "md:order-2 md:pl-6 md:pr-[max(7.2917vw,calc((100vw_-_1600px)/2_+_116.667px))]"
             : // The -ml-1 counters the heading font's own left-side bearing —
@@ -78,7 +78,7 @@ export function HomeFeatureSection({
       </div>
       <div
         className={cn(
-          "relative min-h-[320px] w-full md:w-4/6",
+          "relative order-1 min-h-[320px] w-full md:w-4/6",
           imagePosition === "left" ? "md:order-1" : "md:order-2",
         )}
       >

@@ -13,8 +13,8 @@ export type CommercialFeatureGridItem = {
 
 type CommercialFeatureGridProps = {
   items: CommercialFeatureGridItem[];
-  ctaLabel: string;
-  ctaHref: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 export function CommercialFeatureGrid({ items, ctaLabel, ctaHref }: CommercialFeatureGridProps) {
@@ -38,11 +38,13 @@ export function CommercialFeatureGrid({ items, ctaLabel, ctaHref }: CommercialFe
             </div>
           ))}
         </div>
-        <div className="mt-12 flex justify-center">
-          <Button href={ctaHref} variant="primary">
-            {ctaLabel}
-          </Button>
-        </div>
+        {ctaLabel && ctaHref && (
+          <div className="mt-12 flex justify-center">
+            <Button href={ctaHref} variant="primary">
+              {ctaLabel}
+            </Button>
+          </div>
+        )}
       </Container>
     </Reveal>
   );
