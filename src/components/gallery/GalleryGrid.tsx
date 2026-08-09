@@ -14,12 +14,12 @@ type GalleryGridProps = {
 
 export function GalleryGrid({ categories }: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>(categories[0].id);
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
   const active = categories.find((category) => category.id === activeCategory) ?? categories[0];
 
   function closeLightbox() {
-    setSelectedImage(null);
+    setSelectedIndex(null);
     lastTriggerRef.current?.focus();
   }
 
@@ -35,6 +35,15 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
   // forces a full-width break — a wide image early in the list would force
   // that break while later columns are still empty, leaving a gap above it.
   const orderedImages = [...active.images.filter((image) => !isWide(image)), ...active.images.filter(isWide)];
+  const selectedImage = selectedIndex !== null ? orderedImages[selectedIndex] : null;
+
+  // Wraps around at either end so the arrows never dead-end.
+  function showPrev() {
+    setSelectedIndex((index) => (index === null ? null : (index - 1 + orderedImages.length) % orderedImages.length));
+  }
+  function showNext() {
+    setSelectedIndex((index) => (index === null ? null : (index + 1) % orderedImages.length));
+  }
 
   return (
     <div className="flex flex-col">
@@ -57,7 +66,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
           // (width/height read off the file on disk) since it's sized
           // intrinsically (w-full, h-auto) rather than cropped into a fill box.
           <div className="columns-1 gap-2 sm:columns-3 lg:columns-4">
-            {orderedImages.map((image) => {
+            {orderedImages.map((image, index) => {
               const wide = isWide(image);
               return (
                 <button
@@ -65,7 +74,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
                   type="button"
                   onClick={(event) => {
                     lastTriggerRef.current = event.currentTarget;
-                    setSelectedImage(image);
+                    setSelectedIndex(index);
                   }}
                   className={cn(
                     "mb-2 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-button",
@@ -88,7 +97,12 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
         )}
       </Container>
 
-      <Lightbox image={selectedImage} onClose={closeLightbox} />
+      <Lightbox
+        image={selectedImage}
+        onClose={closeLightbox}
+        onPrev={orderedImages.length > 1 ? showPrev : undefined}
+        onNext={orderedImages.length > 1 ? showNext : undefined}
+      />
     </div>
   );
 }

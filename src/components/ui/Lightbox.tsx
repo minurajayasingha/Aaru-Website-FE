@@ -10,9 +10,12 @@ export type LightboxImage = { src: string; alt: string; width: number; height: n
 type LightboxProps = {
   image: LightboxImage | null;
   onClose: () => void;
+  /** When given, shows a left/right arrow to step to the neighboring image without closing. */
+  onPrev?: () => void;
+  onNext?: () => void;
 };
 
-export function Lightbox({ image, onClose }: LightboxProps) {
+export function Lightbox({ image, onClose, onPrev, onNext }: LightboxProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -25,6 +28,8 @@ export function Lightbox({ image, onClose }: LightboxProps) {
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft") onPrev?.();
+      if (event.key === "ArrowRight") onNext?.();
     }
 
     document.body.style.overflow = "hidden";
@@ -35,7 +40,7 @@ export function Lightbox({ image, onClose }: LightboxProps) {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [image, onClose]);
+  }, [image, onClose, onPrev, onNext]);
 
   if (!mounted) return null;
 
@@ -92,6 +97,52 @@ export function Lightbox({ image, onClose }: LightboxProps) {
               </svg>
             </button>
           </motion.div>
+
+          {onPrev && (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                onPrev();
+              }}
+              aria-label="Previous image"
+              className="fixed left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-brand-forest-900 shadow-card transition-transform duration-200 hover:scale-105 hover:bg-brand-cream-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 sm:left-6"
+            >
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4">
+                <path
+                  d="M10 2L4 8l6 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          )}
+
+          {onNext && (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                onNext();
+              }}
+              aria-label="Next image"
+              className="fixed right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-brand-forest-900 shadow-card transition-transform duration-200 hover:scale-105 hover:bg-brand-cream-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 sm:right-6"
+            >
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4">
+                <path
+                  d="M6 2l6 6-6 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          )}
         </motion.div>
       )}
     </AnimatePresence>,
