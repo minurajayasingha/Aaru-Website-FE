@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/lib/cn";
 
 export type LightboxImage = { src: string; alt: string; width: number; height: number };
 
@@ -55,7 +56,14 @@ export function Lightbox({ image, onClose, onPrev, onNext }: LightboxProps) {
           role="dialog"
           aria-modal="true"
           aria-label={image.alt}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-forest-900/70 p-6 backdrop-blur-xl sm:p-10"
+          className={cn(
+            "fixed inset-0 z-[100] flex items-center justify-center bg-brand-forest-900/70 backdrop-blur-xl",
+            // Landscape photos are width-bound on a narrow phone screen - the
+            // generous p-6/p-10 backdrop padding was eating into the little
+            // vertical room they had left, so it shrinks for them to let the
+            // image itself take up more of the screen.
+            image.width >= image.height ? "p-3 sm:p-6" : "p-6 sm:p-10",
+          )}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -75,9 +83,12 @@ export function Lightbox({ image, onClose, onPrev, onNext }: LightboxProps) {
               alt={image.alt}
               width={image.width}
               height={image.height}
-              sizes="90vw"
+              sizes="96vw"
               priority
-              className="h-auto max-h-[85vh] w-auto max-w-[90vw] rounded-card object-contain shadow-card"
+              className={cn(
+                "h-auto w-auto rounded-card object-contain shadow-card",
+                image.width >= image.height ? "max-h-[92vh] max-w-[96vw]" : "max-h-[85vh] max-w-[90vw]",
+              )}
             />
             <button
               ref={closeButtonRef}
