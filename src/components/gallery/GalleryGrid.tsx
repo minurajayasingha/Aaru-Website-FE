@@ -56,7 +56,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
           // shared-height rows. Each image keeps its own real aspect ratio
           // (width/height read off the file on disk) since it's sized
           // intrinsically (w-full, h-auto) rather than cropped into a fill box.
-          <div className="columns-2 gap-2 sm:columns-3 lg:columns-4">
+          <div className="columns-1 gap-2 sm:columns-3 lg:columns-4">
             {orderedImages.map((image) => {
               const wide = isWide(image);
               return (
@@ -78,7 +78,7 @@ export function GalleryGrid({ categories }: GalleryGridProps) {
                     alt={image.alt}
                     width={image.width}
                     height={image.height}
-                    sizes={wide ? "100vw" : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"}
+                    sizes={wide ? "100vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"}
                     className="h-auto w-full object-cover"
                   />
                 </button>
