@@ -53,7 +53,7 @@ export function ResidenceListingCard({
 }: ResidenceListingCardProps) {
   return (
     <Card className="group transition-colors duration-700 ease-out hover:bg-white">
-      <Link href={`/residences/${slug}`} className="relative block aspect-square md:aspect-[16/9]">
+      <Link href={`/residences/${slug}`} className="relative block aspect-[16/9]">
         <Image
           src={imageSrc}
           alt={imageAlt}
