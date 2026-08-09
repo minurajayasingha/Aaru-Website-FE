@@ -18,6 +18,7 @@ export default function GalleryPage() {
         title="Gallery"
         subtitle="Discover Aaru through stunning visual stories"
         imageSrc="/images/hero/gallery.png"
+        mobileImageSrc="/images/hero/mobile/gallery.jpg"
         imageAlt="Aerial view of Aaru's residences beside the beach at sunset"
         height="lg"
       />

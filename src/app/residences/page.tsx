@@ -23,6 +23,7 @@ export default function ResidencesPage() {
         title="Residences"
         subtitle="Explore Aaru's three residence types in Arugam Bay"
         imageSrc="/images/hero/residences.png"
+        mobileImageSrc="/images/hero/mobile/residences.png"
         imageAlt="Aaru's residences along the coastline at sunset"
         height="lg"
       />

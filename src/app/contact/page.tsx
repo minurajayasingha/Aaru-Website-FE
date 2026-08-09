@@ -21,6 +21,7 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle="Connect with Aaru Living for residences, commercial spaces and investment enquiries."
         imageSrc="/images/hero/contact.jpg"
+        mobileImageSrc="/images/hero/mobile/contact.jpg"
         imageAlt="Aaru's residences along the coastline at sunset"
         height="lg"
       />
@@ -42,7 +43,7 @@ export default function ContactPage() {
           <div className="flex flex-col md:flex-row gap-10 pt-1 md:items-center md:gap-1">
             <div className="flex flex-col items-start gap-6 text-center md:items-start md:text-left w-full md:w-3/6">
               <div className="flex flex-col gap-4">
-                <p className="font-heading font-light text-h-02 text-brand-forest-700">Sales Enquiries</p>
+                <p className="font-heading font-light text-h-03 text-brand-forest-700">Sales Enquiries</p>
                 <div className="flex items-center gap-3">
                   <Image src="/images/icons/black-email.svg" alt="" width={18} height={18} />
                   <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactEmail}</p>

@@ -22,13 +22,22 @@ Legend: ✅ uploaded · ⏳ placeholder path referenced in code but no file yet
 
 ## Page Hero Banners (`PageHero` component, top of each page)
 
+Each hero now has a **separate mobile crop** (shown below the `md` breakpoint) instead of just cropping the desktop photo down — added 2026-08-09 so hero photos with an off-center subject (e.g. the "aaru" sign on the home hero) don't get cropped out of frame on narrow phone screens.
+
 | Path | Status | Page |
 |---|---|---|
-| `public/images/hero/home.png` | ✅ | Home (`src/app/page.tsx`) |
-| `public/images/hero/residences.png` | ✅ | Residences listing (`src/app/residences/page.tsx`) |
-| `public/images/hero/commercial-space.png` | ✅ | Commercial Space (`src/app/commercial-space/page.tsx`) |
-| `public/images/hero/gallery.png` | ✅ | Gallery (`src/app/gallery/page.tsx`) |
-| `public/images/hero/contact.jpg` | ✅ | Contact (`src/app/contact/page.tsx`) |
+| `public/images/hero/home.png` | ✅ | Home (`src/app/page.tsx`) — desktop |
+| `public/images/hero/mobile/home.jpg` | ✅ | Home — mobile |
+| `public/images/hero/residences.png` | ✅ | Residences listing (`src/app/residences/page.tsx`) — desktop |
+| `public/images/hero/mobile/residences.png` | ⏳ missing | Residences listing — mobile |
+| `public/images/hero/commercial-space.png` | ✅ | Commercial Space (`src/app/commercial-space/page.tsx`) — desktop |
+| `public/images/hero/mobile/commercial-space.jpg` | ✅ | Commercial Space — mobile |
+| `public/images/hero/gallery.png` | ✅ | Gallery (`src/app/gallery/page.tsx`) — desktop |
+| `public/images/hero/mobile/gallery.jpg` | ✅ | Gallery — mobile |
+| `public/images/hero/contact.jpg` | ✅ | Contact (`src/app/contact/page.tsx`) — desktop |
+| `public/images/hero/mobile/contact.jpg` | ✅ | Contact — mobile |
+
+**To add the real mobile photos:** just replace the file at the same `hero/mobile/...` path with the same filename — no code changes needed, same as every other slot in this doc.
 
 **Note:** `hero/garden-condos.png`, `hero/condos.png`, `hero/private-villas.png` exist in the folder but aren't wired to anything — the residence detail pages use `residences/<slug>/hero.jpg` instead (see below). These three look like leftovers; safe to ignore or delete.
 
@@ -87,9 +96,14 @@ Each residence has its own **`cardImage`** — used on the home page cards row, 
 All content/paths for these are defined in **`src/content/residences.ts`** — one object per residence (`garden-condos`, `condos`, `private-villas`). Each has:
 
 **1. Hero image (`heroImage`)** — the big banner image at the top of the residence detail page (and the SEO/JSON-LD `image` field). Separate from `cardImage` above:
-- `residences/garden-condos/hero.jpg` ✅
-- `residences/condos/hero.jpg` ✅
-- `residences/private-villas/hero.jpg` ✅
+- `residences/garden-condos/hero.jpg` ✅ (desktop)
+- `residences/condos/hero.jpg` ✅ (desktop)
+- `residences/private-villas/hero.jpg` ✅ (desktop)
+
+**1b. Mobile hero image (`heroImageMobile`)** — separate art-directed crop shown below the `md` breakpoint, added 2026-08-09 (see Page Hero Banners note above for why):
+- `residences/garden-condos/hero-mobile.jpg` ✅
+- `residences/condos/hero-mobile.jpg` ✅
+- `residences/private-villas/hero-mobile.jpg` ✅
 
 **2. Unit Layout Gallery** (small side gallery, `layoutGallery` array) — all ✅ uploaded:
 - `residences/garden-condos/layout-1.jpg` … `layout-4.jpg`
@@ -164,6 +178,7 @@ Category tab icons (fixed, not folder-driven): `public/images/icons/gallery/resi
 
 ## Quick "what's still missing" checklist
 
+- [ ] `hero/mobile/residences.png` — mobile hero crop for the Residences listing page (the only mobile hero crop still missing; all others uploaded 2026-08-09)
 - [ ] `commercial/spa.jpg`, `fitness.jpg`, `yoga.jpg`, `coworking.jpg` — 4-up grid on Commercial Space page
 - [ ] `cta/residences.png`
 - [ ] `icons/wellness/` — all 7 icons (clubhouse-pool, dining, yoga, wellness-spa, gym, coworking, connectivity)

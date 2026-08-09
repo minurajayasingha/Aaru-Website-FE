@@ -59,4 +59,24 @@ describe("PageHero", () => {
     );
     expect(container.querySelector("section")).toHaveClass("h-[60vh]");
   });
+
+  it("renders both a mobile and desktop image when mobileImageSrc is given", () => {
+    render(
+      <PageHero
+        title="Gallery"
+        imageSrc="/images/hero/gallery.png"
+        mobileImageSrc="/images/hero/mobile/gallery.png"
+        imageAlt="Alt text"
+      />,
+    );
+    const images = screen.getAllByAltText("Alt text");
+    expect(images).toHaveLength(2);
+    expect(images[0]).toHaveClass("md:hidden");
+    expect(images[1]).toHaveClass("hidden", "md:block");
+  });
+
+  it("renders a single image when mobileImageSrc is omitted", () => {
+    render(<PageHero title="Gallery" imageSrc="/images/hero/gallery.png" imageAlt="Alt text" />);
+    expect(screen.getAllByAltText("Alt text")).toHaveLength(1);
+  });
 });

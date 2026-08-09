@@ -58,7 +58,20 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
       />
 
       <div className="relative h-[75vh]">
-        <Image src={residence.heroImage.src} alt={residence.heroImage.alt} fill priority className="object-cover" />
+        <Image
+          src={residence.heroImageMobile.src}
+          alt={residence.heroImageMobile.alt}
+          fill
+          priority
+          className="object-cover md:hidden"
+        />
+        <Image
+          src={residence.heroImage.src}
+          alt={residence.heroImage.alt}
+          fill
+          priority
+          className="hidden object-cover md:block"
+        />
       </div>
 
       <Reveal as="section" className="bg-white px-section-s py-16 md:px-section-x ">

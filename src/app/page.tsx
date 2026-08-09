@@ -25,12 +25,23 @@ export default function HomePage() {
   return (
     <>
       <section className="relative flex h-screen items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
+        {/* Separate mobile crop instead of just object-cover'ing the desktop
+            photo down — a wide landscape shot loses its subject (or, here,
+            gets cropped so tight the "aaru" sign in it goes off-frame) on a
+            tall narrow phone screen. */}
+        <Image
+          src="/images/hero/mobile/home.jpg"
+          alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
+          fill
+          priority
+          className="object-cover md:hidden"
+        />
         <Image
           src="/images/hero/home.png"
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
-          className="object-cover"
+          className="hidden object-cover md:block"
         />
         <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-8 px-6 pb-[7vh]">
           <h1 className="font-heading text-h-04 sm:text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>

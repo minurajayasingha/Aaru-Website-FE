@@ -27,6 +27,7 @@ export default function CommercialSpacePage() {
         title="Commercial Spaces"
         subtitle="Curated venues, wellness, and lifestyle experiences at Aaru"
         imageSrc="/images/hero/commercial-space.png"
+        mobileImageSrc="/images/hero/mobile/commercial-space.jpg"
         imageAlt="Aaru's clubhouse and lagoon at dusk"
         height="lg"
       />
@@ -121,8 +122,6 @@ export default function CommercialSpacePage() {
             imageAlt: "Aaru's co-working space with lounge seating",
           },
         ]}
-        ctaLabel="Contact Us"
-        ctaHref="/contact"
       />
 
     </>
