@@ -16,3 +16,11 @@ body {
   background-color: var(--color-bg-surface);
   color: var(--color-text-body);
 }
+
+/* Unlayered on purpose: Tailwind's utility layer (text-para-* etc.) always
+   wins over anything in @layer base, no matter the selector specificity.
+   Living outside any layer is the only way this beats those font-size
+   utilities' own line-height, without touching headings. */
+p {
+  line-height: 1.5;
+}

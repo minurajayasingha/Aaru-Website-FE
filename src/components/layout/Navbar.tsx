@@ -71,7 +71,7 @@ export function Navbar() {
 
   return (
     <>
-      <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 bg-gray-50/35 backdrop-blur-lg shadow-card2">
+      <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 bg-white shadow-card2">
       <Container as="nav" className="flex items-center justify-between gap-6 py-3 lg:py-1">
         <Link href="/" className="relative h-10 w-10 shrink-0">
           <Image src="/images/logo/aaru-mark-color.svg" alt="Aaru Living" fill className="object-contain" />
@@ -194,7 +194,7 @@ export function Navbar() {
           aria-label="Mobile navigation"
           tabIndex={-1}
           style={{ top: headerHeight }}
-          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-gray-100/55 backdrop-blur-lg sm:bottom-auto sm:max-h-[80vh] sm:shadow-card lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-white sm:bottom-auto sm:max-h-[80vh] sm:shadow-card lg:hidden"
         >
           <ul className="flex flex-col items-center gap-8 py-12">
             {navLinks.map((link, index) =>
