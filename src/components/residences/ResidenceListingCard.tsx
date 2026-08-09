@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -52,7 +53,7 @@ export function ResidenceListingCard({
 }: ResidenceListingCardProps) {
   return (
     <Card className="group transition-colors duration-700 ease-out hover:bg-white">
-      <div className="relative aspect-[16/9]">
+      <Link href={`/residences/${slug}`} className="relative block aspect-square md:aspect-[16/9]">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -61,7 +62,7 @@ export function ResidenceListingCard({
           className="rounded-xl object-cover transition-transform duration-700 ease-out group-hover:scale-95"
         />
         <Badge className="absolute top-4 right-4">{unitBadge}</Badge>
-      </div>
+      </Link>
       <div className="flex flex-row gap-2 px-4 pt-2 lg:pt-3 pb-4 justify-between">
         <div className="flex flex-col justify-start justify-items-end items-baseline gap-2">
           <h3 className="font-heading font-light text-h-04 text-black">{name}</h3>
