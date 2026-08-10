@@ -183,7 +183,7 @@ export const residences: Residence[] = [
         images: [
           { src: "/images/residences/private-villas/gallery-suit-view-1.jpg", alt: "Private Villas exterior with garden pool" },
           { src: "/images/residences/private-villas/gallery-suit-view-2.jpg", alt: "Private Villas living room with lagoon view" },
-          { src: "/images/residences/private-villas/gallery-suit-view-3.jpg", alt: "Private Villas pool deck at sunset" },
+          { src: "/images/residences/private-villas/gallery-suit-view-3.jpeg", alt: "Private Villas pool deck at sunset" },
         ],
       },
       {
