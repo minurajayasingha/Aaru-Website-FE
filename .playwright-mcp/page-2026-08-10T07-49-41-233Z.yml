@@ -1,0 +1,11 @@
+- generic [ref=f5e2]:
+  - img "Aaru Living" [ref=f5e3]
+  - paragraph [ref=f5e4]: Living
+  - heading "Coming Soon" [level=1] [ref=f5e6]
+  - paragraph [ref=f5e7]: Arugam Bay's first luxury residential real estate experience.
+  - generic [ref=f5e8]:
+    - link "sales@aaruliving.com" [ref=f5e9] [cursor=pointer]:
+      - /url: mailto:sales@aaruliving.com
+    - link "+94 77 018 3334" [ref=f5e12] [cursor=pointer]:
+      - /url: tel:+94770183334
+  - contentinfo [ref=f5e15]: © 2026 Aaru Living. All rights reserved.
