@@ -1,31 +1,32 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 
-export type PartnerItem = {
-  id: string;
+export type PartnerSpotlight = {
   name: string;
-  description: string;
+  paragraphs: string[];
   logoSrc: string;
   logoAlt: string;
 };
 
 type PartnersSectionProps = {
-  items: PartnerItem[];
+  partner: PartnerSpotlight;
 };
 
-export function PartnersSection({ items }: PartnersSectionProps) {
+export function PartnersSection({ partner }: PartnersSectionProps) {
   return (
     <Reveal as="section" className="bg-brand-cream px-section-s py-16 md:px-section-x">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 divide-y divide-brand-forest-300/40 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-        {items.map((item) => (
-          <div key={item.id} className="flex flex-col items-center gap-6 px-6 py-8 text-center sm:px-10 lg:px-16">
-            <span className="relative h-60 w-60">
-              <Image src={item.logoSrc} alt={item.logoAlt} fill className="object-contain" />
-            </span>
-            <h3 className="font-heading font-normal text-h-03 text-black">{item.name}</h3>
-            <p className="font-body text-para-sm font-light text-brand-forest-700">{item.description}</p>
-          </div>
-        ))}
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+        <div className="flex w-full flex-col gap-4 lg:w-6/12">
+          <h3 className="font-heading font-light text-h-01 text-black">{partner.name}</h3>
+          {partner.paragraphs.map((paragraph, index) => (
+            <p key={index} className="text-justify font-body text-para-sm font-light text-brand-forest-700">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-white lg:w-6/12">
+          <Image src={partner.logoSrc} alt={partner.logoAlt} fill className="object-contain p-10" />
+        </div>
       </div>
     </Reveal>
   );

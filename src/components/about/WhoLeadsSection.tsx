@@ -3,22 +3,41 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export type WhoLeadsMember = {
   name: string;
+  /** Position of the name label, as a percentage of the photo's bounding box. */
+  position: { x: number; y: number };
 };
 
 type WhoLeadsSectionProps = {
   title: string;
+  titleAccent: string;
   paragraph: string;
   imageSrc: string;
   imageAlt: string;
   members: WhoLeadsMember[];
 };
 
-export function WhoLeadsSection({ title, paragraph, imageSrc, imageAlt, members }: WhoLeadsSectionProps) {
+export function WhoLeadsSection({ title, titleAccent, paragraph, imageSrc, imageAlt, members }: WhoLeadsSectionProps) {
   return (
     <Reveal
       as="section"
-      className="relative  bg-black/80 px-section-s h-screen md:h-full md:px-section-x pt-24 pb-10 md:pb-0 items-center"
+      className="relative overflow-hidden bg-black px-section-s h-screen md:h-full md:px-section-x pt-24 pb-10 md:pb-0 items-center"
     >
+      <Image
+        src="/images/hero/about-us.jpeg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 hidden object-cover md:block"
+      />
+      <Image
+        src="/images/hero/mobile/about-us.jpeg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 object-cover md:hidden"
+      />
       {/* h-full + justify-center (mobile only) groups title/image/names/para
           together in the middle of this h-screen section instead of
           stretching them apart with a big empty gap; lg:h-auto and
@@ -28,23 +47,23 @@ export function WhoLeadsSection({ title, paragraph, imageSrc, imageAlt, members 
             image (ordered between them) can sit above the paragraph;
             at lg+ this becomes a real flex column again, same as before. */}
         <div className="contents lg:flex lg:w-5/12 lg:flex-col lg:gap-6">
-          <h1 className="order-1 text-center font-heading font-light text-h-01 text-brand-forest-200 lg:text-left">{title}</h1>
-          <p className="order-3 font-body text-para-sm font-light text-white/80 lg:w-10/12">{paragraph}</p>
-        </div>
-        <div className="relative order-2 w-full lg:w-7/12">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
-            <Image src={imageSrc} alt={imageAlt} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
+          <h1 className="order-1 text-center font-heading font-light leading-tight text-7xl text-white lg:text-left">
+            {title}
+            <br />
+            <span className="text-green-500">{titleAccent}</span>
+          </h1>
           </div>
-          <div className="mt-4 flex flex-wrap justify-center gap-3 lg:absolute lg:inset-x-6 lg:top-4 lg:mt-0 lg:justify-around">
-            {members.map((member, index) => (
-              <span
-                key={`${member.name}-${index}`}
-                className="rounded-full bg-white/90 px-3 py-1 font-body text-para-xxxs font-light text-brand-forest-900 shadow-card"
-              >
-                {member.name}
-              </span>
-            ))}
-          </div>
+        <div className="relative order-2 mx-auto aspect-[955/676] w-full max-w-2xl lg:mx-0 lg:w-7/12 lg:max-w-none">
+          <Image src={imageSrc} alt={imageAlt} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-contain object-bottom" />
+          {members.map((member, index) => (
+            <span
+              key={`${member.name}-${index}`}
+              className="absolute -translate-x-1/2 -translate-y-full whitespace-nowrap font-body text-para-xxxs font-light tracking-wide text-white"
+              style={{ left: `${member.position.x}%`, top: `calc(${member.position.y}% - 14px)` }}
+            >
+              {member.name}
+            </span>
+          ))}
         </div>
       </div>
     </Reveal>

@@ -10,6 +10,7 @@ type RevealProps = {
   as?: "div" | "section" | "li";
   delay?: number;
   className?: string;
+  id?: string;
   /** When false, the reveal replays when it re-enters from below after having scrolled away below the viewport. It never plays a hide transition when scrolling past it downward, since that happens directly under the navbar's blur and flickers. */
   once?: boolean;
 };
@@ -20,7 +21,7 @@ const MotionTag = {
   li: motion.li,
 };
 
-export function Reveal({ children, as = "div", delay = 0, className, once = true }: RevealProps) {
+export function Reveal({ children, as = "div", delay = 0, className, id, once = true }: RevealProps) {
   const MotionComponent = MotionTag[as];
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -34,6 +35,7 @@ export function Reveal({ children, as = "div", delay = 0, className, once = true
       // ref.current's only use (getBoundingClientRect) needs.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
+      id={id}
       className={cn(className)}
       style={{ willChange: "transform, opacity" }}
       initial="hidden"

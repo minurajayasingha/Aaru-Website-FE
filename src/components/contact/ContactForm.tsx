@@ -36,7 +36,6 @@ const interestOptions = [
   { value: "garden-condos", label: "Garden Condo" },
   { value: "condos", label: "Condo" },
   { value: "private-villas", label: "Private Villa" },
-  { value: "commercial-space", label: "Commercial Space" },
 ];
 
 const hearAboutUsOptions = [
@@ -158,7 +157,7 @@ export function ContactForm() {
       />
 
       <Input
-        label="Country Of Residents*"
+        label="Country of Residence*"
         id="countryOfResidence"
         name="countryOfResidence"
         value={form.countryOfResidence}

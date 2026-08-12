@@ -75,7 +75,7 @@ export const residences: Residence[] = [
     cardAmenities: ["bed", "size", "Access to Clubhouse"],
     gallerySections: [
       {
-        heading: "Suit View",
+        heading: "Living Spaces ",
         layout: "row",
         images: [
           { src: "/images/residences/garden-condos/gallery-suit-view-1.jpg", alt: "Garden Condos poolside deck at sunset" },
@@ -84,7 +84,7 @@ export const residences: Residence[] = [
         ],
       },
       {
-        heading: "Suit Room",
+        heading: "Scenic View",
         layout: "banner",
         images: [
           { src: "/images/residences/garden-condos/gallery-suit-room-1.jpg", alt: "Garden Condos bedroom with lagoon view" },
@@ -100,11 +100,11 @@ export const residences: Residence[] = [
     unitBadge: "16 Unit",
     bedroomLabel: "2 BD",
     sizeLabel: "1,600-1,800 sqft",
-    priceLabel: "556,000 USD",
+    priceLabel: "550,000 USD",
     rateLabel: "Price on request",
     unitsAvailableLabel: "16 Units",
     description:
-      "Sixteen residences across the first and second floors, framing panoramic lagoon views from private balconies. Designed for privacy and comfort with refined interiors and direct access to Aaru's shared clubhouse and amenities.",
+      "Sixteen residences on the first and second floors, thoughtfully designed for elevated living with sweeping sunrise and sunset views over the lagoon and coastline. Each home blends refined interiors with effortless indoor-outdoor flow, offering comfort, privacy and a true sense of place in Arugam Bay.",
     heroImage: { src: "/images/residences/condos/hero.jpeg", alt: "Condos building exterior with pool" },
     heroImageMobile: { src: "/images/residences/condos/hero-mobile.jpg", alt: "Condos building exterior with pool" },
     cardImage: { src: "/images/residences/condos/card.jpg", alt: "Condos building exterior with pool" },
@@ -117,20 +117,18 @@ export const residences: Residence[] = [
     amenities: [
       "2 Bedrooms",
       "1,600-1,800 sqft",
-      "Lagoon Views",
+      "Elevated Views",
       "En-suite Bathrooms",
-      "Spacious Living Area",
-      "Premium Finishes",
-      "Access to Clubhouse",      
       "Spacious Living Area",
       "Indoor / Outdoor Living",
       "Premium Finishes",
+      "Access to Clubhouse",  
     ],
     amenitiesSectionTitle: "Unit Amenities",
     cardAmenities: ["bed", "size", "Lagoon Views"],
     gallerySections: [
       {
-        heading: "Suit View",
+        heading: "Scenic View",
         layout: "banner",
         images: [
           { src: "/images/residences/condos/gallery-suit-view-1.jpg", alt: "Condos exterior at dusk" },
@@ -152,7 +150,7 @@ export const residences: Residence[] = [
     rateLabel: "Price on request",
     unitsAvailableLabel: "3 Units",
     description:
-      "Three fully private villas set among palm gardens, each with its own pool, garden deck, and four bedrooms of refined coastal living — the most exclusive way to call Aaru home.",
+      "Three exclusive 4-bedroom private villas, each offering 5,700+ sq ft of refined living space by the lagoon. Designed with private pools, generous garden decks, spacious interiors, and a signature rooftop sunset deck, each villa combines privacy, tropical luxury, and panoramic views of Arugam Bay’s natural surroundings.",
     heroImage: { src: "/images/residences/private-villas/hero.jpeg", alt: "Private Villas with palm trees and pool" },
     heroImageMobile: { src: "/images/residences/private-villas/hero-mobile.jpg", alt: "Private Villas with palm trees and pool" },
     cardImage: { src: "/images/residences/private-villas/card.jpg", alt: "Private Villas with palm trees and pool" },
@@ -165,20 +163,20 @@ export const residences: Residence[] = [
     amenities: [
       "4 Bedrooms",
       "+2000 sqft",
+      "Rooftop Sunset Deck",
       "Private Pool",
-      "Garden Deck",
       "En-suite Bathrooms",
       "Spacious Living Area",
       "Premium Finishes",
       "Access to Clubhouse",
-      "Spacious Living Area",
       "Indoor / Outdoor Living",
+      "Garden Deck",
     ],
-    amenitiesSectionTitle: "Rooftop Deck",
+    amenitiesSectionTitle: "Unit Amenities",
     cardAmenities: ["bed", "size", "Private Pool", "Garden Deck"],
     gallerySections: [
       {
-        heading: "Suit View",
+        heading: "Scenic View",
         layout: "banner",
         images: [
           { src: "/images/residences/private-villas/gallery-suit-view-1.jpg", alt: "Private Villas exterior with garden pool" },
@@ -187,7 +185,7 @@ export const residences: Residence[] = [
         ],
       },
       {
-        heading: "Suit Room",
+        heading: "Living Spaces ",
         layout: "row",
         images: [
           { src: "/images/residences/private-villas/gallery-suit-room-1.jpg", alt: "Private Villas bedroom" },

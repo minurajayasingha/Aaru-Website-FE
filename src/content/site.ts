@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Aaru Living",
-  legalDeveloper: "Aaru Living (PVT) Ltd",
-  Developer: "Bayside Ventures (PVT) Ltd",
+  legalDeveloper: "Bayside Ventures (Private) Limited",
+  Developer: "Bayside Ventures (Private) Limited",
   tagline: "Arugam Bay's first luxury residential real estate experience.",
   url: "https://www.aaruliving.com",
   contactEmail: "sales@aaruliving.com",
@@ -12,10 +12,10 @@ export const siteConfig = {
     longitude: 81.836,
   },
   stats: [
-    { value: "2.09", label: "Acres", caption: "Total Site Area" },
-    { value: "334", label: "Perches", caption: "= 91,000 SQFT" },
-    { value: "19", label: "Condo Units", caption: "Three Floors" },
-    { value: "3", label: "Private Villas", caption: "Ultra Luxury" },
+    { value: "2.00", label: "Acres", caption: "Total Site Area" },
+    { value: "16", label: "Condo Units", caption: "Three Floors" },
+    { value: "03", label: "Garden Condos", caption: "Ground floor" },
+    { value: "03", label: "Private Villas ", caption: "04 bedrooms" },
     { value: "250m", label: "To The Beach", caption: "Walking Distance" },
   ],
 };

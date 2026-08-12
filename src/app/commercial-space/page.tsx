@@ -42,7 +42,7 @@ export default function CommercialSpacePage() {
 
       <IconAmenityRow
         heading="Sanctuary Of Wellness"
-        paragraph="Wellness at Aaru is a daily ritual — curated spaces for stillness, recovery and care, all just steps from home."
+        paragraph="Wellness at Aaru is a daily ritual - curated spaces for stillness, recovery and care, all just steps from home."
         items={wellnessAmenities}
         theme="dark"
       />
@@ -79,7 +79,7 @@ export default function CommercialSpacePage() {
 
       <FeatureSection
         title="Signature Restaurant"
-        paragraph="Our 21,000+ sqft clubhouse is the social heart of Aaru. Enjoy the resort-style pool, open-air lounge, shaded decks and lush gardens—perfect for relaxed days, family time and memorable gatherings."
+        paragraph="A sophisticated fusion of Sri Lankan heritage and contemporary refinement, developed with acclaimed chef Shehan ‘Juppè’ Setunga. The menu evolves with the seasonal yield of the coast and the daily harvest of local fishermen, framed by expansive glass and views across the lagoon"
         ctaLabel="Contact Us"
         ctaHref="/contact"
         imageSrc="/images/commercial/restaurant.jpg"
@@ -93,7 +93,7 @@ export default function CommercialSpacePage() {
             id: "spa",
             title: "Spa & Wellness",
             paragraph:
-              "Restore and unwind in our fully equipped spa, sauna and treatment rooms — signature rituals designed for total relaxation.",
+              "A secluded space for Ayurvedic and modern therapies, developed with a specialist spa operator, designed for the gaze to turn inward.",
             imageSrc: "/images/commercial/spa.jpg",
             imageAlt: "Aaru spa treatment room with candles and hot stones",
           },
@@ -101,7 +101,7 @@ export default function CommercialSpacePage() {
             id: "fitness",
             title: "Fitness Center",
             paragraph:
-              "Our 21,000+ sqft clubhouse is the social heart of Aaru. Enjoy the resort-style pool, open-air lounge, shaded deck and lush gardens.",
+              "A high-specification facility equipped for both functional and traditional training, so performance stays part of the coastal lifestyle.",
             imageSrc: "/images/commercial/fitness.jpg",
             imageAlt: "Aaru's fully equipped fitness center",
           },
@@ -109,7 +109,7 @@ export default function CommercialSpacePage() {
             id: "yoga",
             title: "Yoga Shala",
             paragraph:
-              "A dedicated shala for yoga and meditation, framed by uninterrupted lagoon views for quiet, mindful mornings.",
+              "An open-air pavilion for yoga and Pilates, with access to dedicated on-site practitioners for private, guided sessions inspired by the lagoon.",
             imageSrc: "/images/commercial/yoga.jpg",
             imageAlt: "Aaru's yoga shala overlooking the lagoon",
           },
@@ -117,7 +117,7 @@ export default function CommercialSpacePage() {
             id: "coworking",
             title: "Co-working Spaces",
             paragraph:
-              "Work in comfort with our fully equipped co-working spaces and meeting rooms. Enjoy high-speed fibre + Starlink connectivity, ergonomic seating, printing facilities and professional amenities for seamless productivity.",
+              "A general-access hub with dedicated meeting rooms, high-speed connectivity and professional amenities for deep focus and collaboration.",
             imageSrc: "/images/commercial/coworking.jpg",
             imageAlt: "Aaru's co-working space with lounge seating",
           },

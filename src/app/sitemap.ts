@@ -3,7 +3,7 @@ import { siteConfig } from "@/content/site";
 import { residences } from "@/content/residences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ["", "/residences", "/commercial-space", "/gallery", "/contact"];
+  const staticPaths = ["", "/commercial-space", "/gallery", "/contact"];
 
   const staticEntries: MetadataRoute.Sitemap = staticPaths.map((path) => ({
     url: `${siteConfig.url}${path}`,

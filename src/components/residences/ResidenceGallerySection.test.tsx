@@ -6,7 +6,7 @@ import type { EnrichedGallerySection } from "@/lib/residenceGalleryImages";
 describe("ResidenceGallerySection", () => {
   it("renders the heading and every image in a row-layout section", () => {
     const section: EnrichedGallerySection = {
-      heading: "Suit View",
+      heading: "Living Spaces ",
       layout: "row",
       images: [
         { src: "/a.jpg", alt: "Image A", width: 4, height: 5 },
@@ -14,25 +14,25 @@ describe("ResidenceGallerySection", () => {
       ],
     };
     render(<ResidenceGallerySection section={section} />);
-    expect(screen.getByText("Suit View")).toBeInTheDocument();
+    expect(screen.getByText("Living Spaces ")).toBeInTheDocument();
     expect(screen.getByAltText("Image A")).toBeInTheDocument();
     expect(screen.getByAltText("Image B")).toBeInTheDocument();
   });
 
   it("renders every image in a banner-layout section", () => {
     const section: EnrichedGallerySection = {
-      heading: "Suit Room",
+      heading: "Scenic View",
       layout: "banner",
       images: [{ src: "/c.jpg", alt: "Image C", width: 21, height: 7 }],
     };
     render(<ResidenceGallerySection section={section} />);
-    expect(screen.getByText("Suit Room")).toBeInTheDocument();
+    expect(screen.getByText("Scenic View")).toBeInTheDocument();
     expect(screen.getByAltText("Image C")).toBeInTheDocument();
   });
 
   it("opens a lightbox with the full image when a thumbnail is clicked", () => {
     const section: EnrichedGallerySection = {
-      heading: "Suit View",
+      heading: "Living Spaces ",
       layout: "row",
       images: [{ src: "/a.jpg", alt: "Image A", width: 4, height: 5 }],
     };
@@ -45,7 +45,7 @@ describe("ResidenceGallerySection", () => {
 
   it("closes the lightbox when the close button is clicked", async () => {
     const section: EnrichedGallerySection = {
-      heading: "Suit View",
+      heading: "Living Spaces ",
       layout: "row",
       images: [{ src: "/a.jpg", alt: "Image A", width: 4, height: 5 }],
     };

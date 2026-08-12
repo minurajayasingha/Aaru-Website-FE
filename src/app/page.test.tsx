@@ -8,7 +8,7 @@ describe("HomePage", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: /Arugam Bay's first luxury residential real estate experience/i })
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Explore Residences" })).toHaveAttribute("href", "/residences");
+    expect(screen.getByRole("link", { name: "Explore Residences" })).toHaveAttribute("href", "/#residences");
     expect(screen.getAllByRole("link", { name: "Contact Us" })[0]).toHaveAttribute("href", "/contact");
   });
 

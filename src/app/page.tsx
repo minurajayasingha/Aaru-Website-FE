@@ -45,7 +45,7 @@ export default function HomePage() {
         />
         <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-6 px-6 pb-[6vh] xl:pb-[7vh]">
           <h1 className="font-heading text-h-04 sm:text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
-          <Button href="/residences" variant="primary" size="md">
+          <Button href="/#residences" variant="primary" size="md">
             Explore Residences
           </Button>
         </div>
@@ -55,8 +55,8 @@ export default function HomePage() {
         eyebrow="A New Standard For"
         title="Arugam Bay"
         paragraphs={[
-          "Aaru is a landmark residential estate where refined architecture meets the raw natural beauty of Sri Lanka's East Coast.",
-          "Designed around lagoon views, wellness, privacy and coastal living — this is your definitive claim on the East.",
+          "Aaru is a landmark residential estate where tasteful barefoot luxury architecture meets the raw beauty of a frontier coastal town.",
+          "Designed around lagoon views, wellness, privacy and coastal living - this is your definitive claim on the East.",
         ]}
         ctaLabel="Contact Us"
         ctaHref="/contact"
@@ -69,7 +69,7 @@ export default function HomePage() {
 
       <StatsSection stats={siteConfig.stats} />
 
-      <Reveal as="section" once={false}>
+      <Reveal as="section" id="residences" className="scroll-mt-24" once={false}>
         <Container className="py-12">
           <SectionHeader
             eyebrow="Residences For Sale"
@@ -84,7 +84,7 @@ export default function HomePage() {
 
       <HomeFeatureSection
         title="More Than a Home, It's a Way of Life"
-        paragraph="Clubhouse, wellness, dining, co-working and connectivity — all in one curated destination."
+        paragraph="Clubhouse, wellness, dining, co-working and connectivity - all in one curated destination."
         ctaLabel="Commercial Space"
         ctaHref="/commercial-space"
         secondaryCtaLabel="Contact Us"
@@ -98,7 +98,7 @@ export default function HomePage() {
       
       <SplitSection
         eyebrow="Map"
-        title="Prime Location"
+        title="Exclusive Location"
         paragraphs={[
           "Set on Sri Lanka's eastern frontier, Aaru places you between the raw energy of Arugam Bay's world-class surf coast and the calm beauty of the lagoon. With the beach only 250m away, the estate connects ocean, wetlands, wildlife, wellness, and refined residential living in one rare coastal address.",
         ]}

@@ -94,7 +94,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
               <div className="flex-1 px- py-6 lg:py-6 flex flex-col items-center gap-2">
                 <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">{residence.unitsAvailableLabel}</p>
                 <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">
-                  Available Units
+                  Onwards
                 </p>
               </div>
               <div className="flex-1 px-1 py-6 lg:py-6 flex flex-col items-center gap-2">
@@ -106,7 +106,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
             </div>
             <div className="border-t border-brand-forest-300 px-2 py-6 flex flex-col items-center gap-2">
               <p className="font-subheading text-h-04 font-thin text-black">{residence.priceLabel}</p>
-              <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Upward</p>
+              <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Onwards</p>
             </div>
                     <div className="mt-6 flex justify-center">
           <Button href="/contact" variant="primary">
@@ -127,7 +127,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
           icon: getAmenityIcon(item),
         }))}
         theme="dark"
-        itemsPerRow={5}
+        itemsPerRow={residence.amenities.length % 5 === 0 ? 5 : 4}
       />
 
 
