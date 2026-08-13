@@ -30,7 +30,7 @@ export default function HomePage() {
             gets cropped so tight the "aaru" sign in it goes off-frame) on a
             tall narrow phone screen. */}
         <Image
-          src="/images/hero/mobile/home.jpg"
+          src="/images/hero/mobile/home.jpeg"
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
@@ -41,14 +41,14 @@ export default function HomePage() {
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
-          className="hidden object-cover md:block justify-center items-center"
+          className="hidden object-cover md:flex  "
         />
-        <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-6 px-6 pb-[6vh] xl:pb-[7vh]">
+        {/*<div className="relative z-10 flex flex-col items-center gap-8 lg:gap-6 px-6 pb-[6vh] xl:pb-[7vh]">
           <h1 className="font-heading text-h-04 sm:text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
           <Button href="/#residences" variant="primary" size="md">
             Explore Residences
           </Button>
-        </div>
+        </div>*/}
       </section>
 
       <SplitSection

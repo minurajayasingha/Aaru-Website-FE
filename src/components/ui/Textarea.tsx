@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 type TextareaProps = {
@@ -9,9 +10,10 @@ type TextareaProps = {
   rows?: number;
   error?: string;
   maxLength?: number;
+  icon?: ReactNode;
 };
 
-export function Textarea({ label, id, name, value, onChange, rows = 5, error, maxLength }: TextareaProps) {
+export function Textarea({ label, id, name, value, onChange, rows = 5, error, maxLength, icon }: TextareaProps) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-baseline justify-between">
@@ -24,20 +26,24 @@ export function Textarea({ label, id, name, value, onChange, rows = 5, error, ma
           </span>
         )}
       </div>
-      <textarea
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        rows={rows}
-        maxLength={maxLength}
-        aria-invalid={Boolean(error)}
-        aria-describedby={error ? `${id}-error` : undefined}
-        className={cn(
-          "rounded-input border bg-brand-cream-dark/40 px-4 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
-          error ? "border-red-500" : "border-brand-forest-500"
-        )}
-      />
+      <div className="relative">
+        {icon && <span className="pointer-events-none absolute left-4 top-3 text-brand-forest-500">{icon}</span>}
+        <textarea
+          id={id}
+          name={name}
+          value={value}
+          onChange={onChange}
+          rows={rows}
+          maxLength={maxLength}
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? `${id}-error` : undefined}
+          className={cn(
+            "w-full rounded-input border bg-brand-cream-dark/30 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
+            icon ? "pl-11 pr-4" : "px-4",
+            error ? "border-red-500" : "border-brand-forest-200"
+          )}
+        />
+      </div>
       {error && (
         <span id={`${id}-error`} className="text-sm text-red-600" role="alert">
           {error}

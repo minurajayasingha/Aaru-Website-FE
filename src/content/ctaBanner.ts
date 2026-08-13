@@ -36,7 +36,7 @@ export const ctaBannerByRoute: Record<string, CtaBannerContent> = {
     paragraph: "Enquire now for availability, prices and investment details.",
   },
   "/residences/garden-condos": {
-    imageSrc: "/images/cta/residences-garden-condos.jpeg",
+    imageSrc: "/images/cta/residences-garden-condos.png",
     mobileImageSrc: "/images/cta/mobile/residences-garden-condos.jpeg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",

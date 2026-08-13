@@ -12,7 +12,7 @@ export const siteConfig = {
     longitude: 81.836,
   },
   stats: [
-    { value: "2.00", label: "Acres", caption: "Total Site Area" },
+    { value: "02", label: "Acres", caption: "Total Site Area" },
     { value: "16", label: "Condo Units", caption: "Three Floors" },
     { value: "03", label: "Garden Condos", caption: "Ground floor" },
     { value: "03", label: "Private Villas ", caption: "04 bedrooms" },

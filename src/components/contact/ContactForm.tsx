@@ -7,6 +7,16 @@ import { Select } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
 import { dialCodes } from "@/content/dialCodes";
 import { cn } from "@/lib/cn";
+import {
+  UserFieldIcon,
+  PhoneFieldIcon,
+  EmailFieldIcon,
+  GlobeFieldIcon,
+  BuildingFieldIcon,
+  MessageFieldIcon,
+  MegaphoneFieldIcon,
+  ChevronDownIcon,
+} from "@/components/contact/icons";
 
 type FormState = {
   firstName: string;
@@ -86,7 +96,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-xl">
+    <form onSubmit={handleSubmit} className="flex w-full max-w-xl flex-col gap-6 rounded-card bg-white p-6 shadow-card md:p-10">
       <div className="grid grid-cols-2 gap-4">
         <Input
           label="First Name*"
@@ -95,6 +105,7 @@ export function ContactForm() {
           value={form.firstName}
           onChange={(e) => setForm({ ...form, firstName: e.target.value })}
           error={errors.firstName}
+          icon={<UserFieldIcon />}
         />
         <Input
           label="Second Name*"
@@ -103,6 +114,7 @@ export function ContactForm() {
           value={form.lastName}
           onChange={(e) => setForm({ ...form, lastName: e.target.value })}
           error={errors.lastName}
+          icon={<UserFieldIcon />}
         />
       </div>
 
@@ -110,34 +122,45 @@ export function ContactForm() {
         <label htmlFor="phone" className="font-body text-para-xxs pl-4 font-light text-black">
           Phone*
         </label>
-        <div className="flex gap-2">
-          <select
-            id="dialCode"
-            name="dialCode"
-            value={form.dialCode}
-            onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
-            aria-label="Country dial code"
-            className="w-36 shrink-0 truncate rounded-input border border-brand-forest-500 bg-brand-cream-dark/40 px-2 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70"
-          >
-            {dialCodes.map(({ code, country }) => (
-              <option key={country} value={`${code}|${country}`}>
-                {code} {country}
-              </option>
-            ))}
-          </select>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            aria-invalid={Boolean(errors.phone)}
-            aria-describedby={errors.phone ? "phone-error" : undefined}
-            className={cn(
-              "flex-1 min-w-0 rounded-input border bg-brand-cream-dark/40 px-4 py-2.5 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
-              errors.phone ? "border-red-500" : "border-brand-forest-500"
-            )}
-          />
+        <div className="flex gap-3">
+          <div className="relative w-40 shrink-0 sm:w-56">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-brand-forest-500">
+              <PhoneFieldIcon />
+            </span>
+            <select
+              id="dialCode"
+              name="dialCode"
+              value={form.dialCode}
+              onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
+              aria-label="Country dial code"
+              className="w-full appearance-none truncate rounded-input border border-brand-forest-200 bg-brand-cream-dark/30 py-2.5 pl-11 pr-9 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70"
+            >
+              {dialCodes.map(({ code, country }) => (
+                <option key={`${code}-${country}`} value={`${code}|${country}`}>
+                  {code} {country}
+                </option>
+              ))}
+            </select>
+            <ChevronDownIcon className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-brand-forest-500" />
+          </div>
+          <div className="relative min-w-0 flex-1">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-brand-forest-500">
+              <PhoneFieldIcon />
+            </span>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              aria-invalid={Boolean(errors.phone)}
+              aria-describedby={errors.phone ? "phone-error" : undefined}
+              className={cn(
+                "min-w-0 w-full rounded-input border bg-brand-cream-dark/30 py-2.5 pl-11 pr-4 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70",
+                errors.phone ? "border-red-500" : "border-brand-forest-200"
+              )}
+            />
+          </div>
         </div>
         {errors.phone && (
           <span id="phone-error" className="text-sm text-red-600" role="alert">
@@ -154,6 +177,7 @@ export function ContactForm() {
         value={form.email}
         onChange={(e) => setForm({ ...form, email: e.target.value })}
         error={errors.email}
+        icon={<EmailFieldIcon />}
       />
 
       <Input
@@ -163,6 +187,7 @@ export function ContactForm() {
         value={form.countryOfResidence}
         onChange={(e) => setForm({ ...form, countryOfResidence: e.target.value })}
         error={errors.countryOfResidence}
+        icon={<GlobeFieldIcon />}
       />
 
       <Select
@@ -172,6 +197,7 @@ export function ContactForm() {
         value={form.interestedIn}
         onChange={(e) => setForm({ ...form, interestedIn: e.target.value })}
         options={interestOptions}
+        icon={<BuildingFieldIcon />}
       />
 
       <Textarea
@@ -181,6 +207,7 @@ export function ContactForm() {
         value={form.message}
         onChange={(e) => setForm({ ...form, message: e.target.value })}
         maxLength={150}
+        icon={<MessageFieldIcon />}
       />
 
       <Select
@@ -191,6 +218,7 @@ export function ContactForm() {
         onChange={(e) => setForm({ ...form, hearAboutUs: e.target.value })}
         options={hearAboutUsOptions}
         error={errors.hearAboutUs}
+        icon={<MegaphoneFieldIcon />}
       />
 
       <Button type="submit" variant="primary" className="w-full" disabled={status === "submitting"}>

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { Input } from "./Input";
 import { Textarea } from "./Textarea";
@@ -67,7 +67,7 @@ describe("Textarea", () => {
 });
 
 describe("Select", () => {
-  it("renders a labeled select with options", () => {
+  it("renders a labeled select showing the selected option's label", () => {
     const onChange = vi.fn();
     render(
       <Select
@@ -82,7 +82,29 @@ describe("Select", () => {
         ]}
       />
     );
-    expect(screen.getByLabelText("Interested In")).toHaveValue("garden-condos");
+    expect(screen.getByLabelText("Interested In")).toHaveTextContent("Garden Condo");
+  });
+
+  it("opens the option list and calls onChange when an option is clicked", () => {
+    const onChange = vi.fn();
+    render(
+      <Select
+        label="Interested In"
+        id="interest"
+        name="interest"
+        value="garden-condos"
+        onChange={onChange}
+        options={[
+          { value: "garden-condos", label: "Garden Condo" },
+          { value: "condos", label: "Condo" },
+        ]}
+      />
+    );
+    fireEvent.click(screen.getByLabelText("Interested In"));
+    fireEvent.click(screen.getByRole("option", { name: "Condo" }));
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ target: expect.objectContaining({ value: "condos" }) })
+    );
   });
 
   it("shows an error message and error styling when error is provided", () => {
