@@ -95,14 +95,14 @@ export function Lightbox({ image, onClose, onPrev, onNext }: LightboxProps) {
               type="button"
               onClick={onClose}
               aria-label="Close image"
-              className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-forest-900 shadow-card transition-transform duration-200 hover:scale-105 hover:bg-brand-cream-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
+              className="absolute -right-0 -top-0 flex h-10 w-10 items-center justify-center text-white transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
             >
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4">
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-5 w-5">
                 <path
                   d="M2 2l12 12M14 2L2 14"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
                 />
               </svg>
@@ -117,14 +117,14 @@ export function Lightbox({ image, onClose, onPrev, onNext }: LightboxProps) {
                 onPrev();
               }}
               aria-label="Previous image"
-              className="fixed left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-brand-forest-900 shadow-card transition-transform duration-200 hover:scale-105 hover:bg-brand-cream-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 sm:left-6"
+              className="fixed left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold sm:left-6"
             >
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4">
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-6 w-6">
                 <path
                   d="M10 2L4 8l6 6"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -140,14 +140,14 @@ export function Lightbox({ image, onClose, onPrev, onNext }: LightboxProps) {
                 onNext();
               }}
               aria-label="Next image"
-              className="fixed right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-brand-forest-900 shadow-card transition-transform duration-200 hover:scale-105 hover:bg-brand-cream-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 sm:right-6"
+              className="fixed right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-white transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold sm:right-6"
             >
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4">
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-6 w-6">
                 <path
                   d="M6 2l6 6-6 6"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />

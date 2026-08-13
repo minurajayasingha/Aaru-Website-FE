@@ -47,15 +47,17 @@ export default function CommercialSpacePage() {
         theme="dark"
       />
 
-      <FeatureSection
-        title="A World of Leisure"
-        paragraph="From sunrise swims to sunset gatherings, Aaru is curated for moments that matter. Beautifully designed spaces for relaxation, recreation and connection—made for residents, members and the wider community."
-        ctaLabel="Contact Us"
-        ctaHref="/contact"
-        imageSrc="/images/commercial/leisure.jpg"
-        imageAlt="Aaru clubhouse pool deck at sunset"
-        imagePosition="right"
-      />
+      <div className="pt-[30px] bg-white">
+        <FeatureSection
+          title="A World of Leisure"
+          paragraph="From sunrise swims to sunset gatherings, Aaru is curated for moments that matter. Beautifully designed spaces for relaxation, recreation and connection—made for residents, members and the wider community."
+          ctaLabel="Contact Us"
+          ctaHref="/contact"
+          imageSrc="/images/commercial/leisure.jpg"
+          imageAlt="Aaru clubhouse pool deck at sunset"
+          imagePosition="right"
+        />
+      </div>
 
       <FeatureSection
         title="Clubhouse & Pool"

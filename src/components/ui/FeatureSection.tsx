@@ -24,8 +24,8 @@ export function FeatureSection({
   imagePosition = "right",
 }: FeatureSectionProps) {
   return (
-    <Reveal as="section" className="bg-white">
-      <Container className="flex flex-col sm:flex-row gap-6 py-8 md:py-0 md:items-center  md:gap-12 lg:pt-20">
+    <Reveal as="section" className="bg-white ">
+      <Container className="flex flex-col sm:flex-row gap-6 py-8 md:py-0 md:items-center md:gap-12 lg:py-10">
         {/* `contents` breaks this wrapper apart on mobile so the image (a
             separate flex item below) can sit between the title and the
             paragraph/button via `order`; at sm+ it becomes a real flex

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${heading.variable} ${subheading.variable} ${body.variable}`}>
+    <html lang="en" className={`${heading.variable} ${subheading.variable} ${body.variable}`} suppressHydrationWarning>
       <body className="font-body">
         <AppChrome>{children}</AppChrome>
       </body>
