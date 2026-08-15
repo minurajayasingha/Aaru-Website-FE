@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = buildMetadata({
   title: "Gallery",
-  description: "Discover Aaru through stunning visual stories: residential, interior, lifestyle, and maps & plans.",
+  description: "Discover Aaru through stunning visual stories: residential, interior and lifestyle.",
   path: "/gallery",
 });
 

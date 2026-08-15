@@ -41,7 +41,7 @@ export default function CommercialSpacePage() {
       />
 
       <IconAmenityRow
-        heading="Sanctuary Of Wellness"
+        heading="Sanctuary of Wellness"
         paragraph="Wellness at Aaru is a daily ritual - curated spaces for stillness, recovery and care, all just steps from home."
         items={wellnessAmenities}
         theme="dark"
@@ -70,7 +70,7 @@ export default function CommercialSpacePage() {
       />
 
       <FeatureSection
-        title="Bar & Rooftop Sunset Deck"
+        title="Rooftop Sunset Deck"
         paragraph="Sip, socialise and watch the sky transform. Our rooftop bar and sunset deck offer signature cocktails, light bites and panoramic views across Arugam Bay."
         ctaLabel="Contact Us"
         ctaHref="/contact"

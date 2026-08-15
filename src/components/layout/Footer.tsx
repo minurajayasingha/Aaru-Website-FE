@@ -59,7 +59,15 @@ export function Footer() {
       </Container>
 
       <div className="pt-4 pb-4 md:pt-8  text-center font-body text-para-xxs font-thin text-white/80 tracking-wide border-t border-white/10 md:border-t-0">
-        © {new Date().getFullYear()} Aaru
+        © {new Date().getFullYear()} Aaru | Website developed by{" "}
+        <a
+          href="https://ooralabz.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-white/90 hover:text-white transition-colors"
+        >
+          Oora Labz
+        </a>
       </div>
     </footer>
   );

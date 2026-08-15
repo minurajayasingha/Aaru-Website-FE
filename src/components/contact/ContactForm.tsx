@@ -99,7 +99,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="flex w-full max-w-xl flex-col gap-6 rounded-card bg-white p-6 shadow-card md:p-10">
       <div className="grid grid-cols-2 gap-4">
         <Input
-          label="First Name*"
+          label="First Name"
           id="firstName"
           name="firstName"
           value={form.firstName}
@@ -108,7 +108,7 @@ export function ContactForm() {
           icon={<UserFieldIcon />}
         />
         <Input
-          label="Second Name*"
+          label="Second Name"
           id="lastName"
           name="lastName"
           value={form.lastName}
@@ -120,7 +120,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="phone" className="font-body text-para-xxs pl-4 font-light text-black">
-          Phone*
+          Phone
         </label>
         <div className="flex gap-3">
           <div className="relative w-40 shrink-0 sm:w-56">
@@ -170,7 +170,7 @@ export function ContactForm() {
       </div>
 
       <Input
-        label="Email*"
+        label="Email"
         id="email"
         name="email"
         type="email"
@@ -181,7 +181,7 @@ export function ContactForm() {
       />
 
       <Input
-        label="Country of Residence*"
+        label="Country of Residence"
         id="countryOfResidence"
         name="countryOfResidence"
         value={form.countryOfResidence}
@@ -211,7 +211,7 @@ export function ContactForm() {
       />
 
       <Select
-        label="Where did you hear Us*"
+        label="Where did you hear about us?"
         id="hearAboutUs"
         name="hearAboutUs"
         value={form.hearAboutUs}

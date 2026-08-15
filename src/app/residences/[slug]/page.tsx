@@ -94,7 +94,7 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
               <div className="flex-1 px- py-6 lg:py-6 flex flex-col items-center gap-2">
                 <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">{residence.unitsAvailableLabel}</p>
                 <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">
-                  Onwards
+                  
                 </p>
               </div>
               <div className="flex-1 px-1 py-6 lg:py-6 flex flex-col items-center gap-2">

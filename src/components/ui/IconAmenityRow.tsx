@@ -128,7 +128,7 @@ export function IconAmenityRow({ heading, paragraph, items, theme = "light", ite
                 key={item.id}
                 delay={index * 0.06}
                 once={false}
-                className={cn("flex flex-col items-center gap-1.5 text-center", isTrailingOdd && "col-span-2")}
+                className={cn("flex flex-col items-center gap-1.5 text-center bg", isTrailingOdd && "col-span-2")}
               >
                 <AmenityText item={item} isDark={isDark} />
               </Reveal>

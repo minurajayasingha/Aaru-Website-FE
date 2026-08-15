@@ -3,6 +3,7 @@ const rules: { pattern: RegExp; icon: string }[] = [
   { pattern: /sqft/i, icon: "/images/icons/amenities/size.svg" },
   { pattern: /garden deck/i, icon: "/images/icons/amenities/garden-deck.svg" },
   { pattern: /private pool/i, icon: "/images/icons/amenities/pool.svg" },
+  { pattern: /rooftop deck/i, icon: "/images/icons/amenities/garden-deck.svg" },
   { pattern: /balcony/i, icon: "/images/icons/amenities/balcony.svg" },
   { pattern: /sunset|lagoon view/i, icon: "/images/icons/amenities/sunset.svg" },
   { pattern: /elevated views/i, icon: "/images/icons/amenities/sunset.svg" },
@@ -12,6 +13,8 @@ const rules: { pattern: RegExp; icon: string }[] = [
   { pattern: /premium finishes/i, icon: "/images/icons/amenities/premium.svg" },
   { pattern: /clubhouse/i, icon: "/images/icons/amenities/clubhouse.svg" },
   { pattern: /elevated views/i, icon: "/images/icons/amenities/elevated-views.svg" },
+  { pattern: /lagoon & ocean view/i, icon: "/images/icons/amenities/sunset.svg" },
+  { pattern: /rooftop lounge/i, icon: "/images/icons/amenities/rooftop-1.svg" },
 ];
 
 /** Matches a free-form amenity label (e.g. "2 Bedrooms", "+2000 sqft") to an icon path. */

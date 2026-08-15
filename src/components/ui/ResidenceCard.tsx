@@ -62,7 +62,7 @@ export function ResidenceCard({
           <h3 className="font-heading font-light text-h-04 text-black">{name}</h3>
           <p className="font-body text-para-xxxs font-light text-brand-forest-700">{floorLabel}</p>
         </div>
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pb-2">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pb-2 min-h-11">
           {cardAmenities.map((item) => {
             const resolved = resolveCardAmenity(item, bedroomLabel, sizeLabel);
             if (!resolved) return null;

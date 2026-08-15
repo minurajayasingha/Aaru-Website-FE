@@ -23,16 +23,16 @@ const baseClasses =
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "bg-brand-forest-900 text-white/90 active:bg-brand-gold-light",
-  secondary: "bg-white text-brand-forest-900 border border-brand-forest-700",
+  secondary: "bg-white text-brand-forest-900 border border-brand-forest-800",
   ghost: "bg-transparent text-brand-forest-900",
-  cream: "bg-brand-gold text-white",
+  cream: "bg-brand-gold text-white  ",
 };
 
 const fillClasses: Record<ButtonVariant, string> = {
   primary: "bg-brand-gold",
   secondary: "bg-brand-cream-dark",
   ghost: "bg-brand-forest-50",
-  cream: "bg-brand-cream-dark",
+  cream: "bg-brand-gold-light ",
 };
 
 function handleFillOrigin(event: React.MouseEvent<HTMLElement>) {

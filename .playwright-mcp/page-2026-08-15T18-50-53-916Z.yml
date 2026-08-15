@@ -1,0 +1,199 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - navigation [ref=f2e3]:
+      - link [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - img "Aaru Living" [ref=f2e5]
+      - list [ref=f2e6]:
+        - listitem [ref=f2e7]:
+          - link "Home" [ref=f2e8] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f2e9]:
+          - button "Residences" [ref=f2e10] [cursor=pointer]
+        - listitem [ref=f2e14]:
+          - link "Gallery" [ref=f2e15] [cursor=pointer]:
+            - /url: /gallery
+        - listitem [ref=f2e16]:
+          - link "Commercial Space" [ref=f2e17] [cursor=pointer]:
+            - /url: /commercial-space
+        - listitem [ref=f2e18]:
+          - link "Contact Us" [ref=f2e19] [cursor=pointer]:
+            - /url: /contact
+        - listitem [ref=f2e20]:
+          - link "About Us" [ref=f2e21] [cursor=pointer]:
+            - /url: /about
+      - link "WhatsApp" [ref=f2e22] [cursor=pointer]:
+        - /url: https://wa.me/94770183334
+  - main [ref=f2e25]:
+    - img "Aaru's residences beside a lagoon in Arugam Bay at sunset" [ref=f2e27]
+    - generic [ref=f2e29]:
+      - generic [ref=f2e30]:
+        - generic [ref=f2e31]: A New Standard For
+        - heading "Arugam Bay" [level=2] [ref=f2e32]
+        - generic [ref=f2e33]:
+          - paragraph [ref=f2e34]: Aaru is a landmark residential estate where tasteful barefoot luxury architecture meets the raw beauty of a frontier coastal town.
+          - paragraph [ref=f2e35]: Designed around lagoon views, wellness, privacy and coastal living - this is your definitive claim on the East.
+        - link "Contact Us" [ref=f2e36] [cursor=pointer]:
+          - /url: /contact
+      - img "Aerial view of Arugam Bay's coastline" [ref=f2e39]
+    - generic [ref=f2e41]:
+      - generic [ref=f2e42]:
+        - paragraph [ref=f2e43]: "02"
+        - paragraph [ref=f2e44]: Acres
+        - paragraph [ref=f2e45]: Total Site Area
+      - generic [ref=f2e47]:
+        - paragraph [ref=f2e48]: "03"
+        - paragraph [ref=f2e49]: Private Villas
+        - paragraph [ref=f2e50]: 04 bedrooms
+      - generic [ref=f2e52]:
+        - paragraph [ref=f2e53]: "03"
+        - paragraph [ref=f2e54]: Garden Condos
+        - paragraph [ref=f2e55]: Ground floor
+      - generic [ref=f2e57]:
+        - paragraph [ref=f2e58]: "16"
+        - paragraph [ref=f2e59]: Condo Units
+        - paragraph [ref=f2e60]: 1st & 2nd Floor
+      - generic [ref=f2e62]:
+        - paragraph [ref=f2e63]: 250m
+        - paragraph [ref=f2e64]: To The Beach
+        - paragraph [ref=f2e65]: Walking Distance
+    - generic [ref=f2e67]:
+      - generic [ref=f2e68]:
+        - generic [ref=f2e69]: Residences For Sale
+        - heading "The Residences" [level=2] [ref=f2e70]
+        - paragraph [ref=f2e71]: Low-density living designed for privacy, comfort and elevated coastal lifestyle.
+      - generic [ref=f2e72]:
+        - generic [ref=f2e74]:
+          - generic [ref=f2e75]:
+            - img "Private Villas with palm trees and pool" [ref=f2e76]
+            - generic [ref=f2e77]: 3 Unit
+          - generic [ref=f2e78]:
+            - generic [ref=f2e79]:
+              - heading "Private Villas" [level=3] [ref=f2e80]
+              - paragraph [ref=f2e81]: Residences
+            - generic [ref=f2e82]:
+              - generic [ref=f2e83]: 4 BD
+              - generic [ref=f2e85]: 5,700+ sqft
+              - generic [ref=f2e87]: Private Pool & Garden
+              - generic [ref=f2e89]: Rooftop Deck
+              - generic [ref=f2e91]: Lagoon & Ocean View
+            - link "View More" [ref=f2e93] [cursor=pointer]:
+              - /url: /residences/private-villas
+        - generic [ref=f2e96]:
+          - generic [ref=f2e97]:
+            - img "Garden Condos at sunset with private pools" [ref=f2e98]
+            - generic [ref=f2e99]: 3 Unit
+          - generic [ref=f2e100]:
+            - generic [ref=f2e101]:
+              - heading "Garden Condos" [level=3] [ref=f2e102]
+              - paragraph [ref=f2e103]: Ground Floor
+            - generic [ref=f2e104]:
+              - generic [ref=f2e105]: 2 BD
+              - generic [ref=f2e107]: 2,000+ sqft
+              - generic [ref=f2e109]: Private Pool
+              - generic [ref=f2e111]: Lagoon View
+            - link "View More" [ref=f2e113] [cursor=pointer]:
+              - /url: /residences/garden-condos
+        - generic [ref=f2e116]:
+          - generic [ref=f2e117]:
+            - img "Condos building exterior with pool" [ref=f2e118]
+            - generic [ref=f2e119]: 16 Unit
+          - generic [ref=f2e120]:
+            - generic [ref=f2e121]:
+              - heading "Condos" [level=3] [ref=f2e122]
+              - paragraph [ref=f2e123]: 1st & 2nd Floor
+            - generic [ref=f2e124]:
+              - generic [ref=f2e125]: 2 BD
+              - generic [ref=f2e127]: 1,600-1,800 sqft
+              - generic [ref=f2e129]: Lagoon & Ocean View
+            - link "View More" [ref=f2e131] [cursor=pointer]:
+              - /url: /residences/condos
+    - generic [ref=f2e133]:
+      - generic [ref=f2e134]:
+        - heading "More Than a Home, It's a Way of Life" [level=2] [ref=f2e135]
+        - paragraph [ref=f2e136]: Clubhouse, wellness, dining, co-working and connectivity - all in one curated destination.
+        - generic [ref=f2e137]:
+          - link "Commercial Space" [ref=f2e138] [cursor=pointer]:
+            - /url: /commercial-space
+          - link "Contact Us" [ref=f2e140] [cursor=pointer]:
+            - /url: /contact
+      - img "Aaru's clubhouse and pool deck at sunset" [ref=f2e143]
+    - generic [ref=f2e147]:
+      - generic [ref=f2e149]:
+        - paragraph [ref=f2e151]: Clubhouse & Pool
+        - paragraph [ref=f2e152]: 21,000sqft
+      - generic [ref=f2e155]:
+        - paragraph [ref=f2e157]: Signature Dining
+        - paragraph [ref=f2e158]: Coastal Fusion
+      - generic [ref=f2e161]:
+        - paragraph [ref=f2e163]: Yoga Shala
+        - paragraph [ref=f2e164]: Yoga and Pilates
+      - generic [ref=f2e167]:
+        - paragraph [ref=f2e169]: Wellness & SPA
+        - paragraph [ref=f2e170]: Meditation deck
+      - generic [ref=f2e173]:
+        - paragraph [ref=f2e175]: GYM
+        - paragraph [ref=f2e176]: Fitness Centre
+      - generic [ref=f2e179]:
+        - paragraph [ref=f2e181]: Co-working Spaces
+        - paragraph [ref=f2e182]: Work Remotely
+      - generic [ref=f2e185]:
+        - paragraph [ref=f2e187]: 24/7 Connectivity
+        - paragraph [ref=f2e188]: Starlink & Fiber
+    - generic [ref=f2e190]:
+      - generic [ref=f2e191]:
+        - generic [ref=f2e192]: Map
+        - heading "Exclusive Location" [level=2] [ref=f2e193]
+        - paragraph [ref=f2e195]: Set on Sri Lanka's eastern frontier, Aaru places you between the raw energy of Arugam Bay's world-class surf coast and the calm beauty of the lagoon. With the beach only 250m away, the estate connects ocean, wetlands, wildlife, wellness, and refined residential living in one rare coastal address.
+        - link "See Location" [ref=f2e196] [cursor=pointer]:
+          - /url: https://maps.app.goo.gl/eMshmkreth92JRdy9
+      - img "Map showing Aaru's location in Arugam Bay relative to the lagoon and nearby cities" [ref=f2e199]
+  - generic [ref=f2e200]:
+    - generic [ref=f2e201]:
+      - img "Aerial view of Arugam Bay's coastline and lagoon" [ref=f2e202]
+      - generic [ref=f2e204]:
+        - heading "Your East Coast Legacy Awaits" [level=2] [ref=f2e205]
+        - paragraph [ref=f2e206]: Enquire now for availability, prices and investment details.
+        - link "Contact Us" [ref=f2e207] [cursor=pointer]:
+          - /url: /contact
+    - contentinfo [ref=f2e209]:
+      - generic [ref=f2e210]:
+        - generic [ref=f2e211]:
+          - img "Aaru Living" [ref=f2e214]
+          - paragraph [ref=f2e216]: Developed By Bayside Ventures (Private) Limited
+        - generic [ref=f2e217]:
+          - generic [ref=f2e218]:
+            - heading "Residences" [level=4] [ref=f2e219]
+            - list [ref=f2e220]:
+              - listitem [ref=f2e221]:
+                - link "Private Villas" [ref=f2e222] [cursor=pointer]:
+                  - /url: /residences/private-villas
+              - listitem [ref=f2e223]:
+                - link "Garden Condos" [ref=f2e224] [cursor=pointer]:
+                  - /url: /residences/garden-condos
+              - listitem [ref=f2e225]:
+                - link "Condos" [ref=f2e226] [cursor=pointer]:
+                  - /url: /residences/condos
+          - generic [ref=f2e227]:
+            - heading "Useful Links" [level=4] [ref=f2e228]
+            - list [ref=f2e229]:
+              - listitem [ref=f2e230]:
+                - link "Home" [ref=f2e231] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=f2e232]:
+                - link "Gallery" [ref=f2e233] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=f2e234]:
+                - link "Commercial Space" [ref=f2e235] [cursor=pointer]:
+                  - /url: /commercial-space
+              - listitem [ref=f2e236]:
+                - link "Contact Us" [ref=f2e237] [cursor=pointer]:
+                  - /url: /contact
+          - generic [ref=f2e238]:
+            - heading "Contact" [level=4] [ref=f2e239]
+            - generic [ref=f2e240]: sales@aaruliving.com
+            - generic [ref=f2e243]: +94 77 018 3334
+      - generic [ref=f2e246]:
+        - text: © 2026 Aaru | Website developed by
+        - link "Oora Labz" [ref=f2e247] [cursor=pointer]:
+          - /url: https://ooralabz.com/

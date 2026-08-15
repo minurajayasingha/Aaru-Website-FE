@@ -146,7 +146,7 @@ export function Navbar() {
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden shrink-0 items-center gap-2 rounded-md bg-[#25D366] px-4 py-1.5 text-black hover:bg-[#1EBE5A] lg:inline-flex"
+          className="hidden shrink-0 items-center gap-2 rounded-md bg-[#87A79B] px-4 py-1.5 text-white hover:bg-[#6F8C81] lg:inline-flex"
         >
           <span className="relative h-3 w-3">
             <Image src="/images/icons/whatsapp-nav.svg" alt="" fill className="object-contain" />
@@ -163,7 +163,7 @@ export function Navbar() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#25D366] px-3 py-1.5 text-black hover:bg-[#1EBE5A]"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#87A79B] px-3 py-1.5 text-white hover:bg-[#6F8C81]"
           >
             <span className="relative h-3 w-3">
               <Image src="/images/icons/whatsapp-nav.svg" alt="" fill className="object-contain" />

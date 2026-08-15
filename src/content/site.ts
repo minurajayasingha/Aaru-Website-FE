@@ -13,9 +13,9 @@ export const siteConfig = {
   },
   stats: [
     { value: "02", label: "Acres", caption: "Total Site Area" },
-    { value: "16", label: "Condo Units", caption: "Three Floors" },
-    { value: "03", label: "Garden Condos", caption: "Ground floor" },
     { value: "03", label: "Private Villas ", caption: "04 bedrooms" },
+    { value: "03", label: "Garden Condos", caption: "Ground floor" },
+    { value: "16", label: "Condo Units", caption: "1st & 2nd Floor" },
     { value: "250m", label: "To The Beach", caption: "Walking Distance" },
   ],
 };

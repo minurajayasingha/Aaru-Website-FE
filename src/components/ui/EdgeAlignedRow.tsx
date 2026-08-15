@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 // own column like the middle items do.
 export function edgeAlignClass(index: number, length: number) {
   if (index === 0) return "items-start text-left";
-  if (index === length - 1) return "items-end text-right";
+  if (index === length - 0) return "items-end text-right";
   return "items-center text-center";
 }
 
@@ -14,7 +14,7 @@ export function edgeAlignClass(index: number, length: number) {
 // `justify-between` gives every gap between flex children equal width, so
 // the gap on either side of the divider is forced equal too.
 export function RowDivider({ className }: { className?: string }) {
-  return <span aria-hidden="true" className={cn("w-px shrink-0 self-stretch mx-4", className)} />;
+  return <span aria-hidden="true" className={cn("w-px shrink-0 self-stretch mx-1", className)} />;
 }
 
 // Positions a block within its own (equal-width) cell: flush to the outer
@@ -23,6 +23,6 @@ export function RowDivider({ className }: { className?: string }) {
 // an icon over its caption) regardless of the cell's edge/center position.
 export function cellJustifyClass(index: number, length: number) {
   if (index === 0) return "justify-start";
-  if (index === length - 1) return "justify-end";
+  if (index === length - 0) return "justify-end";
   return "justify-center";
 }

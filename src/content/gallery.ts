@@ -17,7 +17,7 @@ export const galleryCategories: { id: GalleryCategory; label: string; icon: stri
   { id: "residential", label: "Residential", icon: "/images/icons/gallery/residential.svg" },
   { id: "interior", label: "Interior", icon: "/images/icons/gallery/interior.svg" },
   { id: "lifestyle", label: "Lifestyle", icon: "/images/icons/gallery/lifestyle.svg" },
-  { id: "maps", label: "Maps & Plans", icon: "/images/icons/gallery/maps.svg" },
+  /** { id: "maps", label: "Maps & Plans", icon: "/images/icons/gallery/maps.svg" },*/
 ];
 
 const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);

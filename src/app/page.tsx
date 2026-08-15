@@ -103,7 +103,7 @@ export default function HomePage() {
           "Set on Sri Lanka's eastern frontier, Aaru places you between the raw energy of Arugam Bay's world-class surf coast and the calm beauty of the lagoon. With the beach only 250m away, the estate connects ocean, wetlands, wildlife, wellness, and refined residential living in one rare coastal address.",
         ]}
         ctaLabel="See Location"
-        ctaHref={`https://www.google.com/maps?q=${siteConfig.location.latitude},${siteConfig.location.longitude}`}
+        ctaHref="https://maps.app.goo.gl/eMshmkreth92JRdy9"
         ctaTarget="_blank"
         imageSrc="/images/home/map.jpg"
         imageAlt="Map showing Aaru's location in Arugam Bay relative to the lagoon and nearby cities"

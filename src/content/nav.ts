@@ -6,24 +6,25 @@ export const navLinks: NavLink[] = [
     label: "Residences",
     href: "/residences",
     children: [
+      { label: "Private Villas", href: "/residences/private-villas" },
       { label: "Garden Condos", href: "/residences/garden-condos" },
       { label: "Condos", href: "/residences/condos" },
-      { label: "Private Villas", href: "/residences/private-villas" },
     ],
   },
-  { label: "Gallery", href: "/gallery" },
+  
   { label: "Commercial Space", href: "/commercial-space" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact" },
   { label: "About Us", href: "/about" },
 ];
 
 export const footerLinkGroups: { title: string; links: NavLink[] }[] = [
   {
-    title: "Condos",
+    title: "Residences",
     links: [
+      { label: "Private Villas", href: "/residences/private-villas" },
       { label: "Garden Condos", href: "/residences/garden-condos" },
       { label: "Condos", href: "/residences/condos" },
-      { label: "Private Villas", href: "/residences/private-villas" },
     ],
   },
   {

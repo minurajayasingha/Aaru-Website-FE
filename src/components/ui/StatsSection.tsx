@@ -4,8 +4,7 @@ import { Fragment } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
-import { edgeAlignClass, RowDivider } from "@/components/ui/EdgeAlignedRow";
-import { cn } from "@/lib/cn";
+import { RowDivider } from "@/components/ui/EdgeAlignedRow";
 
 export type Stat = {
   value: string;
@@ -51,7 +50,7 @@ function DesktopBar({ stats }: { stats: Stat[] }) {
         {stats.map((stat, index) => (
           <Fragment key={stat.label}>
             {index > 0 && <RowDivider className="bg-brand-cream/20" />}
-            <div className={cn("flex flex-col gap-0.5", edgeAlignClass(index, stats.length))}>
+            <div className="flex flex-col items-center gap-0.5 text-center">
               <StatText stat={stat} />
             </div>
           </Fragment>
@@ -84,7 +83,7 @@ function StaticStats({ stats }: { stats: Stat[] }) {
           {stats.map((stat, index) => (
             <Fragment key={stat.label}>
               {index > 0 && <RowDivider className="bg-brand-cream/15" />}
-              <div className={cn("flex flex-col gap-1.5", edgeAlignClass(index, stats.length))}>
+              <div className="flex flex-col items-center gap-1.5 text-center">
                 <StatText stat={stat} />
               </div>
             </Fragment>
