@@ -37,18 +37,18 @@ export default function ContactPage() {
 
       <Reveal as="section" once={false} className="relative overflow-hidden bg-brand-forest-900 py-16 pb-40">
         <Image
-          src="/images/hero/contact-form.avif"
+          src="/images/hero/contact-form.jpeg"
           alt=""
           fill
           sizes="100vw"
-          className="absolute inset-0 hidden object-cover blur-md scale-105 pointer-events-none md:block"
+          className="absolute inset-0 hidden object-cover  scale-105 pointer-events-none md:block"
         />
         <Image
-          src="/images/hero/mobile/contact-form.avif"
+          src="/images/hero/mobile/contact-form.jpeg"
           alt=""
           fill
           sizes="100vw"
-          className="absolute inset-0 object-cover blur-md scale-105 pointer-events-none md:hidden"
+          className="absolute inset-0 object-cover  scale-105 pointer-events-none md:hidden"
         />
         {/* Dark shade overlay on top of the background image */}
         <div className="absolute inset-0 bg-black/50 pointer-events-none" />
@@ -56,35 +56,35 @@ export default function ContactPage() {
           <ContactForm />
         </Container>
       </Reveal>
-      <Reveal as="section" once={false} className="bg-white">
-        <Container className="grid gap-10 py-16 grid-cols-1 md:grid-cols-1 justify-center items-center">
-          <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-left">Contact Information</h2>
-          <div className="flex flex-col md:flex-row gap-10 pt-1 md:items-center md:gap-1">
-            <div className="flex flex-col items-start gap-6 text-center md:items-start md:text-left w-full md:w-3/6">
-              <div className="flex flex-col gap-4">
-                <p className="font-heading font-light text-h-03 text-brand-forest-700">Sales Enquiries</p>
-                <div className="flex items-center gap-3">
-                  <Image src="/images/icons/black-email.svg" alt="" width={18} height={18} />
-                  <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactEmail}</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src="/images/icons/black-whatsapp.svg" alt="" width={18} height={18} />
-                  <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactPhone}</p>
-                </div>
+      <Reveal as="section" once={false} className="py-16 ">
+        <Container className="flex flex-col md:flex-row gap-10 md:gap-16 items-start md:items-center justify-between">
+          <div className="flex flex-col items-start justify-center gap-6 w-full md:w-1/2">
+            <h2 className="font-heading font-light text-h-02 md:text-h-01 text-black text-left">
+              Contact Information
+            </h2>
+            <div className="flex flex-col gap-4">
+              <p className="font-heading font-light text-h-03 text-brand-forest-700">Sales Enquiries</p>
+              <div className="flex items-center gap-3">
+                <Image src="/images/icons/black-email.svg" alt="" width={18} height={18} />
+                <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactEmail}</p>
               </div>
-              <Button href={`https://wa.me/${siteConfig.contactPhone.replace(/\s|\+/g, "")}`} variant="primary" className="w-fit">
-                WhatsApp
-              </Button>
+              <div className="flex items-center gap-3">
+                <Image src="/images/icons/black-whatsapp.svg" alt="" width={18} height={18} />
+                <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactPhone}</p>
+              </div>
             </div>
-            <div className="relative aspect-[4/3]  overflow-hidden rounded-card w-full md:w-3/6">
-              <Image
-                src="/images/contact/map.jpg"
-                alt="Map showing Aaru Living's location in Arugam Bay, Sri Lanka"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-contain"
-              />
-            </div>
+            <Button href={`https://wa.me/${siteConfig.contactPhone.replace(/\s|\+/g, "")}`} variant="primary" className="w-fit">
+              WhatsApp
+            </Button>
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-card w-full md:w-1/2">
+            <Image
+              src="/images/contact/map.jpg"
+              alt="Map showing Aaru Living's location in Arugam Bay, Sri Lanka"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-contain"
+            />
           </div>
         </Container>
       </Reveal>
