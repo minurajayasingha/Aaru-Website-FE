@@ -8,7 +8,7 @@ describe("getAmenityIcon", () => {
   });
 
   it("matches sqft labels regardless of formatting", () => {
-    expect(getAmenityIcon("+2000 sqft")).toBe("/images/icons/amenities/size.svg");
+    expect(getAmenityIcon("2000+ sqft")).toBe("/images/icons/amenities/size.svg");
     expect(getAmenityIcon("1,600-1,800 sqft")).toBe("/images/icons/amenities/size.svg");
   });
 

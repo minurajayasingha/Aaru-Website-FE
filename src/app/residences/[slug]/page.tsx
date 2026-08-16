@@ -87,15 +87,13 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
 
       <Reveal as="section" className="bg-brand-cream-dark/30">
         <Container className="flex flex-col lg:flex-row gap-12 py-12 lg:items-center">
-          <UnitLayoutGallery images={residence.layoutGallery}  />
+          <UnitLayoutGallery images={residence.layoutGallery} />
           <div className="flex flex-col w-full lg:w-5/12 h-full gap-6">
             <h2 className="font-heading font-normal lg:font-normal text-h-02 text-black pb-6 lg:pl-4 text-center lg:text-center">Unit Layout</h2>
             <div className="flex flex-row lg:flex-row divide-x divide-brand-forest-300">
               <div className="flex-1 px- py-6 lg:py-6 flex flex-col items-center gap-2">
                 <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">{residence.unitsAvailableLabel}</p>
-                <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">
-                  
-                </p>
+                <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Only</p>
               </div>
               <div className="flex-1 px-1 py-6 lg:py-6 flex flex-col items-center gap-2">
                 <p className="font-subheading text-para-lg lg:text-h-04 font-thin text-black">
@@ -108,11 +106,11 @@ export default async function ResidenceDetailPage({ params }: PageParams) {
               <p className="font-subheading text-h-04 font-thin text-black">{residence.priceLabel}</p>
               <p className="font-body text-para-xxs  tracking-wide text-brand-forest-700">Onwards</p>
             </div>
-                    <div className="mt-6 flex justify-center">
-          <Button href="/contact" variant="primary">
-            Contact Us
-          </Button>
-        </div>
+            <div className="mt-6 flex justify-center">
+              <Button href="/contact" variant="primary">
+                Contact Us
+              </Button>
+            </div>
           </div>
 
         </Container>

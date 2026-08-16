@@ -118,7 +118,7 @@ export const residences: Residence[] = [
     ],
     amenities: [
       "2 Bedrooms",
-      "+2000 sqft",
+      "2000+ sqft",
       "Garden Deck",
       "Private Pool",
       "Sunset Lagoon Views",

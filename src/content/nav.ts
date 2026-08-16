@@ -11,7 +11,7 @@ export const navLinks: NavLink[] = [
       { label: "Condos", href: "/residences/condos" },
     ],
   },
-  
+
   { label: "Commercial Space", href: "/commercial-space" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact" },
@@ -31,9 +31,11 @@ export const footerLinkGroups: { title: string; links: NavLink[] }[] = [
     title: "Useful Links",
     links: [
       { label: "Home", href: "/" },
-      { label: "Gallery", href: "/gallery" },
+      { label: "Residences", href: "/residences/private-villas" },
       { label: "Commercial Space", href: "/commercial-space" },
+      { label: "Gallery", href: "/gallery" },
       { label: "Contact Us", href: "/contact" },
+      { label: "About Us", href: "/about" }
     ],
   },
 ];

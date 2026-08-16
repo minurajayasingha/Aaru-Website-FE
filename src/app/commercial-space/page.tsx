@@ -32,13 +32,13 @@ export default function CommercialSpacePage() {
         height="lg"
       />
 
-      <CommercialSpaceIntro
+      {/* <CommercialSpaceIntro
         eyebrow="Lifestyle Experiences At Aaru"
         title="Clubhouse "
         description="Aaru brings together premium commercial and lifestyle spaces for dining, leisure, wellness and productivity."
         ctaLabel="Contact Us"
         ctaHref="/contact"
-      />
+      /> */}
 
       <IconAmenityRow
         heading="Sanctuary of Wellness"

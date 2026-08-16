@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Aaru Living",
-  legalDeveloper: "Bayside Ventures (Private) Limited",
-  Developer: "Bayside Ventures (Private) Limited",
+  legalDeveloper: "Bayside Ventures (Pvt) Ltd.",
+  Developer: "Bayside Ventures (Pvt) Ltd.",
   tagline: "Arugam Bay's first luxury residential real estate experience.",
   url: "https://www.aaruliving.com",
   contactEmail: "sales@aaruliving.com",

@@ -37,7 +37,7 @@ export default function AboutPage() {
                    <br> UJ Architects works from a simple conviction: the quality of a space shapes the quality of a life. Their approach, rooted in what they call the ' elegance of simplicity ' favours restraint over spectacle buildings that are functional first, and beautiful because of it. It's a philosophy that finds a natural home at Aaru, where the same instinct shows up in the low-rise silhouette that defers to the horizon, and in materials chosen to weather honestly alongside the lagoon they sit beside. The result is architecture that doesn't compete with Arugam Bay's landscape, but completes it."
         ctaLabel="Contact Us"
         ctaHref="/contact"
-        imageSrc="/images/about/architect.jpg"
+        imageSrc="/images/about/architect.png"
         imageAlt="Aaru Living's lead architect"
         imagePosition="left"
       />
