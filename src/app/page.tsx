@@ -30,25 +30,29 @@ export default function HomePage() {
             gets cropped so tight the "aaru" sign in it goes off-frame) on a
             tall narrow phone screen. */}
         <Image
-          src="/images/hero/mobile/home.jpeg"
+          src="/images/hero/mobile/home.avif"
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
-          className="object-cover md:hidden justify-center"
+          className="object-cover md:hidden"
         />
         <Image
-          src="/images/hero/home.jpeg"
+          src="/images/hero/home.avif"
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority
-          className="hidden object-cover md:flex  "
+          className="hidden object-cover md:flex"
         />
-        {/*<div className="relative z-10 flex flex-col items-center gap-8 lg:gap-6 px-6 pb-[6vh] xl:pb-[7vh]">
-          <h1 className="font-heading text-h-04 sm:text-h-03 max-w-3xl lg:max-w-5xl font-light">{siteConfig.tagline}</h1>
-          <Button href="/#residences" variant="primary" size="md">
-            Explore Residences
-          </Button>
-        </div>*/}
+        <div className="relative z-10 flex flex-col items-center gap-6 px-4 pb-8 sm:pb-10 md:pb-12 w-full max-w-none">
+          <h1 className="font-heading text-lg sm:text-xl md:text-2xl lg:text-[2.1rem] xl:text-[2.5rem] 2xl:text-[2.8rem] font-light leading-snug tracking-wide drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)] md:whitespace-nowrap">
+            <span className="hero-text-wave">
+              Arugam Bay&apos;s First Luxury Residential Real Estate{" "}
+            </span>
+            <span className="hero-text-wave-accent italic font-normal">
+              Experience
+            </span>
+          </h1>
+        </div>
       </section>
 
       <SplitSection

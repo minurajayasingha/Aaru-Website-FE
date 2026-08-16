@@ -35,22 +35,24 @@ export default function ContactPage() {
         </Container>
       </Reveal>
 
-      <Reveal as="section" once={false} className="relative overflow-hidden py-16 pb-40">
+      <Reveal as="section" once={false} className="relative overflow-hidden bg-brand-forest-900 py-16 pb-40">
         <Image
-          src="/images/hero/contact-form.jpeg"
+          src="/images/hero/contact-form.avif"
           alt=""
           fill
           sizes="100vw"
-          className="absolute inset-0 hidden object-cover md:block"
+          className="absolute inset-0 hidden object-cover blur-md scale-105 pointer-events-none md:block"
         />
         <Image
-          src="/images/hero/mobile/contact-form.jpeg"
+          src="/images/hero/mobile/contact-form.avif"
           alt=""
           fill
           sizes="100vw"
-          className="absolute inset-0 object-cover md:hidden"
+          className="absolute inset-0 object-cover blur-md scale-105 pointer-events-none md:hidden"
         />
-        <Container className="relative flex justify-center">
+        {/* Dark shade overlay on top of the background image */}
+        <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+        <Container className="relative z-10 flex justify-center">
           <ContactForm />
         </Container>
       </Reveal>

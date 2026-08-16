@@ -18,12 +18,12 @@ describe("ContactForm", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<ContactForm />);
-    fireEvent.change(screen.getByLabelText("First Name*"), { target: { value: "Jane" } });
-    fireEvent.change(screen.getByLabelText("Second Name*"), { target: { value: "Doe" } });
-    fireEvent.change(screen.getByLabelText("Phone*"), { target: { value: "771234567" } });
-    fireEvent.change(screen.getByLabelText("Email*"), { target: { value: "jane@example.com" } });
-    fireEvent.change(screen.getByLabelText("Country of Residence*"), { target: { value: "Sri Lanka" } });
-    fireEvent.click(screen.getByLabelText("Where did you hear Us*"));
+    fireEvent.change(screen.getByLabelText("First Name"), { target: { value: "Jane" } });
+    fireEvent.change(screen.getByLabelText("Second Name"), { target: { value: "Doe" } });
+    fireEvent.change(screen.getByLabelText("Phone"), { target: { value: "771234567" } });
+    fireEvent.change(screen.getByLabelText("Email"), { target: { value: "jane@example.com" } });
+    fireEvent.change(screen.getByLabelText("Country of Residence"), { target: { value: "Sri Lanka" } });
+    fireEvent.click(screen.getByLabelText("Where did you hear about us?"));
     fireEvent.click(screen.getByRole("option", { name: "Social Media" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
 

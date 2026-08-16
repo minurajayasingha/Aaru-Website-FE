@@ -23,7 +23,7 @@ export const defaultCtaBanner: CtaBannerContent = {
  */
 export const ctaBannerByRoute: Record<string, CtaBannerContent> = {
   "/": {
-    imageSrc: "/images/cta/home.jpg",
+    imageSrc: "/images/cta/home.png",
     mobileImageSrc: "/images/cta/mobile/home.jpg",
     imageAlt: "Aerial view of Arugam Bay's coastline and lagoon",
     heading: "Your East Coast Legacy Awaits",

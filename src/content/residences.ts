@@ -38,7 +38,7 @@ export type Residence = {
 };
 
 export const residences: Residence[] = [
-    {
+  {
     slug: "private-villas",
     name: "Private Villas",
     floorLabel: "Residences",
@@ -61,7 +61,7 @@ export const residences: Residence[] = [
     ],
     amenities: [
       "4 Bedrooms",
-      "+2000 sqft",
+      "5700+ sqft",
       "Rooftop Sunset Deck",
       "Private Pool",
       "En-suite Bathrooms",
@@ -72,7 +72,7 @@ export const residences: Residence[] = [
       "Garden Deck",
     ],
     amenitiesSectionTitle: "Unit Amenities",
-    cardAmenities: ["bed", "size", "Private Pool & Garden", "Rooftop Deck" , "Lagoon & Ocean View"],
+    cardAmenities: ["bed", "size", "Private Pool & Garden", "Rooftop Deck", "Lagoon & Ocean View"],
     gallerySections: [
       {
         heading: "Scenic View",
@@ -129,7 +129,7 @@ export const residences: Residence[] = [
       "Access to Clubhouse",
     ],
     amenitiesSectionTitle: "Unit Amenities",
-    cardAmenities: ["bed", "size", "Private Pool" , "Lagoon View"],
+    cardAmenities: ["bed", "size", "Private Pool", "Lagoon View"],
     gallerySections: [
       {
         heading: "Living Spaces ",
@@ -148,7 +148,7 @@ export const residences: Residence[] = [
         ],
       },
     ],
-    otherResidencesOrder: [ "private-villas", "condos"],
+    otherResidencesOrder: ["private-villas", "condos"],
   },
   {
     slug: "condos",
@@ -178,7 +178,7 @@ export const residences: Residence[] = [
       "Spacious Living Area",
       "Rooftop Lounge",
       "Premium Finishes",
-      "Access to Clubhouse",  
+      "Access to Clubhouse",
     ],
     amenitiesSectionTitle: "Unit Amenities",
     cardAmenities: ["bed", "size", "Lagoon & Ocean View"],
@@ -193,7 +193,7 @@ export const residences: Residence[] = [
         ],
       },
     ],
-    otherResidencesOrder: ["private-villas","garden-condos"],
+    otherResidencesOrder: ["private-villas", "garden-condos"],
   },
 ];
 

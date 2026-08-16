@@ -25,3 +25,53 @@ body {
 p {
   line-height: 1.5 !important;
 }
+
+/* Luxury Hero Text Wave Color-Changing Animation */
+@keyframes heroTextWave {
+  0% {
+    background-position: 200% 50%;
+  }
+  100% {
+    background-position: -200% 50%;
+  }
+}
+
+.hero-text-wave {
+  background: linear-gradient(
+    90deg,
+    #f4f2ee 0%,
+    #ffffff 18%,
+    #d4b483 35%,
+    #ffe8b3 50%,
+    #b5915d 65%,
+    #ffffff 82%,
+    #f4f2ee 100%
+  );
+  background-size: 200% auto;
+  color: #f4f2ee;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroTextWave 7s linear infinite;
+  display: inline;
+}
+
+.hero-text-wave-accent {
+  background: linear-gradient(
+    90deg,
+    #b5915d 0%,
+    #d4b483 22%,
+    #fff3d6 45%,
+    #f7c873 55%,
+    #d4b483 78%,
+    #b5915d 100%
+  );
+  background-size: 200% auto;
+  color: #d4b483;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroTextWave 5s linear infinite;
+  display: inline;
+}
+
