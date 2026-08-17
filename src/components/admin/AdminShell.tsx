@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/cn";
 import { AdminSidebar } from "./AdminSidebar";
 import { AdminTopbar } from "./AdminTopbar";
 
@@ -10,12 +11,13 @@ type AdminShellProps = {
 
 export function AdminShell({ children }: AdminShellProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div className="flex min-h-screen bg-brand-forest-50">
-      <div className="hidden md:block md:w-64 md:shrink-0">
-        <div className="fixed inset-y-0 w-64">
-          <AdminSidebar />
+      <div className={cn("hidden shrink-0 transition-[width] duration-200 md:block", isCollapsed ? "md:w-20" : "md:w-64")}>
+        <div className={cn("fixed inset-y-0 transition-[width] duration-200", isCollapsed ? "w-20" : "w-64")}>
+          <AdminSidebar collapsed={isCollapsed} onToggleCollapse={() => setIsCollapsed((current) => !current)} />
         </div>
       </div>
 

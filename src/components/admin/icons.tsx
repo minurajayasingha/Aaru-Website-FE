@@ -121,6 +121,15 @@ export function CloseIcon({ className }: AdminIconProps) {
   );
 }
 
+export function SidebarToggleIcon({ className }: AdminIconProps) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
+      <rect x="3" y="4.5" width="14" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M8.5 4.5v11" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 export function PencilIcon({ className }: AdminIconProps) {
   return (
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
