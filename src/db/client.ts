@@ -11,5 +11,5 @@ export function getDb() {
   if (!pool) {
     pool = mysql.createPool(process.env.DATABASE_URL);
   }
-  return drizzle({ client: pool, schema });
+  return drizzle({ client: pool, schema, mode: "default" });
 }
