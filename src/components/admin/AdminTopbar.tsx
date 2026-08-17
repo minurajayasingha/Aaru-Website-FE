@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { activeAdminNavLabel } from "@/content/admin/nav";
 import { sampleInquiries } from "@/content/admin/inquiries";
@@ -62,6 +61,13 @@ export function AdminTopbar({ onMenuClick, isSidebarCollapsed, onToggleSidebar }
   function goToInquiry(id: string) {
     setIsNotificationsOpen(false);
     router.push(`/admin/inquiries?inquiryId=${id}`);
+  }
+
+  async function handleSignOut() {
+    setIsProfileMenuOpen(false);
+    await fetch("/api/admin/auth/logout", { method: "POST" });
+    router.push("/admin/login");
+    router.refresh();
   }
 
   return (
@@ -173,13 +179,13 @@ export function AdminTopbar({ onMenuClick, isSidebarCollapsed, onToggleSidebar }
                 </div>
               </div>
               <div className="my-2 border-t border-brand-forest-100" />
-              <Link
-                href="/admin/login"
-                onClick={() => setIsProfileMenuOpen(false)}
-                className="block rounded-lg px-2 py-1.5 text-sm font-medium text-brand-forest-700 hover:bg-brand-forest-50"
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="block w-full rounded-lg px-2 py-1.5 text-left text-sm font-medium text-brand-forest-700 hover:bg-brand-forest-50"
               >
                 Sign out
-              </Link>
+              </button>
             </div>
           )}
         </div>
