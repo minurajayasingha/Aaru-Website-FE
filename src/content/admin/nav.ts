@@ -31,7 +31,6 @@ export const adminSettingsNavItem: AdminNavItem = {
   label: "Settings",
   href: "/admin/settings",
   icon: "settings",
-  disabled: true,
 };
 
 function flattenAdminNavItems(): AdminNavItem[] {
