@@ -17,7 +17,7 @@ export function AdminShell({ children }: AdminShellProps) {
     <div className="flex min-h-screen bg-brand-forest-50">
       <div className={cn("hidden shrink-0 transition-[width] duration-200 md:block", isCollapsed ? "md:w-20" : "md:w-64")}>
         <div className={cn("fixed inset-y-0 transition-[width] duration-200", isCollapsed ? "w-20" : "w-64")}>
-          <AdminSidebar collapsed={isCollapsed} onToggleCollapse={() => setIsCollapsed((current) => !current)} />
+          <AdminSidebar collapsed={isCollapsed} />
         </div>
       </div>
 
@@ -36,7 +36,11 @@ export function AdminShell({ children }: AdminShellProps) {
       )}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <AdminTopbar onMenuClick={() => setIsDrawerOpen(true)} />
+        <AdminTopbar
+          onMenuClick={() => setIsDrawerOpen(true)}
+          isSidebarCollapsed={isCollapsed}
+          onToggleSidebar={() => setIsCollapsed((current) => !current)}
+        />
         <main className="flex-1 px-4 py-6 md:px-8 md:py-8">{children}</main>
       </div>
     </div>

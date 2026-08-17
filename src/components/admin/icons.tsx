@@ -130,6 +130,19 @@ export function SidebarToggleIcon({ className }: AdminIconProps) {
   );
 }
 
+export function DragHandleIcon({ className }: AdminIconProps) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className={className}>
+      <circle cx="7" cy="5" r="1.4" />
+      <circle cx="13" cy="5" r="1.4" />
+      <circle cx="7" cy="10" r="1.4" />
+      <circle cx="13" cy="10" r="1.4" />
+      <circle cx="7" cy="15" r="1.4" />
+      <circle cx="13" cy="15" r="1.4" />
+    </svg>
+  );
+}
+
 export function UploadIcon({ className }: AdminIconProps) {
   return (
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>

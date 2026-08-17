@@ -17,14 +17,12 @@ import {
   ResidencesIcon,
   GalleryIcon,
   SettingsIcon,
-  SidebarToggleIcon,
   type AdminIconProps,
 } from "./icons";
 
 type AdminSidebarProps = {
   onNavigate?: () => void;
   collapsed?: boolean;
-  onToggleCollapse?: () => void;
 };
 
 const iconMap: Record<AdminNavIconKey, (props: AdminIconProps) => React.ReactElement> = {
@@ -35,7 +33,7 @@ const iconMap: Record<AdminNavIconKey, (props: AdminIconProps) => React.ReactEle
   settings: SettingsIcon,
 };
 
-export function AdminSidebar({ onNavigate, collapsed = false, onToggleCollapse }: AdminSidebarProps) {
+export function AdminSidebar({ onNavigate, collapsed = false }: AdminSidebarProps) {
   const pathname = usePathname();
 
   function renderNavItem(item: AdminNavItem) {
@@ -85,29 +83,16 @@ export function AdminSidebar({ onNavigate, collapsed = false, onToggleCollapse }
 
   return (
     <nav className={cn("flex h-full flex-col bg-brand-forest-900 py-6", collapsed ? "px-2" : "px-4")}>
-      <div className={cn("mb-6 flex items-center gap-2", collapsed ? "flex-col px-0" : "justify-between px-2")}>
-        <div className={cn("flex items-center gap-2.5", collapsed && "flex-col")}>
-          <div className="relative h-8 w-8 shrink-0">
-            <Image src="/images/logo/aaru-mark-white.svg" alt="AARU" fill className="object-contain" />
-          </div>
-          {!collapsed && <span className="text-lg font-semibold tracking-wide text-white">AARU</span>}
+      <div className={cn("mb-6 flex items-center gap-2.5", collapsed ? "flex-col px-0" : "px-2")}>
+        <div className="relative h-8 w-8 shrink-0">
+          <Image src="/images/logo/aaru-mark-white.svg" alt="AARU" fill className="object-contain" />
         </div>
-
-        {onToggleCollapse && (
-          <button
-            type="button"
-            onClick={onToggleCollapse}
-            aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-white/50 transition-colors hover:bg-brand-forest-800 hover:text-white"
-          >
-            <SidebarToggleIcon className="h-4 w-4" />
-          </button>
-        )}
+        {!collapsed && <span className="text-lg font-semibold tracking-wide text-white">AARU</span>}
       </div>
 
-      <div className="flex flex-1 flex-col gap-6 overflow-y-auto">
+      <div className={cn("flex flex-1 flex-col overflow-y-auto", collapsed ? "divide-y divide-white/10" : "gap-6")}>
         {adminNavGroups.map((group) => (
-          <div key={group.section} className="flex flex-col gap-1">
+          <div key={group.section} className={cn("flex flex-col gap-1", collapsed && "py-3 first:pt-0")}>
             {!collapsed && (
               <span className="px-3 text-[11px] font-semibold uppercase tracking-wider text-white/40">
                 {group.section}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Badge } from "./ui/Badge";
 import { Card } from "./ui/Card";
 import { TabBar } from "./ui/TabBar";
@@ -22,12 +23,19 @@ const filterOptions: { label: string; value: StatusFilter }[] = [
 ];
 
 export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
+  const searchParams = useSearchParams();
   const [inquiries, setInquiries] = useState(initialInquiries);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const selectedInquiry = inquiries.find((inquiry) => inquiry.id === selectedId) ?? null;
+
+  // Lets a notification link jump straight to a specific inquiry, e.g. /admin/inquiries?inquiryId=inq-1
+  useEffect(() => {
+    const inquiryId = searchParams.get("inquiryId");
+    if (inquiryId) setSelectedId(inquiryId);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!selectedInquiry) return;
@@ -79,7 +87,7 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
             onChange={(event) => setSearchQuery(event.target.value)}
             placeholder="Search inquiries..."
             aria-label="Search inquiries"
-            className="w-full rounded-full border border-brand-forest-100 bg-brand-forest-50 py-2 pl-9 pr-4 text-sm text-brand-forest-900 placeholder:text-brand-forest-400 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+            className="w-full rounded-full border border-brand-forest-100 bg-white py-2 pl-9 pr-4 text-sm text-brand-forest-900 placeholder:text-brand-forest-400 focus:outline-none focus:ring-2 focus:ring-brand-gold"
           />
         </div>
       </div>
@@ -131,7 +139,7 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
                 className="flex cursor-pointer flex-col gap-2 transition-colors hover:bg-brand-forest-50"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-brand-forest-900">{inquiry.name}</p>
                     <p className="truncate text-sm text-brand-forest-400">{inquiry.email}</p>
                   </div>

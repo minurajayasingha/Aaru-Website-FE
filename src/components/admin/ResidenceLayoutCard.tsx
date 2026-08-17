@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { cn } from "@/lib/cn";
 import { Card } from "./ui/Card";
-import { PencilIcon } from "./icons";
+import { PencilIcon, DragHandleIcon } from "./icons";
 import type { GalleryImage, Residence } from "@/content/residences";
 
 type StatKey = "unitsAvailableLabel" | "sizeLabel" | "priceLabel";
@@ -26,8 +27,31 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
   });
   const [editingField, setEditingField] = useState<StatKey | null>(null);
   const [draftValue, setDraftValue] = useState("");
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const cancelledEditRef = useRef(false);
   const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  // Order here mirrors the front-end layout gallery, so drag-to-reorder lets
+  // an admin keep new/replaced images in sync with the public page's order.
+  function handleDragStart(index: number) {
+    setDraggedIndex(index);
+  }
+
+  function handleDragOver(event: React.DragEvent<HTMLDivElement>, index: number) {
+    event.preventDefault();
+    if (draggedIndex === null || draggedIndex === index) return;
+    setImages((current) => {
+      const next = [...current];
+      const [moved] = next.splice(draggedIndex, 1);
+      next.splice(index, 0, moved);
+      return next;
+    });
+    setDraggedIndex(index);
+  }
+
+  function handleDragEnd() {
+    setDraggedIndex(null);
+  }
 
   function handleImageReplace(index: number, file: File | undefined) {
     if (!file) return;
@@ -106,11 +130,22 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {images.map((image, index) => (
           <div
-            key={index}
-            className="group relative aspect-square overflow-hidden rounded-lg border border-brand-forest-100 bg-brand-forest-50"
+            key={image.src}
+            draggable
+            onDragStart={() => handleDragStart(index)}
+            onDragOver={(event) => handleDragOver(event, index)}
+            onDrop={(event) => event.preventDefault()}
+            onDragEnd={handleDragEnd}
+            className={cn(
+              "group relative aspect-square cursor-grab overflow-hidden rounded-lg border border-brand-forest-100 bg-brand-forest-50 active:cursor-grabbing",
+              draggedIndex === index && "opacity-50",
+            )}
           >
             {/* Blob URLs from URL.createObjectURL can't go through next/image's optimizer, so this stays a plain img. */}
             <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+            <div className="pointer-events-none absolute left-1.5 top-1.5 rounded-md bg-black/40 p-1 text-white opacity-0 transition-opacity group-hover:opacity-100">
+              <DragHandleIcon className="h-3.5 w-3.5" />
+            </div>
             <button
               type="button"
               onClick={() => fileInputRefs.current[index]?.click()}

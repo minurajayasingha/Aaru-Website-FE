@@ -20,7 +20,12 @@ export const statusClasses: Record<AdminBadgeStatus, string> = {
 
 export function Badge({ status }: BadgeProps) {
   return (
-    <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold", statusClasses[status])}>
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold",
+        statusClasses[status],
+      )}
+    >
       {statusLabels[status]}
     </span>
   );

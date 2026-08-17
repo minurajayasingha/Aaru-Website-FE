@@ -66,7 +66,7 @@ export default function AdminDashboardPage() {
               key={inquiry.id}
               className="flex items-center justify-between gap-4 rounded-lg px-2 py-3 transition-colors hover:bg-brand-forest-50"
             >
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium text-brand-forest-900">{inquiry.name}</p>
                 <p className="truncate text-sm text-brand-forest-400">{inquiry.message}</p>
               </div>

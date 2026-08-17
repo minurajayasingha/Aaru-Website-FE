@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/admin/ui/Button";
 import { Input } from "@/components/admin/ui/Input";
 
@@ -15,7 +16,10 @@ export default function AdminLoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-brand-forest-50 px-4">
       <div className="w-full max-w-sm rounded-xl border border-brand-forest-100 bg-white p-8 shadow-sm">
-        <div className="mb-6 text-center">
+        <div className="mb-6 flex flex-col items-center text-center">
+          <div className="relative mb-3 h-12 w-12">
+            <Image src="/images/logo/aaru-mark-color.svg" alt="AARU" fill className="object-contain" />
+          </div>
           <p className="text-lg font-semibold text-brand-forest-900">
             AARU <span className="text-brand-gold">Admin</span>
           </p>

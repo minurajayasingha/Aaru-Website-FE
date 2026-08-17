@@ -209,7 +209,7 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
             onChange={(event) => setSearchQuery(event.target.value)}
             placeholder="Search gallery..."
             aria-label="Search gallery"
-            className="w-full rounded-full border border-brand-forest-100 bg-brand-forest-50 py-2 pl-9 pr-4 text-sm text-brand-forest-900 placeholder:text-brand-forest-400 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+            className="w-full rounded-full border border-brand-forest-100 bg-white py-2 pl-9 pr-4 text-sm text-brand-forest-900 placeholder:text-brand-forest-400 focus:outline-none focus:ring-2 focus:ring-brand-gold"
           />
         </div>
       </div>
@@ -254,20 +254,22 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
 
           <div className="flex flex-col gap-4 md:hidden">
             {filteredImages.map((image) => (
-              <Card key={image.id} onClick={() => setSelectedId(image.id)} className="flex cursor-pointer flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-brand-forest-100 bg-brand-forest-50">
-                    <img src={image.src} alt={image.name} className="h-full w-full object-cover" />
-                  </div>
-                  <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                    <div className="truncate text-sm font-medium text-brand-forest-900">{renderName(image)}</div>
-                    <div>{renderStatusBadge(image)}</div>
-                  </div>
+              <div
+                key={image.id}
+                onClick={() => setSelectedId(image.id)}
+                className="flex h-40 cursor-pointer overflow-hidden rounded-xl border border-brand-forest-100 bg-white shadow-sm"
+              >
+                <div className="w-2/5 shrink-0">
+                  <img src={image.src} alt={image.name} className="h-full w-full object-cover" />
                 </div>
-                <div className="flex items-center justify-end gap-1.5 border-t border-brand-forest-100 pt-3">
+                <div className="flex w-3/5 min-w-0 flex-col justify-between p-4">
+                  <div className="flex min-w-0 flex-col gap-1.5">
+                    <div>{renderStatusBadge(image)}</div>
+                    <div className="truncate text-sm font-medium text-brand-forest-900">{renderName(image)}</div>
+                  </div>
                   {renderActions(image)}
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </>
