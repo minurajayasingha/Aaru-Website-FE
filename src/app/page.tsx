@@ -24,7 +24,7 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex h-screen items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
+      <section className="relative flex h-dvh items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
         {/* Separate mobile crop instead of just object-cover'ing the desktop
             photo down — a wide landscape shot loses its subject (or, here,
             gets cropped so tight the "aaru" sign in it goes off-frame) on a
