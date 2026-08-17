@@ -46,7 +46,7 @@ export function ResidenceCard({
   imageAlt,
 }: ResidenceCardProps) {
   return (
-    <Card className="group transition-colors duration-700 ease-out hover:bg-white">
+    <Card className="group flex h-full flex-col transition-colors duration-700 ease-out hover:bg-white">
       <div className="relative aspect-square">
         <Image
           src={imageSrc}
@@ -57,7 +57,7 @@ export function ResidenceCard({
         />
         <Badge className="absolute top-4 right-4">{unitBadge}</Badge>
       </div>
-      <div className="flex flex-col gap-2 px-4 pt-2 lg:pt-3 pb-4">
+      <div className="flex flex-1 flex-col gap-2 px-4 pt-2 lg:pt-3 pb-4">
         <div className="flex flex-col md:flex-row justify-start justify-items-end items-baseline gap-2 md:gap-4">
           <h3 className="font-heading font-light text-h-04 text-black">{name}</h3>
           <p className="font-body text-para-xxxs font-light text-brand-forest-700">{floorLabel}</p>
@@ -74,7 +74,7 @@ export function ResidenceCard({
             );
           })}
         </div>
-        <Button href={`/residences/${slug}`} variant="primary" size="sm" className=" w-5/6 md:w-3/5 self-center">
+        <Button href={`/residences/${slug}`} variant="primary" size="sm" className="mt-auto w-5/6 md:w-3/5 self-center">
           View More
         </Button>
       </div>

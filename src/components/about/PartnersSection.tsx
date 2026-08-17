@@ -15,17 +15,19 @@ type PartnersSectionProps = {
 export function PartnersSection({ partner }: PartnersSectionProps) {
   return (
     <Reveal as="section" className="bg-brand-cream px-section-s py-16 md:px-section-x">
-      <div className="mx-auto flex max-w-[1600px] flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-        <div className="flex w-full flex-col gap-4 lg:w-6/12">
-          <h3 className="font-heading font-light text-h-01 text-black">{partner.name}</h3>
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-x-16 lg:gap-y-4">
+        <h3 className="font-heading font-light text-h-01 text-black lg:col-start-1 lg:row-start-1">
+          {partner.name}
+        </h3>
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-white lg:col-start-2 lg:row-start-1 lg:row-span-2">
+          <Image src={partner.logoSrc} alt={partner.logoAlt} fill className="object-contain p-10" />
+        </div>
+        <div className="flex flex-col gap-4 lg:col-start-1 lg:row-start-2">
           {partner.paragraphs.map((paragraph, index) => (
             <p key={index} className="text-justify font-body text-para-sm font-light text-brand-forest-700">
               {paragraph}
             </p>
           ))}
-        </div>
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-white lg:w-6/12">
-          <Image src={partner.logoSrc} alt={partner.logoAlt} fill className="object-contain p-10" />
         </div>
       </div>
     </Reveal>

@@ -47,13 +47,13 @@ export function WhoLeadsSection({ title, titleAccent, paragraph, imageSrc, image
             image (ordered between them) can sit above the paragraph;
             at lg+ this becomes a real flex column again, same as before. */}
         <div className="contents lg:flex lg:w-5/12 lg:flex-col lg:gap-6">
-          <h1 className="order-1 text-center font-heading font-light leading-tight text-7xl text-white lg:text-left">
+          <h1 className="order-2 text-center font-heading font-light leading-tight text-7xl text-white lg:text-left">
             {title}
             <br />
             <span className="text-green-500">{titleAccent}</span>
           </h1>
           </div>
-        <div className="relative order-2 mx-auto aspect-[955/676] w-full max-w-2xl lg:mx-0 lg:w-7/12 lg:max-w-none">
+        <div className="relative order-1 aspect-[955/676] w-screen ml-[calc(50%-50vw)] lg:order-2 lg:ml-0 lg:mx-0 lg:w-7/12 lg:max-w-none">
           <Image src={imageSrc} alt={imageAlt} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-contain object-bottom" />
           {members.map((member, index) => (
             <span

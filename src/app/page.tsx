@@ -30,7 +30,7 @@ export default function HomePage() {
             gets cropped so tight the "aaru" sign in it goes off-frame) on a
             tall narrow phone screen. */}
         <Image
-          src="/images/hero/mobile/home.avif"
+          src="/images/hero/mobile/home.jpeg"
           alt="Aaru's residences beside a lagoon in Arugam Bay at sunset"
           fill
           priority

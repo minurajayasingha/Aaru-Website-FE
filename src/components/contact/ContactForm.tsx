@@ -97,7 +97,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full max-w-xl flex-col gap-6 rounded-card bg-white p-6 shadow-card md:p-10">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Input
           label="First Name"
           id="firstName"
@@ -123,7 +123,24 @@ export function ContactForm() {
           Phone
         </label>
         <div className="flex gap-3">
-          <div className="relative w-40 shrink-0 sm:w-56">
+          <div className="relative w-20 shrink-0 md:hidden">
+            <select
+              id="dialCode-mobile"
+              name="dialCode"
+              value={form.dialCode}
+              onChange={(e) => setForm({ ...form, dialCode: e.target.value })}
+              aria-label="Country dial code"
+              className="w-full appearance-none truncate rounded-input border border-brand-forest-200 bg-brand-cream-dark/30 py-2.5 pl-3 pr-6 font-body text-sm text-black font-thin focus:outline-none focus:ring-1 focus:ring-black/70"
+            >
+              {dialCodes.map(({ code, country }) => (
+                <option key={`${code}-${country}`} value={`${code}|${country}`}>
+                  {code}
+                </option>
+              ))}
+            </select>
+            <ChevronDownIcon className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-brand-forest-500" />
+          </div>
+          <div className="relative hidden w-56 shrink-0 md:block">
             <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-brand-forest-500">
               <PhoneFieldIcon />
             </span>
