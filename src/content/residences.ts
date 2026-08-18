@@ -200,3 +200,7 @@ export const residences: Residence[] = [
 export function getResidenceBySlug(slug: string): Residence | undefined {
   return residences.find((r) => r.slug === slug);
 }
+
+export function resolveLayoutImageAlt(residence: Residence, index: number): string {
+  return residence.layoutGallery[index]?.alt ?? `${residence.name} unit layout plan`;
+}
