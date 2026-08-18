@@ -3,42 +3,44 @@ import Link from "next/link";
 import { StatCard } from "@/components/admin/ui/StatCard";
 import { Card } from "@/components/admin/ui/Card";
 import { Badge } from "@/components/admin/ui/Badge";
-import { sampleInquiries } from "@/content/admin/inquiries";
+import { getAllInquiries } from "@/db/queries/inquiries";
+import { toAdminInquiries } from "@/content/admin/inquiries";
 import { InquiriesIcon, ResidencesIcon, GalleryIcon, EyeIcon } from "@/components/admin/icons";
 
 export const metadata: Metadata = {
   title: "Dashboard",
 };
 
-const stats = [
-  {
-    label: "Total Inquiries",
-    value: "128",
-    icon: InquiriesIcon,
-    trend: { direction: "up" as const, value: "12% this week" },
-  },
-  {
-    label: "Listed Residences",
-    value: "22",
-    icon: ResidencesIcon,
-    trend: { direction: "up" as const, value: "4% this month" },
-  },
-  {
-    label: "Gallery Images",
-    value: "64",
-    icon: GalleryIcon,
-    trend: { direction: "up" as const, value: "6% this month" },
-  },
-  {
-    label: "Page Views (30d)",
-    value: "9.4K",
-    icon: EyeIcon,
-    trend: { direction: "up" as const, value: "8% vs. last month" },
-  },
-];
+export default async function AdminDashboardPage() {
+  const inquiries = toAdminInquiries(await getAllInquiries());
+  const recentInquiries = inquiries.slice(0, 3);
 
-export default function AdminDashboardPage() {
-  const recentInquiries = sampleInquiries.slice(0, 3);
+  const stats = [
+    {
+      label: "Total Inquiries",
+      value: String(inquiries.length),
+      icon: InquiriesIcon,
+      trend: { direction: "up" as const, value: "12% this week" },
+    },
+    {
+      label: "Listed Residences",
+      value: "22",
+      icon: ResidencesIcon,
+      trend: { direction: "up" as const, value: "4% this month" },
+    },
+    {
+      label: "Gallery Images",
+      value: "64",
+      icon: GalleryIcon,
+      trend: { direction: "up" as const, value: "6% this month" },
+    },
+    {
+      label: "Page Views (30d)",
+      value: "9.4K",
+      icon: EyeIcon,
+      trend: { direction: "up" as const, value: "8% vs. last month" },
+    },
+  ];
 
   return (
     <div className="flex flex-col gap-8">
