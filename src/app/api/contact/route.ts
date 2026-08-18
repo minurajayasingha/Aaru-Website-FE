@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendContactEmail, type ContactSubmission } from "@/lib/mailer";
+import { createInquiry } from "@/db/queries/inquiries";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,7 +26,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "A valid email address is required" }, { status: 400 });
     }
 
-    await sendContactEmail({
+    const submission: ContactSubmission = {
       firstName: body.firstName,
       lastName: body.lastName,
       dialCode: body.dialCode ?? "+94",
@@ -35,7 +36,15 @@ export async function POST(request: Request) {
       interestedIn: body.interestedIn ?? "",
       message: body.message ?? "",
       hearAboutUs: body.hearAboutUs,
-    });
+    };
+
+    await createInquiry(submission);
+
+    try {
+      await sendContactEmail(submission);
+    } catch (emailError) {
+      console.error("Contact email send failed (inquiry was saved):", emailError);
+    }
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
