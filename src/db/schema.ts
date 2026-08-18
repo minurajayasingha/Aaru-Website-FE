@@ -63,3 +63,16 @@ export const residenceStats = mysqlTable("residence_stats", {
 
 export type ResidenceStats = typeof residenceStats.$inferSelect;
 export type NewResidenceStats = typeof residenceStats.$inferInsert;
+
+export const residenceLayoutImages = mysqlTable("residence_layout_images", {
+  id: int("id").autoincrement().primaryKey(),
+  residenceSlug: varchar("residence_slug", { length: 191 }).notNull(),
+  filename: varchar("filename", { length: 255 }).notNull(),
+  displayOrder: int("display_order").notNull(),
+  width: int("width").notNull(),
+  height: int("height").notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ResidenceLayoutImage = typeof residenceLayoutImages.$inferSelect;
+export type NewResidenceLayoutImage = typeof residenceLayoutImages.$inferInsert;
