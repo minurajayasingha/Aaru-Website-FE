@@ -16,6 +16,7 @@ skills-lock.json
 
 # Runtime data — archived (soft-deleted) gallery images, not curated site content
 /storage/gallery-archive/
+/storage/residence-archive/
 
 # Env
 .env
