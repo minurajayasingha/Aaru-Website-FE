@@ -14,6 +14,9 @@ skills-lock.json
 # Production
 /build
 
+# Runtime data — archived (soft-deleted) gallery images, not curated site content
+/storage/gallery-archive/
+
 # Env
 .env
 .env*.local

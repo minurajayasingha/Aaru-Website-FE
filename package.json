@@ -11,7 +11,8 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "seed:admin": "tsx scripts/seed-admin.ts"
+    "seed:admin": "tsx scripts/seed-admin.ts",
+    "backfill:gallery": "tsx scripts/backfill-gallery.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
