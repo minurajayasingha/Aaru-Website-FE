@@ -61,8 +61,25 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
     });
   }, [inquiries, statusFilter, searchQuery]);
 
-  function handleStatusChange(id: string, status: AdminInquiryStatus) {
+  async function handleStatusChange(id: string, status: AdminInquiryStatus) {
+    const previousStatus = inquiries.find((inquiry) => inquiry.id === id)?.status;
     setInquiries((current) => current.map((inquiry) => (inquiry.id === id ? { ...inquiry, status } : inquiry)));
+
+    try {
+      const response = await fetch(`/api/admin/inquiries/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+      if (!response.ok) throw new Error("Failed to update inquiry status");
+    } catch (error) {
+      console.error("Failed to persist inquiry status change:", error);
+      if (previousStatus) {
+        setInquiries((current) =>
+          current.map((inquiry) => (inquiry.id === id ? { ...inquiry, status: previousStatus } : inquiry))
+        );
+      }
+    }
   }
 
   return (
