@@ -4,7 +4,7 @@ import { verifySessionToken } from "@/lib/auth/session";
 const SESSION_COOKIE = "aaru_admin_session";
 
 export async function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === "/admin/login") {
+  if (request.nextUrl.pathname === "/admin/login" || request.nextUrl.pathname.startsWith("/api/admin/auth/")) {
     return NextResponse.next();
   }
 
@@ -19,5 +19,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*", "/api/admin/:path*"],
 };
