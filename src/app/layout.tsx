@@ -3,6 +3,7 @@ import { Marcellus_SC, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { AppChrome } from "@/components/layout/AppChrome";
 import { siteConfig } from "@/content/site";
+import { getSiteSettings } from "@/db/queries/siteSettings";
 
 const heading = Fraunces({
   subsets: ["latin"],
@@ -32,11 +33,15 @@ export const metadata: Metadata = {
   description: siteConfig.tagline,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { contactPhone, contactEmail } = await getSiteSettings();
+
   return (
     <html lang="en" className={`${heading.variable} ${subheading.variable} ${body.variable}`} suppressHydrationWarning>
       <body className="font-body" suppressHydrationWarning>
-        <AppChrome>{children}</AppChrome>
+        <AppChrome contactPhone={contactPhone} contactEmail={contactEmail}>
+          {children}
+        </AppChrome>
       </body>
     </html>
   );

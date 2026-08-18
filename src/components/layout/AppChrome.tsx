@@ -6,7 +6,13 @@ import { FooterSection } from "./FooterSection";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
-export function AppChrome({ children }: { children: React.ReactNode }) {
+interface AppChromeProps {
+  children: React.ReactNode;
+  contactPhone: string;
+  contactEmail: string;
+}
+
+export function AppChrome({ children, contactPhone, contactEmail }: AppChromeProps) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin") ?? false;
 
@@ -17,10 +23,10 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SmoothScroll />
-      <OrganizationJsonLd />
-      <Navbar />
+      <OrganizationJsonLd contactPhone={contactPhone} contactEmail={contactEmail} />
+      <Navbar contactPhone={contactPhone} />
       <main>{children}</main>
-      <FooterSection />
+      <FooterSection contactPhone={contactPhone} contactEmail={contactEmail} />
     </>
   );
 }

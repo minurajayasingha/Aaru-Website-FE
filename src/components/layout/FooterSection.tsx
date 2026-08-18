@@ -1,11 +1,16 @@
 import { CtaBannerGate } from "./CtaBannerGate";
 import { Footer } from "./Footer";
 
-export function FooterSection() {
+interface FooterSectionProps {
+  contactPhone: string;
+  contactEmail: string;
+}
+
+export function FooterSection({ contactPhone, contactEmail }: FooterSectionProps) {
   return (
     <div>
       <CtaBannerGate />
-      <Footer />
+      <Footer contactPhone={contactPhone} contactEmail={contactEmail} />
     </div>
   );
 }

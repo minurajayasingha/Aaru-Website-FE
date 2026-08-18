@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { buildMetadata } from "@/lib/metadata";
-import { siteConfig } from "@/content/site";
+import { getSiteSettings } from "@/db/queries/siteSettings";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
@@ -14,7 +14,9 @@ export const metadata: Metadata = buildMetadata({
   path: "/contact",
 });
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const { contactPhone, contactEmail } = await getSiteSettings();
+
   return (
     <>
       <PageHero
@@ -66,14 +68,14 @@ export default function ContactPage() {
               <p className="font-heading font-light text-h-03 text-brand-forest-700">Sales Enquiries</p>
               <div className="flex items-center gap-3">
                 <Image src="/images/icons/black-email.svg" alt="" width={18} height={18} />
-                <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactEmail}</p>
+                <p className="font-body font-thin text-brand-forest-900">{contactEmail}</p>
               </div>
               <div className="flex items-center gap-3">
                 <Image src="/images/icons/black-whatsapp.svg" alt="" width={18} height={18} />
-                <p className="font-body font-thin text-brand-forest-900">{siteConfig.contactPhone}</p>
+                <p className="font-body font-thin text-brand-forest-900">{contactPhone}</p>
               </div>
             </div>
-            <Button href={`https://wa.me/${siteConfig.contactPhone.replace(/\s|\+/g, "")}`} variant="primary" className="w-fit">
+            <Button href={`https://wa.me/${contactPhone.replace(/\s|\+/g, "")}`} variant="primary" className="w-fit">
               WhatsApp
             </Button>
           </div>

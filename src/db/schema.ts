@@ -29,6 +29,16 @@ export const inquiries = mysqlTable("inquiries", {
 export type Inquiry = typeof inquiries.$inferSelect;
 export type NewInquiry = typeof inquiries.$inferInsert;
 
+export const siteSettings = mysqlTable("site_settings", {
+  id: int("id").autoincrement().primaryKey(),
+  contactPhone: varchar("contact_phone", { length: 50 }).notNull(),
+  contactEmail: varchar("contact_email", { length: 255 }).notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SiteSettings = typeof siteSettings.$inferSelect;
+export type NewSiteSettings = typeof siteSettings.$inferInsert;
+
 export const galleryImages = mysqlTable("gallery_images", {
   id: int("id").autoincrement().primaryKey(),
   category: mysqlEnum("category", ["residential", "interior", "lifestyle", "maps"]).notNull(),

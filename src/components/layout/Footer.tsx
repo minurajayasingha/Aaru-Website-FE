@@ -4,7 +4,12 @@ import { siteConfig } from "@/content/site";
 import { footerLinkGroups } from "@/content/nav";
 import { Container } from "@/components/ui/Container";
 
-export function Footer() {
+interface FooterProps {
+  contactPhone: string;
+  contactEmail: string;
+}
+
+export function Footer({ contactPhone, contactEmail }: FooterProps) {
   return (
     <footer className="bg-brand-forest-900 text-white">
       <Container className="flex flex-col gap-10 pb-4 pt-8 md:flex-row md:items-center md:justify-start md:gap-16 lg:items-start lg:gap-24 xl:gap-32">
@@ -46,13 +51,13 @@ export function Footer() {
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/email.svg" alt="" fill className="object-contain" />
               </div>
-              <span className="font-body text-para-xs font-thin  text-white/80 tracking-wide">{siteConfig.contactEmail}</span>
+              <span className="font-body text-para-xs font-thin  text-white/80 tracking-wide">{contactEmail}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="relative h-3 w-3 shrink-0">
                 <Image src="/images/icons/whatsapp.svg" alt="" fill className="object-contain" />
               </div>
-              <span className="font-body text-para-xs font-thin text-white/80 tracking-wide">{siteConfig.contactPhone}</span>
+              <span className="font-body text-para-xs font-thin text-white/80 tracking-wide">{contactPhone}</span>
             </div>
           </div>
         </div>

@@ -1,7 +1,12 @@
 import { JsonLd } from "./JsonLd";
 import { siteConfig } from "@/content/site";
 
-export function OrganizationJsonLd() {
+interface OrganizationJsonLdProps {
+  contactPhone: string;
+  contactEmail: string;
+}
+
+export function OrganizationJsonLd({ contactPhone, contactEmail }: OrganizationJsonLdProps) {
   return (
     <JsonLd
       data={{
@@ -9,8 +14,8 @@ export function OrganizationJsonLd() {
         "@type": "Organization",
         name: siteConfig.name,
         url: siteConfig.url,
-        email: siteConfig.contactEmail,
-        telephone: siteConfig.contactPhone,
+        email: contactEmail,
+        telephone: contactPhone,
         address: {
           "@type": "PostalAddress",
           addressLocality: "Arugam Bay",

@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/content/nav";
-import { siteConfig } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
 
@@ -15,10 +14,13 @@ function isLinkActive(pathname: string | null, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-const whatsappHref = `https://wa.me/${siteConfig.contactPhone.replace(/\D/g, "")}`;
+interface NavbarProps {
+  contactPhone: string;
+}
 
-export function Navbar() {
+export function Navbar({ contactPhone }: NavbarProps) {
   const pathname = usePathname();
+  const whatsappHref = `https://wa.me/${contactPhone.replace(/\D/g, "")}`;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isResidencesOpen, setIsResidencesOpen] = useState(false);
   const [isMobileResidencesOpen, setIsMobileResidencesOpen] = useState(false);

@@ -4,16 +4,40 @@ import { useState } from "react";
 import { Card } from "./ui/Card";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
-import { siteConfig } from "@/content/site";
 
-export function ContactDetailsForm() {
-  const [phone, setPhone] = useState(siteConfig.contactPhone);
-  const [email, setEmail] = useState(siteConfig.contactEmail);
-  const [isSaved, setIsSaved] = useState(false);
+interface ContactDetailsFormProps {
+  initialPhone: string;
+  initialEmail: string;
+}
 
-  function handleSubmit(event: React.FormEvent) {
+export function ContactDetailsForm({ initialPhone, initialEmail }: ContactDetailsFormProps) {
+  const [phone, setPhone] = useState(initialPhone);
+  const [email, setEmail] = useState(initialEmail);
+  const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    setIsSaved(true);
+    setStatus("saving");
+    setError(null);
+
+    try {
+      const response = await fetch("/api/admin/settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contactPhone: phone, contactEmail: email }),
+      });
+
+      if (!response.ok) {
+        const body = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(body?.error ?? "Something went wrong. Please try again.");
+      }
+
+      setStatus("saved");
+    } catch (err) {
+      setStatus("error");
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
   }
 
   return (
@@ -30,7 +54,7 @@ export function ContactDetailsForm() {
           value={phone}
           onChange={(event) => {
             setPhone(event.target.value);
-            setIsSaved(false);
+            setStatus("idle");
           }}
           placeholder="+94 77 018 3334"
           required
@@ -43,15 +67,18 @@ export function ContactDetailsForm() {
           value={email}
           onChange={(event) => {
             setEmail(event.target.value);
-            setIsSaved(false);
+            setStatus("idle");
           }}
           placeholder="sales@aaruliving.com"
           required
         />
 
         <div className="mt-2 flex items-center gap-3">
-          <Button type="submit">Save changes</Button>
-          {isSaved && <span className="text-sm font-medium text-brand-forest-600">Saved</span>}
+          <Button type="submit" disabled={status === "saving"}>
+            {status === "saving" ? "Saving..." : "Save changes"}
+          </Button>
+          {status === "saved" && <span className="text-sm font-medium text-brand-forest-600">Saved</span>}
+          {status === "error" && <span className="text-sm font-medium text-red-600">{error}</span>}
         </div>
       </form>
     </Card>
