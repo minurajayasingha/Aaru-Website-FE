@@ -1,109 +1,70 @@
-import fs from "fs";
-import os from "os";
-import path from "path";
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getGalleryCategories, galleryCategories } from "./gallery";
+import * as galleryImagesQueries from "@/db/queries/galleryImages";
+import type { GalleryImage as GalleryImageRow } from "@/db/schema";
 
 describe("getGalleryCategories", () => {
-  let tempDir: string;
-
   beforeEach(() => {
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "gallery-test-"));
+    vi.restoreAllMocks();
   });
 
-  afterEach(() => {
-    fs.rmSync(tempDir, { recursive: true, force: true });
-  });
+  it("returns images grouped into their matching category, mapped to the public shape", async () => {
+    const rows: GalleryImageRow[] = [
+      {
+        id: 1,
+        category: "residential",
+        filename: "aerial-view.png",
+        displayName: "Aerial View",
+        status: "active",
+        width: 1600,
+        height: 1200,
+        uploadedAt: new Date(),
+      },
+    ];
+    vi.spyOn(galleryImagesQueries, "getActiveGalleryImages").mockResolvedValue(rows);
 
-  it("reads every image dropped directly into the category folder", () => {
-    const residentialDir = path.join(tempDir, "residential");
-    fs.mkdirSync(residentialDir, { recursive: true });
-    fs.writeFileSync(path.join(residentialDir, "poolside-sunset-01.jpg"), "fake");
-    fs.writeFileSync(path.join(residentialDir, "aerial-view.png"), "fake");
-
-    const categories = getGalleryCategories(tempDir);
+    const categories = await getGalleryCategories();
     const residential = categories.find((category) => category.id === "residential");
 
     expect(residential?.images).toEqual([
       {
         src: "/images/gallery/residential/aerial-view.png",
         alt: "Aerial View — Aaru Residential Gallery",
-        width: 4,
-        height: 3,
-      },
-      {
-        src: "/images/gallery/residential/poolside-sunset-01.jpg",
-        alt: "Poolside Sunset 01 — Aaru Residential Gallery",
-        width: 4,
-        height: 3,
+        width: 1600,
+        height: 1200,
       },
     ]);
   });
 
-  it("sorts images alphabetically by default", () => {
-    const residentialDir = path.join(tempDir, "residential");
-    fs.mkdirSync(residentialDir, { recursive: true });
-    fs.writeFileSync(path.join(residentialDir, "c.jpg"), "fake");
-    fs.writeFileSync(path.join(residentialDir, "a.jpg"), "fake");
-    fs.writeFileSync(path.join(residentialDir, "b.jpg"), "fake");
+  it("returns an empty images array for every category when there are no active images", async () => {
+    vi.spyOn(galleryImagesQueries, "getActiveGalleryImages").mockResolvedValue([]);
 
-    const categories = getGalleryCategories(tempDir);
-    const residential = categories.find((category) => category.id === "residential");
+    const categories = await getGalleryCategories();
 
-    expect(residential?.images.map((image) => image.src)).toEqual([
-      "/images/gallery/residential/a.jpg",
-      "/images/gallery/residential/b.jpg",
-      "/images/gallery/residential/c.jpg",
-    ]);
-  });
-
-  it("orders images by a leading number prefix instead of alphabetically, and strips it from alt text", () => {
-    const residentialDir = path.join(tempDir, "residential");
-    fs.mkdirSync(residentialDir, { recursive: true });
-    fs.writeFileSync(path.join(residentialDir, "2-second.jpg"), "fake");
-    fs.writeFileSync(path.join(residentialDir, "1-first.jpg"), "fake");
-
-    const categories = getGalleryCategories(tempDir);
-    const residential = categories.find((category) => category.id === "residential");
-
-    expect(residential?.images.map((image) => image.alt)).toEqual([
-      "First — Aaru Residential Gallery",
-      "Second — Aaru Residential Gallery",
-    ]);
-  });
-
-  it("still picks up images left over in subfolders, flattened into the same list", () => {
-    const residentialDir = path.join(tempDir, "residential");
-    fs.mkdirSync(path.join(residentialDir, "suit-view"), { recursive: true });
-    fs.writeFileSync(path.join(residentialDir, "loose.jpg"), "fake");
-    fs.writeFileSync(path.join(residentialDir, "suit-view", "nested.jpg"), "fake");
-
-    const categories = getGalleryCategories(tempDir);
-    const residential = categories.find((category) => category.id === "residential");
-
-    expect(residential?.images.map((image) => image.src).sort()).toEqual([
-      "/images/gallery/residential/loose.jpg",
-      "/images/gallery/residential/suit-view/nested.jpg",
-    ]);
-  });
-
-  it("returns no images for a category whose folder doesn't exist", () => {
-    const categories = getGalleryCategories(tempDir);
     expect(categories.every((category) => category.images.length === 0)).toBe(true);
   });
 
-  it("filters out non-image files like .DS_Store or .txt", () => {
-    const residentialDir = path.join(tempDir, "residential");
-    fs.mkdirSync(residentialDir, { recursive: true });
-    fs.writeFileSync(path.join(residentialDir, "real-photo.jpg"), "fake");
-    fs.writeFileSync(path.join(residentialDir, ".DS_Store"), "fake");
-    fs.writeFileSync(path.join(residentialDir, "notes.txt"), "fake");
+  it("only places each image under its own category", async () => {
+    const rows: GalleryImageRow[] = [
+      {
+        id: 2,
+        category: "interior",
+        filename: "lobby.jpg",
+        displayName: "Lobby",
+        status: "active",
+        width: 800,
+        height: 600,
+        uploadedAt: new Date(),
+      },
+    ];
+    vi.spyOn(galleryImagesQueries, "getActiveGalleryImages").mockResolvedValue(rows);
 
-    const categories = getGalleryCategories(tempDir);
+    const categories = await getGalleryCategories();
+    const interior = categories.find((category) => category.id === "interior");
     const residential = categories.find((category) => category.id === "residential");
 
-    expect(residential?.images).toHaveLength(1);
-    expect(residential?.images[0].src).toBe("/images/gallery/residential/real-photo.jpg");
+    expect(interior?.images).toHaveLength(1);
+    expect(residential?.images).toHaveLength(0);
   });
 
   it("covers all four fixed categories", () => {

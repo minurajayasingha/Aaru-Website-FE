@@ -11,7 +11,9 @@ export const metadata: Metadata = buildMetadata({
   path: "/gallery",
 });
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const categories = await getGalleryCategories();
+
   return (
     <>
       <PageHero
@@ -23,7 +25,7 @@ export default function GalleryPage() {
         height="lg"
       />
       <Reveal once={false}>
-        <GalleryGrid categories={getGalleryCategories()} />
+        <GalleryGrid categories={categories} />
       </Reveal>
     </>
   );
