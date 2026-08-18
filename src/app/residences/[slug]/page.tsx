@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { residences, getResidenceBySlug } from "@/content/residences";
+import { getResidencesWithOverrides } from "@/db/queries/residences";
 import { getAmenityIcon } from "@/content/amenityIcons";
 import { enrichGallerySections } from "@/lib/residenceGalleryImages";
 import { buildMetadata } from "@/lib/metadata";
@@ -37,11 +38,12 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
 export default async function ResidenceDetailPage({ params }: PageParams) {
   const { slug } = await params;
-  const residence = getResidenceBySlug(slug);
+  const allResidences = await getResidencesWithOverrides();
+  const residence = allResidences.find((r) => r.slug === slug);
   if (!residence) notFound();
 
   const otherResidences = residence.otherResidencesOrder
-    .map((slug) => getResidenceBySlug(slug))
+    .map((otherSlug) => allResidences.find((r) => r.slug === otherSlug))
     .filter((r): r is NonNullable<typeof r> => r !== undefined && r.slug !== residence.slug);
 
   const gallerySections = enrichGallerySections(residence.gallerySections);

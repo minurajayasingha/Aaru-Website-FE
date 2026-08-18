@@ -1,8 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import ResidenceDetailPage, { generateStaticParams } from "./page";
+import * as residencesQueries from "@/db/queries/residences";
+import { residences } from "@/content/residences";
+
+vi.mock("@/db/queries/residences");
 
 describe("ResidenceDetailPage", () => {
+  beforeEach(() => {
+    vi.mocked(residencesQueries.getResidencesWithOverrides).mockResolvedValue(residences);
+  });
+
   it("renders the residence name as h1 and its amenities", async () => {
     const Page = await ResidenceDetailPage({ params: Promise.resolve({ slug: "garden-condos" }) });
     render(Page);

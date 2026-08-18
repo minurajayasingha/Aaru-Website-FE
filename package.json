@@ -12,7 +12,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "seed:admin": "tsx scripts/seed-admin.ts",
-    "backfill:gallery": "tsx scripts/backfill-gallery.ts"
+    "backfill:gallery": "tsx scripts/backfill-gallery.ts",
+    "backfill:residences": "tsx scripts/backfill-residences.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/content/site";
-import { residences } from "@/content/residences";
+import { getResidencesWithOverrides } from "@/db/queries/residences";
 import { commercialAmenities } from "@/content/amenities";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -21,7 +21,8 @@ export const metadata: Metadata = buildMetadata({
   path: "/",
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  const residences = await getResidencesWithOverrides();
   return (
     <>
       <section className="relative flex h-dvh items-end justify-center overflow-hidden text-center text-brand-cream px-section-s md:px-section-x">
