@@ -4,12 +4,12 @@ import { useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Card } from "./ui/Card";
 import { PencilIcon, DragHandleIcon } from "./icons";
-import type { GalleryImage, Residence } from "@/content/residences";
+import type { AdminResidence, AdminLayoutImage } from "@/content/admin/residences";
 
 type StatKey = "unitsAvailableLabel" | "sizeLabel" | "priceLabel";
 
 type ResidenceLayoutCardProps = {
-  residence: Residence;
+  residence: AdminResidence;
 };
 
 const statFields: { key: StatKey; label: string }[] = [
@@ -19,7 +19,7 @@ const statFields: { key: StatKey; label: string }[] = [
 ];
 
 export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
-  const [images, setImages] = useState<GalleryImage[]>(residence.layoutGallery);
+  const [images, setImages] = useState<AdminLayoutImage[]>(residence.layoutImages);
   const [stats, setStats] = useState<Record<StatKey, string>>({
     unitsAvailableLabel: residence.unitsAvailableLabel,
     sizeLabel: residence.sizeLabel,
@@ -30,10 +30,10 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const cancelledEditRef = useRef(false);
   const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const dragStartOrderRef = useRef<AdminLayoutImage[]>(images);
 
-  // Order here mirrors the front-end layout gallery, so drag-to-reorder lets
-  // an admin keep new/replaced images in sync with the public page's order.
   function handleDragStart(index: number) {
+    dragStartOrderRef.current = images;
     setDraggedIndex(index);
   }
 
@@ -49,22 +49,47 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
     setDraggedIndex(index);
   }
 
-  function handleDragEnd() {
-    setDraggedIndex(null);
+  async function persistOrder(orderedImages: AdminLayoutImage[]) {
+    try {
+      const response = await fetch(`/api/admin/residences/${residence.slug}/layout-images`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderedIds: orderedImages.map((image) => image.id) }),
+      });
+      if (!response.ok) throw new Error("Failed to persist layout image order");
+    } catch (error) {
+      console.error("Failed to persist layout image order:", error);
+      setImages(dragStartOrderRef.current);
+    }
   }
 
-  function handleImageReplace(index: number, file: File | undefined) {
+  function handleDragEnd() {
+    setDraggedIndex(null);
+    persistOrder(images);
+  }
+
+  async function handleImageReplace(index: number, file: File | undefined) {
     if (!file) return;
-    const nextSrc = URL.createObjectURL(file);
-    setImages((current) => {
-      const previous = current[index];
-      if (previous.src.startsWith("blob:")) {
-        URL.revokeObjectURL(previous.src);
-      }
-      const next = [...current];
-      next[index] = { src: nextSrc, alt: previous.alt };
-      return next;
-    });
+    const target = images[index];
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch(`/api/admin/residences/layout-images/${target.id}/replace`, {
+        method: "POST",
+        body: formData,
+      });
+      if (!response.ok) throw new Error("Failed to replace layout image");
+      const updated = (await response.json()) as { id: number; src: string };
+      // Cache-bust: the URL can repeat across replaces, so append a query param
+      // to force the browser/next/image to fetch the new file instead of a cached copy.
+      setImages((current) =>
+        current.map((image, i) => (i === index ? { ...image, src: `${updated.src}?t=${Date.now()}` } : image))
+      );
+    } catch (error) {
+      console.error("Failed to replace layout image:", error);
+      window.alert("Failed to replace the image. Please try again.");
+    }
   }
 
   function startEditing(key: StatKey) {
@@ -72,11 +97,26 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
     setEditingField(key);
   }
 
-  function commitEdit() {
-    if (editingField) {
-      setStats((current) => ({ ...current, [editingField]: draftValue }));
-    }
+  async function commitEdit() {
+    const key = editingField;
     setEditingField(null);
+    if (!key) return;
+
+    const previousValue = stats[key];
+    const nextValue = draftValue;
+    setStats((current) => ({ ...current, [key]: nextValue }));
+
+    try {
+      const response = await fetch(`/api/admin/residences/${residence.slug}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ [key]: nextValue }),
+      });
+      if (!response.ok) throw new Error("Failed to update residence stat");
+    } catch (error) {
+      console.error("Failed to persist stat change:", error);
+      setStats((current) => ({ ...current, [key]: previousValue }));
+    }
   }
 
   function cancelEdit() {
@@ -130,7 +170,7 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {images.map((image, index) => (
           <div
-            key={image.src}
+            key={image.id}
             draggable
             onDragStart={() => handleDragStart(index)}
             onDragOver={(event) => handleDragOver(event, index)}
@@ -141,7 +181,7 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
               draggedIndex === index && "opacity-50",
             )}
           >
-            {/* Blob URLs from URL.createObjectURL can't go through next/image's optimizer, so this stays a plain img. */}
+            {/* Blob-free now, but stays a plain img: cache-busting query params on repeated replaces don't play well with next/image's static optimizer. */}
             <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
             <div className="pointer-events-none absolute left-1.5 top-1.5 rounded-md bg-black/40 p-1 text-white opacity-0 transition-opacity group-hover:opacity-100">
               <DragHandleIcon className="h-3.5 w-3.5" />
@@ -159,6 +199,7 @@ export function ResidenceLayoutCard({ residence }: ResidenceLayoutCardProps) {
               }}
               type="file"
               accept="image/*"
+              aria-label={`Replace ${image.alt}`}
               className="hidden"
               onChange={(event) => handleImageReplace(index, event.target.files?.[0])}
             />

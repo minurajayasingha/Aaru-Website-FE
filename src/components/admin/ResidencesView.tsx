@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { TabBar } from "./ui/TabBar";
 import { ResidenceLayoutCard } from "./ResidenceLayoutCard";
-import type { Residence } from "@/content/residences";
+import type { AdminResidence } from "@/content/admin/residences";
 
 type ResidencesViewProps = {
-  residences: Residence[];
+  residences: AdminResidence[];
 };
 
 export function ResidencesView({ residences }: ResidencesViewProps) {
