@@ -28,3 +28,17 @@ export const inquiries = mysqlTable("inquiries", {
 
 export type Inquiry = typeof inquiries.$inferSelect;
 export type NewInquiry = typeof inquiries.$inferInsert;
+
+export const galleryImages = mysqlTable("gallery_images", {
+  id: int("id").autoincrement().primaryKey(),
+  category: mysqlEnum("category", ["residential", "interior", "lifestyle", "maps"]).notNull(),
+  filename: varchar("filename", { length: 255 }).notNull(),
+  displayName: varchar("display_name", { length: 255 }).notNull(),
+  status: mysqlEnum("status", ["active", "inactive"]).notNull().default("active"),
+  width: int("width").notNull(),
+  height: int("height").notNull(),
+  uploadedAt: timestamp("uploaded_at").defaultNow().notNull(),
+});
+
+export type GalleryImage = typeof galleryImages.$inferSelect;
+export type NewGalleryImage = typeof galleryImages.$inferInsert;
