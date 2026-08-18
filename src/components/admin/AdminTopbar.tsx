@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { activeAdminNavLabel } from "@/content/admin/nav";
-import { sampleInquiries } from "@/content/admin/inquiries";
+import type { AdminInquiry } from "@/content/admin/inquiries";
 import { BellIcon, MenuIcon, SidebarToggleIcon } from "./icons";
 
 type AdminTopbarProps = {
   onMenuClick: () => void;
   isSidebarCollapsed: boolean;
   onToggleSidebar: () => void;
+  newInquiries: AdminInquiry[];
 };
 
 const iconButtonClasses = "rounded-full bg-brand-forest-50 p-2 text-brand-forest-700 hover:bg-brand-forest-100";
@@ -21,11 +22,10 @@ function formatRelativeTime(dateStr: string): string {
   return `${diffDays} days ago`;
 }
 
-export function AdminTopbar({ onMenuClick, isSidebarCollapsed, onToggleSidebar }: AdminTopbarProps) {
+export function AdminTopbar({ onMenuClick, isSidebarCollapsed, onToggleSidebar, newInquiries }: AdminTopbarProps) {
   const router = useRouter();
   const pathname = usePathname();
   const title = activeAdminNavLabel(pathname);
-  const newInquiries = sampleInquiries.filter((inquiry) => inquiry.status === "new");
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);

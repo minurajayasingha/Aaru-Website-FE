@@ -4,12 +4,14 @@ import { useState } from "react";
 import { cn } from "@/lib/cn";
 import { AdminSidebar } from "./AdminSidebar";
 import { AdminTopbar } from "./AdminTopbar";
+import type { AdminInquiry } from "@/content/admin/inquiries";
 
 type AdminShellProps = {
   children: React.ReactNode;
+  newInquiries: AdminInquiry[];
 };
 
-export function AdminShell({ children }: AdminShellProps) {
+export function AdminShell({ children, newInquiries }: AdminShellProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -40,6 +42,7 @@ export function AdminShell({ children }: AdminShellProps) {
           onMenuClick={() => setIsDrawerOpen(true)}
           isSidebarCollapsed={isCollapsed}
           onToggleSidebar={() => setIsCollapsed((current) => !current)}
+          newInquiries={newInquiries}
         />
         <main className="flex-1 px-4 py-6 md:px-8 md:py-8">{children}</main>
       </div>
