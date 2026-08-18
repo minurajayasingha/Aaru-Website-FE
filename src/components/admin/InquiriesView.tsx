@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Badge } from "./ui/Badge";
 import { Card } from "./ui/Card";
 import { TabBar } from "./ui/TabBar";
@@ -23,6 +23,7 @@ const filterOptions: { label: string; value: StatusFilter }[] = [
 ];
 
 export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [inquiries, setInquiries] = useState(initialInquiries);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
@@ -72,6 +73,9 @@ export function InquiriesView({ initialInquiries }: InquiriesViewProps) {
         body: JSON.stringify({ status }),
       });
       if (!response.ok) throw new Error("Failed to update inquiry status");
+      // Re-fetches server-rendered data (e.g. the notification bell's new-inquiry
+      // count in the layout) without a full page reload or losing local state here.
+      router.refresh();
     } catch (error) {
       console.error("Failed to persist inquiry status change:", error);
       if (previousStatus) {
