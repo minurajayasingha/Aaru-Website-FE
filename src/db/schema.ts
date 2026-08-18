@@ -52,3 +52,14 @@ export const galleryImages = mysqlTable("gallery_images", {
 
 export type GalleryImage = typeof galleryImages.$inferSelect;
 export type NewGalleryImage = typeof galleryImages.$inferInsert;
+
+export const residenceStats = mysqlTable("residence_stats", {
+  slug: varchar("slug", { length: 191 }).primaryKey(),
+  unitsAvailableLabel: varchar("units_available_label", { length: 255 }).notNull(),
+  sizeLabel: varchar("size_label", { length: 255 }).notNull(),
+  priceLabel: varchar("price_label", { length: 255 }).notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ResidenceStats = typeof residenceStats.$inferSelect;
+export type NewResidenceStats = typeof residenceStats.$inferInsert;
