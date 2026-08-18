@@ -3,9 +3,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Card } from "./ui/Card";
+import { Button } from "./ui/Button";
 import { TabBar } from "./ui/TabBar";
 import { SearchIcon, PencilIcon, UploadIcon, TrashIcon } from "./icons";
 import { GalleryDetailModal } from "./GalleryDetailModal";
+import { GalleryUploadModal } from "./GalleryUploadModal";
 import type { GalleryCategory } from "@/content/gallery";
 import type { AdminGalleryImage } from "@/content/admin/gallery";
 
@@ -31,6 +33,7 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [draftName, setDraftName] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const cancelledEditRef = useRef(false);
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
@@ -61,10 +64,27 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
     setEditingId(image.id);
   }
 
-  function renameImage(id: string, name: string) {
+  async function renameImage(id: string, name: string) {
     const trimmed = name.trim();
     if (!trimmed) return;
+    const previous = images.find((image) => image.id === id);
     setImages((current) => current.map((image) => (image.id === id ? { ...image, name: trimmed } : image)));
+
+    try {
+      const response = await fetch(`/api/admin/gallery/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ displayName: trimmed }),
+      });
+      if (!response.ok) throw new Error("Failed to rename image");
+      const updated = (await response.json()) as AdminGalleryImage;
+      setImages((current) => current.map((image) => (image.id === id ? updated : image)));
+    } catch (error) {
+      console.error("Failed to persist image rename:", error);
+      if (previous) {
+        setImages((current) => current.map((image) => (image.id === id ? previous : image)));
+      }
+    }
   }
 
   function commitEdit() {
@@ -85,29 +105,69 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
     commitEdit();
   }
 
-  function handleReplaceImage(id: string, file: File | undefined) {
+  async function handleReplaceImage(id: string, file: File | undefined) {
     if (!file) return;
-    const nextSrc = URL.createObjectURL(file);
-    setImages((current) =>
-      current.map((image) => {
-        if (image.id !== id) return image;
-        if (image.src.startsWith("blob:")) URL.revokeObjectURL(image.src);
-        return { ...image, src: nextSrc };
-      }),
-    );
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch(`/api/admin/gallery/${id}/replace`, { method: "POST", body: formData });
+      if (!response.ok) throw new Error("Failed to replace image");
+      const updated = (await response.json()) as AdminGalleryImage;
+      // Cache-bust: the URL is unchanged after a replace, so append a query param
+      // to force the browser/next/image to fetch the new file instead of a cached copy.
+      setImages((current) =>
+        current.map((image) => (image.id === id ? { ...updated, src: `${updated.src}?t=${Date.now()}` } : image))
+      );
+    } catch (error) {
+      console.error("Failed to replace image:", error);
+      window.alert("Failed to replace the image. Please try again.");
+    }
   }
 
-  function handleDelete(id: string) {
+  async function handleDelete(id: string) {
     if (!window.confirm("Remove this image from the gallery?")) return;
+    const previousImages = images;
     setImages((current) => current.filter((image) => image.id !== id));
+
+    try {
+      const response = await fetch(`/api/admin/gallery/${id}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Failed to delete image");
+    } catch (error) {
+      console.error("Failed to delete image:", error);
+      setImages(previousImages);
+    }
   }
 
-  function toggleStatus(id: string) {
-    setImages((current) =>
-      current.map((image) =>
-        image.id === id ? { ...image, status: image.status === "active" ? "inactive" : "active" } : image,
-      ),
-    );
+  async function toggleStatus(id: string) {
+    const target = images.find((image) => image.id === id);
+    if (!target) return;
+    const nextStatus = target.status === "active" ? "inactive" : "active";
+    setImages((current) => current.map((image) => (image.id === id ? { ...image, status: nextStatus } : image)));
+
+    try {
+      const response = await fetch(`/api/admin/gallery/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: nextStatus }),
+      });
+      if (!response.ok) throw new Error("Failed to update status");
+    } catch (error) {
+      console.error("Failed to persist status change:", error);
+      setImages((current) => current.map((image) => (image.id === id ? { ...image, status: target.status } : image)));
+    }
+  }
+
+  async function handleUpload(category: GalleryCategory, file: File, displayName: string) {
+    const formData = new FormData();
+    formData.append("category", category);
+    formData.append("file", file);
+    if (displayName.trim()) formData.append("displayName", displayName.trim());
+
+    const response = await fetch("/api/admin/gallery", { method: "POST", body: formData });
+    if (!response.ok) throw new Error("Failed to upload image");
+    const created = (await response.json()) as AdminGalleryImage;
+    setImages((current) => [created, ...current]);
   }
 
   const actionButtonClasses =
@@ -201,16 +261,22 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <TabBar options={filterOptions} value={categoryFilter} onChange={(value) => setCategoryFilter(value as CategoryFilter)} />
 
-        <div className="relative w-full sm:w-64">
-          <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-forest-400" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="Search gallery..."
-            aria-label="Search gallery"
-            className="w-full rounded-full border border-brand-forest-100 bg-white py-2 pl-9 pr-4 text-sm text-brand-forest-900 placeholder:text-brand-forest-400 focus:outline-none focus:ring-2 focus:ring-brand-gold"
-          />
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="relative w-full sm:w-64">
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-forest-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Search gallery..."
+              aria-label="Search gallery"
+              className="w-full rounded-full border border-brand-forest-100 bg-white py-2 pl-9 pr-4 text-sm text-brand-forest-900 placeholder:text-brand-forest-400 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+            />
+          </div>
+          <Button type="button" onClick={() => setIsUploadModalOpen(true)}>
+            <UploadIcon className="h-4 w-4" />
+            Upload image
+          </Button>
         </div>
       </div>
 
@@ -284,6 +350,15 @@ export function GalleryView({ initialImages, categories }: GalleryViewProps) {
           onReplace={handleReplaceImage}
           onDelete={handleDelete}
           onToggleStatus={toggleStatus}
+        />
+      )}
+
+      {isUploadModalOpen && (
+        <GalleryUploadModal
+          categories={categories}
+          defaultCategory={categoryFilter === "all" ? categories[0].id : categoryFilter}
+          onClose={() => setIsUploadModalOpen(false)}
+          onUpload={handleUpload}
         />
       )}
     </div>
